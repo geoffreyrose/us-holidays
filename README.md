@@ -7,7 +7,7 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
  * Groundhog Day
  * Valentine's Day
  * Presidents Day
- * Daylight Saving (End)
+ * Daylight Saving (Start)
  * St. Patrick's Day
  * April Fool's Day
  * Mother's Day
