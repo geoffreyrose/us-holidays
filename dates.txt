@@ -1,24 +1,24 @@
 Holidays
-New Years Day                   <!-- 01/01 -->
-Martin Luther King Jr. Day      <!-- 2nd Monday of January -->
-Groundhog Day                   <!-- 02/02 -->
-Valentine's Day                 <!-- 02/14 -->
-Presidents Day                  <!-- 2nd Monday of February -->
-Daylight Saving (End)           <!-- 2nd Sunday of November -->
-St. Patrick's Day               <!-- 03/17 -->
-April Fool's Day                <!-- 04/01 -->
-Mother's Day                    <!-- 2nd Sunday of May -->
-Memorial Day                    <!-- Last Monday of May -->
-Armed Forces Day                <!-- 3rd Saturday of May -->
-Father's Day                    <!-- 3rd Sunday of May -->
-Flag Day                        <!-- 06/14 -->
-Independence Day                <!-- 07/04 -->
-Labor Day                       <!-- 1st Monday of September -->
-Patriot Day                     <!-- 09/11 -->
-Columbus Day                    <!-- 2nd Monday of October -->
-Halloween                       <!-- 10/31 -->
-Veterans Day                    <!-- 11/11 -->
-Thanksgiving                    <!-- 4th Thursday of November -->
-Daylight Saving (End)           <!-- 1st Sunday of November -->
-Pearl Harbor Remembrance Day    <!-- 12/07 -->
-Christmas Day                   <!-- 12/25 -->
++New Years Day                   <!-- 01/01 -->
++Martin Luther King Jr. Day      <!-- 3rd Monday of January -->
++Groundhog Day                   <!-- 02/02 -->
++Valentine's Day                 <!-- 02/14 -->
++Presidents Day                  <!-- 3rd Monday of February -->
++Daylight Saving (Start)         <!-- 2nd Sunday of March -->
++St. Patrick's Day               <!-- 03/17 -->
++April Fool's Day                <!-- 04/01 -->
++Mother's Day                    <!-- 2nd Sunday of May -->
++Memorial Day                    <!-- Last Monday of May -->
++Armed Forces Day                <!-- 3rd Saturday of May -->
++Father's Day                    <!-- 3rd Sunday of June -->
++Flag Day                        <!-- 06/14 -->
++Independence Day                <!-- 07/04 -->
++Labor Day                       <!-- 1st Monday of September -->
++Patriot Day                     <!-- 09/11 -->
++Columbus Day                    <!-- 2nd Monday of October -->
++Halloween                       <!-- 10/31 -->
++Veterans Day                    <!-- 11/11 -->
++Thanksgiving                    <!-- 4th Thursday of November -->
++Daylight Saving (End)           <!-- 1st Sunday of November -->
++Pearl Harbor Remembrance Day    <!-- 12/07 -->
++Christmas Day                   <!-- 12/25 -->

@@ -3,6 +3,7 @@ bower_components/
 .sass-cache/
 composer.lock
 vendor
+index.php
 
 ## MAC STUFF
 .DS_Store
