@@ -1,0 +1,9 @@
+{
+    "name": "geoffreyrose/carbon",
+    "description": "This is a wrapper for nesbot/carbon which also calculates which days are US Holidays.",
+    "keywords": ["bank","holiday","holidays"],
+    "license": "MIT",
+    "require": {
+        "nesbot/carbon": "^1.22"
+    }
+}
