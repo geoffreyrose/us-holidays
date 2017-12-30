@@ -1,5 +1,4 @@
 # Carbon Support for US Holidays
-***
 This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US holidays.
 
 ### Supported Holidays
