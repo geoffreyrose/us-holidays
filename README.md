@@ -33,59 +33,62 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
 ### Usage
 
 Basic Setup
+```php
+<?php
+require 'Carbon.php';
+require 'USHolidays.php';
 
-    <?php
-    require 'Carbon.php';
-    require 'USHolidays.php';
-
-    use USHolidays\Carbon;
-
+use USHolidays\Carbon;
+```
 Check if date is holiday. Returns `boolean`
-
-    $carbon = new Carbon();
-    $carbon = Carbon::create(2018, 12, 25);
-    $carbon->isHoliday(); // bool (true)
+```php
+$carbon = new Carbon();
+$carbon = Carbon::create(2018, 12, 25);
+$carbon->isHoliday(); // bool (true)
+```
 
 Get name if date is holiday. Returns `string` or `false`
-
-    $carbon = new Carbon();
-    $carbon = Carbon::create(2018, 12, 31);
-    $carbon->getHolidayName(); // New Year's Eve
+```php
+$carbon = new Carbon();
+$carbon = Carbon::create(2018, 12, 31);
+$carbon->getHolidayName(); // New Year's Eve
+```
 
 Get date for a specific holiday. Returns `string`
+```php
+$carbon = new Carbon();
+$carbon = Carbon::create(2018, 1, 1);
 
-    $carbon = new Carbon();
-    $carbon = Carbon::create(2018, 1, 1);
-
-    $carbon->getNewYearsDayHoliday();                   // 2018-01-01 00:00:00
-    $carbon->getMLKDayHoliday();                        // 2018-01-15 00:00:00
-    $carbon->getGroundhogDayHoliday();                  // 2018-02-02 00:00:00
-    $carbon->getValentinesDayHoliday();                 // 2018-02-14 00:00:00
-    $carbon->getPresidentsDayHoliday();                 // 2018-02-19 00:00:00
-    $carbon->getDaylightSavingStartHoliday();           // 2018-03-11 00:00:00
-    $carbon->getStPatricksDayHoliday();                 // 2018-03-17 00:00:00
-    $carbon->getAprilFoolsDayHoliday();                 // 2018-04-01 00:00:00
-    $carbon->getMothersDayHoliday();                    // 2018-05-13 00:00:00
-    $carbon->getArmedForcesDayHoliday();                // 2018-05-19 00:00:00
-    $carbon->getMemorialDayHoliday();                   // 2018-05-28 00:00:00
-    $carbon->getFlagsDayHoliday();                      // 2018-06-14 00:00:00
-    $carbon->getFathersDayHoliday();                    // 2018-06-17 00:00:00
-    $carbon->getIndependenceDayHoliday();               // 2018-07-04 00:00:00
-    $carbon->getLaborDayHoliday();                      // 2018-09-03 00:00:00
-    $carbon->getPatriotsDayHoliday();                   // 2018-09-11 00:00:00
-    $carbon->getColumbusDayHoliday();                   // 2018-10-08 00:00:00
-    $carbon->getHalloweenDayHoliday();                  // 2018-10-31 00:00:00
-    $carbon->getDaylightSavingEndHoliday();             // 2018-11-04 00:00:00
-    $carbon->getVeteransDayHoliday();                   // 2018-11-11 00:00:00
-    $carbon->getThanksgivingHoliday();                  // 2018-11-22 00:00:00
-    $carbon->getPearlHarborRemembranceHoliday();        // 2018-12-07 00:00:00
-    $carbon->getChristmasEveHoliday();                  // 2018-12-24 00:00:00
-    $carbon->getChristmasDayHoliday();                  // 2018-12-25 00:00:00
-    $carbon->getNewYearsEveHoliday();                   // 2018-12-31 00:00:00
-
+$carbon->getNewYearsDayHoliday();                   // 2018-01-01 00:00:00
+$carbon->getMLKDayHoliday();                        // 2018-01-15 00:00:00
+$carbon->getGroundhogDayHoliday();                  // 2018-02-02 00:00:00
+$carbon->getValentinesDayHoliday();                 // 2018-02-14 00:00:00
+$carbon->getPresidentsDayHoliday();                 // 2018-02-19 00:00:00
+$carbon->getDaylightSavingStartHoliday();           // 2018-03-11 00:00:00
+$carbon->getStPatricksDayHoliday();                 // 2018-03-17 00:00:00
+$carbon->getAprilFoolsDayHoliday();                 // 2018-04-01 00:00:00
+$carbon->getMothersDayHoliday();                    // 2018-05-13 00:00:00
+$carbon->getArmedForcesDayHoliday();                // 2018-05-19 00:00:00
+$carbon->getMemorialDayHoliday();                   // 2018-05-28 00:00:00
+$carbon->getFlagsDayHoliday();                      // 2018-06-14 00:00:00
+$carbon->getFathersDayHoliday();                    // 2018-06-17 00:00:00
+$carbon->getIndependenceDayHoliday();               // 2018-07-04 00:00:00
+$carbon->getLaborDayHoliday();                      // 2018-09-03 00:00:00
+$carbon->getPatriotsDayHoliday();                   // 2018-09-11 00:00:00
+$carbon->getColumbusDayHoliday();                   // 2018-10-08 00:00:00
+$carbon->getHalloweenDayHoliday();                  // 2018-10-31 00:00:00
+$carbon->getDaylightSavingEndHoliday();             // 2018-11-04 00:00:00
+$carbon->getVeteransDayHoliday();                   // 2018-11-11 00:00:00
+$carbon->getThanksgivingHoliday();                  // 2018-11-22 00:00:00
+$carbon->getPearlHarborRemembranceHoliday();        // 2018-12-07 00:00:00
+$carbon->getChristmasEveHoliday();                  // 2018-12-24 00:00:00
+$carbon->getChristmasDayHoliday();                  // 2018-12-25 00:00:00
+$carbon->getNewYearsEveHoliday();                   // 2018-12-31 00:00:00
+```
 
 ### Additional Examples    
-
-    $carbon = new Carbon();
-    $carbon = Carbon::create(2018, 07, 04);
-    $carbon->getIndependenceDayHoliday()->getHolidayName(); // Independence Day
+```php
+$carbon = new Carbon();
+$carbon = Carbon::create(2018, 01, 01);
+$carbon->getIndependenceDayHoliday()->getHolidayName(); // Independence Day
+```
