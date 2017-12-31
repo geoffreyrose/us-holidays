@@ -105,13 +105,13 @@ class Carbon extends \Carbon\Carbon {
             array(
                 'name' => "Groundhog Day",
                 'date' => Carbon::create($year, 2, 2),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 3
             ),
             array(
                 'name' => "Valentine's Day",
                 'date' => Carbon::create($year, 2, 14),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 4
             ),
         	array(
@@ -123,25 +123,25 @@ class Carbon extends \Carbon\Carbon {
             array(
                 'name' => "Daylight Saving (Start)",
                 'date' => $daylightStart,
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 6
             ),
             array(
                 'name' => "St. Patrick's Day",
                 'date' => Carbon::create($year, 3, 17),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 7
             ),
             array(
                 'name' => "April Fool's Day",
                 'date' => Carbon::create($year, 4, 1),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 8
             ),
             array(
                 'name' => "Mother's Day",
                 'date' => $mothers,
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 9
             ),
         	array(
@@ -153,19 +153,19 @@ class Carbon extends \Carbon\Carbon {
             array(
                 'name' => "Armed Forces Day",
                 'date' => $armed,
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 11
             ),
             array(
                 'name' => "Father's Day",
                 'date' => $father,
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 12
             ),
             array(
                 'name' => "Flag Day",
                 'date' => Carbon::create($year, 6, 14),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 13
             ),
             array(
@@ -183,7 +183,7 @@ class Carbon extends \Carbon\Carbon {
             array(
                 'name' => "Patriot Day",
                 'date' => Carbon::create($year, 9, 11),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 16
             ),
         	array(
@@ -195,13 +195,13 @@ class Carbon extends \Carbon\Carbon {
         	array(
                 'name' => "Halloween",
                 'date' => Carbon::create($year, 10, 31),
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 18
             ),
             array(
                 'name' => "Daylight Saving (End) ",
                 'date' => $daylightEnd,
-                'bank_holiday' => true,
+                'bank_holiday' => false,
                 'id' => 19
             ),
             array(
@@ -269,7 +269,28 @@ class Carbon extends \Carbon\Carbon {
 
         foreach ($holidays as $holiday) {
             if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
-                $isBankHoliday = true;
+                if($this->dayOfWeek !== Carbon::SUNDAY && $this->dayOfWeek !== Carbon::SATURDAY) {
+                    $isBankHoliday = true;
+                }
+
+            } else {
+                if( $this->dayOfWeek === Carbon::MONDAY ) {
+                    $this->subDay();
+
+                    if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
+                        $isBankHoliday = true;
+                    } else {
+                        $this->addDay();
+                    }
+                } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
+                    $this->addDay();
+
+                    if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
+                        $isBankHoliday = true;
+                    } else {
+                        $this->subDay();
+                    }
+                }
             }
         }
 
@@ -285,6 +306,24 @@ class Carbon extends \Carbon\Carbon {
         foreach ($holidays as $holiday) {
             if( $this->isBirthday($holiday['date']) ) {
                 $holidayName = $holiday['name'];
+            } else {
+                if( $this->dayOfWeek === Carbon::MONDAY ) {
+                    $this->subDay();
+
+                    if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
+                        $holidayName = $holiday['name'] . ' (Observed)';
+                    } else {
+                        $this->addDay();
+                    }
+                } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
+                    $this->addDay();
+
+                    if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
+                        $holidayName = $holiday['name'] . ' (Observed)';
+                    } else {
+                        $this->subDay();
+                    }
+                }
             }
         }
 
@@ -296,14 +335,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 1 ) {
-                $date = $holiday['date'];
-
-            }
-        }
+        $index = array_search(1, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -313,13 +347,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 2 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(2, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -329,13 +359,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 3 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(3, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -345,13 +371,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 4 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(4, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -361,13 +383,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 5 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(5, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -377,13 +395,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 6 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(6, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -393,13 +407,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 7 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(7, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -409,13 +419,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 8 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(8, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -425,13 +431,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 9 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(9, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -441,13 +443,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 10 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(10, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -457,13 +455,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 11 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(11, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -473,13 +467,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 12 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(12, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -489,13 +479,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 13 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(13, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -505,13 +491,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 14 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(14, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -522,13 +504,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 15 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(15, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -538,13 +516,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 16 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(16, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -554,13 +528,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 17 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(17, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -570,13 +540,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 18 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(18, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -586,13 +552,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 19 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(19, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -602,13 +564,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 20 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(20, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -618,13 +576,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 21 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(21, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -634,13 +588,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 22 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(22, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -650,13 +600,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 23 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(23, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -666,13 +612,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 24 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(24, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;
@@ -682,13 +624,9 @@ class Carbon extends \Carbon\Carbon {
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
-        $date = false;
 
-        foreach ($holidays as $holiday) {
-            if( $holiday['id'] === 25 ) {
-                $date = $holiday['date'] ;
-            }
-        }
+        $index = array_search(25, array_column($holidays, 'id') );
+        $date = $holidays[$index]['date'];
 
         $this->modify($date);
         return $date;

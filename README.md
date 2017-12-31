@@ -29,6 +29,10 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
  * New Years Eve
 
 
+### Requirements
+ * Carbon](http://carbon.nesbot.com/)
+ * PHP 5.5+
+
 ### Usage
 
 Basic Setup
@@ -85,9 +89,36 @@ $carbon->getChristmasDayHoliday();                  // 2018-12-25 00:00:00
 $carbon->getNewYearsEveHoliday();                   // 2018-12-31 00:00:00
 ```
 
+Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. So Holidays that are always on weekends are not consider bank holidays. Returns `boolean`
+```php
+$carbon = new Carbon();
+$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
+$carbon->isBankHoliday(); // bool (false)
+
+$carbon = new Carbon();
+$carbon = Carbon::create(2018, 12, 25); // Tuesday
+$carbon->isBankHoliday(); // bool (true)
+
+$carbon = new Carbon();
+$carbon = Carbon::create(2016, 12, 25); // Sunday
+$carbon->isBankHoliday(); // bool (false)
+
+$carbon = new Carbon();
+$carbon = Carbon::create(2016, 12, 26); // Monday
+$carbon->isBankHoliday(); // bool (true)
+```
+
 ### Additional Examples    
 ```php
 $carbon = new Carbon();
 $carbon = Carbon::create(2018, 01, 01);
 $carbon->getIndependenceDayHoliday()->getHolidayName(); // Independence Day
+
+$carbon = new Carbon();
+$carbon = Carbon::create(2016, 12, 25); // Sunday
+$carbon->getHolidayName(); // Christmas Day
+
+$carbon = new Carbon();
+$carbon = Carbon::create(2016, 12, 26); // Monday
+$carbon->getHolidayName(); // Christmas Day (Observed)
 ```
