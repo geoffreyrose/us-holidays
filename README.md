@@ -35,7 +35,20 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
 
 ### Usage
 
-Basic Setup
+#### With Composer
+```
+$ composer require geoffreyrose/us-holidays
+```
+
+```php
+<?php
+require 'vendor/autoload.php';
+
+use USHolidays\Carbon;
+```
+
+#### Without Composer
+
 ```php
 <?php
 require 'Carbon.php';
