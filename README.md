@@ -30,7 +30,7 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
 
 
 ### Requirements
- * Carbon](http://carbon.nesbot.com/)
+ * [Carbon](http://carbon.nesbot.com/)
  * PHP 5.5+
 
 ### Usage
