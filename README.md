@@ -51,8 +51,8 @@ use USHolidays\Carbon;
 
 ```php
 <?php
-require 'Carbon.php';
-require 'USHolidays.php';
+require 'path/to/nesbot/Carbon.php';
+require 'path/to/geoffreyrose/Carbon.php';
 
 use USHolidays\Carbon;
 ```
