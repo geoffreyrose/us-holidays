@@ -4,8 +4,7 @@
     "keywords": ["bank", "holiday", "holidays", "carbon"],
     "license": "MIT",
     "require": {
-        "nesbot/carbon": "^1.22",
-        "geoffreyrose/us-holidays": "^1.0"
+        "nesbot/carbon": "^1.22"
     },
     "autoload": {
         "psr-4": {
