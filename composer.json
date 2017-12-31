@@ -1,7 +1,7 @@
 {
-    "name": "geoffreyrose/carbon",
-    "description": "This is a wrapper for nesbot/carbon which also calculates which days are US Holidays.",
-    "keywords": ["bank","holiday","holidays"],
+    "name": "geoffreyrose/USHolidays",
+    "description": "US Holidays Wrapper for the Carbon DateTime Library.",
+    "keywords": ["bank","holiday","holidays","carbon"],
     "license": "MIT",
     "require": {
         "nesbot/carbon": "^1.22"
