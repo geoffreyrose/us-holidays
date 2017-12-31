@@ -1,9 +1,14 @@
 {
-    "name": "geoffreyrose/USHolidays",
+    "name": "geoffreyrose/us-holidays",
     "description": "US Holidays Wrapper for the Carbon DateTime Library.",
-    "keywords": ["bank","holiday","holidays","carbon"],
+    "keywords": ["bank", "holiday", "holidays", "carbon"],
     "license": "MIT",
     "require": {
         "nesbot/carbon": "^1.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "USHolidays\\": "src/"
+        }
     }
 }
