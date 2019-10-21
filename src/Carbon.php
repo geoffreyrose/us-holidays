@@ -21,6 +21,14 @@ class Carbon extends \Carbon\Carbon {
         }
         $presidents->next(Carbon::MONDAY)->next(Carbon::MONDAY);
 
+        // Tax Day
+        $taxDay = Carbon::create($year, 04, 15);
+        if( $taxDay->dayOfWeek === Carbon::SATURDAY || $taxDay->dayOfWeek === Carbon::SUNDAY ) {
+        	$taxDay->next(Carbon::TUESDAY);
+        } else if( $taxDay->dayOfWeek === Carbon::FRIDAY) {
+        	$taxDay->next(Carbon::MONDAY);
+        }
+
         // Memorial Day
         $memorial = Carbon::create($year, 5, 1);
         for ($i=0; $i < 7; $i++) {
@@ -115,7 +123,7 @@ class Carbon extends \Carbon\Carbon {
                 'id' => 4
             ),
         	array(
-                'name' => "President's Day",
+                'name' => "Presidents' Day",
                 'date' => $presidents,
                 'bank_holiday' => true,
                 'id' => 5
@@ -240,6 +248,42 @@ class Carbon extends \Carbon\Carbon {
                 'bank_holiday' => false,
                 'id' => 25
             ),
+            array(
+                'name' => "Kwanzaa",
+                'date' => Carbon::create($year, 12, 26),
+                'bank_holiday' => false,
+                'id' => 26
+            ),
+            array(
+                'name' => "Earth Day",
+                'date' => Carbon::create($year, 4, 22),
+                'bank_holiday' => false,
+                'id' => 27
+            ),
+            array(
+                'name' => "Cinco de Mayo",
+                'date' => Carbon::create($year, 5, 5),
+                'bank_holiday' => false,
+                'id' => 28
+            ),
+            array(
+                'name' => "Juneteenth",
+                'date' => Carbon::create($year, 6, 19),
+                'bank_holiday' => false,
+                'id' => 29
+            ),
+            array(
+                'name' => "Indigenous Peoples' Day",
+                'date' => $columbus,
+                'bank_holiday' => true,
+                'id' => 30
+            ),
+            array(
+                'name' => "Tax Day",
+                'date' => $taxDay,
+                'bank_holiday' => false,
+                'id' => 31
+            ),
         );
 
 
@@ -331,305 +375,171 @@ class Carbon extends \Carbon\Carbon {
     }
 
 
-    public function getNewYearsDayHoliday($year = null)
+    private function getHoldiayById($id, $year)
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
 
-        $index = array_search(1, array_column($holidays, 'id') );
+        $index = array_search($id, array_column($holidays, 'id') );
         $date = $holidays[$index]['date'];
 
         $this->modify($date);
+
         return $date;
+    }
+
+    public function getNewYearsDayHoliday($year = null)
+    {
+        return $this->getHoldiayById(1, $year);
     }
 
     public function getMLKDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(2, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(2, $year);
     }
 
     public function getGroundhogDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(3, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(3, $year);
     }
 
     public function getValentinesDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(4, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(4, $year);
     }
 
     public function getPresidentsDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(5, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(5, $year);
     }
 
     public function getDaylightSavingStartHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(6, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(6, $year);
     }
 
     public function getStPatricksDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(7, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(7, $year);
     }
 
     public function getAprilFoolsDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(8, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(8, $year);
     }
 
     public function getMothersDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(9, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(9, $year);
     }
 
     public function getMemorialDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(10, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(10, $year);
     }
 
     public function getArmedForcesDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(11, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(11, $year);
     }
 
     public function getFathersDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(12, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(12, $year);
     }
 
     public function getFlagsDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(13, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(13, $year);
     }
 
     public function getIndependenceDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(14, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(14, $year);
     }
-
 
     public function getLaborDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(15, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(15, $year);
     }
 
     public function getPatriotsDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(16, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(16, $year);
     }
 
     public function getColumbusDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(17, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(17, $year);
     }
 
     public function getHalloweenDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(18, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(18, $year);
     }
 
     public function getDaylightSavingEndHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(19, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(19, $year);
     }
 
     public function getVeteransDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(20, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(20, $year);
     }
 
     public function getThanksgivingHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(21, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(21, $year);
     }
 
     public function getPearlHarborRemembranceHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(22, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(22, $year);
     }
 
     public function getChristmasEveHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(23, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(23, $year);
     }
 
     public function getChristmasDayHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(24, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(24, $year);
     }
 
     public function getNewYearsEveHoliday($year = null)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-
-        $index = array_search(25, array_column($holidays, 'id') );
-        $date = $holidays[$index]['date'];
-
-        $this->modify($date);
-        return $date;
+        return $this->getHoldiayById(25, $year);
     }
 
+    public function getKwanzaaHoliday($year = null)
+    {
+        return $this->getHoldiayById(26, $year);
+    }
+
+    public function getEarthDayHoliday($year = null)
+    {
+        return $this->getHoldiayById(27, $year);
+    }
+
+    public function getCincoDeMayoHoliday($year = null)
+    {
+        return $this->getHoldiayById(28, $year);
+    }
+
+    public function getJuneteenthHoliday($year = null)
+    {
+        return $this->getHoldiayById(29, $year);
+    }
+
+    public function getIndigenousPeoplesDayHoliday($year = null)
+    {
+        return $this->getHoldiayById(30, $year);
+    }
+
+    public function getTaxDayHoliday($year = null)
+    {
+        return $this->getHoldiayById(31, $year);
+    }
 }
