@@ -89,6 +89,7 @@ $carbon->getPresidentsDayHoliday();             // 2018-02-19 00:00:00
 $carbon->getDaylightSavingStartHoliday();       // 2018-03-11 00:00:00
 $carbon->getStPatricksDayHoliday();             // 2018-03-17 00:00:00
 $carbon->getAprilFoolsDayHoliday();             // 2018-04-01 00:00:00
+$carbon->getTaxDayHoliday();                    // 2018-04-17 00:00:00
 $carbon->getEarthDayHoliday();                  // 2018-04-22 00:00:00
 $carbon->getCincoDeMayoHoliday();               // 2018-05-05 00:00:00
 $carbon->getMothersDayHoliday();                // 2018-05-13 00:00:00
