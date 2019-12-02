@@ -133,7 +133,7 @@ $carbon = Carbon::create(2016, 12, 26); // Monday
 $carbon->isBankHoliday(); // bool (true)
 ```
 
-### Additional Examples    
+### Additional Examples
 ```php
 $carbon = new Carbon();
 $carbon = Carbon::create(2018, 01, 01);
@@ -147,3 +147,13 @@ $carbon = new Carbon();
 $carbon = Carbon::create(2016, 12, 26); // Monday
 $carbon->getHolidayName(); // Christmas Day (Observed)
 ```
+
+### Contributing
+
+1. Clone the repo and install dependencies.
+
+        composer install
+
+2. Run the test suite.
+
+        ./vendor/bin/phpunit
