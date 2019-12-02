@@ -384,7 +384,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
 
-    private function getHoldiayById($id, $year)
+    private function getHolidayById($id, $year)
     {
         $year = $year ? $year : $this->year;
         $holidays = $this->getHolidays($year);
@@ -399,157 +399,157 @@ class Carbon extends \Carbon\Carbon {
 
     public function getNewYearsDayHoliday($year = null)
     {
-        return $this->getHoldiayById(1, $year);
+        return $this->getHolidayById(1, $year);
     }
 
     public function getMLKDayHoliday($year = null)
     {
-        return $this->getHoldiayById(2, $year);
+        return $this->getHolidayById(2, $year);
     }
 
     public function getGroundhogDayHoliday($year = null)
     {
-        return $this->getHoldiayById(3, $year);
+        return $this->getHolidayById(3, $year);
     }
 
     public function getValentinesDayHoliday($year = null)
     {
-        return $this->getHoldiayById(4, $year);
+        return $this->getHolidayById(4, $year);
     }
 
     public function getPresidentsDayHoliday($year = null)
     {
-        return $this->getHoldiayById(5, $year);
+        return $this->getHolidayById(5, $year);
     }
 
     public function getDaylightSavingStartHoliday($year = null)
     {
-        return $this->getHoldiayById(6, $year);
+        return $this->getHolidayById(6, $year);
     }
 
     public function getStPatricksDayHoliday($year = null)
     {
-        return $this->getHoldiayById(7, $year);
+        return $this->getHolidayById(7, $year);
     }
 
     public function getAprilFoolsDayHoliday($year = null)
     {
-        return $this->getHoldiayById(8, $year);
+        return $this->getHolidayById(8, $year);
     }
 
     public function getMothersDayHoliday($year = null)
     {
-        return $this->getHoldiayById(9, $year);
+        return $this->getHolidayById(9, $year);
     }
 
     public function getMemorialDayHoliday($year = null)
     {
-        return $this->getHoldiayById(10, $year);
+        return $this->getHolidayById(10, $year);
     }
 
     public function getArmedForcesDayHoliday($year = null)
     {
-        return $this->getHoldiayById(11, $year);
+        return $this->getHolidayById(11, $year);
     }
 
     public function getFathersDayHoliday($year = null)
     {
-        return $this->getHoldiayById(12, $year);
+        return $this->getHolidayById(12, $year);
     }
 
     public function getFlagsDayHoliday($year = null)
     {
-        return $this->getHoldiayById(13, $year);
+        return $this->getHolidayById(13, $year);
     }
 
     public function getIndependenceDayHoliday($year = null)
     {
-        return $this->getHoldiayById(14, $year);
+        return $this->getHolidayById(14, $year);
     }
 
     public function getLaborDayHoliday($year = null)
     {
-        return $this->getHoldiayById(15, $year);
+        return $this->getHolidayById(15, $year);
     }
 
     public function getPatriotsDayHoliday($year = null)
     {
-        return $this->getHoldiayById(16, $year);
+        return $this->getHolidayById(16, $year);
     }
 
     public function getColumbusDayHoliday($year = null)
     {
-        return $this->getHoldiayById(17, $year);
+        return $this->getHolidayById(17, $year);
     }
 
     public function getHalloweenDayHoliday($year = null)
     {
-        return $this->getHoldiayById(18, $year);
+        return $this->getHolidayById(18, $year);
     }
 
     public function getDaylightSavingEndHoliday($year = null)
     {
-        return $this->getHoldiayById(19, $year);
+        return $this->getHolidayById(19, $year);
     }
 
     public function getVeteransDayHoliday($year = null)
     {
-        return $this->getHoldiayById(20, $year);
+        return $this->getHolidayById(20, $year);
     }
 
     public function getThanksgivingHoliday($year = null)
     {
-        return $this->getHoldiayById(21, $year);
+        return $this->getHolidayById(21, $year);
     }
 
     public function getPearlHarborRemembranceHoliday($year = null)
     {
-        return $this->getHoldiayById(22, $year);
+        return $this->getHolidayById(22, $year);
     }
 
     public function getChristmasEveHoliday($year = null)
     {
-        return $this->getHoldiayById(23, $year);
+        return $this->getHolidayById(23, $year);
     }
 
     public function getChristmasDayHoliday($year = null)
     {
-        return $this->getHoldiayById(24, $year);
+        return $this->getHolidayById(24, $year);
     }
 
     public function getNewYearsEveHoliday($year = null)
     {
-        return $this->getHoldiayById(25, $year);
+        return $this->getHolidayById(25, $year);
     }
 
     public function getKwanzaaHoliday($year = null)
     {
-        return $this->getHoldiayById(26, $year);
+        return $this->getHolidayById(26, $year);
     }
 
     public function getEarthDayHoliday($year = null)
     {
-        return $this->getHoldiayById(27, $year);
+        return $this->getHolidayById(27, $year);
     }
 
     public function getCincoDeMayoHoliday($year = null)
     {
-        return $this->getHoldiayById(28, $year);
+        return $this->getHolidayById(28, $year);
     }
 
     public function getJuneteenthHoliday($year = null)
     {
-        return $this->getHoldiayById(29, $year);
+        return $this->getHolidayById(29, $year);
     }
 
     public function getIndigenousPeoplesDayHoliday($year = null)
     {
-        return $this->getHoldiayById(30, $year);
+        return $this->getHolidayById(30, $year);
     }
 
     public function getTaxDayHoliday($year = null)
     {
-        return $this->getHoldiayById(31, $year);
+        return $this->getHolidayById(31, $year);
     }
 
     public function getDayAfterThanksgivingHoliday($year = null)
