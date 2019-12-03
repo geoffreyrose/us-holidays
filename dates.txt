@@ -7,13 +7,13 @@ Presidents' Day                 <!-- 3rd Monday of February -->
 Daylight Saving (Start)         <!-- 2nd Sunday of March -->
 St. Patrick's Day               <!-- 03/17 -->
 April Fool's Day                <!-- 04/01 -->
-Tax Day 			            <!-- 04/15 --> Notes: https://en.wikipedia.org/wiki/Tax_Day
-Earth Day			            <!-- 04/22 -->
-Cinco de Mayo     		        <!-- 05/05 -->
+Tax Day                         <!-- 04/15 --> Notes: https://en.wikipedia.org/wiki/Tax_Day
+Earth Day                       <!-- 04/22 -->
+Cinco de Mayo                   <!-- 05/05 -->
 Mother's Day                    <!-- 2nd Sunday of May -->
 Memorial Day                    <!-- Last Monday of May -->
 Armed Forces Day                <!-- 3rd Saturday of May -->
-Juneteenth			            <!-- 06/19 -->
+Juneteenth                      <!-- 06/19 -->
 Father's Day                    <!-- 3rd Sunday of June -->
 Flag Day                        <!-- 06/14 -->
 Independence Day                <!-- 07/04 -->
@@ -25,11 +25,12 @@ Halloween                       <!-- 10/31 -->
 Daylight Saving (End)           <!-- 1st Sunday of November -->
 Veterans Day                    <!-- 11/11 -->
 Thanksgiving                    <!-- 4th Thursday of November -->
+Day After Thanksgiving          <!-- Friday after Thanksgiving (Black Friday) -->
 Pearl Harbor Remembrance Day    <!-- 12/07 -->
 Christmas Eve                   <!-- 12/25 -->
 Christmas Day                   <!-- 12/25 -->
-Kwanzaa				            <!-- 12/26 -->
-New Year's Eve		            <!-- 12/31 -->
+Kwanzaa                         <!-- 12/26 -->
+New Year's Eve                  <!-- 12/31 -->
 
 
 

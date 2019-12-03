@@ -31,6 +31,7 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
 * St. Patrick's Day
 * Tax Day
 * Thanksgiving
+* Black Friday
 * Valentine's Day
 * Veterans Day
 
@@ -107,6 +108,7 @@ $carbon->getHalloweenDayHoliday();              // 2018-10-31 00:00:00
 $carbon->getDaylightSavingEndHoliday();         // 2018-11-04 00:00:00
 $carbon->getVeteransDayHoliday();               // 2018-11-11 00:00:00
 $carbon->getThanksgivingHoliday();              // 2018-11-22 00:00:00
+$carbon->getBlackFridayHoliday();               // 2018-11-23 00:00:00
 $carbon->getPearlHarborRemembranceHoliday();    // 2018-12-07 00:00:00
 $carbon->getChristmasEveHoliday();              // 2018-12-24 00:00:00
 $carbon->getChristmasDayHoliday();              // 2018-12-25 00:00:00
@@ -133,7 +135,7 @@ $carbon = Carbon::create(2016, 12, 26); // Monday
 $carbon->isBankHoliday(); // bool (true)
 ```
 
-### Additional Examples    
+### Additional Examples
 ```php
 $carbon = new Carbon();
 $carbon = Carbon::create(2018, 01, 01);
@@ -146,4 +148,17 @@ $carbon->getHolidayName(); // Christmas Day
 $carbon = new Carbon();
 $carbon = Carbon::create(2016, 12, 26); // Monday
 $carbon->getHolidayName(); // Christmas Day (Observed)
+```
+
+### Contributing
+
+1. Clone the repo and install dependencies.
+
+```
+composer install
+```
+
+2. Run the test suite.
+```
+./vendor/bin/phpunit
 ```

@@ -4,6 +4,7 @@ bower_components/
 composer.lock
 vendor
 index.php
+.phpunit.result.cache
 
 ## MAC STUFF
 .DS_Store
