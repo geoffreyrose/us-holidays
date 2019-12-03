@@ -147,7 +147,7 @@ $carbon->getHolidayName(); // Christmas Day
 
 $carbon = new Carbon();
 $carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->getHolidayName(); // Christmas Day (Observed)
+$carbon->getHolidayName(); // Christmas Day (Observed), Kwanzaa
 ```
 
 ### Contributing
