@@ -32,7 +32,7 @@ class Carbon extends \Carbon\Carbon {
         // Memorial Day
         $memorial = Carbon::create($year, 5, 1);
         for ($i=0; $i < 7; $i++) {
-            if( $memorial->month == 5 ) {
+            if( $memorial->month === 5 ) {
                 $memorial->next(Carbon::MONDAY);
             }  else {
                 $memorial->subDays(7);
@@ -62,8 +62,8 @@ class Carbon extends \Carbon\Carbon {
         $thanksgiving->next(Carbon::THURSDAY)->next(Carbon::THURSDAY)->next(Carbon::THURSDAY);
 
 
-        // Day After Thanksgiving (Black Friday)
-        $dayAfterThanksgiving = $thanksgiving->copy()->addDay();
+        // Black Friday
+        $blackFriday = $thanksgiving->copy()->addDay();
 
         // Daylight Saving (Start)
         $daylightStart = Carbon::create($year, 3, 1);
@@ -288,8 +288,8 @@ class Carbon extends \Carbon\Carbon {
                 'id' => 31
             ),
             array(
-                'name' => "Day After Thanksgiving",
-                'date' => $dayAfterThanksgiving,
+                'name' => "Black Friday",
+                'date' => $blackFriday,
                 'bank_holiday' => false,
                 'id' => 32
             ),
@@ -357,27 +357,28 @@ class Carbon extends \Carbon\Carbon {
         $holidayName = false;
 
         foreach ($holidays as $holiday) {
-            if( $this->isBirthday($holiday['date']) ) {
-                $holidayName = $holiday['name'];
+            $dateToCheck = $this->copy();
+            if( $dateToCheck->isBirthday($holiday['date']) ) {
+                $holidayName .= $holiday['name'] . ', ';
             } else {
-                if( $this->dayOfWeek === Carbon::MONDAY ) {
-                    $this->subDay();
+                if( $dateToCheck->dayOfWeek === Carbon::MONDAY ) {
+                    $dateToCheck->subDay();
 
-                    if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
-                        $holidayName = $holiday['name'] . ' (Observed)';
-                    } else {
-                        $this->addDay();
+                    if( $dateToCheck->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
+                        $holidayName .= $holiday['name'] . ' (Observed), ';
                     }
-                } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
-                    $this->addDay();
+                } else if( $dateToCheck->dayOfWeek === Carbon::FRIDAY ) {
+                    $dateToCheck->addDay();
 
-                    if( $this->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
-                        $holidayName = $holiday['name'] . ' (Observed)';
-                    } else {
-                        $this->subDay();
+                    if( $dateToCheck->isBirthday($holiday['date']) && $holiday['bank_holiday'] ) {
+                        $holidayName .= $holiday['name'] . ' (Observed), ';
                     }
                 }
             }
+        }
+
+        if( $holidayName ) {
+            $holidayName = rtrim($holidayName, ', ');
         }
 
         return $holidayName;
@@ -552,7 +553,7 @@ class Carbon extends \Carbon\Carbon {
         return $this->getHolidayById(31, $year);
     }
 
-    public function getDayAfterThanksgivingHoliday($year = null)
+    public function getBlackFridayHoliday($year = null)
     {
         return $this->getHolidayById(32, $year);
     }
