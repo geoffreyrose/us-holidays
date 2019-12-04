@@ -1,9 +1,15 @@
+[![Latest Stable Version](https://img.shields.io/packagist/v/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays)
+[![Total Downloads](https://img.shields.io/packagist/dt/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays)
+[![Build Status](https://img.shields.io/travis/geoffreyrose/us-holidays/master.svg?style=flat-square)](https://travis-ci.com/geoffreyrose/us-holidays)
+
+
 # Carbon Support for US Holidays
 This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US holidays.
 
 ### Supported Holidays
 * April Fool's Day
 * Armed Forces Day
+* Black Friday
 * Christmas Day
 * Christmas Eve
 * Cinco de Mayo
@@ -31,7 +37,6 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
 * St. Patrick's Day
 * Tax Day
 * Thanksgiving
-* Black Friday
 * Valentine's Day
 * Veterans Day
 
@@ -158,7 +163,27 @@ $carbon->getHolidayName(); // Christmas Day (Observed), Kwanzaa
 composer install
 ```
 
-2. Run the test suite.
+2. Run Tests
+
+Use locally installed carbon version
+
 ```
 ./vendor/bin/phpunit
+```
+
+----
+
+Test against Carbon v1
+```
+./tests/carbon-1.sh
+```
+
+Test against Carbon v1
+```
+./tests/carbon-2.sh
+```
+
+Test Both Carbon v1 and v2
+```
+./tests/carbon-1-2.sh
 ```
