@@ -178,7 +178,7 @@ Test against Carbon v1
 ./tests/carbon-1.sh
 ```
 
-Test against Carbon v1
+Test against Carbon v2
 ```
 ./tests/carbon-2.sh
 ```
