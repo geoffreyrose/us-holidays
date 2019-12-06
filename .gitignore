@@ -5,6 +5,7 @@ composer.lock
 vendor
 index.php
 .phpunit.result.cache
+reports
 
 ## MAC STUFF
 .DS_Store

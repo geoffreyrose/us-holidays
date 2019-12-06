@@ -1,7 +1,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays)
 [![Total Downloads](https://img.shields.io/packagist/dt/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays)
 [![Build Status](https://img.shields.io/travis/geoffreyrose/us-holidays/master.svg?style=flat-square)](https://travis-ci.com/geoffreyrose/us-holidays)
-
+[![codecov.io](https://img.shields.io/codecov/c/gh/geoffreyrose/us-holidays?style=flat-square)](https://codecov.io/gh/geoffreyrose/us-holidays)
 
 # Carbon Support for US Holidays
 This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US holidays.

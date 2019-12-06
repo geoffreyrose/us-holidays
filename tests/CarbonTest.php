@@ -594,4 +594,85 @@ class CarbonTest extends TestCase
                 ->isSameDay(Carbon::createFromDate(2018, 12, 31))
         );
     }
+
+    public function testIsHoliday()
+    {
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2018, 1, 2);
+
+        $this->assertFalse( $carbon->isHoliday() );
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2018, 1, 1);
+
+        $this->assertTrue( $carbon->isHoliday() );
+    }
+
+    public function testIsBankHoliday()
+    {
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2018, 1, 1);
+
+        $this->assertTrue( $carbon->isBankHoliday() );
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2018, 4, 1);
+
+        $this->assertFalse( $carbon->isBankHoliday() );
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2016, 12, 26);
+        $this->assertTrue( $carbon->isBankHoliday() );
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2015, 7, 3);
+        $this->assertTrue( $carbon->isBankHoliday() );
+    }
+
+    public function testGetHolidayYear()
+    {
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2018, 1, 1);
+
+        $this->assertFalse(
+            $carbon->getIndependenceDayHoliday('2015')
+                ->isSameDay(Carbon::createFromDate(2015, 7, 3))
+        );
+
+        $this->assertTrue(
+            $carbon->getIndependenceDayHoliday('2000')
+                ->isSameDay(Carbon::createFromDate(2000, 07, 4))
+        );
+    }
+
+    public function testGetHolidayName()
+    {
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2018, 1, 2);
+
+        $this->assertFalse($carbon->getHolidayName('2015'));
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2016, 1, 1);
+        $this->assertEquals('Independence Day', $carbon->getIndependenceDayHoliday()->getHolidayName());
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2016, 1, 1);
+        $this->assertEquals('Independence Day', $carbon->getIndependenceDayHoliday()->getHolidayName('asdasd'));
+
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2016, 4, 17);
+        $this->assertEquals('Tax Day', $carbon->getHolidayName('2018'));
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2016, 4, 17);
+        $this->assertEquals('Tax Day', $carbon->getHolidayName(2018));
+
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2016, 4, 15);
+        $this->assertNotEquals('Tax Day', $carbon->getHolidayName(2018));
+    }
+
+
 }

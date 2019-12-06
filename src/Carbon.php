@@ -3,7 +3,7 @@
 class Carbon extends \Carbon\Carbon {
 
     private function getHolidays( $year = null ) {
-        if( $year === null) {
+        if( $year === null || !is_numeric($year)) {
             $year = date('Y');
         }
 
