@@ -3,9 +3,14 @@ New Years Day                   <!-- 01/01 -->
 Martin Luther King Jr. Day      <!-- 3rd Monday of January -->
 Groundhog Day                   <!-- 02/02 -->
 Valentine's Day                 <!-- 02/14 -->
+Ash Wednesday                   <!-- 46 days before Easter -->
 Presidents' Day                 <!-- 3rd Monday of February -->
 Daylight Saving (Start)         <!-- 2nd Sunday of March -->
 St. Patrick's Day               <!-- 03/17 -->
+Palm Sunday                     <!-- 1 week before Easter -->
+Good Friday                     <!-- 2 days before Easter -->
+Easter                          <!-- see https://en.wikipedia.org/wiki/List_of_dates_for_Easter , using built in php function `easter_date()` -->
+Orthodox Easter                 <!-- see https://www.php.net/manual/en/function.easter-date.php#83794 -->
 April Fool's Day                <!-- 04/01 -->
 Tax Day                         <!-- 04/15 --> Notes: https://en.wikipedia.org/wiki/Tax_Day
 Earth Day                       <!-- 04/22 -->
@@ -31,23 +36,28 @@ Christmas Eve                   <!-- 12/25 -->
 Christmas Day                   <!-- 12/25 -->
 Kwanzaa                         <!-- 12/26 -->
 New Year's Eve                  <!-- 12/31 -->
+Hanukkah                        <!-- 25 Kislev (Hebrew/Jewish Calendar) -->
+Yom Kippur                      <!-- 10 Tishrei (Hebrew/Jewish Calendar) -->
+Rosh Hashanah                   <!-- 1 Tishrei (Hebrew/Jewish Calendar) -->
+Passover                        <!-- 15  Nisan (Hebrew/Jewish Calendar) -->
+
 
 
 
 Holidays to look into adding
 
+
+--Traditional Chinese calendar--
 Lunar New Years
-Holi
-Palm Sunday
-Good Friday
-Passover
-Easter
-Orthodox Easter
+
+
+--Islamic calendar--
 Beginning of Ramadan
 Eid al-Fitr
 Eid al-Adha
 Ashura
-Rosh Hashananah
-Yom Kippur
+
+
+--Hindu calendar--
+Holi
 Diwali
-Hanukkah

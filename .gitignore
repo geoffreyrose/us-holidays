@@ -6,6 +6,7 @@ vendor
 index.php
 .phpunit.result.cache
 reports
+clover.xml
 
 ## MAC STUFF
 .DS_Store

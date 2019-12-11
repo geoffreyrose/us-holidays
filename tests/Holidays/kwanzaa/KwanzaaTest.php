@@ -1,0 +1,47 @@
+<?php
+
+use PHPUnit\Framework\TestCase;
+use USHolidays\Carbon;
+
+class KwanzaaTest extends TestCase
+{
+    public function testHoliday()
+    {
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2020, 1, 1);
+
+        $this->assertFalse(
+            $carbon->getKwanzaaHoliday()
+                ->isSameDay(Carbon::createFromDate(2020, 12, 25))
+        );
+
+        $this->assertTrue(
+            $carbon->getKwanzaaHoliday()
+                ->isSameDay(Carbon::createFromDate(2020, 12, 26))
+        );
+    }
+
+    public function testHolidayName()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getKwanzaaHoliday();
+
+        $this->assertEquals("Kwanzaa", $holiday->getHolidayName());
+    }
+
+    public function testIsHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getKwanzaaHoliday();
+
+        $this->assertTrue($holiday->isHoliday());
+    }
+
+    public function testIsBankHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getKwanzaaHoliday();
+
+        $this->assertFalse($holiday->isBankHoliday());
+    }
+}

@@ -1,0 +1,47 @@
+<?php
+
+use PHPUnit\Framework\TestCase;
+use USHolidays\Carbon;
+
+class CincoDeMayoTest extends TestCase
+{
+    public function testHoliday()
+    {
+        $carbon = new Carbon();
+        $carbon = Carbon::create(2020, 1, 1);
+
+        $this->assertFalse(
+            $carbon->getCincoDeMayoHoliday()
+                ->isSameDay(Carbon::createFromDate(2020, 5, 4))
+        );
+
+        $this->assertTrue(
+            $carbon->getCincoDeMayoHoliday()
+                ->isSameDay(Carbon::createFromDate(2020, 5, 5))
+        );
+    }
+
+    public function testHolidayName()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getCincoDeMayoHoliday();
+
+        $this->assertEquals("Cinco de Mayo", $holiday->getHolidayName());
+    }
+
+    public function testIsHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getCincoDeMayoHoliday();
+
+        $this->assertTrue($holiday->isHoliday());
+    }
+
+    public function testIsBankHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getCincoDeMayoHoliday();
+
+        $this->assertFalse($holiday->isBankHoliday());
+    }
+}

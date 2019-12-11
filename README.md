@@ -4,11 +4,12 @@
 [![codecov.io](https://img.shields.io/codecov/c/gh/geoffreyrose/us-holidays?style=flat-square)](https://codecov.io/gh/geoffreyrose/us-holidays)
 
 # Carbon Support for US Holidays
-This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US holidays.
+This extends [Carbon](http://carbon.nesbot.com/) and adds support for 41 US holidays.
 
 ### Supported Holidays
 * April Fool's Day
 * Armed Forces Day
+* Ash Wednesday
 * Black Friday
 * Christmas Day
 * Christmas Eve
@@ -17,28 +18,36 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for several US
 * Daylight Saving (End)
 * Daylight Saving (Start)
 * Earth Day
+* Easter
 * Father's Day
 * Flag Day
+* Good Friday
 * Groundhog Day
 * Halloween
+* Hanukkah
 * Independence Day
 * Indigenous Peoples' Day
 * Juneteenth
 * Kwanzaa
 * Labor Day
-* Martin Luther King Jr. Day
 * Memorial Day
+* Martin Luther King Jr. Day
 * Mother's Day
-* New Years Day
-* New Years Eve
+* New Year's Day
+* New Year's Eve
+* Orthodox Easter
+* Palm Sunday
+* Passover
 * Patriot Day
 * Pearl Harbor Remembrance Day
 * Presidents' Day
+* Rosh Hashanah
 * St. Patrick's Day
 * Tax Day
 * Thanksgiving
 * Valentine's Day
 * Veterans Day
+* Yom Kippur
 
 
 ### Requirements
@@ -87,38 +96,48 @@ Get date for a specific holiday. Returns `string`
 $carbon = new Carbon();
 $carbon = Carbon::create(2018, 1, 1);
 
-$carbon->getNewYearsDayHoliday();               // 2018-01-01 00:00:00
-$carbon->getMLKDayHoliday();                    // 2018-01-15 00:00:00
-$carbon->getGroundhogDayHoliday();              // 2018-02-02 00:00:00
-$carbon->getValentinesDayHoliday();             // 2018-02-14 00:00:00
-$carbon->getPresidentsDayHoliday();             // 2018-02-19 00:00:00
-$carbon->getDaylightSavingStartHoliday();       // 2018-03-11 00:00:00
-$carbon->getStPatricksDayHoliday();             // 2018-03-17 00:00:00
-$carbon->getAprilFoolsDayHoliday();             // 2018-04-01 00:00:00
-$carbon->getTaxDayHoliday();                    // 2018-04-17 00:00:00
-$carbon->getEarthDayHoliday();                  // 2018-04-22 00:00:00
-$carbon->getCincoDeMayoHoliday();               // 2018-05-05 00:00:00
-$carbon->getMothersDayHoliday();                // 2018-05-13 00:00:00
-$carbon->getArmedForcesDayHoliday();            // 2018-05-19 00:00:00
-$carbon->getMemorialDayHoliday();               // 2018-05-28 00:00:00
-$carbon->getFlagsDayHoliday();                  // 2018-06-14 00:00:00
-$carbon->getFathersDayHoliday();                // 2018-06-17 00:00:00
-$carbon->getJuneteenthHoliday();                // 2018-06-19 00:00:00
-$carbon->getIndependenceDayHoliday();           // 2018-07-04 00:00:00
-$carbon->getLaborDayHoliday();                  // 2018-09-03 00:00:00
-$carbon->getPatriotsDayHoliday();               // 2018-09-11 00:00:00
-$carbon->getColumbusDayHoliday();               // 2018-10-08 00:00:00
-$carbon->getIndigenousPeoplesDayHoliday();      // 2018-10-08 00:00:00
-$carbon->getHalloweenDayHoliday();              // 2018-10-31 00:00:00
-$carbon->getDaylightSavingEndHoliday();         // 2018-11-04 00:00:00
-$carbon->getVeteransDayHoliday();               // 2018-11-11 00:00:00
-$carbon->getThanksgivingHoliday();              // 2018-11-22 00:00:00
-$carbon->getBlackFridayHoliday();               // 2018-11-23 00:00:00
-$carbon->getPearlHarborRemembranceHoliday();    // 2018-12-07 00:00:00
-$carbon->getChristmasEveHoliday();              // 2018-12-24 00:00:00
-$carbon->getChristmasDayHoliday();              // 2018-12-25 00:00:00
-$carbon->getKwanzaaHoliday();                   // 2018-12-26 00:00:00
-$carbon->getNewYearsEveHoliday();               // 2018-12-31 00:00:00
+$carbon->getAprilFoolsDayHoliday();              // 2020-04-01 00:00:00
+$carbon->getArmedForcesDayHoliday();             // 2020-05-16 00:00:00
+$carbon->getAshWednesdayHoliday();               // 2020-02-26 00:00:00
+$carbon->getBlackFridayHoliday();                // 2020-11-27 00:00:00
+$carbon->getChristmasDayHoliday();               // 2020-12-25 00:00:00
+$carbon->getChristmasEveHoliday();               // 2020-12-24 00:00:00
+$carbon->getCincoDeMayoHoliday();                // 2020-05-05 00:00:00
+$carbon->getColumbusDayHoliday();                // 2020-10-12 00:00:00
+$carbon->getDaylightSavingEndHoliday();          // 2020-11-01 00:00:00
+$carbon->getDaylightSavingStartHoliday();        // 2020-03-08 00:00:00
+$carbon->getEarthDayHoliday();                   // 2020-04-22 00:00:00
+$carbon->getEasterHoliday();                     // 2020-04-12 00:00:00
+$carbon->getFathersDayHoliday();                 // 2020-06-21 00:00:00
+$carbon->getFlagDayHoliday();                    // 2020-06-14 00:00:00
+$carbon->getGoodFridayHoliday();                 // 2020-04-10 00:00:00
+$carbon->getGroundhogDayHoliday();               // 2020-02-02 00:00:00
+$carbon->getHalloweenHoliday();                  // 2020-10-31 00:00:00
+$carbon->getHanukkahHoliday();                   // 2020-12-11 00:00:00
+$carbon->getIndependenceDayHoliday();            // 2020-07-04 00:00:00
+$carbon->getIndigenousPeoplesDayHoliday();       // 2020-10-12 00:00:00
+$carbon->getJuneteenthHoliday();                 // 2020-06-19 00:00:00
+$carbon->getKwanzaaHoliday();                    // 2020-12-26 00:00:00
+$carbon->getLaborDayHoliday();                   // 2020-09-07 00:00:00
+$carbon->getMemorialDayHoliday();                // 2020-05-25 00:00:00
+$carbon->getMLKDayHoliday();                     // 2020-01-20 00:00:00
+$carbon->getMothersDayHoliday();                 // 2020-05-10 00:00:00
+$carbon->getNewYearsDayHoliday();                // 2020-01-01 00:00:00
+$carbon->getNewYearsEveHoliday();                // 2020-12-31 00:00:00
+$carbon->getOrthodoxEasterHoliday();             // 2020-04-19 00:00:00
+$carbon->getPalmSundayHoliday();                 // 2020-04-05 00:00:00
+$carbon->getPassoverHoliday();                   // 2020-04-09 00:00:00
+$carbon->getPatriotDayHoliday();                 // 2020-09-11 00:00:00
+$carbon->getPearlHarborRemembranceDayHoliday();  // 2020-12-07 00:00:00
+$carbon->getPresidentsDayHoliday();              // 2020-02-17 00:00:00
+$carbon->getRoshHashanahHoliday();               // 2020-09-19 00:00:00
+$carbon->getStPatricksDayHoliday();              // 2020-03-17 00:00:00
+$carbon->getTaxDayHoliday();                     // 2020-04-15 00:00:00
+$carbon->getThanksgivingHoliday();               // 2020-11-26 00:00:00
+$carbon->getValentinesDayHoliday();              // 2020-02-14 00:00:00
+$carbon->getVeteransDayHoliday();                // 2020-11-11 00:00:00
+$carbon->getYomKippurHoliday();                  // 2020-09-28 00:00:00
+
 ```
 
 Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. So Holidays that are always on weekends are not consider bank holidays. Returns `boolean`
@@ -168,22 +187,22 @@ composer install
 Use locally installed carbon version
 
 ```
-./vendor/bin/phpunit
+$ ./vendor/bin/phpunit
 ```
 
 ----
 
 Test against Carbon v1
 ```
-./tests/carbon-1.sh
+$ ./tests/carbon-1.sh
 ```
 
 Test against Carbon v2
 ```
-./tests/carbon-2.sh
+$ ./tests/carbon-2.sh
 ```
 
 Test Both Carbon v1 and v2
 ```
-./tests/carbon-1-2.sh
+$ ./tests/carbon-1-2.sh
 ```
