@@ -212,13 +212,13 @@ $holidays = $carbon->getHolidaysByYear('all');
 // [
 //     {
 //         "name": "New Year's Day", // string
-//         "date": "2020-01-01T00:00:00.000000Z", // DateTime object
+//         "date": "2020-01-01 00:00:00", // DateTime object
 //         "bank_holiday": true, // boolean
 //         "days_away": 0, // int
 //     },
 //     {
 //     	"name": "Martin Luther King Jr. Day", // string
-//     	"date": "2020-01-20T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-01-20 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 19 // int
 //     }
@@ -233,7 +233,7 @@ $holidays = $carbon->getHolidaysByYear('all', 1999);
 //     ...
 //     {
 //         "name": "April Fool's Day", // string
-//         "date": "1999-04-01T00:00:00.000000Z", // DateTime object
+//         "date": "1999-04-01 00:00:00", // DateTime object
 //         "bank_holiday": false, // boolean
 //         "days_away": 7580 // int
 //     }
@@ -247,17 +247,17 @@ $holidays = $carbon->getHolidaysByYear(["Christmas Day", "Easter", "Independence
 // [
 //     {
 //     	"name": "Easter", // string
-//     	"date": "2020-04-12T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-04-12 00:00:00", // DateTime object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 35 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2020-07-04T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-07-04 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 118 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-12-25 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 292 // int
 //     }
@@ -270,17 +270,17 @@ $holidays = $carbon->getHolidaysByYear(["Christmas Day", "Easter", "Independence
 // [
 //     {
 //     	"name": "Easter", // string
-//     	"date": "2024-03-31T00:00:00.000000Z", // DateTime object
+//     	"date": "2024-03-31 00:00:00", // DateTime object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 1484 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2024-07-04T00:00:00.000000Z", // DateTime object
+//     	"date": "2024-07-04 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 1579 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2024-12-25T00:00:00.000000Z", // DateTime object
+//     	"date": "2024-12-25 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 1753 // int
 //     }
@@ -299,12 +299,12 @@ $holidays = $carbon->getHolidaysInDays(300);
 // [
 //     {
 //         "name": "Flag Day", // string
-//         "date": "2020-06-14T00:00:00.000000Z", // DateTime object
+//         "date": "2020-06-14 00:00:00", // DateTime object
 //         "bank_holiday": false, // boolean
 //         "days_away": 17 // int
 //     }, {
 //         "name": "Juneteenth", // string
-//         "date": "2020-06-19T00:00:00.000000Z", // DateTime object
+//         "date": "2020-06-19 00:00:00", // DateTime object
 //         "bank_holiday": false, // boolean
 //         "days_away": 22 // int
 //     },
@@ -318,12 +318,12 @@ $holidays = $carbon->getHolidaysInDays(300, ["Christmas Day", "Easter", "Indepen
 // [
 //     {
 //     	"name": "Independence Day", // string
-//     	"date": "2020-07-04T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-07-04 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 37 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-12-25 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 211 // int
 //     }
@@ -345,12 +345,12 @@ $holidays = $carbon->getHolidaysInYears(1);
 // [
 //     {
 //     	"name": "Labor Day", // string
-//     	"date": "2020-09-07T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-09-07 00:00:00", // DateTime object
 //     	"bank_holiday": true,// boolean
 //     	"days_away": 20 // int
 //     }, {
 //     	"name": "Patriot Day", // string
-//     	"date": "2020-09-11T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-09-11 00:00:00", // DateTime object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 24 // int
 //     },
@@ -364,32 +364,32 @@ $holidays = $carbon->getHolidaysInYears(2, ["Christmas Day", "Easter", "Independ
 // [
 //     {
 //     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25T00:00:00.000000Z", // DateTime object
+//     	"date": "2020-12-25 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 129 // int
 //     }, {
 //     	"name": "Easter", // string
-//     	"date": "2021-04-04T00:00:00.000000Z", // DateTime object
+//     	"date": "2021-04-04 00:00:00", // DateTime object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 229 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2021-07-04T00:00:00.000000Z", // DateTime object
+//     	"date": "2021-07-04 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 320 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2021-12-25T00:00:00.000000Z", // DateTime object
+//     	"date": "2021-12-25 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 494 // int
 //     }, {
 //     	"name": "Easter", // string
-//     	"date": "2022-04-17T00:00:00.000000Z", // DateTime object
+//     	"date": "2022-04-17 00:00:00", // DateTime object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 607 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2022-07-04T00:00:00.000000Z", // DateTime object
+//     	"date": "2022-07-04 00:00:00", // DateTime object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 685 // int
 //     }
@@ -442,7 +442,7 @@ $holidays->getAprilFoolsDayHoliday();
 
 // [{
 //    "name": "April Fool's Day",
-//    "date": "2020-04-01T00:00:00.000000Z",
+//    "date": "2020-04-01 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 91
 // }]
@@ -452,7 +452,7 @@ $holidays->getAprilFoolsDayHoliday(2022);
 
 // [{
 //    "name": "April Fool's Day",
-//    "date": "2022-04-01T00:00:00.000000Z",
+//    "date": "2022-04-01 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 821
 // }]
@@ -465,7 +465,7 @@ $holidays->getArmedForcesDayHoliday();
 
 // [{
 //    "name": "Armed Forces Day",
-//    "date": "2020-05-16T00:00:00.000000Z",
+//    "date": "2020-05-16 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 136
 // }]
@@ -475,7 +475,7 @@ $holidays->getArmedForcesDayHoliday(2022);
 
 // [{
 //    "name": "Armed Forces Day",
-//    "date": "2022-05-21T00:00:00.000000Z",
+//    "date": "2022-05-21 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 871
 // }]
@@ -488,7 +488,7 @@ $holidays->getAshWednesdayHoliday();
 
 // [{
 //    "name": "Ash Wednesday",
-//    "date": "2020-02-26T00:00:00.000000Z",
+//    "date": "2020-02-26 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 56
 // }]
@@ -498,7 +498,7 @@ $holidays->getAshWednesdayHoliday(2022);
 
 // [{
 //    "name": "Ash Wednesday",
-//    "date": "2022-03-02T00:00:00.000000Z",
+//    "date": "2022-03-02 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 791
 // }]
@@ -511,7 +511,7 @@ $holidays->getBlackFridayHoliday();
 
 // [{
 //    "name": "Black Friday",
-//    "date": "2020-11-27T00:00:00.000000Z",
+//    "date": "2020-11-27 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 331
 // }]
@@ -521,7 +521,7 @@ $holidays->getBlackFridayHoliday(2022);
 
 // [{
 //    "name": "Black Friday",
-//    "date": "2022-11-25T00:00:00.000000Z",
+//    "date": "2022-11-25 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1059
 // }]
@@ -534,7 +534,7 @@ $holidays->getChristmasDayHoliday();
 
 // [{
 //    "name": "Christmas Day",
-//    "date": "2020-12-25T00:00:00.000000Z",
+//    "date": "2020-12-25 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 359
 // }]
@@ -544,7 +544,7 @@ $holidays->getChristmasDayHoliday(2022);
 
 // [{
 //    "name": "Christmas Day",
-//    "date": "2022-12-25T00:00:00.000000Z",
+//    "date": "2022-12-25 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 1089
 // }]
@@ -557,7 +557,7 @@ $holidays->getChristmasEveHoliday();
 
 // [{
 //    "name": "Christmas Eve",
-//    "date": "2020-12-24T00:00:00.000000Z",
+//    "date": "2020-12-24 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 358
 // }]
@@ -567,7 +567,7 @@ $holidays->getChristmasEveHoliday(2022);
 
 // [{
 //    "name": "Christmas Eve",
-//    "date": "2022-12-24T00:00:00.000000Z",
+//    "date": "2022-12-24 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1088
 // }]
@@ -580,7 +580,7 @@ $holidays->getCincoDeMayoHoliday();
 
 // [{
 //    "name": "Cinco de Mayo",
-//    "date": "2020-05-05T00:00:00.000000Z",
+//    "date": "2020-05-05 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 125
 // }]
@@ -590,7 +590,7 @@ $holidays->getCincoDeMayoHoliday(2022);
 
 // [{
 //    "name": "Cinco de Mayo",
-//    "date": "2022-05-05T00:00:00.000000Z",
+//    "date": "2022-05-05 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 855
 // }]
@@ -603,7 +603,7 @@ $holidays->getColumbusDayHoliday();
 
 // [{
 //    "name": "Columbus Day",
-//    "date": "2020-10-12T00:00:00.000000Z",
+//    "date": "2020-10-12 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 285
 // }]
@@ -613,7 +613,7 @@ $holidays->getColumbusDayHoliday(2022);
 
 // [{
 //    "name": "Columbus Day",
-//    "date": "2022-10-10T00:00:00.000000Z",
+//    "date": "2022-10-10 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 1013
 // }]
@@ -626,7 +626,7 @@ $holidays->getDaylightSavingEndHoliday();
 
 // [{
 //    "name": "Daylight Saving (End)",
-//    "date": "2020-11-01T00:00:00.000000Z",
+//    "date": "2020-11-01 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 305
 // }]
@@ -636,7 +636,7 @@ $holidays->getDaylightSavingEndHoliday(2022);
 
 // [{
 //    "name": "Daylight Saving (End)",
-//    "date": "2022-11-06T00:00:00.000000Z",
+//    "date": "2022-11-06 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1040
 // }]
@@ -649,7 +649,7 @@ $holidays->getDaylightSavingStartHoliday();
 
 // [{
 //    "name": "Daylight Saving (Start)",
-//    "date": "2020-03-08T00:00:00.000000Z",
+//    "date": "2020-03-08 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 67
 // }]
@@ -659,7 +659,7 @@ $holidays->getDaylightSavingStartHoliday(2022);
 
 // [{
 //    "name": "Daylight Saving (Start)",
-//    "date": "2022-03-13T00:00:00.000000Z",
+//    "date": "2022-03-13 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 802
 // }]
@@ -672,7 +672,7 @@ $holidays->getEarthDayHoliday();
 
 // [{
 //    "name": "Earth Day",
-//    "date": "2020-04-22T00:00:00.000000Z",
+//    "date": "2020-04-22 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 112
 // }]
@@ -682,7 +682,7 @@ $holidays->getEarthDayHoliday(2022);
 
 // [{
 //    "name": "Earth Day",
-//    "date": "2022-04-22T00:00:00.000000Z",
+//    "date": "2022-04-22 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 842
 // }]
@@ -695,7 +695,7 @@ $holidays->getEasterHoliday();
 
 // [{
 //    "name": "Easter",
-//    "date": "2020-04-12T00:00:00.000000Z",
+//    "date": "2020-04-12 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 102
 // }]
@@ -705,7 +705,7 @@ $holidays->getEasterHoliday(2022);
 
 // [{
 //    "name": "Easter",
-//    "date": "2022-04-17T00:00:00.000000Z",
+//    "date": "2022-04-17 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 837
 // }]
@@ -718,7 +718,7 @@ $holidays->getFathersDayHoliday();
 
 // [{
 //    "name": "Father's Day",
-//    "date": "2020-06-21T00:00:00.000000Z",
+//    "date": "2020-06-21 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 172
 // }]
@@ -728,7 +728,7 @@ $holidays->getFathersDayHoliday(2022);
 
 // [{
 //    "name": "Father's Day",
-//    "date": "2022-06-19T00:00:00.000000Z",
+//    "date": "2022-06-19 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 900
 // }]
@@ -741,7 +741,7 @@ $holidays->getFlagDayHoliday();
 
 // [{
 //    "name": "Flag Day",
-//    "date": "2020-06-14T00:00:00.000000Z",
+//    "date": "2020-06-14 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 165
 // }]
@@ -751,7 +751,7 @@ $holidays->getFlagDayHoliday(2022);
 
 // [{
 //    "name": "Flag Day",
-//    "date": "2022-06-14T00:00:00.000000Z",
+//    "date": "2022-06-14 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 895
 // }]
@@ -764,7 +764,7 @@ $holidays->getGoodFridayHoliday();
 
 // [{
 //    "name": "Good Friday",
-//    "date": "2020-04-10T00:00:00.000000Z",
+//    "date": "2020-04-10 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 100
 // }]
@@ -774,7 +774,7 @@ $holidays->getGoodFridayHoliday(2022);
 
 // [{
 //    "name": "Good Friday",
-//    "date": "2022-04-15T00:00:00.000000Z",
+//    "date": "2022-04-15 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 835
 // }]
@@ -787,7 +787,7 @@ $holidays->getGroundhogDayHoliday();
 
 // [{
 //    "name": "Groundhog Day",
-//    "date": "2020-02-02T00:00:00.000000Z",
+//    "date": "2020-02-02 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 32
 // }]
@@ -797,7 +797,7 @@ $holidays->getGroundhogDayHoliday(2022);
 
 // [{
 //    "name": "Groundhog Day",
-//    "date": "2022-02-02T00:00:00.000000Z",
+//    "date": "2022-02-02 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 763
 // }]
@@ -810,7 +810,7 @@ $holidays->getHalloweenHoliday();
 
 // [{
 //    "name": "Halloween",
-//    "date": "2020-10-31T00:00:00.000000Z",
+//    "date": "2020-10-31 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 304
 // }]
@@ -820,7 +820,7 @@ $holidays->getHalloweenHoliday(2022);
 
 // [{
 //    "name": "Halloween",
-//    "date": "2022-10-31T00:00:00.000000Z",
+//    "date": "2022-10-31 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1034
 // }]
@@ -833,7 +833,7 @@ $holidays->getHanukkahHoliday();
 
 // [{
 //    "name": "Hanukkah",
-//    "date": "2020-12-11T00:00:00.000000Z",
+//    "date": "2020-12-11 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 345
 // }]
@@ -843,7 +843,7 @@ $holidays->getHanukkahHoliday(2022);
 
 // [{
 //    "name": "Hanukkah",
-//    "date": "2022-12-19T00:00:00.000000Z",
+//    "date": "2022-12-19 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1083
 // }]
@@ -856,7 +856,7 @@ $holidays->getIndependenceDayHoliday();
 
 // [{
 //    "name": "Independence Day",
-//    "date": "2020-07-04T00:00:00.000000Z",
+//    "date": "2020-07-04 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 185
 // }]
@@ -866,7 +866,7 @@ $holidays->getIndependenceDayHoliday(2022);
 
 // [{
 //    "name": "Independence Day",
-//    "date": "2022-07-04T00:00:00.000000Z",
+//    "date": "2022-07-04 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 915
 // }]
@@ -879,7 +879,7 @@ $holidays->getIndigenousPeoplesDayHoliday();
 
 // [{
 //    "name": "Indigenous Peoples' Day",
-//    "date": "2020-10-12T00:00:00.000000Z",
+//    "date": "2020-10-12 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 285
 // }]
@@ -889,7 +889,7 @@ $holidays->getIndigenousPeoplesDayHoliday(2022);
 
 // [{
 //    "name": "Indigenous Peoples' Day",
-//    "date": "2022-10-10T00:00:00.000000Z",
+//    "date": "2022-10-10 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 1013
 // }]
@@ -902,7 +902,7 @@ $holidays->getJuneteenthHoliday();
 
 // [{
 //    "name": "Juneteenth",
-//    "date": "2020-06-19T00:00:00.000000Z",
+//    "date": "2020-06-19 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 170
 // }]
@@ -912,7 +912,7 @@ $holidays->getJuneteenthHoliday(2022);
 
 // [{
 //    "name": "Juneteenth",
-//    "date": "2022-06-19T00:00:00.000000Z",
+//    "date": "2022-06-19 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 900
 // }]
@@ -925,7 +925,7 @@ $holidays->getKwanzaaHoliday();
 
 // [{
 //    "name": "Kwanzaa",
-//    "date": "2020-12-26T00:00:00.000000Z",
+//    "date": "2020-12-26 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 360
 // }]
@@ -935,7 +935,7 @@ $holidays->getKwanzaaHoliday(2022);
 
 // [{
 //    "name": "Kwanzaa",
-//    "date": "2022-12-26T00:00:00.000000Z",
+//    "date": "2022-12-26 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1090
 // }]
@@ -948,7 +948,7 @@ $holidays->getLaborDayHoliday();
 
 // [{
 //    "name": "Labor Day",
-//    "date": "2020-09-07T00:00:00.000000Z",
+//    "date": "2020-09-07 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 250
 // }]
@@ -958,7 +958,7 @@ $holidays->getLaborDayHoliday(2022);
 
 // [{
 //    "name": "Labor Day",
-//    "date": "2022-09-05T00:00:00.000000Z",
+//    "date": "2022-09-05 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 978
 // }]
@@ -971,7 +971,7 @@ $holidays->getMemorialDayHoliday();
 
 // [{
 //    "name": "Memorial Day",
-//    "date": "2020-05-25T00:00:00.000000Z",
+//    "date": "2020-05-25 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 145
 // }]
@@ -981,7 +981,7 @@ $holidays->getMemorialDayHoliday(2022);
 
 // [{
 //    "name": "Memorial Day",
-//    "date": "2022-05-30T00:00:00.000000Z",
+//    "date": "2022-05-30 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 880
 // }]
@@ -994,7 +994,7 @@ $holidays->getMLKDayHoliday();
 
 // [{
 //    "name": "Martin Luther King Jr. Day",
-//    "date": "2020-01-20T00:00:00.000000Z",
+//    "date": "2020-01-20 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 19
 // }]
@@ -1004,7 +1004,7 @@ $holidays->getMLKDayHoliday(2022);
 
 // [{
 //    "name": "Martin Luther King Jr. Day",
-//    "date": "2022-01-17T00:00:00.000000Z",
+//    "date": "2022-01-17 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 747
 // }]
@@ -1017,7 +1017,7 @@ $holidays->getMothersDayHoliday();
 
 // [{
 //    "name": "Mother's Day",
-//    "date": "2020-05-10T00:00:00.000000Z",
+//    "date": "2020-05-10 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 130
 // }]
@@ -1027,7 +1027,7 @@ $holidays->getMothersDayHoliday(2022);
 
 // [{
 //    "name": "Mother's Day",
-//    "date": "2022-05-08T00:00:00.000000Z",
+//    "date": "2022-05-08 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 858
 // }]
@@ -1040,7 +1040,7 @@ $holidays->getNewYearsDayHoliday();
 
 // [{
 //    "name": "New Year's Day",
-//    "date": "2020-01-01T00:00:00.000000Z",
+//    "date": "2020-01-01 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 0
 // }]
@@ -1050,7 +1050,7 @@ $holidays->getNewYearsDayHoliday(2022);
 
 // [{
 //    "name": "New Year's Day",
-//    "date": "2022-01-01T00:00:00.000000Z",
+//    "date": "2022-01-01 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 731
 // }]
@@ -1063,7 +1063,7 @@ $holidays->getNewYearsEveHoliday();
 
 // [{
 //    "name": "New Year's Eve",
-//    "date": "2020-12-31T00:00:00.000000Z",
+//    "date": "2020-12-31 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 365
 // }]
@@ -1073,7 +1073,7 @@ $holidays->getNewYearsEveHoliday(2022);
 
 // [{
 //    "name": "New Year's Eve",
-//    "date": "2022-12-31T00:00:00.000000Z",
+//    "date": "2022-12-31 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1095
 // }]
@@ -1086,7 +1086,7 @@ $holidays->getOrthodoxEasterHoliday();
 
 // [{
 //    "name": "Orthodox Easter",
-//    "date": "2020-04-19T00:00:00.000000Z",
+//    "date": "2020-04-19 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 109
 // }]
@@ -1096,7 +1096,7 @@ $holidays->getOrthodoxEasterHoliday(2022);
 
 // [{
 //    "name": "Orthodox Easter",
-//    "date": "2022-04-24T00:00:00.000000Z",
+//    "date": "2022-04-24 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 844
 // }]
@@ -1109,7 +1109,7 @@ $holidays->getPalmSundayHoliday();
 
 // [{
 //    "name": "Palm Sunday",
-//    "date": "2020-04-05T00:00:00.000000Z",
+//    "date": "2020-04-05 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 95
 // }]
@@ -1119,7 +1119,7 @@ $holidays->getPalmSundayHoliday(2022);
 
 // [{
 //    "name": "Palm Sunday",
-//    "date": "2022-04-10T00:00:00.000000Z",
+//    "date": "2022-04-10 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 830
 // }]
@@ -1132,7 +1132,7 @@ $holidays->getPassoverHoliday();
 
 // [{
 //    "name": "Passover",
-//    "date": "2020-04-09T00:00:00.000000Z",
+//    "date": "2020-04-09 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 99
 // }]
@@ -1142,7 +1142,7 @@ $holidays->getPassoverHoliday(2022);
 
 // [{
 //    "name": "Passover",
-//    "date": "2022-04-16T00:00:00.000000Z",
+//    "date": "2022-04-16 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 836
 // }]
@@ -1155,7 +1155,7 @@ $holidays->getPatriotDayHoliday();
 
 // [{
 //    "name": "Patriot Day",
-//    "date": "2020-09-11T00:00:00.000000Z",
+//    "date": "2020-09-11 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 254
 // }]
@@ -1165,7 +1165,7 @@ $holidays->getPatriotDayHoliday(2022);
 
 // [{
 //    "name":"Patriot Day",
-//    "date": "2022-09-11T00:00:00.000000Z",
+//    "date": "2022-09-11 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 984
 // }]
@@ -1178,7 +1178,7 @@ $holidays->getPearlHarborRemembranceDayHoliday()
 
 // [{
 //    "name": "Pearl Harbor Remembrance Day",
-//    "date": "2020-12-07T00:00:00.000000Z",
+//    "date": "2020-12-07 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 341
 // }]
@@ -1188,7 +1188,7 @@ $holidays->getPearlHarborRemembranceDayHoliday(2022);
 
 // [{
 //    "name": "Pearl Harbor Remembrance Day",
-//    "date": "2022-12-07T00:00:00.000000Z",
+//    "date": "2022-12-07 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1071
 // }]
@@ -1201,7 +1201,7 @@ $holidays->getPresidentsDayHoliday();
 
 // [{
 //    "name": "Presidents' Day",
-//    "date": "2020-02-17T00:00:00.000000Z",
+//    "date": "2020-02-17 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 47
 // }]
@@ -1211,7 +1211,7 @@ $holidays->getPresidentsDayHoliday(2022);
 
 // [{
 //    "name": "Presidents' Day",
-//    "date": "2022-02-21T00:00:00.000000Z",
+//    "date": "2022-02-21 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 782
 // }]
@@ -1224,7 +1224,7 @@ $holidays->getRoshHashanahHoliday();
 
 // [{
 //    "name": "Rosh Hashanah",
-//    "date": "2020-09-19T00:00:00.000000Z",
+//    "date": "2020-09-19 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 262
 // }]
@@ -1234,7 +1234,7 @@ $holidays->getRoshHashanahHoliday(2022);
 
 // [{
 //    "name": "Rosh Hashanah",
-//    "date": "2022-09-26T00:00:00.000000Z",
+//    "date": "2022-09-26 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 999
 // }]
@@ -1247,7 +1247,7 @@ $holidays->getStPatricksDayHoliday();
 
 // [{
 //    "name": "St. Patrick's Day",
-//    "date": "2020-03-17T00:00:00.000000Z",
+//    "date": "2020-03-17 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 76
 // }]
@@ -1257,7 +1257,7 @@ $holidays->getStPatricksDayHoliday(2022);
 
 // [{
 //    "name": "St. Patrick's Day",
-//    "date": "2022-03-17T00:00:00.000000Z",
+//    "date": "2022-03-17 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 806
 // }]
@@ -1270,7 +1270,7 @@ $holidays->getTaxDayHoliday();
 
 // [{
 //    "name": "Tax Day",
-//    "date": "2020-04-15T00:00:00.000000Z",
+//    "date": "2020-04-15 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 105
 // }]
@@ -1280,7 +1280,7 @@ $holidays->getTaxDayHoliday(2022);
 
 // [{
 //    "name": "Tax Day",
-//    "date": "2022-04-18T00:00:00.000000Z",
+//    "date": "2022-04-18 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 838
 // }]
@@ -1293,7 +1293,7 @@ $holidays->getThanksgivingHoliday();
 
 // [{
 //    "name": "Thanksgiving",
-//    "date": "2020-11-26T00:00:00.000000Z",
+//    "date": "2020-11-26 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 330
 // }]
@@ -1303,7 +1303,7 @@ $holidays->getThanksgivingHoliday(2022);
 
 // [{
 //    "name": "Thanksgiving",
-//    "date": "2022-11-24T00:00:00.000000Z",
+//    "date": "2022-11-24 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 1058
 // }]
@@ -1316,7 +1316,7 @@ $holidays->getValentinesDayHoliday();
 
 // [{
 //    "name": "Valentine's Day",
-//    "date": "2020-02-14T00:00:00.000000Z",
+//    "date": "2020-02-14 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 44
 // }]
@@ -1326,7 +1326,7 @@ $holidays->getValentinesDayHoliday(2022);
 
 // [{
 //    "name": "Valentine's Day",
-//    "date": "2022-02-14T00:00:00.000000Z",
+//    "date": "2022-02-14 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 775
 // }]
@@ -1339,7 +1339,7 @@ $holidays->getVeteransDayHoliday();
 
 // [{
 //    "name": "Veterans Day",
-//    "date": "2020-11-11T00:00:00.000000Z",
+//    "date": "2020-11-11 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 315
 // }]
@@ -1349,7 +1349,7 @@ $holidays->getVeteransDayHoliday(2022);
 
 // [{
 //    "name": "Veterans Day",
-//    "date": "2022-11-11T00:00:00.000000Z",
+//    "date": "2022-11-11 00:00:00",
 //    "bank_holiday": true,
 //    "days_away": 1045
 // }]
@@ -1362,7 +1362,7 @@ $holidays->getYomKippurHoliday();
 
 // [{
 //    "name": "Yom Kippur",
-//    "date": "2020-09-28T00:00:00.000000Z",
+//    "date": "2020-09-28 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 271
 // }]
@@ -1372,7 +1372,7 @@ $holidays->getYomKippurHoliday(2022);
 
 // [{
 //    "name": "Yom Kippur",
-//    "date": "2022-10-05T00:00:00.000000Z",
+//    "date": "2022-10-05 00:00:00",
 //    "bank_holiday": false
 //    "days_away": 1008
 // }]
