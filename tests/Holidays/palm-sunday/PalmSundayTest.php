@@ -11,12 +11,12 @@ class PalmSundayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getPalmSundayHoliday()
+            $carbon->getPalmSundayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 4))
         );
 
         $this->assertTrue(
-            $carbon->getPalmSundayHoliday()
+            $carbon->getPalmSundayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 5))
         );
     }
@@ -26,7 +26,7 @@ class PalmSundayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPalmSundayHoliday();
 
-        $this->assertEquals("Palm Sunday", $holiday->getHolidayName());
+        $this->assertEquals("Palm Sunday", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class PalmSundayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPalmSundayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class PalmSundayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPalmSundayHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

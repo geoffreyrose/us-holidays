@@ -11,12 +11,12 @@ class EarthDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getEarthDayHoliday()
+            $carbon->getEarthDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 21))
         );
 
         $this->assertTrue(
-            $carbon->getEarthDayHoliday()
+            $carbon->getEarthDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 22))
         );
     }
@@ -26,7 +26,7 @@ class EarthDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
 
-        $this->assertEquals("Earth Day", $holiday->getHolidayName());
+        $this->assertEquals("Earth Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class EarthDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class EarthDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

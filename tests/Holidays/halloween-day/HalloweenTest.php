@@ -11,12 +11,12 @@ class HalloweenTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getHalloweenHoliday()
+            $carbon->getHalloweenHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 10, 30))
         );
 
         $this->assertTrue(
-            $carbon->getHalloweenHoliday()
+            $carbon->getHalloweenHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 10, 31))
         );
     }
@@ -26,7 +26,7 @@ class HalloweenTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getHalloweenHoliday();
 
-        $this->assertEquals("Halloween", $holiday->getHolidayName());
+        $this->assertEquals("Halloween", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class HalloweenTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getHalloweenHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class HalloweenTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getHalloweenHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

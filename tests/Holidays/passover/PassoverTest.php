@@ -11,12 +11,12 @@ class PassoverTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getPassoverHoliday()
+            $carbon->getPassoverHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 8))
         );
 
         $this->assertTrue(
-            $carbon->getPassoverHoliday()
+            $carbon->getPassoverHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 9))
         );
     }
@@ -26,7 +26,7 @@ class PassoverTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPassoverHoliday();
 
-        $this->assertEquals("Passover", $holiday->getHolidayName());
+        $this->assertEquals("Passover", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class PassoverTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPassoverHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class PassoverTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPassoverHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

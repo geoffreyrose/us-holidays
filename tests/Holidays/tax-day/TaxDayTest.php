@@ -11,12 +11,12 @@ class TaxDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 16))
         );
 
         $this->assertTrue(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 4, 15))
         );
 
@@ -25,12 +25,12 @@ class TaxDayTest extends TestCase
         $carbon = Carbon::create(2018, 1, 1);
 
         $this->assertFalse(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2018, 4, 15))
         );
 
         $this->assertTrue(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2018, 4, 17))
         );
 
@@ -39,12 +39,12 @@ class TaxDayTest extends TestCase
         $carbon = Carbon::create(2017, 1, 1);
 
         $this->assertFalse(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2017, 4, 15))
         );
 
         $this->assertTrue(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2017, 4, 18))
         );
 
@@ -53,12 +53,12 @@ class TaxDayTest extends TestCase
         $carbon = Carbon::create(2016, 1, 1);
 
         $this->assertFalse(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2016, 4, 15))
         );
 
         $this->assertTrue(
-            $carbon->getTaxDayHoliday()
+            $carbon->getTaxDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2016, 4, 18))
         );
     }
@@ -68,7 +68,7 @@ class TaxDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getTaxDayHoliday();
 
-        $this->assertEquals("Tax Day", $holiday->getHolidayName());
+        $this->assertEquals("Tax Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -76,7 +76,7 @@ class TaxDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getTaxDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -84,6 +84,6 @@ class TaxDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getTaxDayHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

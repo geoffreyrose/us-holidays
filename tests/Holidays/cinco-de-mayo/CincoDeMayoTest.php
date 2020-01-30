@@ -11,12 +11,12 @@ class CincoDeMayoTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getCincoDeMayoHoliday()
+            $carbon->getCincoDeMayoHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 5, 4))
         );
 
         $this->assertTrue(
-            $carbon->getCincoDeMayoHoliday()
+            $carbon->getCincoDeMayoHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 5, 5))
         );
     }
@@ -26,7 +26,7 @@ class CincoDeMayoTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getCincoDeMayoHoliday();
 
-        $this->assertEquals("Cinco de Mayo", $holiday->getHolidayName());
+        $this->assertEquals("Cinco de Mayo", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class CincoDeMayoTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getCincoDeMayoHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class CincoDeMayoTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getCincoDeMayoHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

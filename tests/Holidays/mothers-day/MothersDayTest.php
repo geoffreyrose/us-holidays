@@ -11,12 +11,12 @@ class MothersDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getMothersDayHoliday()
+            $carbon->getMothersDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 5, 11))
         );
 
         $this->assertTrue(
-            $carbon->getMothersDayHoliday()
+            $carbon->getMothersDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 5, 10))
         );
     }
@@ -26,7 +26,7 @@ class MothersDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getMothersDayHoliday();
 
-        $this->assertEquals("Mother's Day", $holiday->getHolidayName());
+        $this->assertEquals("Mother's Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class MothersDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getMothersDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class MothersDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getMothersDayHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

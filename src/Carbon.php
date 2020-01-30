@@ -1,17 +1,38 @@
 <?php
+/**
+ * US Holidays Wrapper for the Carbon DateTime Library
+ */
 
 namespace USHolidays;
 
+/**
+ * This extends Carbon and adds support for 41 US holidays.
+ */
 class Carbon extends \Carbon\Carbon {
 
-    private function setAprilFoolsDay($year = null)
+    /**
+     * An array of all the names of the holidays
+     */
+    private $holidayArray = ["April Fool's Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
+
+    /**
+     * Setting April Fools Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setAprilFoolsDay($year)
     {
-        return Carbon::create($year, 4, 1);
+        return Carbon::create($year, 4, 1, 0, 0, 0);
     }
 
-    private function setArmedForcesDay($year = null)
+    /**
+     * Setting Armed Forces Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setArmedForcesDay($year)
     {
-        $date = Carbon::create($year, 5, 1);
+        $date = Carbon::create($year, 5, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SATURDAY ) {
             $date->next(Carbon::SATURDAY);
         }
@@ -20,34 +41,64 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setAshWednesday($year = null)
+    /**
+     * Setting Ash Wednesday
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setAshWednesday($year)
     {
         return $this->setEaster($year)->subDays(46);
     }
 
-    private function setBlackFriday($year = null)
+    /**
+     * Setting Black Friday
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setBlackFriday($year)
     {
         return $this->setThanksgiving($year)->addDay();
     }
 
-    private function setChristmasDay($year = null)
+    /**
+     * Setting Christmas Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setChristmasDay($year)
     {
-        return Carbon::create($year, 12, 25);
+        return Carbon::create($year, 12, 25, 0, 0, 0);
     }
 
-    private function setChristmasEve($year = null)
+    /**
+     * Setting Christmas Eve
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setChristmasEve($year)
     {
-        return Carbon::create($year, 12, 24);
+        return Carbon::create($year, 12, 24, 0, 0, 0);
     }
 
-    private function setCincoDeMayo($year = null)
+    /**
+     * Setting Cinco de Mayo
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setCincoDeMayo($year)
     {
-        return Carbon::create($year, 5, 5);
+        return Carbon::create($year, 5, 5, 0, 0, 0);
     }
 
-    private function setColumbusDay($year = null)
+    /**
+     * Setting Columbus Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setColumbusDay($year)
     {
-        $date = Carbon::create($year, 10, 1);
+        $date = Carbon::create($year, 10, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::MONDAY ) {
             $date->next(Carbon::MONDAY);
         }
@@ -56,9 +107,14 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setDaylightSavingEnd($year = null)
+    /**
+     * Setting Daylight Saving (End)
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setDaylightSavingEnd($year)
     {
-        $date = Carbon::create($year, 11, 1);
+        $date = Carbon::create($year, 11, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SUNDAY ) {
             $date->next(Carbon::SUNDAY);
         }
@@ -66,9 +122,14 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setDaylightSavingStart($year = null)
+    /**
+     * Setting Daylight Saving (Start)
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setDaylightSavingStart($year)
     {
-        $date = Carbon::create($year, 3, 1);
+        $date = Carbon::create($year, 3, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SUNDAY ) {
             $date->next(Carbon::SUNDAY);
         }
@@ -77,19 +138,37 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setEarthDay($year = null)
+    /**
+     * Setting Earth Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setEarthDay($year)
     {
-        return Carbon::create($year, 4, 22);
+        return Carbon::create($year, 4, 22, 0, 0, 0);
     }
 
-    private function setEaster($year = null)
+    /**
+     * Setting Easter
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setEaster($year)
     {
-        return Carbon::createFromTimestamp(easter_date($year));;
+        $date = Carbon::create($year, 3, 21, 0, 0, 0);
+        $days = easter_days($year);
+
+        return $date->addDays($days);
     }
 
-    private function setFathersDay($year = null)
+    /**
+     * Setting Fathers Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setFathersDay($year)
     {
-        $date = Carbon::create($year, 6, 1);
+        $date = Carbon::create($year, 6, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SUNDAY ) {
             $date->next(Carbon::SUNDAY);
         }
@@ -98,54 +177,104 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setFlagDay($year = null)
+    /**
+     * Setting Flag Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setFlagDay($year)
     {
-        return Carbon::create($year, 6, 14);
+        return Carbon::create($year, 6, 14, 0, 0, 0);
     }
 
-    private function setGoodFriday($year = null)
+    /**
+     * Setting Good Friday
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setGoodFriday($year)
     {
         return $this->setEaster($year)->subDays(2);
     }
 
-    private function setGroundhogDay($year = null)
+    /**
+     * Setting Groundhog Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setGroundhogDay($year)
     {
-        return Carbon::create($year, 2, 2);
+        return Carbon::create($year, 2, 2, 0, 0, 0);
     }
 
-    private function setHalloweenDay($year = null)
+    /**
+     * Setting Halloween
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setHalloween($year)
     {
-        return Carbon::create($year, 10, 31);
+        return Carbon::create($year, 10, 31, 0, 0, 0);
     }
 
-    private function setHanukkah($year = null)
+    /**
+     * Setting Hanukkah
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setHanukkah($year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(3, 25, 3761 + intval($year))));
+        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(3, 25, 3761 + intval($year))))->setTime(0, 0, 0);
     }
 
-    private function setIndependenceDay($year = null)
+    /**
+     * Setting Independence Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setIndependenceDay($year)
     {
-        return Carbon::create($year, 7, 4);
+        return Carbon::create($year, 7, 4, 0, 0, 0);
     }
 
-    private function setIndigenousPeoplesDay($year = null)
+    /**
+     * Setting Indigenous Peoples Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setIndigenousPeoplesDay($year)
     {
-        return $this->setColumbusDay($year);
+        return $this->setColumbusDay($year, 0, 0, 0);
     }
 
-    private function setJuneteenth($year = null)
+    /**
+     * Setting Juneteenth
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setJuneteenth($year)
     {
-        return Carbon::create($year, 6, 19);
+        return Carbon::create($year, 6, 19, 0, 0, 0);
     }
 
-    private function setKwanzaa($year = null)
+    /**
+     * Setting Kwanzaa
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setKwanzaa($year)
     {
-        return Carbon::create($year, 12, 26);
+        return Carbon::create($year, 12, 26, 0, 0, 0);
     }
 
-    private function setLaborDay($year = null)
+    /**
+     * Setting Labor Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setLaborDay($year)
     {
-        $date = Carbon::create($year, 9, 1);
+        $date = Carbon::create($year, 9, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::MONDAY ) {
             $date->next(Carbon::MONDAY);
         }
@@ -153,9 +282,14 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setMemorialDay($year = null)
+    /**
+     * Setting Memorial Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setMemorialDay($year)
     {
-        $date = Carbon::create($year, 5, 1);
+        $date = Carbon::create($year, 5, 1, 0, 0, 0);
         for ($i=0; $i < 7; $i++) {
             if( $date->month === 5 ) {
                 $date->next(Carbon::MONDAY);
@@ -168,9 +302,14 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setMLKDay($year = null)
+    /**
+     * Setting MLK Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setMLKDay($year)
     {
-        $date = Carbon::create($year, 1, 1);
+        $date = Carbon::create($year, 1, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::MONDAY ) {
             $date->next(Carbon::MONDAY);
         }
@@ -179,9 +318,14 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setMothersDay($year = null)
+    /**
+     * Setting Mothers Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setMothersDay($year)
     {
-        $date = Carbon::create($year, 5, 1);
+        $date = Carbon::create($year, 5, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SUNDAY ) {
             $date->next(Carbon::SUNDAY);
         }
@@ -190,17 +334,32 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setNewYearsDay($year = null)
+    /**
+     * Setting NewY ears Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setNewYearsDay($year)
     {
-        return Carbon::create($year, 1, 1);
+        return Carbon::create($year, 1, 1, 0, 0, 0);
     }
 
-    private function setNewYearsEve($year = null)
+    /**
+     * Setting New Years Eve
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setNewYearsEve($year)
     {
-        return Carbon::create($year, 12, 31);
+        return Carbon::create($year, 12, 31, 0, 0, 0);
     }
 
-    private function setOrthodoxEaster($year = null)
+    /**
+     * Setting Orthodox Easter
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setOrthodoxEaster($year)
     {
         $a = $year % 4;
         $b = $year % 7;
@@ -212,32 +371,57 @@ class Carbon extends \Carbon\Carbon {
 
         $dt =  mktime(0, 0, 0, $month, $day + 13, $year);
 
-        return Carbon::createFromTimestamp($dt);
+        return Carbon::createFromTimestamp($dt)->setTime(0, 0, 0);
     }
 
-    private function setPalmSunday($year = null)
+    /**
+     * Setting Palm Sunday
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setPalmSunday($year)
     {
         return $this->setEaster($year)->subWeeks(1);
     }
 
-    private function setPassover($year = null)
+    /**
+     * Setting Passover
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setPassover($year)
     {
         return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(8, 15, 3760 + intval($year))))->setTime(0, 0, 0);
     }
 
-    private function setPatriotsDay($year = null)
+    /**
+     * Setting Patriots Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setPatriotsDay($year)
     {
-        return Carbon::create($year, 9, 11);
+        return Carbon::create($year, 9, 11, 0, 0, 0);
     }
 
-    private function setPearlHarborRemembrance($year = null)
+    /**
+     * Setting Pearl Harbor Remembrance
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setPearlHarborRemembrance($year)
     {
-        return Carbon::create($year, 12, 7);
+        return Carbon::create($year, 12, 7, 0, 0, 0);
     }
 
-    private function setPresidentsDay($year = null)
+    /**
+     * Setting Presidents Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setPresidentsDay($year)
     {
-        $date = Carbon::create($year, 2, 1);
+        $date = Carbon::create($year, 2, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::MONDAY ) {
             $date->next(Carbon::MONDAY);
         }
@@ -246,19 +430,34 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setRoshHashanah($year = null)
+    /**
+     * Setting Rosh Hashanah
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setRoshHashanah($year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 1, 3761 + intval($year))))->setTime(0, 0, 0);;
+        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 1, 3761 + intval($year))))->setTime(0, 0, 0);
     }
 
-    private function setStPatricksDay($year = null)
+    /**
+     * Setting St Patricks Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setStPatricksDay($year)
     {
-        return Carbon::create($year, 3, 17);
+        return Carbon::create($year, 3, 17, 0, 0, 0);
     }
 
-    private function setTaxDay($year = null)
+    /**
+     * Setting Tax Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setTaxDay($year)
     {
-        $date = Carbon::create($year, 04, 15);
+        $date = Carbon::create($year, 04, 15, 0, 0, 0);
         if( $date->dayOfWeek === Carbon::SATURDAY || $date->dayOfWeek === Carbon::SUNDAY ) {
             $date->next(Carbon::TUESDAY);
         } else if( $date->dayOfWeek === Carbon::FRIDAY) {
@@ -268,9 +467,14 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setThanksgiving($year = null)
+    /**
+     * Setting Thanksgiving
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setThanksgiving($year)
     {
-        $date = Carbon::create($year, 11, 1);
+        $date = Carbon::create($year, 11, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::THURSDAY ) {
             $date->next(Carbon::THURSDAY);
         }
@@ -279,26 +483,51 @@ class Carbon extends \Carbon\Carbon {
         return $date;
     }
 
-    private function setValentinesDay($year = null)
+    /**
+     * Setting Valentines Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setValentinesDay($year)
     {
-        return Carbon::create($year, 2, 14);
+        return Carbon::create($year, 2, 14, 0, 0, 0);
     }
 
-    private function setVeteransDay($year = null)
+    /**
+     * Setting Veterans Day
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setVeteransDay($year)
     {
-        return Carbon::create($year, 11, 11);
+        return Carbon::create($year, 11, 11, 0, 0, 0);
     }
 
-    private function setYomKippur($year = null)
+    /**
+     * Setting Yom Kippur
+     *
+     * @param int $year The year to get the holiday in
+     */
+    private function setYomKippur($year)
     {
         return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 10, 3761 + intval($year))))->setTime(0, 0, 0);
     }
 
+    /**
+     * An array of all the user added holidays
+     */
+    private $userAddedHolidays = array();
 
-    private function getHolidays( $year = null ) {
+    /**
+     * Get holiday data
+     *
+     * @param int|null $year The year to get the holidays in
+     */
+    private function holidays( $year = null ) {
         $holidays = array(
             array(
                 'name' => "April Fool's Day",
+                'search_names' => ["APRIL FOOL'S DAY", "APRIL FOOLS DAY", "APRIL FOOLS"],
                 'date' => function() use ($year) {
                     return $this->setAprilFoolsDay($year);
                 },
@@ -306,6 +535,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Armed Forces Day",
+                'search_names' => ["ARMED FORCES DAY"],
                 'date' => function() use ($year) {
                     return $this->setArmedForcesDay($year);
                 },
@@ -313,6 +543,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Ash Wednesday",
+                'search_names' => ["ASH WEDNESDAY"],
                 'date' => function() use ($year) {
                     return $this->setAshWednesday($year);
                 },
@@ -320,6 +551,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Black Friday",
+                'search_names' => ["BLACK FRIDAY", "DAY AFTER THANKSGIVING"],
                 'date' => function() use ($year) {
                     return $this->setBlackFriday($year);
                 },
@@ -327,6 +559,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Christmas Day",
+                'search_names' => ["CHRISTMAS DAY", "CHRISTMAS"],
                 'date' => function() use ($year) {
                     return $this->setChristmasDay($year);
                 },
@@ -334,6 +567,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Christmas Eve",
+                'search_names' => ["CHRISTMAS EVE"],
                 'date' => function() use ($year) {
                     return $this->setChristmasEve($year);
                 },
@@ -341,6 +575,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Cinco de Mayo",
+                'search_names' => ["CINCO DE MAYO"],
                 'date' => function() use ($year) {
                     return $this->setCincoDeMayo($year);
                 },
@@ -348,6 +583,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Columbus Day",
+                'search_names' => ["COLUMBUS DAY"],
                 'date' => function() use ($year) {
                     return $this->setColumbusDay($year);
                 },
@@ -355,6 +591,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Daylight Saving (End)",
+                'search_names' => ["DAYLIGHT SAVING (END)", "DAYLIGHT SAVING END", "DAYLIGHT SAVINGS (END)", "DAYLIGHT SAVINGS END"],
                 'date' => function() use ($year) {
                     return $this->setDaylightSavingEnd($year);
                 },
@@ -362,6 +599,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Daylight Saving (Start)",
+                'search_names' => ["DAYLIGHT SAVING (START)", "DAYLIGHT SAVING START", "DAYLIGHT SAVINGS (START)", "DAYLIGHT SAVINGS START"],
                 'date' => function() use ($year) {
                     return $this->setDaylightSavingStart($year);
                 },
@@ -369,6 +607,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Earth Day",
+                'search_names' => ["EARTH DAY"],
                 'date' => function() use ($year) {
                     return $this->setEarthDay($year);
                 },
@@ -376,6 +615,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Easter",
+                'search_names' => ["EASTER"],
                 'date' => function() use ($year) {
                     return $this->setEaster($year);
                 },
@@ -383,6 +623,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Father's Day",
+                'search_names' => ["FATHER'S DAY", "FATHERS DAY"],
                 'date' => function() use ($year) {
                     return $this->setFathersDay($year);
                 },
@@ -390,6 +631,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Flag Day",
+                'search_names' => ["FLAG DAY"],
                 'date' => function() use ($year) {
                     return $this->setFlagDay($year);
                 },
@@ -397,6 +639,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Good Friday",
+                'search_names' => ["GOOD FRIDAY"],
                 'date' => function() use ($year) {
                     return $this->setGoodFriday($year);
                 },
@@ -404,6 +647,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Groundhog Day",
+                'search_names' => ["GROUNDHOG DAY", "GROUNDHOGS DAY"],
                 'date' => function() use ($year) {
                     return $this->setGroundhogDay($year);
                 },
@@ -411,13 +655,15 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Halloween",
+                'search_names' => ["HALLOWEEN"],
                 'date' => function() use ($year) {
-                    return $this->setHalloweenDay($year);
+                    return $this->setHalloween($year);
                 },
                 'bank_holiday' => false
             ),
             array(
                 'name' => "Hanukkah",
+                'search_names' => ["HANUKKAH"],
                 'date' => function() use ($year) {
                     return $this->setHanukkah($year);
                 },
@@ -425,6 +671,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Independence Day",
+                'search_names' => ["INDEPENDENCE DAY", "FORUTH OF JULY", "4TH OF JULY"],
                 'date' => function() use ($year) {
                     return $this->setIndependenceDay($year);
                 },
@@ -432,6 +679,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Indigenous Peoples' Day",
+                'search_names' => ["INDIGENOUS PEOPLES' DAY", "INDIGENOUS PEOPLES DAY"],
                 'date' => function() use ($year) {
                     return $this->setIndigenousPeoplesDay($year);
                 },
@@ -439,6 +687,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Juneteenth",
+                'search_names' => ["JUNETEENTH"],
                 'date' => function() use ($year) {
                     return $this->setJuneteenth($year);
                 },
@@ -446,6 +695,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Kwanzaa",
+                'search_names' => ["KWANZAA"],
                 'date' => function() use ($year) {
                     return $this->setKwanzaa($year);
                 },
@@ -453,6 +703,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Labor Day",
+                'search_names' => ["LABOR DAY"],
                 'date' => function() use ($year) {
                     return $this->setLaborDay($year);
                 },
@@ -460,6 +711,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Memorial Day",
+                'search_names' => ["MEMORIAL DAY"],
                 'date' => function() use ($year) {
                     return $this->setMemorialDay($year);
                 },
@@ -467,6 +719,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Martin Luther King Jr. Day",
+                'search_names' => ["MARTIN LUTHER KING JR. DAY", "MARTIN LUTHER KING JR DAY", "MLK DAY"],
                 'date' => function() use ($year) {
                     return $this->setMLKDay($year);
                 },
@@ -474,6 +727,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Mother's Day",
+                'search_names' => ["MOTHER'S DAY", "MOTHERS DAY"],
                 'date' => function() use ($year) {
                     return $this->setMothersDay($year);
                 },
@@ -481,6 +735,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "New Year's Day",
+                'search_names' => ["NEW YEAR'S DAY", "NEW YEARS DAY", "NEW YEARS"],
                 'date' => function() use ($year) {
                     return $this->setNewYearsDay($year);
                 },
@@ -488,6 +743,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "New Year's Eve",
+                'search_names' => ["NEW YEAR'S EVE", "NEW YEARS EVE"],
                 'date' => function() use ($year) {
                     return $this->setNewYearsEve($year);
                 },
@@ -495,6 +751,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Orthodox Easter",
+                'search_names' => ["ORTHODOX EASTER"],
                 'date' => function() use ($year) {
                     return $this->setOrthodoxEaster($year);
                 },
@@ -502,6 +759,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Palm Sunday",
+                'search_names' => ["PALM SUNDAY"],
                 'date' => function() use ($year) {
                     return $this->setPalmSunday($year);
                 },
@@ -509,6 +767,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Passover",
+                'search_names' => ["PASSOVER"],
                 'date' => function() use ($year) {
                     return $this->setPassover($year);
                 },
@@ -516,6 +775,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Patriot Day",
+                'search_names' => ["PATRIOT DAY"],
                 'date' => function() use ($year) {
                     return $this->setPatriotsDay($year);
                 },
@@ -523,6 +783,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Pearl Harbor Remembrance Day",
+                'search_names' => ["PEARL HARBOR REMEMBRANCE DAY"],
                 'date' => function() use ($year) {
                     return $this->setPearlHarborRemembrance($year);
                 },
@@ -530,6 +791,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Presidents' Day",
+                'search_names' => ["PRESIDENTS' DAY", "PRESIDENTS DAY"],
                 'date' => function() use ($year) {
                     return $this->setPresidentsDay($year);
                 },
@@ -537,6 +799,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Rosh Hashanah",
+                'search_names' => ["ROSH HASHANAH"],
                 'date' => function() use ($year) {
                     return $this->setRoshHashanah($year);
                 },
@@ -544,6 +807,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "St. Patrick's Day",
+                'search_names' => ["ST. PATRICK'S DAY", "ST PATRICKS DAY", "ST. PATRICKS DAY", "SAINT PATRICKS DAY"],
                 'date' => function() use ($year) {
                     return $this->setStPatricksDay($year);
                 },
@@ -551,6 +815,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Tax Day",
+                'search_names' => ["TAX DAY"],
                 'date' => function() use ($year) {
                     return $this->setTaxDay($year);
                 },
@@ -558,6 +823,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Thanksgiving",
+                'search_names' => ["THANKSGIVING"],
                 'date' => function() use ($year) {
                     return $this->setThanksgiving($year);
                 },
@@ -565,6 +831,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Valentine's Day",
+                'search_names' => ["VALENTINE'S DAY", "VALENTINES DAY", "VALENTINES"],
                 'date' => function() use ($year) {
                     return $this->setValentinesDay($year);
                 },
@@ -572,6 +839,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Veterans Day",
+                'search_names' => ["VETERANS DAY"],
                 'date' => function() use ($year) {
                     return $this->setVeteransDay($year);
                 },
@@ -579,6 +847,7 @@ class Carbon extends \Carbon\Carbon {
             ),
             array(
                 'name' => "Yom Kippur",
+                'search_names' => ["YOM KIPPUR"],
                 'date' => function() use ($year) {
                     return $this->setYomKippur($year);
                 },
@@ -586,30 +855,198 @@ class Carbon extends \Carbon\Carbon {
             ),
         );
 
+        $userHolidays = $this->userAddedHolidays;
+
+        foreach ($userHolidays as $userHoliday) {
+
+            if(is_callable($userHoliday['date'])) {
+                $date = $userHoliday['date'];
+            } else {
+                $date = function() use ($year, $userHoliday) {
+                    $day = $userHoliday['date']->day;
+                    $month = $userHoliday['date']->month;
+                    return Carbon::create($year, $month, $day, 0, 0, 0);
+                };
+            }
+
+            $bankHoliday = $userHoliday['bank_holiday'];
+
+            array_push($holidays,
+                array(
+                    'name' => $userHoliday['name'],
+                    'search_names' => [\strtoupper($userHoliday['name']), \strtoupper(\str_replace("'", '', $userHoliday['name']))],
+                    'date' => $date,
+                    'bank_holiday' => $bankHoliday
+                )
+            );
+        }
+
         return $holidays;
     }
 
-    private function getHolidayByName($name, $year)
+    /**
+     * Add an user defined holiday
+     *
+     * @param array $data The year to get the holidays in
+     */
+    public function addHoliday($data)
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-        $index = array_search($name, array_column($holidays, 'name') );
-        $date = call_user_func($holidays[$index]['date']);
-        $this->modify($date);
-        return $date;
+        array_push($this->userAddedHolidays, $data);
+        array_push($this->holidayArray, $data['name']);
+        return true;
     }
 
-    public function isHoliday($year = null)
+    /**
+     * Compare to dates to sort
+     *
+     * @param object $a A date object
+     * @param object $b A date object
+     */
+    private function compareDate($a, $b)
     {
+        return $a->date > $b->date;
+    }
+
+    /**
+     *  Returns holidays in the specified years
+     *
+     * @param string|array $name The name(s) of the holidays to get
+     * @param int|null $year The year to get the holidays in
+     */
+    public function getHolidaysByYear($name, $year=null)
+    {
+        if($name == 'all' || $name == null) $name = $this->holidayArray;
         $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
+        $holidays = $this->holidays($year);
+        $holidaySearchNames = array_column($holidays, 'search_names');
+        $holiday_details = array();
+
+        if(is_string($name)) {
+
+            $index = false;
+            foreach ($holidaySearchNames as $key => $holidaySearchName) {
+                if( array_search(strtoupper($name), $holidaySearchName ) !== false ) {
+                    $index = $key;
+                }
+            }
+
+            if($index !== false) {
+
+                $date = call_user_func($holidays[$index]['date']);
+
+                if(!$this->isMidnight()) {
+                    $days_until = $this->diffInDays($date) + 1;
+                } else {
+                    $days_until = $this->diffInDays($date);
+                }
+
+                $bankHoliday = $holidays[$index]['bank_holiday'];
+                if($bankHoliday) {
+                    if($this->isWeekend()) $bankHoliday = false;
+                }
+
+                $details = (object) [
+                    'name' => $holidays[$index]['name'],
+                    'date' => $date,
+                    'bank_holiday' => $bankHoliday,
+                    'days_away' => $days_until
+                ];
+
+                array_push($holiday_details, $details);
+            }
+
+        } elseif (is_array($name)) {
+
+            foreach ($name as $search_name) {
+                foreach ($holidaySearchNames as $key => $holidaySearchName) {
+                    if( array_search(strtoupper($search_name), $holidaySearchName ) !== false ) {
+                        $index = $key;
+
+                        if($index !== false) {
+                            $date = call_user_func($holidays[$index]['date']);
+
+                            if(!$this->isMidnight()) {
+                                $days_until = $this->diffInDays($date) + 1;
+                            } else {
+                                $days_until =  $this->diffInDays($date);
+                            }
+
+                            $bankHoliday = $holidays[$index]['bank_holiday'];
+                            if($bankHoliday) {
+                                if($this->isWeekend()) $bankHoliday = false;
+                            }
+
+                            $details = (object) [
+                                'name' => $holidays[$index]['name'],
+                                'date' => $date,
+                                'bank_holiday' => $bankHoliday,
+                                'days_away' => $days_until
+                            ];
+
+                            array_push($holiday_details, $details);
+                        }
+                    }
+                }
+            }
+        }
+
+        usort($holiday_details, array($this, "compareDate"));
+
+        return $holiday_details;
+    }
+
+    /**
+     * Returns holidays in the next amount of days
+     *
+     * @param int $days The number of days to look ahead to find holidays in
+     * @param string|array|null $holidays The name(s) of the holidays to get
+     */
+    public function getHolidaysInDays($days, $holidays=null)
+    {
+        if($holidays === null || $holidays === 'all') {
+            $holidays = $this->holidayArray;
+        }
+
+        $searchStartDate = $this->copy();
+        $searchEndDate = $this->copy()->addDays($days)->year;
+
+        $holidaysInRange = array();
+        for ($i=$searchStartDate->year; $i <= $searchEndDate; $i++) {
+            $holidayYear = $this->getHolidaysByYear($holidays, intval($i));
+
+            foreach ($holidayYear as $holiday) {
+                if( $holiday->date->lessThanOrEqualTo($searchStartDate->copy()->addDays($days)) && $holiday->date->greaterThanOrEqualTo($searchStartDate) ) {
+                    array_push($holidaysInRange, $holiday);
+                }
+            }
+        }
+
+        return $holidaysInRange;
+    }
+
+    /**
+     * Returns holidays in the next amount of years
+     *
+     * @param int $years The number of years to look ahead to find holidays in
+     * @param string|array|null $holidays The name(s) of the holidays to get
+     */
+    public function getHolidaysInYears($years, $holidays=null)
+    {
+        $days = $this->diffInDays($this->copy()->addYears($years));
+        return $this->getHolidaysInDays($days, $holidays);
+    }
+
+    /**
+     * Check if a date is a holiday. returns boolean
+     */
+    public function isHoliday()
+    {
+        $holidays = $this->getHolidaysByYear('all');
         $isHoliday = false;
 
         foreach ($holidays as $holiday) {
-            $holidayDate = call_user_func($holiday['date']);
-            $dateToCheck = $this->copy();
 
-            if( $this->isBirthday($holidayDate) ) {
+            if( $this->isBirthday($holiday->date) ) {
                 $isHoliday = true;
                 break;
             }
@@ -618,41 +1055,30 @@ class Carbon extends \Carbon\Carbon {
         return $isHoliday;
     }
 
-    public function isBankHoliday($year = null)
+    /**
+     * Check if a date is a bank holiday. returns boolean
+     */
+    public function isBankHoliday()
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
+        $holidays = $this->getHolidaysByYear('all');
         $isBankHoliday = false;
 
-        foreach ($holidays as $holiday) {
-            $holidayDate = call_user_func($holiday['date']);
-            $dateToCheck = $this->copy();
-
-
-            if( $dateToCheck->isBirthday($holidayDate) && $holiday['bank_holiday'] ) {
-                if($dateToCheck->dayOfWeek !== Carbon::SUNDAY && $dateToCheck->dayOfWeek !== Carbon::SATURDAY) {
+        foreach ( $holidays as $holiday) {
+            if( $holiday->bank_holiday ) {
+                if( $this->isBirthday($holiday->date) && $this->dayOfWeek !== Carbon::SUNDAY && $this->dayOfWeek !== Carbon::SATURDAY ) {
                     $isBankHoliday = true;
                     break;
-                }
-
-            } else {
-                if( $dateToCheck->dayOfWeek === Carbon::MONDAY ) {
-                    $dateToCheck->subDay();
-
-                    if( $dateToCheck->isBirthday($holidayDate) && $holiday['bank_holiday'] ) {
-                        $isBankHoliday = true;
-                        break;
-                    } else {
-                        $dateToCheck->addDay();
-                    }
-                } else if( $dateToCheck->dayOfWeek === Carbon::FRIDAY ) {
-                    $dateToCheck->addDay();
-
-                    if( $dateToCheck->isBirthday($holidayDate) && $holiday['bank_holiday'] ) {
-                        $isBankHoliday = true;
-                        break;
-                    } else {
-                        $dateToCheck->subDay();
+                } else {
+                    if( $this->dayOfWeek === Carbon::MONDAY ) {
+                        if( $this->copy()->subDay()->isBirthday($holiday->date) ) {
+                            $isBankHoliday = true;
+                            break;
+                        }
+                    } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
+                        if( $this->copy()->addDay()->isBirthday($holiday->date) ) {
+                            $isBankHoliday = true;
+                            break;
+                        }
                     }
                 }
             }
@@ -661,30 +1087,25 @@ class Carbon extends \Carbon\Carbon {
         return $isBankHoliday;
     }
 
-    public function getHolidayName($year = null)
+    /**
+     * Get the holiday names, if any for the given date
+     */
+    public function getHolidayName()
     {
-        $year = $year ? $year : $this->year;
-        $holidays = $this->getHolidays($year);
-        $holidayName = false;
+        $holidays = $this->getHolidaysByYear('all');
+        $holidayName = null;
 
         foreach ($holidays as $holiday) {
-            $holidayDate = call_user_func($holiday['date']);
-            $dateToCheck = $this->copy();
-
-            if( $dateToCheck->isBirthday($holidayDate) ) {
-                $holidayName .= $holiday['name'] . ', ';
+            if( $this->isBirthday($holiday->date) ) {
+                $holidayName .= $holiday->name . ', ';
             } else {
-                if( $dateToCheck->dayOfWeek === Carbon::MONDAY ) {
-                    $dateToCheck->subDay();
-
-                    if( $dateToCheck->isBirthday($holidayDate) && $holiday['bank_holiday'] ) {
-                        $holidayName .= $holiday['name'] . ' (Observed), ';
+                if( $this->dayOfWeek === Carbon::MONDAY ) {
+                    if( $this->copy()->subDay()->isBirthday($holiday->date) && $holiday->bank_holiday ) {
+                        $holidayName .= $holiday->name . ' (Observed), ';
                     }
-                } else if( $dateToCheck->dayOfWeek === Carbon::FRIDAY ) {
-                    $dateToCheck->addDay();
-
-                    if( $dateToCheck->isBirthday($holidayDate) && $holiday['bank_holiday'] ) {
-                        $holidayName .= $holiday['name'] . ' (Observed), ';
+                } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
+                    if( $this->copy()->addDay()->isBirthday($holiday->date) && $holiday->bank_holiday ) {
+                        $holidayName .= $holiday->name . ' (Observed), ';
                     }
                 }
             }
@@ -697,233 +1118,413 @@ class Carbon extends \Carbon\Carbon {
         return $holidayName;
     }
 
-
+     /**
+      * Return date of April Fools Day for given year
+      *
+      * @param int|null $year The year to get the holiday in
+      */
     public function getAprilFoolsDayHoliday($year = null)
     {
-        return $this->getHolidayByName("April Fool's Day", $year);
+        return $this->getHolidaysByYear("April Fool's Day", $year)[0];
     }
 
+    /**
+     * Return date of Armed Forces Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getArmedForcesDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Armed Forces Day", $year);
+        return $this->getHolidaysByYear("Armed Forces Day", $year)[0];
     }
 
+    /**
+     * Return date of Ash Wednesday for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getAshWednesdayHoliday($year = null)
     {
-        return $this->getHolidayByName("Ash Wednesday", $year);
+        return $this->getHolidaysByYear("Ash Wednesday", $year)[0];
     }
 
+    /**
+     * Return date of Black Friday for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getBlackFridayHoliday($year = null)
     {
-        return $this->getHolidayByName("Black Friday", $year);
+        return $this->getHolidaysByYear("Black Friday", $year)[0];
     }
 
+    /**
+     * Return date of Christmas Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getChristmasDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Christmas Day", $year);
+        return $this->getHolidaysByYear("Christmas Day", $year)[0];
     }
 
+    /**
+     * Return date of Christmas Eve for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getChristmasEveHoliday($year = null)
     {
-        return $this->getHolidayByName("Christmas Eve", $year);
+        return $this->getHolidaysByYear("Christmas Eve", $year)[0];
     }
 
+    /**
+     * Return date of Cinco de Mayo for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getCincoDeMayoHoliday($year = null)
     {
-        return $this->getHolidayByName("Cinco de Mayo", $year);
+        return $this->getHolidaysByYear("Cinco de Mayo", $year)[0];
     }
 
+    /**
+     * Return date of Columbus Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getColumbusDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Columbus Day", $year);
+        return $this->getHolidaysByYear("Columbus Day", $year)[0];
     }
 
+    /**
+     * Return date of Daylight Saving (End) for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getDaylightSavingEndHoliday($year = null)
     {
-        return $this->getHolidayByName("Daylight Saving (End)", $year);
+        return $this->getHolidaysByYear("Daylight Saving (End)", $year)[0];
     }
 
+    /**
+     * Return date of Daylight Saving (Start) for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getDaylightSavingStartHoliday($year = null)
     {
-        return $this->getHolidayByName("Daylight Saving (Start)", $year);
+        return $this->getHolidaysByYear("Daylight Saving (Start)", $year)[0];
     }
 
+    /**
+     * Return date of Earth Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getEarthDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Earth Day", $year);
+        return $this->getHolidaysByYear("Earth Day", $year)[0];
     }
 
+    /**
+     * Return date of Easter for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getEasterHoliday($year = null)
     {
-        return $this->getHolidayByName("Easter", $year);
+        return $this->getHolidaysByYear("Easter", $year)[0];
     }
 
+    /**
+     * Return date of Father Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getFathersDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Father's Day", $year);
+        return $this->getHolidaysByYear("Father's Day", $year)[0];
     }
 
-    // typo'd in old version // added "s" on flag // for backward compatibility
-    public function getFlagsDayHoliday($year = null)
-    {
-        return $this->getHolidayByName("Flag Day", $year);
-    }
-
+    /**
+     * Return date of Flag Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getFlagDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Flag Day", $year);
+        return $this->getHolidaysByYear("Flag Day", $year)[0];
     }
 
+    /**
+     * Return date of Good Friday for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getGoodFridayHoliday($year = null)
     {
-        return $this->getHolidayByName("Good Friday", $year);
+        return $this->getHolidaysByYear("Good Friday", $year)[0];
     }
 
+    /**
+     * Return date of Groundhog Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getGroundhogDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Groundhog Day", $year);
+        return $this->getHolidaysByYear("Groundhog Day", $year)[0];
     }
 
-    // typo'd in old version // added "Day" on end // for backward compatibility
-    public function getHalloweenDayHoliday($year = null)
-    {
-        return $this->getHolidayByName("Halloween", $year);
-    }
-
+    /**
+     * Return date of Halloween for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getHalloweenHoliday($year = null)
     {
-        return $this->getHolidayByName("Halloween", $year);
+        return $this->getHolidaysByYear("Halloween", $year)[0];
     }
 
+    /**
+     * Return date of Hanukkah for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getHanukkahHoliday($year = null)
     {
-        return $this->getHolidayByName("Hanukkah", $year);
+        return $this->getHolidaysByYear("Hanukkah", $year)[0];
     }
 
+    /**
+     * Return date of Independence Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getIndependenceDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Independence Day", $year);
+        return $this->getHolidaysByYear("Independence Day", $year)[0];
     }
 
+    /**
+     * Return date of Indigenous Peoples Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getIndigenousPeoplesDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Indigenous Peoples' Day", $year);
+        return $this->getHolidaysByYear("Indigenous Peoples' Day", $year)[0];
     }
 
+    /**
+     * Return date of Juneteenth for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getJuneteenthHoliday($year = null)
     {
-        return $this->getHolidayByName("Juneteenth", $year);
+        return $this->getHolidaysByYear("Juneteenth", $year)[0];
     }
 
+    /**
+     * Return date of Kwanzaa for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getKwanzaaHoliday($year = null)
     {
-        return $this->getHolidayByName("Kwanzaa", $year);
+        return $this->getHolidaysByYear("Kwanzaa", $year)[0];
     }
 
+    /**
+     * Return date of Labor Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getLaborDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Labor Day", $year);
+        return $this->getHolidaysByYear("Labor Day", $year)[0];
     }
 
+    /**
+     * Return date of Memorial Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getMemorialDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Memorial Day", $year);
+        return $this->getHolidaysByYear("Memorial Day", $year)[0];
     }
 
+    /**
+     * Return date of MLK Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getMLKDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Martin Luther King Jr. Day", $year);
+        return $this->getHolidaysByYear("Martin Luther King Jr. Day", $year)[0];
     }
 
+    /**
+     * Return date of Mothers Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getMothersDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Mother's Day", $year);
+        return $this->getHolidaysByYear("Mother's Day", $year)[0];
     }
 
+    /**
+     * Return date of New Years Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getNewYearsDayHoliday($year = null)
     {
-        return $this->getHolidayByName("New Year's Day", $year);
+        return $this->getHolidaysByYear("New Year's Day", $year)[0];
     }
 
+    /**
+     * Return date of New Years Eve for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getNewYearsEveHoliday($year = null)
     {
-        return $this->getHolidayByName("New Year's Eve", $year);
+        return $this->getHolidaysByYear("New Year's Eve", $year)[0];
     }
 
+    /**
+     * Return date of Orthodox Easter for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getOrthodoxEasterHoliday($year = null)
     {
-        return $this->getHolidayByName("Orthodox Easter", $year);
+        return $this->getHolidaysByYear("Orthodox Easter", $year)[0];
     }
 
+    /**
+     * Return date of Palm Sunday for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getPalmSundayHoliday($year = null)
     {
-        return $this->getHolidayByName("Palm Sunday", $year);
+        return $this->getHolidaysByYear("Palm Sunday", $year)[0];
     }
 
+    /**
+     * Return date of Passover for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getPassoverHoliday($year = null)
     {
-        return $this->getHolidayByName("Passover", $year);
+        return $this->getHolidaysByYear("Passover", $year)[0];
     }
 
-    // typo'd in old version // added "s" on Patriot // for backward compatibility
-    public function getPatriotsDayHoliday($year = null)
-    {
-        return $this->getHolidayByName("Patriot Day", $year);
-    }
-
+    /**
+     * Return date of Patriot Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getPatriotDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Patriot Day", $year);
+        return $this->getHolidaysByYear("Patriot Day", $year)[0];
     }
 
-    // typo'd in old version // forgot to add "day" on end // for backward compatibility
-    public function getPearlHarborRemembranceHoliday($year = null)
-    {
-        return $this->getHolidayByName("Pearl Harbor Remembrance Day", $year);
-    }
-
+    /**
+     * Return date of Pearl Harbor Remembrance Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getPearlHarborRemembranceDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Pearl Harbor Remembrance Day", $year);
+        return $this->getHolidaysByYear("Pearl Harbor Remembrance Day", $year)[0];
     }
 
+    /**
+     * Return date of Presidents Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getPresidentsDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Presidents' Day", $year);
+        return $this->getHolidaysByYear("Presidents' Day", $year)[0];
     }
 
+    /**
+     * Return date of Rosh Hashanah for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getRoshHashanahHoliday($year = null)
     {
-        return $this->getHolidayByName("Rosh Hashanah", $year);
+        return $this->getHolidaysByYear("Rosh Hashanah", $year)[0];
     }
 
+    /**
+     * Return date of St Patricks Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getStPatricksDayHoliday($year = null)
     {
-        return $this->getHolidayByName("St. Patrick's Day", $year);
+        return $this->getHolidaysByYear("St. Patrick's Day", $year)[0];
     }
 
+    /**
+     * Return date of Tax Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getTaxDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Tax Day", $year);
+        return $this->getHolidaysByYear("Tax Day", $year)[0];
     }
 
+    /**
+     * Return date of Thanksgiving for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getThanksgivingHoliday($year = null)
     {
-        return $this->getHolidayByName("Thanksgiving", $year);
+        return $this->getHolidaysByYear("Thanksgiving", $year)[0];
     }
 
+    /**
+     * Return date of Valentines Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getValentinesDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Valentine's Day", $year);
+        return $this->getHolidaysByYear("Valentine's Day", $year)[0];
     }
 
+    /**
+     * Return date of Veterans Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getVeteransDayHoliday($year = null)
     {
-        return $this->getHolidayByName("Veterans Day", $year);
+        return $this->getHolidaysByYear("Veterans Day", $year)[0];
     }
 
+    /**
+     * Return date of Yom Kippur for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getYomKippurHoliday($year = null)
     {
-        return $this->getHolidayByName("Yom Kippur", $year);
+        return $this->getHolidaysByYear("Yom Kippur", $year)[0];
     }
 }

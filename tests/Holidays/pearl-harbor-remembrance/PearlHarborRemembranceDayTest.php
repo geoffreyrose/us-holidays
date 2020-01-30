@@ -11,12 +11,12 @@ class PearlHarborRemembranceDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getPearlHarborRemembranceDayHoliday()
+            $carbon->getPearlHarborRemembranceDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 12, 6))
         );
 
         $this->assertTrue(
-            $carbon->getPearlHarborRemembranceDayHoliday()
+            $carbon->getPearlHarborRemembranceDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 12, 7))
         );
     }
@@ -26,7 +26,7 @@ class PearlHarborRemembranceDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPearlHarborRemembranceDayHoliday();
 
-        $this->assertEquals("Pearl Harbor Remembrance Day", $holiday->getHolidayName());
+        $this->assertEquals("Pearl Harbor Remembrance Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class PearlHarborRemembranceDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPearlHarborRemembranceDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class PearlHarborRemembranceDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getPearlHarborRemembranceDayHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

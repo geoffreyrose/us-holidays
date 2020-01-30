@@ -11,12 +11,12 @@ class YomKippurTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getYomKippurHoliday()
+            $carbon->getYomKippurHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 9, 27))
         );
 
         $this->assertTrue(
-            $carbon->getYomKippurHoliday()
+            $carbon->getYomKippurHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 9, 28))
         );
     }
@@ -26,7 +26,7 @@ class YomKippurTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
 
-        $this->assertEquals("Yom Kippur", $holiday->getHolidayName());
+        $this->assertEquals("Yom Kippur", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class YomKippurTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class YomKippurTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

@@ -11,12 +11,12 @@ class IndigenousPeoplesDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getIndigenousPeoplesDayHoliday()
+            $carbon->getIndigenousPeoplesDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 10, 11))
         );
 
         $this->assertTrue(
-            $carbon->getIndigenousPeoplesDayHoliday()
+            $carbon->getIndigenousPeoplesDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 10, 12))
         );
     }
@@ -26,7 +26,7 @@ class IndigenousPeoplesDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getIndigenousPeoplesDayHoliday();
 
-        $this->assertEquals("Columbus Day, Indigenous Peoples' Day", $holiday->getHolidayName());
+        $this->assertEquals("Indigenous Peoples' Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class IndigenousPeoplesDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getIndigenousPeoplesDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class IndigenousPeoplesDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getIndigenousPeoplesDayHoliday();
 
-        $this->assertTrue($holiday->isBankHoliday());
+        $this->assertTrue($holiday->date->isBankHoliday());
     }
 }

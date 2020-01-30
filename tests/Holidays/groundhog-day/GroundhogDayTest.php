@@ -11,12 +11,12 @@ class GroundhogDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getGroundhogDayHoliday()
+            $carbon->getGroundhogDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 2, 3))
         );
 
         $this->assertTrue(
-            $carbon->getGroundhogDayHoliday()
+            $carbon->getGroundhogDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 2, 2))
         );
     }
@@ -26,7 +26,7 @@ class GroundhogDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getGroundhogDayHoliday();
 
-        $this->assertEquals("Groundhog Day", $holiday->getHolidayName());
+        $this->assertEquals("Groundhog Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class GroundhogDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getGroundhogDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class GroundhogDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getGroundhogDayHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

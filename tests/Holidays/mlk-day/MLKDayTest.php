@@ -11,12 +11,12 @@ class MLKDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getMLKDayHoliday()
+            $carbon->getMLKDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 1, 21))
         );
 
         $this->assertTrue(
-            $carbon->getMLKDayHoliday()
+            $carbon->getMLKDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 1, 20))
         );
     }
@@ -26,7 +26,7 @@ class MLKDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getMLKDayHoliday();
 
-        $this->assertEquals("Martin Luther King Jr. Day", $holiday->getHolidayName());
+        $this->assertEquals("Martin Luther King Jr. Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class MLKDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getMLKDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class MLKDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getMLKDayHoliday();
 
-        $this->assertTrue($holiday->isBankHoliday());
+        $this->assertTrue($holiday->date->isBankHoliday());
     }
 }

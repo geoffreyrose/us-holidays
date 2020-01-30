@@ -11,12 +11,12 @@ class DaylightSavingEndTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getDaylightSavingEndHoliday()
+            $carbon->getDaylightSavingEndHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 11, 2))
         );
 
         $this->assertTrue(
-            $carbon->getDaylightSavingEndHoliday()
+            $carbon->getDaylightSavingEndHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 11, 1))
         );
     }
@@ -26,7 +26,7 @@ class DaylightSavingEndTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getDaylightSavingEndHoliday();
 
-        $this->assertEquals("Daylight Saving (End)", $holiday->getHolidayName());
+        $this->assertEquals("Daylight Saving (End)", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class DaylightSavingEndTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getDaylightSavingEndHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class DaylightSavingEndTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getDaylightSavingEndHoliday();
 
-        $this->assertFalse($holiday->isBankHoliday());
+        $this->assertFalse($holiday->date->isBankHoliday());
     }
 }

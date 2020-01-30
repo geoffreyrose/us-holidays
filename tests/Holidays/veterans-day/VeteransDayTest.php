@@ -11,12 +11,12 @@ class VeteransDayTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getVeteransDayHoliday()
+            $carbon->getVeteransDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 11, 12))
         );
 
         $this->assertTrue(
-            $carbon->getVeteransDayHoliday()
+            $carbon->getVeteransDayHoliday()->date
                 ->isSameDay(Carbon::createFromDate(2020, 11, 11))
         );
     }
@@ -26,7 +26,7 @@ class VeteransDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getVeteransDayHoliday();
 
-        $this->assertEquals("Veterans Day", $holiday->getHolidayName());
+        $this->assertEquals("Veterans Day", $holiday->name);
     }
 
     public function testIsHoliday()
@@ -34,7 +34,7 @@ class VeteransDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getVeteransDayHoliday();
 
-        $this->assertTrue($holiday->isHoliday());
+        $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
@@ -42,6 +42,6 @@ class VeteransDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getVeteransDayHoliday();
 
-        $this->assertTrue($holiday->isBankHoliday());
+        $this->assertTrue($holiday->date->isBankHoliday());
     }
 }
