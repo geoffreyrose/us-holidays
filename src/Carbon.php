@@ -932,7 +932,10 @@ class Carbon extends \Carbon\Carbon {
 
             if($index !== false) {
 
+                $currentYear = $this->copy()->year;
+                $this->year = $year;
                 $date = call_user_func($holidays[$index]['date']);
+                $this->year = $currentYear;
 
                 if(!$this->isMidnight()) {
                     $days_until = $this->diffInDays($date) + 1;
@@ -963,7 +966,11 @@ class Carbon extends \Carbon\Carbon {
                         $index = $key;
 
                         if($index !== false) {
+
+                            $currentYear = $this->year;
+                            $this->year = $year;
                             $date = call_user_func($holidays[$index]['date']);
+                            $this->year = $currentYear;
 
                             if(!$this->isMidnight()) {
                                 $days_until = $this->diffInDays($date) + 1;
