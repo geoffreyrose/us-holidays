@@ -10,6 +10,7 @@ namespace USHolidays;
  */
 class Carbon extends \Carbon\Carbon {
 
+
     /**
      * An array of all the names of the holidays
      */
@@ -524,6 +525,7 @@ class Carbon extends \Carbon\Carbon {
      * @param int|null $year The year to get the holidays in
      */
     private function holidays( $year = null ) {
+        $this->setTime(0,0,0);
         $holidays = array(
             array(
                 'name' => "April Fool's Day",
@@ -937,11 +939,7 @@ class Carbon extends \Carbon\Carbon {
                 $date = call_user_func($holidays[$index]['date']);
                 $this->year = $currentYear;
 
-                if(!$this->isMidnight()) {
-                    $days_until = $this->diffInDays($date) + 1;
-                } else {
-                    $days_until = $this->diffInDays($date);
-                }
+                $days_until = $this->diffInDays($date);
 
                 $bankHoliday = $holidays[$index]['bank_holiday'];
                 if($bankHoliday) {
@@ -972,11 +970,7 @@ class Carbon extends \Carbon\Carbon {
                             $date = call_user_func($holidays[$index]['date']);
                             $this->year = $currentYear;
 
-                            if(!$this->isMidnight()) {
-                                $days_until = $this->diffInDays($date) + 1;
-                            } else {
-                                $days_until =  $this->diffInDays($date);
-                            }
+                            $days_until =  $this->diffInDays($date);
 
                             $bankHoliday = $holidays[$index]['bank_holiday'];
                             if($bankHoliday) {
@@ -1010,6 +1004,7 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysInDays($days, $holidays=null)
     {
+        $this->setTime(0,0,0);
         if($holidays === null || $holidays === 'all') {
             $holidays = $this->holidayArray;
         }
@@ -1039,7 +1034,7 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysInYears($years, $holidays=null)
     {
-        $days = $this->diffInDays($this->copy()->addYears($years));
+        $days = $this->diffInDays($this->copy()->addYears($years)->subDays(1));
         return $this->getHolidaysInDays($days, $holidays);
     }
 
