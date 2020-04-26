@@ -137,7 +137,7 @@ class CarbonTest extends TestCase
                     $q1->next(Carbon::MONDAY);
                 }
 
-                if($q1 < Carbon::now()) {
+                if($q1 < Carbon::create(2020, 1, 15)) {
                     $q1 = Carbon::create($carbon->year + 1, 4, 15, 0, 0, 0);
 
                     if($q1->isBankHoliday()) {
