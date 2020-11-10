@@ -917,6 +917,12 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysByYear($name, $year=null)
     {
+        // this is primarily for isBankHoliday() can get a list of holidays without a loop
+        $bankHolidayCheck = true;
+        if($name == 'no-bank-check') {
+            $bankHolidayCheck = false;
+            $name = 'all';
+        }
         if($name == 'all' || $name == null) $name = $this->holidayArray;
         $year = $year ? $year : $this->year;
         $holidays = $this->holidays($year);
@@ -942,8 +948,8 @@ class Carbon extends \Carbon\Carbon {
                 $days_until = $this->diffInDays($date);
 
                 $bankHoliday = $holidays[$index]['bank_holiday'];
-                if($bankHoliday) {
-                    if($this->isWeekend()) $bankHoliday = false;
+                if($bankHoliday && $bankHolidayCheck) {
+                    $date->isBankHoliday();
                 }
 
                 $details = (object) [
@@ -973,8 +979,9 @@ class Carbon extends \Carbon\Carbon {
                             $days_until =  $this->diffInDays($date);
 
                             $bankHoliday = $holidays[$index]['bank_holiday'];
-                            if($bankHoliday) {
-                                if($this->isWeekend()) $bankHoliday = false;
+
+                            if($bankHoliday && $bankHolidayCheck) {
+                                $date->isBankHoliday();
                             }
 
                             $details = (object) [
@@ -1009,8 +1016,16 @@ class Carbon extends \Carbon\Carbon {
             $holidays = $this->holidayArray;
         }
 
-        $searchStartDate = $this->copy();
-        $searchEndDate = $this->copy()->addDays($days)->year;
+        if($days > 0) {
+            $searchStartDate = $this->copy();
+            $searchEndDate = $this->copy()->addDays($days)->year;
+        } else {
+            $days = $days * -1;
+
+            $searchEndDate = $this->copy()->year;
+            $searchStartDate = $this->copy()->subDays($days);
+
+        }
 
         $holidaysInRange = array();
         for ($i=$searchStartDate->year; $i <= $searchEndDate; $i++) {
@@ -1034,7 +1049,12 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysInYears($years, $holidays=null)
     {
-        $days = $this->diffInDays($this->copy()->addYears($years)->subDays(1));
+        if($years > 0) {
+            $days = $this->diffInDays($this->copy()->addYears($years)->subDays(1));
+        } else {
+            $days = $this->diffInDays($this->copy()->subYears($years)->subDays(1)) * -1;
+        }
+
         return $this->getHolidaysInDays($days, $holidays);
     }
 
@@ -1062,7 +1082,7 @@ class Carbon extends \Carbon\Carbon {
      */
     public function isBankHoliday()
     {
-        $holidays = $this->getHolidaysByYear('all');
+        $holidays = $this->getHolidaysByYear('no-bank-check');
         $isBankHoliday = false;
 
         foreach ( $holidays as $holiday) {
@@ -1120,8 +1140,76 @@ class Carbon extends \Carbon\Carbon {
         return $holidayName;
     }
 
-     /**
-      * Return date of April Fools Day for given year
+    /**
+     * Return next holiday(s)
+     *
+     * @param int|null $number the number of holidays to get. default is 1
+     */
+    public function getNextHolidays($number=1)
+    {
+        $number_of_years = ceil($number / 41);
+
+        $holidays = $this->getHolidaysInYears($number_of_years);
+        $count = count($holidays);
+
+        return array_slice($holidays, 0, $number);
+    }
+
+    /**
+     * Return previous holiday(s)
+     *
+     * @param int|null $number the number of holidays to get. default is 1
+     */
+    public function getPrevHolidays($number=1)
+    {
+        $number_of_years = ceil($number / 41) * -1;
+
+        $holidays = $this->getHolidaysInYears($number_of_years);
+        $count = count($holidays);
+
+        return array_reverse(array_slice($holidays, $count - $number, $count));
+
+
+        // $holidays = $this->copy()->subyear()->getHolidaysInYears(1);
+        // $last_holiday = end($holidays);
+        //
+        // return $this->getHolidaysByYear($last_holiday->name, $last_holiday->date->format('Y'))[0];
+    }
+
+    /**
+     * Return next holiday name
+     */
+    public function getNextHolidayName()
+    {
+        return $this->getNextHolidays()[0]->name;
+    }
+
+    /**
+     * Return next holiday days away
+     */
+    public function getNextHolidayDays()
+    {
+        return $this->getNextHolidays()[0]->days_away;
+    }
+
+    /**
+     * Return next holiday name
+     */
+    public function getPrevHolidayName()
+    {
+        return $this->getPrevHolidays()[0]->name;
+    }
+
+    /**
+     * Return next holiday days away
+     */
+    public function getPrevHolidayDays()
+    {
+        return $this->getPrevHolidays()[0]->days_away;
+    }
+
+    /**
+      * Return object of April Fools Day for given year
       *
       * @param int|null $year The year to get the holiday in
       */
@@ -1131,7 +1219,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Armed Forces Day for given year
+     * Return object of Armed Forces Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1141,7 +1229,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Ash Wednesday for given year
+     * Return object of Ash Wednesday for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1151,7 +1239,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Black Friday for given year
+     * Return object of Black Friday for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1161,7 +1249,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Christmas Day for given year
+     * Return object of Christmas Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1171,7 +1259,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Christmas Eve for given year
+     * Return object of Christmas Eve for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1181,7 +1269,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Cinco de Mayo for given year
+     * Return object of Cinco de Mayo for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1191,7 +1279,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Columbus Day for given year
+     * Return object of Columbus Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1201,7 +1289,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Daylight Saving (End) for given year
+     * Return object of Daylight Saving (End) for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1211,7 +1299,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Daylight Saving (Start) for given year
+     * Return object of Daylight Saving (Start) for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1221,7 +1309,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Earth Day for given year
+     * Return object of Earth Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1231,7 +1319,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Easter for given year
+     * Return object of Easter for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1241,7 +1329,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Father Day for given year
+     * Return object of Father Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1251,7 +1339,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Flag Day for given year
+     * Return object of Flag Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1261,7 +1349,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Good Friday for given year
+     * Return object of Good Friday for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1271,7 +1359,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Groundhog Day for given year
+     * Return object of Groundhog Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1281,7 +1369,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Halloween for given year
+     * Return object of Halloween for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1291,7 +1379,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Hanukkah for given year
+     * Return object of Hanukkah for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1301,7 +1389,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Independence Day for given year
+     * Return object of Independence Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1311,7 +1399,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Indigenous Peoples Day for given year
+     * Return object of Indigenous Peoples Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1321,7 +1409,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Juneteenth for given year
+     * Return object of Juneteenth for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1331,7 +1419,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Kwanzaa for given year
+     * Return object of Kwanzaa for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1341,7 +1429,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Labor Day for given year
+     * Return object of Labor Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1351,7 +1439,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Memorial Day for given year
+     * Return object of Memorial Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1361,7 +1449,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of MLK Day for given year
+     * Return object of MLK Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1371,7 +1459,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Mothers Day for given year
+     * Return object of Mothers Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1381,7 +1469,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of New Years Day for given year
+     * Return object of New Years Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1391,7 +1479,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of New Years Eve for given year
+     * Return object of New Years Eve for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1401,7 +1489,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Orthodox Easter for given year
+     * Return object of Orthodox Easter for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1411,7 +1499,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Palm Sunday for given year
+     * Return object of Palm Sunday for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1421,7 +1509,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Passover for given year
+     * Return object of Passover for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1431,7 +1519,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Patriot Day for given year
+     * Return object of Patriot Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1441,7 +1529,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Pearl Harbor Remembrance Day for given year
+     * Return object of Pearl Harbor Remembrance Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1451,7 +1539,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Presidents Day for given year
+     * Return object of Presidents Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1461,7 +1549,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Rosh Hashanah for given year
+     * Return object of Rosh Hashanah for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1471,7 +1559,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of St Patricks Day for given year
+     * Return object of St Patricks Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1481,7 +1569,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Tax Day for given year
+     * Return object of Tax Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1491,7 +1579,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Thanksgiving for given year
+     * Return object of Thanksgiving for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1501,7 +1589,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Valentines Day for given year
+     * Return object of Valentines Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1511,7 +1599,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Veterans Day for given year
+     * Return object of Veterans Day for given year
      *
      * @param int|null $year The year to get the holiday in
      */
@@ -1521,7 +1609,7 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Return date of Yom Kippur for given year
+     * Return object of Yom Kippur for given year
      *
      * @param int|null $year The year to get the holiday in
      */

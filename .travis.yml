@@ -16,6 +16,10 @@ matrix:
     - php: 7.1
       env: CARBON_V=2
     - php: 7.2
+      env: CARBON_V=2  
+    - php: 7.3
+      env: CARBON_V=2
+    - php: 7.4
       env:
         - CARBON_V=2
         - COVERAGE=true

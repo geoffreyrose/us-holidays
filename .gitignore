@@ -8,6 +8,13 @@ index.php
 reports
 clover.xml
 coverage.xml
+assets
+package-lock.json
+package.json
+mix-manifest.json
+phpDocumentor.phar
+webpack.mix.js
+.phpdoc
 
 ## MAC STUFF
 .DS_Store
