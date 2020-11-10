@@ -104,6 +104,14 @@ $holidays = new Carbon();
     <li><a class="text-break" href="#isHoliday">isHoliday()</a></li>
     <li><a class="text-break" href="#isBankHoliday">isBankHoliday()</a></li>
     <li><a class="text-break" href="#getHolidayName">getHolidayName()</a></li>
+
+    <li><a class="text-break" href="#getNextHolidays">getNextHolidays()</a></li>
+    <li><a class="text-break" href="#getPrevHolidays">getPrevHolidays()</a></li>
+    <li><a class="text-break" href="#getNextHolidayName">getNextHolidayName()</a></li>
+    <li><a class="text-break" href="#getNextHolidayDays">getNextHolidayDays()</a></li>
+    <li><a class="text-break" href="#getPrevHolidayName">getPrevHolidayName()</a></li>
+    <li><a class="text-break" href="#getPrevHolidayDays">getPrevHolidayDays()</a></li>
+
     <li><a class="text-break" href="#getAprilFoolsDayHoliday">getAprilFoolsDayHoliday()</a></li>
     <li><a class="text-break" href="#getArmedForcesDayHoliday">getArmedForcesDayHoliday()</a></li>
     <li><a class="text-break" href="#getAshWednesdayHoliday">getAshWednesdayHoliday()</a></li>
@@ -457,9 +465,84 @@ $carbon = Carbon::create(2016, 12, 26); // Monday
 $carbon->getHolidayName(); // Christmas Day (Observed), Kwanzaa
 </code></pre>
 
+
+
+<h3 id="getNextHolidays" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidays"># getNextHolidays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<p>Get the next $number of holidays</p>
+<p><code class="language-php text-break">getNextHolidays(int $number=1) : string|false</code></p>
+<pre><code class="language-php">$carbon = Carbon::create(2020, 5, 17);
+$carbon->getNextHolidays(2);
+
+// [
+//     {
+//     	"name": "Memorial Day", // string
+//     	"date": "2020-05-25 00:00:00", // DateTime object
+//     	"bank_holiday": true,// boolean
+//     	"days_away": 8 // int
+//     }, {
+//     	"name": "Flag Day", // string
+//     	"date": "2020-06-14 00:00:00", // DateTime object
+//     	"bank_holiday": false, // boolean
+//     	"days_away": 28 // int
+//     },
+// ]
+
+</code></pre>
+
+<h3 id="getPrevHolidays" class="mt-5 text-break"><a class="text-dark" href="#getPrevHolidays"># getPrevHolidays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<p>Get the previous $number of holidays</p>
+<p><code class="language-php text-break">getPrevHolidays(int $number=1) : array : object</code></p>
+<pre><code class="language-php">$carbon = Carbon::create(2020, 2, 9);
+$carbon->getPrevHolidays(2);
+
+// [
+//     {
+//     	"name": "Groundhog Day", // string
+//     	"date": "2020-02-02 00:00:00", // DateTime object
+//     	"bank_holiday": false,// boolean
+//     	"days_away": 7 // int
+//     }, {
+//     	"name": "Martin Luther King Jr. Day", // string
+//     	"date": "2020-01-20 00:00:00", // DateTime object
+//     	"bank_holiday": true, // boolean
+//     	"days_away": 20 // int
+//     },
+// ]
+</code></pre>
+
+<h3 id="getNextHolidayName" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidayName"># getNextHolidayName()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<p>Get name of the next holiday. Returns string</p>
+<p><code class="language-php text-break">getNextHolidayName() : string</code></p>
+<pre><code class="language-php">$carbon = Carbon::create(2020, 6, 12);
+$carbon->getNextHolidayName(); // Flag Day
+</code></pre>
+
+<h3 id="getNextHolidayDays" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidayDays"># getNextHolidayDays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<p>Get number of days away the next holiday is. Returns int</p>
+<p><code class="language-php text-break">getNextHolidayDays() : int</code></p>
+<pre><code class="language-php">$carbon = Carbon::create(2020, 6, 12);
+$carbon->getNextHolidayDays(); // 2
+</code></pre>
+
+<h3 id="getPrevHolidayName" class="mt-5 text-break"><a class="text-dark" href="#getPrevHolidayName"># getPrevHolidayName()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<p>Get name of the previous holiday. Returns string</p>
+<p><code class="language-php text-break">getPrevHolidayName() : string</code></p>
+<pre><code class="language-php">$carbon = Carbon::create(2020, 11, 7);
+$carbon->getPrevHolidayName(); // Daylight Saving (End)
+</code></pre>
+
+<h3 id="getPrevHolidayDays" class="mt-5 text-break"><a class="text-dark" href="#getPrevHolidayDays"># getPrevHolidayDays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<p>Get number of days away the previous holiday is. Returns int</p>
+<p><code class="language-php text-break">getPrevHolidayDays() : int</code></p>
+<pre><code class="language-php">$carbon = Carbon::create(2020, 11, 7);
+$carbon->getPrevHolidayDays(); // 6
+</code></pre>
+
+
+
 <h3 id="getAprilFoolsDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getAprilFoolsDayHoliday"># getAprilFoolsDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get April Fool's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get April Fool's Day in a given year.</p>
-<p><code class="language-php text-break">getAprilFoolsDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getAprilFoolsDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getAprilFoolsDayHoliday();
 
@@ -488,7 +571,7 @@ $holidays->getAprilFoolsDayHoliday(2022);
 
 <h3 id="getArmedForcesDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getArmedForcesDayHoliday"># getArmedForcesDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Armed Forces Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Armed Forces Day in a given year.</p>
-<p><code class="language-php text-break">getArmedForcesDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getArmedForcesDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getArmedForcesDayHoliday();
 
@@ -517,7 +600,7 @@ $holidays->getArmedForcesDayHoliday(2022);
 
 <h3 id="getAshWednesdayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getAshWednesdayHoliday"># getAshWednesdayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Ash Wednesday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Ash Wednesday in a given year.</p>
-<p><code class="language-php text-break">getAshWednesdayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getAshWednesdayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getAshWednesdayHoliday();
 
@@ -546,7 +629,7 @@ $holidays->getAshWednesdayHoliday(2022);
 
 <h3 id="getBlackFridayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getBlackFridayHoliday"># getBlackFridayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Black Friday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Black Friday in a given year.</p>
-<p><code class="language-php text-break">getBlackFridayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getBlackFridayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getBlackFridayHoliday();
 
@@ -575,7 +658,7 @@ $holidays->getBlackFridayHoliday(2022);
 
 <h3 id="getChristmasDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getChristmasDayHoliday"># getChristmasDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Christmas Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Christmas Day in a given year.</p>
-<p><code class="language-php text-break">getChristmasDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getChristmasDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getChristmasDayHoliday();
 
@@ -604,7 +687,7 @@ $holidays->getChristmasDayHoliday(2022);
 
 <h3 id="getChristmasEveHoliday" class="mt-5 text-break"><a class="text-dark" href="#getChristmasEveHoliday"># getChristmasEveHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Christmas Eve for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Christmas Eve in a given year.</p>
-<p><code class="language-php text-break">getChristmasEveHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getChristmasEveHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getChristmasEveHoliday();
 
@@ -633,7 +716,7 @@ $holidays->getChristmasEveHoliday(2022);
 
 <h3 id="getCincoDeMayoHoliday" class="mt-5 text-break"><a class="text-dark" href="#getCincoDeMayoHoliday"># getCincoDeMayoHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Cinco de Mayo for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Cinco de Mayo in a given year.</p>
-<p><code class="language-php text-break">getCincoDeMayoHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getCincoDeMayoHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getCincoDeMayoHoliday();
 
@@ -662,7 +745,7 @@ $holidays->getCincoDeMayoHoliday(2022);
 
 <h3 id="getColumbusDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getColumbusDayHoliday"># getColumbusDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Columbus Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Columbus Day in a given year.</p>
-<p><code class="language-php text-break">getColumbusDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getColumbusDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getColumbusDayHoliday();
 
@@ -691,7 +774,7 @@ $holidays->getColumbusDayHoliday(2022);
 
 <h3 id="getDaylightSavingEndHoliday" class="mt-5 text-break"><a class="text-dark" href="#getDaylightSavingEndHoliday"># getDaylightSavingEndHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Daylight Saving (End) for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Daylight Saving (End) in a given year.</p>
-<p><code class="language-php text-break">getDaylightSavingEndHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getDaylightSavingEndHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getDaylightSavingEndHoliday();
 
@@ -720,7 +803,7 @@ $holidays->getDaylightSavingEndHoliday(2022);
 
 <h3 id="getDaylightSavingStartHoliday" class="mt-5 text-break"><a class="text-dark" href="#getDaylightSavingStartHoliday"># getDaylightSavingStartHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Daylight Saving (Start) for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Daylight Saving (Start) in a given year.</p>
-<p><code class="language-php text-break">getDaylightSavingStartHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getDaylightSavingStartHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getDaylightSavingStartHoliday();
 
@@ -749,7 +832,7 @@ $holidays->getDaylightSavingStartHoliday(2022);
 
 <h3 id="getEarthDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getEarthDayHoliday"># getEarthDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Earth Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Earth Day in a given year.</p>
-<p><code class="language-php text-break">getEarthDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getEarthDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getEarthDayHoliday();
 
@@ -778,7 +861,7 @@ $holidays->getEarthDayHoliday(2022);
 
 <h3 id="getEasterHoliday" class="mt-5 text-break"><a class="text-dark" href="#getEasterHoliday"># getEasterHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Easter for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Easter in a given year.</p>
-<p><code class="language-php text-break">getEasterHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getEasterHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getEasterHoliday();
 
@@ -807,7 +890,7 @@ $holidays->getEasterHoliday(2022);
 
 <h3 id="getFathersDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getFathersDayHoliday"># getFathersDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Father's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Father's Day in a given year.</p>
-<p><code class="language-php text-break">getFathersDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getFathersDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getFathersDayHoliday();
 
@@ -836,7 +919,7 @@ $holidays->getFathersDayHoliday(2022);
 
 <h3 id="getFlagDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getFlagDayHoliday"># getFlagDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Flag Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Flag Day in a given year.</p>
-<p><code class="language-php text-break">getFlagDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getFlagDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getFlagDayHoliday();
 
@@ -865,7 +948,7 @@ $holidays->getFlagDayHoliday(2022);
 
 <h3 id="getGoodFridayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getGoodFridayHoliday"># getGoodFridayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Good Friday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Good Friday in a given year.</p>
-<p><code class="language-php text-break">getGoodFridayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getGoodFridayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getGoodFridayHoliday();
 
@@ -894,7 +977,7 @@ $holidays->getGoodFridayHoliday(2022);
 
 <h3 id="getGroundhogDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getGroundhogDayHoliday"># getGroundhogDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Groundhog Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Groundhog Day in a given year.</p>
-<p><code class="language-php text-break">getGroundhogDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getGroundhogDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getGroundhogDayHoliday();
 
@@ -923,7 +1006,7 @@ $holidays->getGroundhogDayHoliday(2022);
 
 <h3 id="getHalloweenHoliday" class="mt-5 text-break"><a class="text-dark" href="#getHalloweenHoliday"># getHalloweenHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Halloween for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Halloween in a given year.</p>
-<p><code class="language-php text-break">getHalloweenHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getHalloweenHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getHalloweenHoliday();
 
@@ -952,7 +1035,7 @@ $holidays->getHalloweenHoliday(2022);
 
 <h3 id="getHanukkahHoliday" class="mt-5 text-break"><a class="text-dark" href="#getHanukkahHoliday"># getHanukkahHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Hanukkah for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Hanukkah in a given year.</p>
-<p><code class="language-php text-break">getHanukkahHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getHanukkahHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getHanukkahHoliday();
 
@@ -981,7 +1064,7 @@ $holidays->getHanukkahHoliday(2022);
 
 <h3 id="getIndependenceDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getIndependenceDayHoliday"># getIndependenceDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Independence Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Independence Day in a given year.</p>
-<p><code class="language-php text-break">getIndependenceDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getIndependenceDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getIndependenceDayHoliday();
 
@@ -1010,7 +1093,7 @@ $holidays->getIndependenceDayHoliday(2022);
 
 <h3 id="getIndigenousPeoplesDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getIndigenousPeoplesDayHoliday"># getIndigenousPeoplesDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Indigenous Peoples' Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Indigenous Peoples' Day in a given year.</p>
-<p><code class="language-php text-break">getIndigenousPeoplesDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getIndigenousPeoplesDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getIndigenousPeoplesDayHoliday();
 
@@ -1039,7 +1122,7 @@ $holidays->getIndigenousPeoplesDayHoliday(2022);
 
 <h3 id="getJuneteenthHoliday" class="mt-5 text-break"><a class="text-dark" href="#getJuneteenthHoliday"># getJuneteenthHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Juneteenth for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Juneteenth in a given year.</p>
-<p><code class="language-php text-break">getJuneteenthHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getJuneteenthHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getJuneteenthHoliday();
 
@@ -1068,7 +1151,7 @@ $holidays->getJuneteenthHoliday(2022);
 
 <h3 id="getKwanzaaHoliday" class="mt-5 text-break"><a class="text-dark" href="#getKwanzaaHoliday"># getKwanzaaHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Kwanzaa for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Kwanzaa in a given year.</p>
-<p><code class="language-php text-break">getKwanzaaHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getKwanzaaHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getKwanzaaHoliday();
 
@@ -1097,7 +1180,7 @@ $holidays->getKwanzaaHoliday(2022);
 
 <h3 id="getLaborDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getLaborDayHoliday"># getLaborDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Labor Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Labor Day in a given year.</p>
-<p><code class="language-php text-break">getLaborDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getLaborDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getLaborDayHoliday();
 
@@ -1126,7 +1209,7 @@ $holidays->getLaborDayHoliday(2022);
 
 <h3 id="getMemorialDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getMemorialDayHoliday"># getMemorialDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Memorial Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Memorial Day in a given year.</p>
-<p><code class="language-php text-break">getMemorialDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getMemorialDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getMemorialDayHoliday();
 
@@ -1155,7 +1238,7 @@ $holidays->getMemorialDayHoliday(2022);
 
 <h3 id="getMLKDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getMLKDayHoliday"># getMLKDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Martin Luther King Jr. Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Martin Luther King Jr. Day in a given year.</p>
-<p><code class="language-php text-break">getMLKDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getMLKDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getMLKDayHoliday();
 
@@ -1184,7 +1267,7 @@ $holidays->getMLKDayHoliday(2022);
 
 <h3 id="getMothersDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getMothersDayHoliday"># getMothersDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Mother's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Mother's Day in a given year.</p>
-<p><code class="language-php text-break">getMothersDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getMothersDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getMothersDayHoliday();
 
@@ -1213,7 +1296,7 @@ $holidays->getMothersDayHoliday(2022);
 
 <h3 id="getNewYearsDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getNewYearsDayHoliday"># getNewYearsDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get New Year's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get New Year's Day in a given year.</p>
-<p><code class="language-php text-break">getNewYearsDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getNewYearsDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getNewYearsDayHoliday();
 
@@ -1242,7 +1325,7 @@ $holidays->getNewYearsDayHoliday(2022);
 
 <h3 id="getNewYearsEveHoliday" class="mt-5 text-break"><a class="text-dark" href="#getNewYearsEveHoliday"># getNewYearsEveHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get New Year's Eve for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get New Year's Eve in a given year.</p>
-<p><code class="language-php text-break">getNewYearsEveHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getNewYearsEveHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getNewYearsEveHoliday();
 
@@ -1271,7 +1354,7 @@ $holidays->getNewYearsEveHoliday(2022);
 
 <h3 id="getOrthodoxEasterHoliday" class="mt-5 text-break"><a class="text-dark" href="#getOrthodoxEasterHoliday"># getOrthodoxEasterHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Orthodox Easter for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Orthodox Easter in a given year.</p>
-<p><code class="language-php text-break">getOrthodoxEasterHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getOrthodoxEasterHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getOrthodoxEasterHoliday();
 
@@ -1300,7 +1383,7 @@ $holidays->getOrthodoxEasterHoliday(2022);
 
 <h3 id="getPalmSundayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPalmSundayHoliday"># getPalmSundayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Palm Sunday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Palm Sunday in a given year.</p>
-<p><code class="language-php text-break">getPalmSundayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getPalmSundayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getPalmSundayHoliday();
 
@@ -1329,7 +1412,7 @@ $holidays->getPalmSundayHoliday(2022);
 
 <h3 id="getPassoverHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPassoverHoliday"># getPassoverHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Passover for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Passover in a given year.</p>
-<p><code class="language-php text-break">getPassoverHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getPassoverHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getPassoverHoliday();
 
@@ -1358,7 +1441,7 @@ $holidays->getPassoverHoliday(2022);
 
 <h3 id="getPatriotDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPatriotDayHoliday"># getPatriotDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Patriot Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Patriot Day in a given year.</p>
-<p><code class="language-php text-break">getPatriotDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getPatriotDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getPatriotDayHoliday();
 
@@ -1387,7 +1470,7 @@ $holidays->getPatriotDayHoliday(2022);
 
 <h3 id="getPearlHarborRemembranceDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPearlHarborRemembranceDayHoliday"># getPearlHarborRemembranceDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Pearl Harbor Remembrance Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Pearl Harbor Remembrance Day in a given year.</p>
-<p><code class="language-php text-break">getPearlHarborRemembranceDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getPearlHarborRemembranceDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getPearlHarborRemembranceDayHoliday()
 
@@ -1416,7 +1499,7 @@ $holidays->getPearlHarborRemembranceDayHoliday(2022);
 
 <h3 id="getPresidentsDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPresidentsDayHoliday"># getPresidentsDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Presidents' Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Presidents' Day in a given year.</p>
-<p><code class="language-php text-break">getPresidentsDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getPresidentsDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getPresidentsDayHoliday();
 
@@ -1445,7 +1528,7 @@ $holidays->getPresidentsDayHoliday(2022);
 
 <h3 id="getRoshHashanahHoliday" class="mt-5 text-break"><a class="text-dark" href="#getRoshHashanahHoliday"># getRoshHashanahHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Rosh Hashanah for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Rosh Hashanah in a given year.</p>
-<p><code class="language-php text-break">getRoshHashanahHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getRoshHashanahHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getRoshHashanahHoliday();
 
@@ -1474,7 +1557,7 @@ $holidays->getRoshHashanahHoliday(2022);
 
 <h3 id="getStPatricksDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getStPatricksDayHoliday"># getStPatricksDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get St. Patrick's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get St. Patrick's Day in a given year.</p>
-<p><code class="language-php text-break">getStPatricksDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getStPatricksDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getStPatricksDayHoliday();
 
@@ -1503,7 +1586,7 @@ $holidays->getStPatricksDayHoliday(2022);
 
 <h3 id="getTaxDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getTaxDayHoliday"># getTaxDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Tax Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Tax Day in a given year.</p>
-<p><code class="language-php text-break">getTaxDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getTaxDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getTaxDayHoliday();
 
@@ -1532,7 +1615,7 @@ $holidays->getTaxDayHoliday(2022);
 
 <h3 id="getThanksgivingHoliday" class="mt-5 text-break"><a class="text-dark" href="#getThanksgivingHoliday"># getThanksgivingHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Thanksgiving for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Thanksgiving in a given year.</p>
-<p><code class="language-php text-break">getThanksgivingHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getThanksgivingHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getThanksgivingHoliday();
 
@@ -1561,7 +1644,7 @@ $holidays->getThanksgivingHoliday(2022);
 
 <h3 id="getValentinesDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getValentinesDayHoliday"># getValentinesDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Valentine's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Valentine's Day in a given year.</p>
-<p><code class="language-php text-break">getValentinesDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getValentinesDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getValentinesDayHoliday();
 
@@ -1590,7 +1673,7 @@ $holidays->getValentinesDayHoliday(2022);
 
 <h3 id="getVeteransDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getVeteransDayHoliday"># getVeteransDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Veterans Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Veterans Day in a given year.</p>
-<p><code class="language-php text-break">getVeteransDayHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getVeteransDayHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getVeteransDayHoliday();
 
@@ -1619,7 +1702,7 @@ $holidays->getVeteransDayHoliday(2022);
 
 <h3 id="getYomKippurHoliday" class="mt-5 text-break"><a class="text-dark" href="#getYomKippurHoliday"># getYomKippurHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get Yom Kippur for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Yom Kippur in a given year.</p>
-<p><code class="language-php text-break">getYomKippurHoliday(int year=null) : object</code></p>
+<p><code class="language-php text-break">getYomKippurHoliday(int $year=null) : object</code></p>
 <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
 $holidays->getYomKippurHoliday();
 
