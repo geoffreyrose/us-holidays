@@ -469,7 +469,7 @@ $carbon->getHolidayName(); // Christmas Day (Observed), Kwanzaa
 
 <h3 id="getNextHolidays" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidays"># getNextHolidays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
 <p>Get the next $number of holidays</p>
-<p><code class="language-php text-break">getNextHolidays(int $number=1) : string|false</code></p>
+<p><code class="language-php text-break">getNextHolidays(int $number=1) : array : object</code></p>
 <pre><code class="language-php">$carbon = Carbon::create(2020, 5, 17);
 $carbon->getNextHolidays(2);
 
