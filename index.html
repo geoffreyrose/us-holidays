@@ -225,13 +225,13 @@ $holidays = $carbon->getHolidaysByYear('all');
 // [
 //     {
 //         "name": "New Year's Day", // string
-//         "date": "2020-01-01 00:00:00", // DateTime object
+//         "date": "2020-01-01 00:00:00", // Carbon object
 //         "bank_holiday": true, // boolean
 //         "days_away": 0, // int
 //     },
 //     {
 //     	"name": "Martin Luther King Jr. Day", // string
-//     	"date": "2020-01-20 00:00:00", // DateTime object
+//     	"date": "2020-01-20 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 19 // int
 //     }
@@ -250,7 +250,7 @@ $holidays = $carbon->getHolidaysByYear('all', 1999);
 //     ...
 //     {
 //         "name": "April Fool's Day", // string
-//         "date": "1999-04-01 00:00:00", // DateTime object
+//         "date": "1999-04-01 00:00:00", // Carbon object
 //         "bank_holiday": false, // boolean
 //         "days_away": 7580 // int
 //     }
@@ -264,17 +264,17 @@ $holidays = $carbon->getHolidaysByYear(["Christmas Day", "Easter", "Independence
 // [
 //     {
 //     	"name": "Easter", // string
-//     	"date": "2020-04-12 00:00:00", // DateTime object
+//     	"date": "2020-04-12 00:00:00", // Carbon object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 35 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2020-07-04 00:00:00", // DateTime object
+//     	"date": "2020-07-04 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 118 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25 00:00:00", // DateTime object
+//     	"date": "2020-12-25 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 292 // int
 //     }
@@ -287,17 +287,17 @@ $holidays = $carbon->getHolidaysByYear(["Christmas Day", "Easter", "Independence
 // [
 //     {
 //     	"name": "Easter", // string
-//     	"date": "2024-03-31 00:00:00", // DateTime object
+//     	"date": "2024-03-31 00:00:00", // Carbon object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 1484 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2024-07-04 00:00:00", // DateTime object
+//     	"date": "2024-07-04 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 1579 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2024-12-25 00:00:00", // DateTime object
+//     	"date": "2024-12-25 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 1753 // int
 //     }
@@ -317,12 +317,12 @@ $holidays = $carbon->getHolidaysInDays(300);
 // [
 //     {
 //         "name": "Flag Day", // string
-//         "date": "2020-06-14 00:00:00", // DateTime object
+//         "date": "2020-06-14 00:00:00", // Carbon object
 //         "bank_holiday": false, // boolean
 //         "days_away": 17 // int
 //     }, {
 //         "name": "Juneteenth", // string
-//         "date": "2020-06-19 00:00:00", // DateTime object
+//         "date": "2020-06-19 00:00:00", // Carbon object
 //         "bank_holiday": false, // boolean
 //         "days_away": 22 // int
 //     },
@@ -340,12 +340,12 @@ $holidays = $carbon->getHolidaysInDays(300, ["Christmas Day", "Easter", "Indepen
 // [
 //     {
 //     	"name": "Independence Day", // string
-//     	"date": "2020-07-04 00:00:00", // DateTime object
+//     	"date": "2020-07-04 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 37 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25 00:00:00", // DateTime object
+//     	"date": "2020-12-25 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 211 // int
 //     }
@@ -368,12 +368,12 @@ $holidays = $carbon->getHolidaysInYears(1);
 // [
 //     {
 //     	"name": "Labor Day", // string
-//     	"date": "2020-09-07 00:00:00", // DateTime object
+//     	"date": "2020-09-07 00:00:00", // Carbon object
 //     	"bank_holiday": true,// boolean
 //     	"days_away": 20 // int
 //     }, {
 //     	"name": "Patriot Day", // string
-//     	"date": "2020-09-11 00:00:00", // DateTime object
+//     	"date": "2020-09-11 00:00:00", // Carbon object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 24 // int
 //     },
@@ -391,32 +391,32 @@ $holidays = $carbon->getHolidaysInYears(2, ["Christmas Day", "Easter", "Independ
 // [
 //     {
 //     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25 00:00:00", // DateTime object
+//     	"date": "2020-12-25 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 129 // int
 //     }, {
 //     	"name": "Easter", // string
-//     	"date": "2021-04-04 00:00:00", // DateTime object
+//     	"date": "2021-04-04 00:00:00", // Carbon object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 229 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2021-07-04 00:00:00", // DateTime object
+//     	"date": "2021-07-04 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 320 // int
 //     }, {
 //     	"name": "Christmas Day", // string
-//     	"date": "2021-12-25 00:00:00", // DateTime object
+//     	"date": "2021-12-25 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 494 // int
 //     }, {
 //     	"name": "Easter", // string
-//     	"date": "2022-04-17 00:00:00", // DateTime object
+//     	"date": "2022-04-17 00:00:00", // Carbon object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 607 // int
 //     }, {
 //     	"name": "Independence Day", // string
-//     	"date": "2022-07-04 00:00:00", // DateTime object
+//     	"date": "2022-07-04 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 685 // int
 //     }
@@ -476,12 +476,12 @@ $carbon->getNextHolidays(2);
 // [
 //     {
 //     	"name": "Memorial Day", // string
-//     	"date": "2020-05-25 00:00:00", // DateTime object
+//     	"date": "2020-05-25 00:00:00", // Carbon object
 //     	"bank_holiday": true,// boolean
 //     	"days_away": 8 // int
 //     }, {
 //     	"name": "Flag Day", // string
-//     	"date": "2020-06-14 00:00:00", // DateTime object
+//     	"date": "2020-06-14 00:00:00", // Carbon object
 //     	"bank_holiday": false, // boolean
 //     	"days_away": 28 // int
 //     },
@@ -498,12 +498,12 @@ $carbon->getPrevHolidays(2);
 // [
 //     {
 //     	"name": "Groundhog Day", // string
-//     	"date": "2020-02-02 00:00:00", // DateTime object
+//     	"date": "2020-02-02 00:00:00", // Carbon object
 //     	"bank_holiday": false,// boolean
 //     	"days_away": 7 // int
 //     }, {
 //     	"name": "Martin Luther King Jr. Day", // string
-//     	"date": "2020-01-20 00:00:00", // DateTime object
+//     	"date": "2020-01-20 00:00:00", // Carbon object
 //     	"bank_holiday": true, // boolean
 //     	"days_away": 20 // int
 //     },
