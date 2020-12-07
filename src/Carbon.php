@@ -17,6 +17,17 @@ class Carbon extends \Carbon\Carbon {
     private $holidayArray = ["April Fool's Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
 
     /**
+     * An array of business days
+     */
+    private $businessDays = [1,2,3,4,5];
+
+
+
+    public function setHolidays($holidays)
+    {
+        $this->holidayArray = $holidays;
+    }
+    /**
      * Setting April Fools Day
      *
      * @param int $year The year to get the holiday in
@@ -1147,7 +1158,7 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getNextHolidays($number=1)
     {
-        $number_of_years = ceil($number / 41);
+        $number_of_years = ceil($number / count($this->holidayArray));
 
         $holidays = $this->getHolidaysInYears($number_of_years);
         $count = count($holidays);
@@ -1162,7 +1173,7 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getPrevHolidays($number=1)
     {
-        $number_of_years = ceil($number / 41) * -1;
+        $number_of_years = ceil($number / count($this->holidayArray)) * -1;
 
         $holidays = $this->getHolidaysInYears($number_of_years);
         $count = count($holidays);
@@ -1616,5 +1627,42 @@ class Carbon extends \Carbon\Carbon {
     public function getYomKippurHoliday($year = null)
     {
         return $this->getHolidaysByYear("Yom Kippur", $year)[0];
+    }
+
+
+    public function setBusinessHolidays($holidays)
+    {
+        return $this->businessHolidays = $holidays;
+    }
+
+    public function setBusinessDays($days)
+    {
+        return $this->businessDays = $days;
+    }
+
+    public function isBusinessDay()
+    {
+        return;  // boolean
+    }
+
+
+    public function nextBusinessDay()
+    {
+        return;  // Carbon date object, isHoliday, holiday data if is holiday
+    }
+
+    public function prevBusinessDay()
+    {
+        return;  // Carbon date object, isHoliday, holiday data if is holiday
+    }
+
+    public function currentOrNextBusinessDay()
+    {
+        return;  // Carbon date object, isHoliday, holiday data if is holiday
+    }
+
+    public function currentOrPreviousBusinessDay()
+    {
+        return;  // Carbon date object, isHoliday, holiday data if is holiday
     }
 }
