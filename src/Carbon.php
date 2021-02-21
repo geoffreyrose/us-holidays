@@ -906,7 +906,7 @@ class Carbon extends \Carbon\Carbon {
      */
     private function compareDate($a, $b)
     {
-        return $a->date > $b->date;
+        return $a->date <=> $b->date;
     }
 
     /**
