@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit backupGlobals="false"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
          colors="true"
@@ -8,25 +8,24 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
-
+         stopOnFailure="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+    <coverage>
+        <include>
+            <directory suffix=".php">src/</directory>
+        </include>
+        <report>
+            <clover outputFile="clover.xml"/>
+            <html outputDirectory="./reports/codeCoverage"/>
+        </report>
+    </coverage>
     <testsuites>
         <testsuite name="Carbon Holidays Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
-    <logging>
-        <log type="coverage-html" target="./reports/codeCoverage"/>
-        <log type="coverage-clover" target="clover.xml"/>
-    </logging>
+    <logging/>
     <php>
         <env name="APP_ENV" value="testing"/>
     </php>
-
 </phpunit>
