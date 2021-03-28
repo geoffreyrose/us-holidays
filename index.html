@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js" lang="en-US">
 <head>
@@ -8,10 +9,9 @@
     <title>US Holidays Wrapper for the PHP Carbon DateTime Library</title>
     <meta name="description" content="Adds support for 41 U.S. Holidays. Also supports adding your own holidays.">
 
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/prism.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/app.css?id=0e8b4dd906b76a063675">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900|Open+Sans:400,600&display=swap" rel="stylesheet">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40921821-5"></script>
     <script>
@@ -22,61 +22,139 @@
       gtag('config', 'UA-40921821-5');
     </script>
 </head>
-<body id="top" class="pt-4 pb-4">
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
+<body>
+    <nav class="main-nav fancy-scrollbar">
+        <span class="main-nav-heading">U.S. Holidays</span>
+        <ul class="main-nav-sub-menu">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#support-holidays">Support Holidays</a></li>
+            <li><a href="#how-to-use">How To Use</a></li>
+        </ul>
+                    <span class="main-nav-heading">Utlities</span>
+            <ul class="main-nav-sub-menu">
+                                    <li><a href="#addHoliday">addHoliday()</a></li>
+                                    <li><a href="#setHolidays">setHolidays()</a></li>
+                                    <li><a href="#getHolidaysByYear">getHolidaysByYear()</a></li>
+                                    <li><a href="#getHolidaysInDays">getHolidaysInDays()</a></li>
+                                    <li><a href="#getHolidaysInYears">getHolidaysInYears()</a></li>
+                                    <li><a href="#isHoliday">isHoliday()</a></li>
+                                    <li><a href="#setBankHolidays">setBankHolidays()</a></li>
+                                    <li><a href="#isBankHoliday">isBankHoliday()</a></li>
+                                    <li><a href="#getHolidayName">getHolidayName()</a></li>
+                                    <li><a href="#getNextHolidays">getNextHolidays()</a></li>
+                                    <li><a href="#getPrevHolidays">getPrevHolidays()</a></li>
+                                    <li><a href="#getNextHolidayName">getNextHolidayName()</a></li>
+                                    <li><a href="#getNextHolidayDays">getNextHolidayDays()</a></li>
+                                    <li><a href="#getPrevHolidayName">getPrevHolidayName()</a></li>
+                                    <li><a href="#getPrevHolidayDays">getPrevHolidayDays()</a></li>
+                            </ul>
+                    <span class="main-nav-heading">Business Days</span>
+            <ul class="main-nav-sub-menu">
+                                    <li><a href="#setBusinessDays">setBusinessDays()</a></li>
+                                    <li><a href="#isBusinessDay">isBusinessDay()</a></li>
+                                    <li><a href="#nextBusinessDay">nextBusinessDay()</a></li>
+                                    <li><a href="#prevBusinessDay">prevBusinessDay()</a></li>
+                                    <li><a href="#currentOrNextBusinessDay">currentOrNextBusinessDay()</a></li>
+                                    <li><a href="#currentOrPreviousBusinessDay">currentOrPreviousBusinessDay()</a></li>
+                            </ul>
+                    <span class="main-nav-heading">Holidays</span>
+            <ul class="main-nav-sub-menu">
+                                    <li><a href="#getAprilFoolsDayHoliday">getAprilFoolsDayHoliday()</a></li>
+                                    <li><a href="#getArmedForcesDayHoliday">getArmedForcesDayHoliday()</a></li>
+                                    <li><a href="#getAshWednesdayHoliday">getAshWednesdayHoliday()</a></li>
+                                    <li><a href="#getBlackFridayHoliday">getBlackFridayHoliday()</a></li>
+                                    <li><a href="#getChristmasDayHoliday">getChristmasDayHoliday()</a></li>
+                                    <li><a href="#getChristmasEveHoliday">getChristmasEveHoliday()</a></li>
+                                    <li><a href="#getCincoDeMayoHoliday">getCincoDeMayoHoliday()</a></li>
+                                    <li><a href="#getColumbusDayHoliday">getColumbusDayHoliday()</a></li>
+                                    <li><a href="#getDaylightSavingEndHoliday">getDaylightSavingEndHoliday()</a></li>
+                                    <li><a href="#getDaylightSavingStartHoliday">getDaylightSavingStartHoliday()</a></li>
+                                    <li><a href="#getEarthDayHoliday">getEarthDayHoliday()</a></li>
+                                    <li><a href="#getEasterHoliday">getEasterHoliday()</a></li>
+                                    <li><a href="#getFathersDayHoliday">getFathersDayHoliday()</a></li>
+                                    <li><a href="#getFlagDayHoliday">getFlagDayHoliday()</a></li>
+                                    <li><a href="#getGoodFridayHoliday">getGoodFridayHoliday()</a></li>
+                                    <li><a href="#getGroundhogDayHoliday">getGroundhogDayHoliday()</a></li>
+                                    <li><a href="#getHalloweenHoliday">getHalloweenHoliday()</a></li>
+                                    <li><a href="#getHanukkahHoliday">getHanukkahHoliday()</a></li>
+                                    <li><a href="#getIndependenceDayHoliday">getIndependenceDayHoliday()</a></li>
+                                    <li><a href="#getIndigenousPeoplesDayHoliday">getIndigenousPeoplesDayHoliday()</a></li>
+                                    <li><a href="#getJuneteenthHoliday">getJuneteenthHoliday()</a></li>
+                                    <li><a href="#getKwanzaaHoliday">getKwanzaaHoliday()</a></li>
+                                    <li><a href="#getLaborDayHoliday">getLaborDayHoliday()</a></li>
+                                    <li><a href="#getMemorialDayHoliday">getMemorialDayHoliday()</a></li>
+                                    <li><a href="#getMLKDayHoliday">getMLKDayHoliday()</a></li>
+                                    <li><a href="#getMothersDayHoliday">getMothersDayHoliday()</a></li>
+                                    <li><a href="#getNewYearsDayHoliday">getNewYearsDayHoliday()</a></li>
+                                    <li><a href="#getNewYearsEveHoliday">getNewYearsEveHoliday()</a></li>
+                                    <li><a href="#getOrthodoxEasterHoliday">getOrthodoxEasterHoliday()</a></li>
+                                    <li><a href="#getPalmSundayHoliday">getPalmSundayHoliday()</a></li>
+                                    <li><a href="#getPassoverHoliday">getPassoverHoliday()</a></li>
+                                    <li><a href="#getPatriotDayHoliday">getPatriotDayHoliday()</a></li>
+                                    <li><a href="#getPearlHarborRemembranceDayHoliday">getPearlHarborRemembranceDayHoliday()</a></li>
+                                    <li><a href="#getPresidentsDayHoliday">getPresidentsDayHoliday()</a></li>
+                                    <li><a href="#getRoshHashanahHoliday">getRoshHashanahHoliday()</a></li>
+                                    <li><a href="#getStPatricksDayHoliday">getStPatricksDayHoliday()</a></li>
+                                    <li><a href="#getTaxDayHoliday">getTaxDayHoliday()</a></li>
+                                    <li><a href="#getThanksgivingHoliday">getThanksgivingHoliday()</a></li>
+                                    <li><a href="#getValentinesDayHoliday">getValentinesDayHoliday()</a></li>
+                                    <li><a href="#getVeteransDayHoliday">getVeteransDayHoliday()</a></li>
+                                    <li><a href="#getYomKippurHoliday">getYomKippurHoliday()</a></li>
+                            </ul>
+                <span class="menu-toggle">Menu</span>
+    </nav>
+    <main class="has-side-navigation">
+        <div class="page-content">
+            <h1 id="introduction">Documentation For U.S. Holidays PHP Carbon Wrapper</h1>
+            <p>U.S. Holidays Wrapper for the Carbon DateTime Library. Adds support for 41 holidays</p>
+            <p>See on <a href="https://github.com/geoffreyrose/us-holidays">Github</a></p>
 
-<h1>Documentation For U.S. Holidays PHP Carbon Wrapper</h1>
-<p>U.S. Holidays Wrapper for the Carbon DateTime Library. Adds support for 41 holidays</p>
-<p>See on <a href="https://github.com/geoffreyrose/us-holidays">Github</a></p>
+            <h3 id="support-holidays">Supported Holidays</h3>
+            <ul>
+                <li>April Fool's Day</li>
+                <li>Armed Forces Day</li>
+                <li>Ash Wednesday</li>
+                <li>Black Friday</li>
+                <li>Christmas Day</li>
+                <li>Christmas Eve</li>
+                <li>Cinco de Mayo</li>
+                <li>Columbus Day</li>
+                <li>Daylight Saving (End)</li>
+                <li>Daylight Saving (Start)</li>
+                <li>Earth Day</li>
+                <li>Easter</li>
+                <li>Father's Day</li>
+                <li>Flag Day</li>
+                <li>Good Friday</li>
+                <li>Groundhog Day</li>
+                <li>Halloween</li>
+                <li>Hanukkah</li>
+                <li>Independence Day</li>
+                <li>Indigenous Peoples' Day</li>
+                <li>Juneteenth</li>
+                <li>Kwanzaa</li>
+                <li>Labor Day</li>
+                <li>Memorial Day</li>
+                <li>Martin Luther King Jr. Day</li>
+                <li>Mother's Day</li>
+                <li>New Year's Day</li>
+                <li>New Year's Eve</li>
+                <li>Orthodox Easter</li>
+                <li>Palm Sunday</li>
+                <li>Passover</li>
+                <li>Patriot Day</li>
+                <li>Pearl Harbor Remembrance Day</li>
+                <li>Presidents' Day</li>
+                <li>Rosh Hashanah</li>
+                <li>St. Patrick's Day</li>
+                <li>Tax Day</li>
+                <li>Thanksgiving</li>
+                <li>Valentine's Day</li>
+                <li>Veterans Day</li>
+                <li>Yom Kippur</li>
+            </ul>
 
-<h2 class="mt-3">Supported Holidays</h2>
-<ul>
-    <li>April Fool's Day</li>
-    <li>Armed Forces Day</li>
-    <li>Ash Wednesday</li>
-    <li>Black Friday</li>
-    <li>Christmas Day</li>
-    <li>Christmas Eve</li>
-    <li>Cinco de Mayo</li>
-    <li>Columbus Day</li>
-    <li>Daylight Saving (End)</li>
-    <li>Daylight Saving (Start)</li>
-    <li>Earth Day</li>
-    <li>Easter</li>
-    <li>Father's Day</li>
-    <li>Flag Day</li>
-    <li>Good Friday</li>
-    <li>Groundhog Day</li>
-    <li>Halloween</li>
-    <li>Hanukkah</li>
-    <li>Independence Day</li>
-    <li>Indigenous Peoples' Day</li>
-    <li>Juneteenth</li>
-    <li>Kwanzaa</li>
-    <li>Labor Day</li>
-    <li>Memorial Day</li>
-    <li>Martin Luther King Jr. Day</li>
-    <li>Mother's Day</li>
-    <li>New Year's Day</li>
-    <li>New Year's Eve</li>
-    <li>Orthodox Easter</li>
-    <li>Palm Sunday</li>
-    <li>Passover</li>
-    <li>Patriot Day</li>
-    <li>Pearl Harbor Remembrance Day</li>
-    <li>Presidents' Day</li>
-    <li>Rosh Hashanah</li>
-    <li>St. Patrick's Day</li>
-    <li>Tax Day</li>
-    <li>Thanksgiving</li>
-    <li>Valentine's Day</li>
-    <li>Veterans Day</li>
-    <li>Yom Kippur</li>
-</ul>
-
-<h3 class="mt-5">How To Use Use With Composer <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<h3 id="how-to-use">How To Use Use With Composer</h3>
 <pre><code class="language-shell-session">$ composer require geoffreyrose/us-holidays</code></pre>
 <pre><code class="language-php">require 'vendor/autoload.php';
 use USHolidays\Carbon;
@@ -84,9 +162,7 @@ use USHolidays\Carbon;
 $holidays = new Carbon();
 </code></pre>
 
-
-
-<h3 class="mt-5">How To Use Use Without Composer <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
+<h3>How To Use Use Without Composer</h3>
 <pre><code class="language-php">require 'path/to/nesbot/Carbon.php';
 require 'path/to/geoffreyrose/Carbon.php';
 
@@ -95,1643 +171,1466 @@ use USHolidays\Carbon;
 $holidays = new Carbon();
 </code></pre>
 
-<h2 class="mt-4">Available Functions</h2>
-<ul>
-    <li><a class="text-break" href="#addHoliday">addHoliday()</a></li>
-    <li><a class="text-break" href="#getHolidaysByYear">getHolidaysByYear()</a></li>
-    <li><a class="text-break" href="#getHolidaysInDays">getHolidaysInDays()</a></li>
-    <li><a class="text-break" href="#getHolidaysInYears">getHolidaysInYears()</a></li>
-    <li><a class="text-break" href="#isHoliday">isHoliday()</a></li>
-    <li><a class="text-break" href="#isBankHoliday">isBankHoliday()</a></li>
-    <li><a class="text-break" href="#getHolidayName">getHolidayName()</a></li>
+                            <h2>Utlities</h2>
+                                    <h3 id="addHoliday"><a href="#addHoliday">addHoliday()</a></h3>
+                    <p>Add your own holiday</p>
+                                                                                    <pre><code class="language-php">$holidays = new Carbon();
+$holidays-&gt;addHoliday([
+    &#039;name&#039; =&gt; &quot;Spongebob&#039;s Birthday&quot;,
+    &#039;date&#039; =&gt; Carbon::create(1986, 7, 14),
+    &#039;bank_holiday&#039; =&gt; false
+]);</code></pre>
+                                            <pre><code class="language-php">$holidays = new Carbon();
+$holidays-&gt;addHoliday([
+    &#039;name&#039; =&gt; &quot;Q1 Tax Payments&quot;,
+    &#039;date&#039; =&gt; function() use($holidays) {
+        $q1 = Carbon::create($holidays-&gt;year, 4, 15, 0, 0, 0);
+        if($q1-&gt;isBankHoliday()) {
+            $q1-&gt;addDay();
 
-    <li><a class="text-break" href="#getNextHolidays">getNextHolidays()</a></li>
-    <li><a class="text-break" href="#getPrevHolidays">getPrevHolidays()</a></li>
-    <li><a class="text-break" href="#getNextHolidayName">getNextHolidayName()</a></li>
-    <li><a class="text-break" href="#getNextHolidayDays">getNextHolidayDays()</a></li>
-    <li><a class="text-break" href="#getPrevHolidayName">getPrevHolidayName()</a></li>
-    <li><a class="text-break" href="#getPrevHolidayDays">getPrevHolidayDays()</a></li>
-
-    <li><a class="text-break" href="#getAprilFoolsDayHoliday">getAprilFoolsDayHoliday()</a></li>
-    <li><a class="text-break" href="#getArmedForcesDayHoliday">getArmedForcesDayHoliday()</a></li>
-    <li><a class="text-break" href="#getAshWednesdayHoliday">getAshWednesdayHoliday()</a></li>
-    <li><a class="text-break" href="#getBlackFridayHoliday">getBlackFridayHoliday()</a></li>
-    <li><a class="text-break" href="#getChristmasDayHoliday">getChristmasDayHoliday()</a></li>
-    <li><a class="text-break" href="#getChristmasEveHoliday">getChristmasEveHoliday()</a></li>
-    <li><a class="text-break" href="#getCincoDeMayoHoliday">getCincoDeMayoHoliday()</a></li>
-    <li><a class="text-break" href="#getColumbusDayHoliday">getColumbusDayHoliday()</a></li>
-    <li><a class="text-break" href="#getDaylightSavingEndHoliday">getDaylightSavingEndHoliday()</a></li>
-    <li><a class="text-break" href="#getDaylightSavingStartHoliday">getDaylightSavingStartHoliday()</a></li>
-    <li><a class="text-break" href="#getEarthDayHoliday">getEarthDayHoliday()</a></li>
-    <li><a class="text-break" href="#getEasterHoliday">getEasterHoliday()</a></li>
-    <li><a class="text-break" href="#getFathersDayHoliday">getFathersDayHoliday()</a></li>
-    <li><a class="text-break" href="#getFlagDayHoliday">getFlagDayHoliday()</a></li>
-    <li><a class="text-break" href="#getGoodFridayHoliday">getGoodFridayHoliday()</a></li>
-    <li><a class="text-break" href="#getGroundhogDayHoliday">getGroundhogDayHoliday()</a></li>
-    <li><a class="text-break" href="#getHalloweenHoliday">getHalloweenHoliday()</a></li>
-    <li><a class="text-break" href="#getHanukkahHoliday">getHanukkahHoliday()</a></li>
-    <li><a class="text-break" href="#getIndependenceDayHoliday">getIndependenceDayHoliday()</a></li>
-    <li><a class="text-break" href="#getIndigenousPeoplesDayHoliday">getIndigenousPeoplesDayHoliday()</a></li>
-    <li><a class="text-break" href="#getJuneteenthHoliday">getJuneteenthHoliday()</a></li>
-    <li><a class="text-break" href="#getKwanzaaHoliday">getKwanzaaHoliday()</a></li>
-    <li><a class="text-break" href="#getLaborDayHoliday">getLaborDayHoliday()</a></li>
-    <li><a class="text-break" href="#getMemorialDayHoliday">getMemorialDayHoliday()</a></li>
-    <li><a class="text-break" href="#getMLKDayHoliday">getMLKDayHoliday()</a></li>
-    <li><a class="text-break" href="#getMothersDayHoliday">getMothersDayHoliday()</a></li>
-    <li><a class="text-break" href="#getNewYearsDayHoliday">getNewYearsDayHoliday()</a></li>
-    <li><a class="text-break" href="#getNewYearsEveHoliday">getNewYearsEveHoliday()</a></li>
-    <li><a class="text-break" href="#getOrthodoxEasterHoliday">getOrthodoxEasterHoliday()</a></li>
-    <li><a class="text-break" href="#getPalmSundayHoliday">getPalmSundayHoliday()</a></li>
-    <li><a class="text-break" href="#getPassoverHoliday">getPassoverHoliday()</a></li>
-    <li><a class="text-break" href="#getPatriotDayHoliday">getPatriotDayHoliday()</a></li>
-    <li><a class="text-break" href="#getPearlHarborRemembranceDayHoliday">getPearlHarborRemembranceDayHoliday()</a></li>
-    <li><a class="text-break" href="#getPresidentsDayHoliday">getPresidentsDayHoliday()</a></li>
-    <li><a class="text-break" href="#getRoshHashanahHoliday">getRoshHashanahHoliday()</a></li>
-    <li><a class="text-break" href="#getStPatricksDayHoliday">getStPatricksDayHoliday()</a></li>
-    <li><a class="text-break" href="#getTaxDayHoliday">getTaxDayHoliday()</a></li>
-    <li><a class="text-break" href="#getThanksgivingHoliday">getThanksgivingHoliday()</a></li>
-    <li><a class="text-break" href="#getValentinesDayHoliday">getValentinesDayHoliday()</a></li>
-    <li><a class="text-break" href="#getVeteransDayHoliday">getVeteransDayHoliday()</a></li>
-    <li><a class="text-break" href="#getYomKippurHoliday">getYomKippurHoliday()</a></li>
-</ul>
-
-
-
-
-
-
-<h3 id="addHoliday" class="mt-5 text-break"><a class="text-dark" href="#addHoliday"># addHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Add your own holiday</p>
-<pre><code class="language-php">$holidays = new Carbon();
-$holidays->addHoliday([
-    'name' => "Spongebob's Birthday",
-    'date' => Carbon::create(1986, 7, 14),
-    'bank_holiday' => false
-]);
-</code></pre>
-
-
-<pre><code class="language-php">$holidays = new Carbon();
-$holidays->addHoliday([
-    'name' => "Q1 Tax Payments",
-    'date' => function() use($holidays) {
-        $q1 = Carbon::create($holidays->year, 4, 15, 0, 0, 0);
-        if($q1->isBankHoliday()) {
-            $q1->addDay();
-
-            if($q1->isWeekend()) {
-                $q1->next(Carbon::MONDAY);
+            if($q1-&gt;isWeekend()) {
+                $q1-&gt;next(Carbon::MONDAY);
             }
         }
 
-        if($q1->isWeekend()) {
-            $q1->next(Carbon::MONDAY);
+        if($q1-&gt;isWeekend()) {
+            $q1-&gt;next(Carbon::MONDAY);
         }
 
-        if($q1 < $holidays) {
-            $q1 = Carbon::create($holidays->year + 1, 4, 15, 0, 0, 0);
+        if($q1 &lt; $holidays) {
+            $q1 = Carbon::create($holidays-&gt;year + 1, 4, 15, 0, 0, 0);
 
-            if($q1->isBankHoliday()) {
-                $q1->addDay();
+            if($q1-&gt;isBankHoliday()) {
+                $q1-&gt;addDay();
 
-                if($q1->isWeekend()) {
-                    $q1->next(Carbon::MONDAY);
+                if($q1-&gt;isWeekend()) {
+                    $q1-&gt;next(Carbon::MONDAY);
                 }
             }
 
-            if($q1->isWeekend()) {
-                $q1->next(Carbon::MONDAY);
+            if($q1-&gt;isWeekend()) {
+                $q1-&gt;next(Carbon::MONDAY);
             }
         }
 
-        if($q1->isBankHoliday()) {
-            $q1->addDay();
+        if($q1-&gt;isBankHoliday()) {
+            $q1-&gt;addDay();
         }
 
         return $q1;
     },
-    'bank_holiday' => false
-]);
-</code></pre>
+    &#039;bank_holiday&#039; =&gt; false
+]);</code></pre>
+                                                                            <h3 id="setHolidays"><a href="#setHolidays">setHolidays()</a></h3>
+                    <p>Set which holidays you want to use. By default will use all holidays.</p>
+                                        <pre><code class="language-php">setHolidays(array : $holidays)</code></pre>
+                                                                                    <pre><code class="language-php">$holiday = Carbon::create(2020, 1, 1);
+$holiday-&gt;setHolidays([&#039;April Fools&#039;]);
 
-
-<h3 id="getHolidaysByYear" class="mt-5 text-break"><a class="text-dark" href="#getHolidaysByYear"># getHolidaysByYear()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get holidays for the current year of the Carbon object.</p>
-<p><code class="language-php text-break">getHolidaysByYear(string|int $name, int $year=null) : array : object</code></p>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
-$holidays = $carbon->getHolidaysByYear('all');
+// the only holiday that will be used is April Fools Day</code></pre>
+                                                                            <h3 id="getHolidaysByYear"><a href="#getHolidaysByYear">getHolidaysByYear()</a></h3>
+                    <p>Get holidays for the current year of the Carbon object.</p>
+                                        <pre><code class="language-php">getHolidaysByYear(string|array $name, int $year=null) : array : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
+$holidays = $carbon-&gt;getHolidaysByYear(&#039;all&#039;);
 
 // [
 //     {
-//         "name": "New Year's Day", // string
-//         "date": "2020-01-01 00:00:00", // Carbon object
-//         "bank_holiday": true, // boolean
-//         "days_away": 0, // int
+//         &quot;name&quot;: &quot;New Year&#039;s Day&quot;, // string
+//         &quot;date&quot;: &quot;2020-01-01 00:00:00&quot;, // Carbon object
+//         &quot;bank_holiday&quot;: true, // boolean
+//         &quot;days_away&quot;: 0, // int
 //     },
 //     {
-//     	"name": "Martin Luther King Jr. Day", // string
-//     	"date": "2020-01-20 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 19 // int
+//     	&quot;name&quot;: &quot;Martin Luther King Jr. Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-01-20 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 19 // int
 //     }
 //     ...
 // ]
 
 foreach ($holidays as $holiday) {
-    echo $holiday->name . '&lt;br&gt;' . $holiday->date . '&lt;br&gt;' . $holiday->days_away . '&lt;br&gt;&lt;br&gt;';
-}
-</code></pre>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
-$holidays = $carbon->getHolidaysByYear('all', 1999);
+    echo $holiday-&gt;name . &#039;&lt;br&gt;&#039; . $holiday-&gt;date . &#039;&lt;br&gt;&#039; . $holiday-&gt;days_away . &#039;&lt;br&gt;&lt;br&gt;&#039;;
+}</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
+$holidays = $carbon-&gt;getHolidaysByYear(&#039;all&#039;, 1999);
 
 // [
 //     ...
 //     {
-//         "name": "April Fool's Day", // string
-//         "date": "1999-04-01 00:00:00", // Carbon object
-//         "bank_holiday": false, // boolean
-//         "days_away": 7580 // int
+//         &quot;name&quot;: &quot;April Fool&#039;s Day&quot;, // string
+//         &quot;date&quot;: &quot;1999-04-01 00:00:00&quot;, // Carbon object
+//         &quot;bank_holiday&quot;: false, // boolean
+//         &quot;days_away&quot;: 7580 // int
 //     }
 //     ...
-// ]
-</code></pre>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 3, 8);
-$holidays = $carbon->getHolidaysByYear(["Christmas Day", "Easter", "Independence Day"]);
+// ]</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2020, 3, 8);
+$holidays = $carbon-&gt;getHolidaysByYear([&quot;Christmas Day&quot;, &quot;Easter&quot;, &quot;Independence Day&quot;]);
 
 // [
 //     {
-//     	"name": "Easter", // string
-//     	"date": "2020-04-12 00:00:00", // Carbon object
-//     	"bank_holiday": false, // boolean
-//     	"days_away": 35 // int
+//     	&quot;name&quot;: &quot;Easter&quot;, // string
+//     	&quot;date&quot;: &quot;2020-04-12 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false, // boolean
+//     	&quot;days_away&quot;: 35 // int
 //     }, {
-//     	"name": "Independence Day", // string
-//     	"date": "2020-07-04 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 118 // int
+//     	&quot;name&quot;: &quot;Independence Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-07-04 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 118 // int
 //     }, {
-//     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 292 // int
+//     	&quot;name&quot;: &quot;Christmas Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-12-25 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 292 // int
 //     }
-// ]
-</code></pre>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 3, 8);
-$holidays = $carbon->getHolidaysByYear(["Christmas Day", "Easter", "Independence Day"], 2024);
+// ]</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2020, 3, 8);
+$holidays = $carbon-&gt;getHolidaysByYear([&quot;Christmas Day&quot;, &quot;Easter&quot;, &quot;Independence Day&quot;], 2024);
 
 // [
 //     {
-//     	"name": "Easter", // string
-//     	"date": "2024-03-31 00:00:00", // Carbon object
-//     	"bank_holiday": false, // boolean
-//     	"days_away": 1484 // int
+//     	&quot;name&quot;: &quot;Easter&quot;, // string
+//     	&quot;date&quot;: &quot;2024-03-31 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false, // boolean
+//     	&quot;days_away&quot;: 1484 // int
 //     }, {
-//     	"name": "Independence Day", // string
-//     	"date": "2024-07-04 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 1579 // int
+//     	&quot;name&quot;: &quot;Independence Day&quot;, // string
+//     	&quot;date&quot;: &quot;2024-07-04 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 1579 // int
 //     }, {
-//     	"name": "Christmas Day", // string
-//     	"date": "2024-12-25 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 1753 // int
+//     	&quot;name&quot;: &quot;Christmas Day&quot;, // string
+//     	&quot;date&quot;: &quot;2024-12-25 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 1753 // int
 //     }
-// ]
-</code></pre>
+// ]</code></pre>
+                                                                            <h3 id="getHolidaysInDays"><a href="#getHolidaysInDays">getHolidaysInDays()</a></h3>
+                    <p>Get holidays in the next amount of days. To only check for certain holidays pass either a string or array of names to <code class="language-php">$holidays</code></p>
+                                        <pre><code class="language-php">getHolidaysInDays(int $days, string|array $holidays=null) : array : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 5, 28);
 
-<h3 id="getHolidaysInDays" class="mt-5 text-break"><a class="text-dark" href="#getHolidaysInDays"># getHolidaysInDays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get holidays in the next amount of days. To only check for certain holidays pass either a string or array of names to <code class="language-php">$holidays</code></p>
-<p><code class="language-php text-break">getHolidaysInDays(int $days, string|array $holidays=null) : array : object</code></p>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 5, 28);
-
-$holidays = $carbon->getHolidaysInDays(300, 'all');
+$holidays = $carbon-&gt;getHolidaysInDays(300, &#039;all&#039;);
 // or
-$holidays = $carbon->getHolidaysInDays(300);
+$holidays = $carbon-&gt;getHolidaysInDays(300);
 
 // [
 //     {
-//         "name": "Flag Day", // string
-//         "date": "2020-06-14 00:00:00", // Carbon object
-//         "bank_holiday": false, // boolean
-//         "days_away": 17 // int
+//         &quot;name&quot;: &quot;Flag Day&quot;, // string
+//         &quot;date&quot;: &quot;2020-06-14 00:00:00&quot;, // Carbon object
+//         &quot;bank_holiday&quot;: false, // boolean
+//         &quot;days_away&quot;: 17 // int
 //     }, {
-//         "name": "Juneteenth", // string
-//         "date": "2020-06-19 00:00:00", // Carbon object
-//         "bank_holiday": false, // boolean
-//         "days_away": 22 // int
+//         &quot;name&quot;: &quot;Juneteenth&quot;, // string
+//         &quot;date&quot;: &quot;2020-06-19 00:00:00&quot;, // Carbon object
+//         &quot;bank_holiday&quot;: false, // boolean
+//         &quot;days_away&quot;: 22 // int
 //     },
 //     ...
 // ]
 
 foreach ($holidays as $holiday) {
-    echo $holiday->name . '&lt;br&gt;' . $holiday->date . '&lt;br&gt;' . $holiday->days_away . '&lt;br&gt;&lt;br&gt;';
-}
-</code></pre>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 5, 28);
-$holidays = $carbon->getHolidaysInDays(300, ["Christmas Day", "Easter", "Independence Day"]);
+    echo $holiday-&gt;name . &#039;&lt;br&gt;&#039; . $holiday-&gt;date . &#039;&lt;br&gt;&#039; . $holiday-&gt;days_away . &#039;&lt;br&gt;&lt;br&gt;&#039;;
+}</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2020, 5, 28);
+$holidays = $carbon-&gt;getHolidaysInDays(300, [&quot;Christmas Day&quot;, &quot;Easter&quot;, &quot;Independence Day&quot;]);
 
 // [
 //     {
-//     	"name": "Independence Day", // string
-//     	"date": "2020-07-04 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 37 // int
+//     	&quot;name&quot;: &quot;Independence Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-07-04 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 37 // int
 //     }, {
-//     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 211 // int
+//     	&quot;name&quot;: &quot;Christmas Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-12-25 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 211 // int
 //     }
 //
 //
 //     // notice how easter is on 2020-04-12 and not returned because it is not in the next 300 days
-// ]
-</code></pre>
+// ]</code></pre>
+                                                                            <h3 id="getHolidaysInYears"><a href="#getHolidaysInYears">getHolidaysInYears()</a></h3>
+                    <p>Get holidays in the next amount of years. To only check for certain holidays pass either a string or array of names to <code class="language-php">$holidays</code></p>
+                                        <pre><code class="language-php">getHolidaysInYears(int $years, string|array $holidays=null) : array : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 8, 18);
 
-<h3 id="getHolidaysInYears" class="mt-5 text-break"><a class="text-dark" href="#getHolidaysInYears"># getHolidaysInYears()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get holidays in the next amount of years. To only check for certain holidays pass either a string or array of names to <code class="language-php">$holidays</code></p>
-<p><code class="language-php text-break">getHolidaysInYears(int $years, string|array $holidays=null) : array : object</code></p>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 8, 18);
-
-$holidays = $carbon->getHolidaysInYears(1, 'all');
+$holidays = $carbon-&gt;getHolidaysInYears(1, &#039;all&#039;);
 // or
-$holidays = $carbon->getHolidaysInYears(1);
+$holidays = $carbon-&gt;getHolidaysInYears(1);
 
 // [
 //     {
-//     	"name": "Labor Day", // string
-//     	"date": "2020-09-07 00:00:00", // Carbon object
-//     	"bank_holiday": true,// boolean
-//     	"days_away": 20 // int
+//     	&quot;name&quot;: &quot;Labor Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-09-07 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true,// boolean
+//     	&quot;days_away&quot;: 20 // int
 //     }, {
-//     	"name": "Patriot Day", // string
-//     	"date": "2020-09-11 00:00:00", // Carbon object
-//     	"bank_holiday": false, // boolean
-//     	"days_away": 24 // int
+//     	&quot;name&quot;: &quot;Patriot Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-09-11 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false, // boolean
+//     	&quot;days_away&quot;: 24 // int
 //     },
 //     ...
 // ]
 
 foreach ($holidays as $holiday) {
-    echo $holiday->name . '&lt;br&gt;' . $holiday->date . '&lt;br&gt;' . $holiday->days_away . '&lt;br&gt;&lt;br&gt;';
-}
-</code></pre>
-
-<pre><code class="language-php">$carbon = Carbon::create(2020, 8, 18);
-$holidays = $carbon->getHolidaysInYears(2, ["Christmas Day", "Easter", "Independence Day"]);
+    echo $holiday-&gt;name . &#039;&lt;br&gt;&#039; . $holiday-&gt;date . &#039;&lt;br&gt;&#039; . $holiday-&gt;days_away . &#039;&lt;br&gt;&lt;br&gt;&#039;;
+}</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2020, 8, 18);
+$holidays = $carbon-&gt;getHolidaysInYears(2, [&quot;Christmas Day&quot;, &quot;Easter&quot;, &quot;Independence Day&quot;]);
 
 // [
 //     {
-//     	"name": "Christmas Day", // string
-//     	"date": "2020-12-25 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 129 // int
+//     	&quot;name&quot;: &quot;Christmas Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-12-25 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 129 // int
 //     }, {
-//     	"name": "Easter", // string
-//     	"date": "2021-04-04 00:00:00", // Carbon object
-//     	"bank_holiday": false, // boolean
-//     	"days_away": 229 // int
+//     	&quot;name&quot;: &quot;Easter&quot;, // string
+//     	&quot;date&quot;: &quot;2021-04-04 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false, // boolean
+//     	&quot;days_away&quot;: 229 // int
 //     }, {
-//     	"name": "Independence Day", // string
-//     	"date": "2021-07-04 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 320 // int
+//     	&quot;name&quot;: &quot;Independence Day&quot;, // string
+//     	&quot;date&quot;: &quot;2021-07-04 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 320 // int
 //     }, {
-//     	"name": "Christmas Day", // string
-//     	"date": "2021-12-25 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 494 // int
+//     	&quot;name&quot;: &quot;Christmas Day&quot;, // string
+//     	&quot;date&quot;: &quot;2021-12-25 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 494 // int
 //     }, {
-//     	"name": "Easter", // string
-//     	"date": "2022-04-17 00:00:00", // Carbon object
-//     	"bank_holiday": false, // boolean
-//     	"days_away": 607 // int
+//     	&quot;name&quot;: &quot;Easter&quot;, // string
+//     	&quot;date&quot;: &quot;2022-04-17 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false, // boolean
+//     	&quot;days_away&quot;: 607 // int
 //     }, {
-//     	"name": "Independence Day", // string
-//     	"date": "2022-07-04 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 685 // int
+//     	&quot;name&quot;: &quot;Independence Day&quot;, // string
+//     	&quot;date&quot;: &quot;2022-07-04 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 685 // int
 //     }
-// ]
-</code></pre>
-
-<h3 id="isHoliday" class="mt-5 text-break"><a class="text-dark" href="#isHoliday"># isHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Check if date is holiday. Returns boolean</p>
-<p><code class="language-php text-break">isHoliday() : boolean</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
-$carbon->isHoliday(); // true
+// ]</code></pre>
+                                                                            <h3 id="isHoliday"><a href="#isHoliday">isHoliday()</a></h3>
+                    <p>Check if date is holiday. Returns boolean</p>
+                                        <pre><code class="language-php">isHoliday() : boolean</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
+$carbon-&gt;isHoliday(); // true
 
 $carbon = Carbon::create(2020, 1, 2);
-$carbon->isHoliday(); // false
-</code></pre>
+$carbon-&gt;isHoliday(); // false</code></pre>
+                                                                            <h3 id="setBankHolidays"><a href="#setBankHolidays">setBankHolidays()</a></h3>
+                    <p>Set which holidays are bank holidays. Defaults are all standard bank holidays.</p>
+                                        <pre><code class="language-php">setBankHolidays(array : $holidays)</code></pre>
+                                                                                    <pre><code class="language-php">$holiday-&gt;setBankHolidays([&#039;April Fools&#039;]);
 
-<h3 id="isBankHoliday" class="mt-5 text-break"><a class="text-dark" href="#isBankHoliday"># isBankHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. So Holidays that are always on weekends are not consider bank holidays. Returns boolean</p>
-<p><code class="language-php text-break">isBankHoliday() : boolean</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
-$carbon->isBankHoliday(); // boolean (true)
+// April Fools Day is now the only bank holiday</code></pre>
+                                                                            <h3 id="isBankHoliday"><a href="#isBankHoliday">isBankHoliday()</a></h3>
+                    <p>Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. So Holidays that are always on weekends are not consider bank holidays. Returns boolean<br />
+<br />
+Does not work if you override BusinessDays with setBusinessDays()</p>
+                                        <pre><code class="language-php">isBankHoliday() : boolean</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
+$carbon-&gt;isBankHoliday(); // boolean (true)
 
 $carbon = Carbon::create(2020, 1, 2);
-$carbon->isBankHoliday(); // boolean (false)
+$carbon-&gt;isBankHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
-$carbon->isBankHoliday(); // boolean (false)
+$carbon = Carbon::create(2018, 03, 17); // St Patrick&#039;s Day
+$carbon-&gt;isBankHoliday(); // boolean (false)
 
 $carbon = Carbon::create(2018, 12, 25); // Christmas - Tuesday
-$carbon->isBankHoliday(); // boolean (true)
+$carbon-&gt;isBankHoliday(); // boolean (true)
 
 $carbon = Carbon::create(2016, 12, 25); // Christmas - Sunday
-$carbon->isBankHoliday(); // boolean (false)
+$carbon-&gt;isBankHoliday(); // boolean (false)
 
 $carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->isBankHoliday(); // boolean (true)
-</code></pre>
-
-<h3 id="getHolidayName" class="mt-5 text-break"><a class="text-dark" href="#getHolidayName"># getHolidayName()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get name if date is holiday. Returns string or false</p>
-<p><code class="language-php text-break">getHolidayName() : string|false</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
-$carbon->getHolidayName(); // New Year's Day
+$carbon-&gt;isBankHoliday(); // boolean (true)</code></pre>
+                                                                            <h3 id="getHolidayName"><a href="#getHolidayName">getHolidayName()</a></h3>
+                    <p>Get name if date is holiday. Returns string or false</p>
+                                        <pre><code class="language-php">getHolidayName() : string|false</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
+$carbon-&gt;getHolidayName(); // New Year&#039;s Day
 
 $carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->getHolidayName(); // Christmas Day (Observed), Kwanzaa
-</code></pre>
-
-
-
-<h3 id="getNextHolidays" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidays"># getNextHolidays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get the next $number of holidays</p>
-<p><code class="language-php text-break">getNextHolidays(int $number=1) : array : object</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 5, 17);
-$carbon->getNextHolidays(2);
+$carbon-&gt;getHolidayName(); // Christmas Day (Observed), Kwanzaa</code></pre>
+                                                                            <h3 id="getNextHolidays"><a href="#getNextHolidays">getNextHolidays()</a></h3>
+                    <p>Get the next $number of holidays</p>
+                                        <pre><code class="language-php">getNextHolidays(int $number=1) : array : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 5, 17);
+$carbon-&gt;getNextHolidays(2);
 
 // [
 //     {
-//     	"name": "Memorial Day", // string
-//     	"date": "2020-05-25 00:00:00", // Carbon object
-//     	"bank_holiday": true,// boolean
-//     	"days_away": 8 // int
+//     	&quot;name&quot;: &quot;Memorial Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-05-25 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true,// boolean
+//     	&quot;days_away&quot;: 8 // int
 //     }, {
-//     	"name": "Flag Day", // string
-//     	"date": "2020-06-14 00:00:00", // Carbon object
-//     	"bank_holiday": false, // boolean
-//     	"days_away": 28 // int
+//     	&quot;name&quot;: &quot;Flag Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-06-14 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false, // boolean
+//     	&quot;days_away&quot;: 28 // int
 //     },
-// ]
-
-</code></pre>
-
-<h3 id="getPrevHolidays" class="mt-5 text-break"><a class="text-dark" href="#getPrevHolidays"># getPrevHolidays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get the previous $number of holidays</p>
-<p><code class="language-php text-break">getPrevHolidays(int $number=1) : array : object</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 2, 9);
-$carbon->getPrevHolidays(2);
+// ]</code></pre>
+                                                                            <h3 id="getPrevHolidays"><a href="#getPrevHolidays">getPrevHolidays()</a></h3>
+                    <p>Get the previous $number of holidays</p>
+                                        <pre><code class="language-php">getPrevHolidays(int $number=1) : array : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 2, 9);
+$carbon-&gt;getPrevHolidays(2);
 
 // [
 //     {
-//     	"name": "Groundhog Day", // string
-//     	"date": "2020-02-02 00:00:00", // Carbon object
-//     	"bank_holiday": false,// boolean
-//     	"days_away": 7 // int
+//     	&quot;name&quot;: &quot;Groundhog Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-02-02 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: false,// boolean
+//     	&quot;days_away&quot;: 7 // int
 //     }, {
-//     	"name": "Martin Luther King Jr. Day", // string
-//     	"date": "2020-01-20 00:00:00", // Carbon object
-//     	"bank_holiday": true, // boolean
-//     	"days_away": 20 // int
+//     	&quot;name&quot;: &quot;Martin Luther King Jr. Day&quot;, // string
+//     	&quot;date&quot;: &quot;2020-01-20 00:00:00&quot;, // Carbon object
+//     	&quot;bank_holiday&quot;: true, // boolean
+//     	&quot;days_away&quot;: 20 // int
 //     },
-// ]
-</code></pre>
-
-<h3 id="getNextHolidayName" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidayName"># getNextHolidayName()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get name of the next holiday. Returns string</p>
-<p><code class="language-php text-break">getNextHolidayName() : string</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 6, 12);
-$carbon->getNextHolidayName(); // Flag Day
-</code></pre>
-
-<h3 id="getNextHolidayDays" class="mt-5 text-break"><a class="text-dark" href="#getNextHolidayDays"># getNextHolidayDays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get number of days away the next holiday is. Returns int</p>
-<p><code class="language-php text-break">getNextHolidayDays() : int</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 6, 12);
-$carbon->getNextHolidayDays(); // 2
-</code></pre>
-
-<h3 id="getPrevHolidayName" class="mt-5 text-break"><a class="text-dark" href="#getPrevHolidayName"># getPrevHolidayName()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get name of the previous holiday. Returns string</p>
-<p><code class="language-php text-break">getPrevHolidayName() : string</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 11, 7);
-$carbon->getPrevHolidayName(); // Daylight Saving (End)
-</code></pre>
-
-<h3 id="getPrevHolidayDays" class="mt-5 text-break"><a class="text-dark" href="#getPrevHolidayDays"># getPrevHolidayDays()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get number of days away the previous holiday is. Returns int</p>
-<p><code class="language-php text-break">getPrevHolidayDays() : int</code></p>
-<pre><code class="language-php">$carbon = Carbon::create(2020, 11, 7);
-$carbon->getPrevHolidayDays(); // 6
-</code></pre>
-
-
-
-<h3 id="getAprilFoolsDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getAprilFoolsDayHoliday"># getAprilFoolsDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get April Fool's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get April Fool's Day in a given year.</p>
-<p><code class="language-php text-break">getAprilFoolsDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getAprilFoolsDayHoliday();
-
-// {
-//    "name": "April Fool's Day",
-//    "date": "2020-04-01 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 91
-// }
-
-$holidays->name // April Fool's Day
-$holidays->date->format('m-d-Y') // 04-01-2020
-$holidays->days_away // 91
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getAprilFoolsDayHoliday(2022);
-
-// {
-//    "name": "April Fool's Day",
-//    "date": "2022-04-01 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 821
-// }
-</code></pre>
-
-<h3 id="getArmedForcesDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getArmedForcesDayHoliday"># getArmedForcesDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Armed Forces Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Armed Forces Day in a given year.</p>
-<p><code class="language-php text-break">getArmedForcesDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getArmedForcesDayHoliday();
-
-// {
-//    "name": "Armed Forces Day",
-//    "date": "2020-05-16 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 136
-// }
-
-$holidays->name // Armed Forces Day
-$holidays->date->format('m-d-Y') // 05-16-2020
-$holidays->days_away // 136
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getArmedForcesDayHoliday(2022);
-
-// {
-//    "name": "Armed Forces Day",
-//    "date": "2022-05-21 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 871
-// }
-</code></pre>
-
-<h3 id="getAshWednesdayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getAshWednesdayHoliday"># getAshWednesdayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Ash Wednesday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Ash Wednesday in a given year.</p>
-<p><code class="language-php text-break">getAshWednesdayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getAshWednesdayHoliday();
-
-// {
-//    "name": "Ash Wednesday",
-//    "date": "2020-02-26 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 56
-// }
-
-$holidays->name // Ash Wednesday
-$holidays->date->format('m-d-Y') // 02-26-2020
-$holidays->days_away // 56
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getAshWednesdayHoliday(2022);
-
-// {
-//    "name": "Ash Wednesday",
-//    "date": "2022-03-02 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 791
-// }
-</code></pre>
-
-<h3 id="getBlackFridayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getBlackFridayHoliday"># getBlackFridayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Black Friday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Black Friday in a given year.</p>
-<p><code class="language-php text-break">getBlackFridayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getBlackFridayHoliday();
-
-// {
-//    "name": "Black Friday",
-//    "date": "2020-11-27 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 331
-// }
-
-$holidays->name // Black Friday
-$holidays->date->format('m-d-Y') // 11-27-2020
-$holidays->days_away // 331
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getBlackFridayHoliday(2022);
-
-// {
-//    "name": "Black Friday",
-//    "date": "2022-11-25 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1059
-// }
-</code></pre>
-
-<h3 id="getChristmasDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getChristmasDayHoliday"># getChristmasDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Christmas Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Christmas Day in a given year.</p>
-<p><code class="language-php text-break">getChristmasDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getChristmasDayHoliday();
-
-// {
-//    "name": "Christmas Day",
-//    "date": "2020-12-25 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 359
-// }
-
-$holidays->name // Christmas Day
-$holidays->date->format('m-d-Y') // 12-25-2020
-$holidays->days_away // 359
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getChristmasDayHoliday(2022);
-
-// {
-//    "name": "Christmas Day",
-//    "date": "2022-12-25 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 1089
-// }
-</code></pre>
-
-<h3 id="getChristmasEveHoliday" class="mt-5 text-break"><a class="text-dark" href="#getChristmasEveHoliday"># getChristmasEveHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Christmas Eve for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Christmas Eve in a given year.</p>
-<p><code class="language-php text-break">getChristmasEveHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getChristmasEveHoliday();
-
-// {
-//    "name": "Christmas Eve",
-//    "date": "2020-12-24 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 358
-// }
-
-$holidays->name // Christmas Eve
-$holidays->date->format('m-d-Y') // 12-24-2020
-$holidays->days_away // 358
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getChristmasEveHoliday(2022);
-
-// {
-//    "name": "Christmas Eve",
-//    "date": "2022-12-24 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1088
-// }
-</code></pre>
-
-<h3 id="getCincoDeMayoHoliday" class="mt-5 text-break"><a class="text-dark" href="#getCincoDeMayoHoliday"># getCincoDeMayoHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Cinco de Mayo for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Cinco de Mayo in a given year.</p>
-<p><code class="language-php text-break">getCincoDeMayoHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getCincoDeMayoHoliday();
-
-// {
-//    "name": "Cinco de Mayo",
-//    "date": "2020-05-05 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 125
-// }
-
-$holidays->name // Cinco de Mayo
-$holidays->date->format('m-d-Y') // 05-05-2020
-$holidays->days_away // 125
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getCincoDeMayoHoliday(2022);
-
-// {
-//    "name": "Cinco de Mayo",
-//    "date": "2022-05-05 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 855
-// }
-</code></pre>
-
-<h3 id="getColumbusDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getColumbusDayHoliday"># getColumbusDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Columbus Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Columbus Day in a given year.</p>
-<p><code class="language-php text-break">getColumbusDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getColumbusDayHoliday();
-
-// {
-//    "name": "Columbus Day",
-//    "date": "2020-10-12 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 285
-// }
-
-$holidays->name // Columbus Day
-$holidays->date->format('m-d-Y') // 10-12-2020
-$holidays->days_away // 285
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getColumbusDayHoliday(2022);
-
-// {
-//    "name": "Columbus Day",
-//    "date": "2022-10-10 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 1013
-// }
-</code></pre>
-
-<h3 id="getDaylightSavingEndHoliday" class="mt-5 text-break"><a class="text-dark" href="#getDaylightSavingEndHoliday"># getDaylightSavingEndHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Daylight Saving (End) for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Daylight Saving (End) in a given year.</p>
-<p><code class="language-php text-break">getDaylightSavingEndHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getDaylightSavingEndHoliday();
-
-// {
-//    "name": "Daylight Saving (End)",
-//    "date": "2020-11-01 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 305
-// }
-
-$holidays->name // Daylight Saving (End)
-$holidays->date->format('m-d-Y') // 11-01-2020
-$holidays->days_away // 305
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getDaylightSavingEndHoliday(2022);
-
-// {
-//    "name": "Daylight Saving (End)",
-//    "date": "2022-11-06 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1040
-// }
-</code></pre>
-
-<h3 id="getDaylightSavingStartHoliday" class="mt-5 text-break"><a class="text-dark" href="#getDaylightSavingStartHoliday"># getDaylightSavingStartHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Daylight Saving (Start) for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Daylight Saving (Start) in a given year.</p>
-<p><code class="language-php text-break">getDaylightSavingStartHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getDaylightSavingStartHoliday();
-
-// {
-//    "name": "Daylight Saving (Start)",
-//    "date": "2020-03-08 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 67
-// }
-
-$holidays->name // Daylight Saving (Start)
-$holidays->date->format('m-d-Y') // 03-08-2020
-$holidays->days_away // 67
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getDaylightSavingStartHoliday(2022);
-
-// {
-//    "name": "Daylight Saving (Start)",
-//    "date": "2022-03-13 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 802
-// }
-</code></pre>
-
-<h3 id="getEarthDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getEarthDayHoliday"># getEarthDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Earth Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Earth Day in a given year.</p>
-<p><code class="language-php text-break">getEarthDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getEarthDayHoliday();
-
-// {
-//    "name": "Earth Day",
-//    "date": "2020-04-22 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 112
-// }
-
-$holidays->name // Earth Day
-$holidays->date->format('m-d-Y') // 04-22-2020
-$holidays->days_away // 112
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getEarthDayHoliday(2022);
-
-// {
-//    "name": "Earth Day",
-//    "date": "2022-04-22 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 842
-// }
-</code></pre>
-
-<h3 id="getEasterHoliday" class="mt-5 text-break"><a class="text-dark" href="#getEasterHoliday"># getEasterHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Easter for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Easter in a given year.</p>
-<p><code class="language-php text-break">getEasterHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getEasterHoliday();
-
-// {
-//    "name": "Easter",
-//    "date": "2020-04-12 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 102
-// }
-
-$holidays->name // Easter
-$holidays->date->format('m-d-Y') // 04-12-2020
-$holidays->days_away // 102
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getEasterHoliday(2022);
-
-// {
-//    "name": "Easter",
-//    "date": "2022-04-17 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 837
-// }
-</code></pre>
-
-<h3 id="getFathersDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getFathersDayHoliday"># getFathersDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Father's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Father's Day in a given year.</p>
-<p><code class="language-php text-break">getFathersDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getFathersDayHoliday();
-
-// {
-//    "name": "Father's Day",
-//    "date": "2020-06-21 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 172
-// }
-
-$holidays->name // Father's Day
-$holidays->date->format('m-d-Y') // 06-21-2020
-$holidays->days_away // 172
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getFathersDayHoliday(2022);
-
-// {
-//    "name": "Father's Day",
-//    "date": "2022-06-19 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 900
-// }
-</code></pre>
-
-<h3 id="getFlagDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getFlagDayHoliday"># getFlagDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Flag Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Flag Day in a given year.</p>
-<p><code class="language-php text-break">getFlagDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getFlagDayHoliday();
-
-// {
-//    "name": "Flag Day",
-//    "date": "2020-06-14 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 165
-// }
-
-$holidays->name // Flag Day
-$holidays->date->format('m-d-Y') // 06-14-2020
-$holidays->days_away // 165
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getFlagDayHoliday(2022);
-
-// {
-//    "name": "Flag Day",
-//    "date": "2022-06-14 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 895
-// }
-</code></pre>
-
-<h3 id="getGoodFridayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getGoodFridayHoliday"># getGoodFridayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Good Friday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Good Friday in a given year.</p>
-<p><code class="language-php text-break">getGoodFridayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getGoodFridayHoliday();
-
-// {
-//    "name": "Good Friday",
-//    "date": "2020-04-10 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 100
-// }
-
-$holidays->name // Good Friday
-$holidays->date->format('m-d-Y') // 04-10-2020
-$holidays->days_away // 100
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getGoodFridayHoliday(2022);
-
-// {
-//    "name": "Good Friday",
-//    "date": "2022-04-15 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 835
-// }
-</code></pre>
-
-<h3 id="getGroundhogDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getGroundhogDayHoliday"># getGroundhogDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Groundhog Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Groundhog Day in a given year.</p>
-<p><code class="language-php text-break">getGroundhogDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getGroundhogDayHoliday();
-
-// {
-//    "name": "Groundhog Day",
-//    "date": "2020-02-02 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 32
-// }
-
-$holidays->name // Groundhog Day
-$holidays->date->format('m-d-Y') // 02-02-2020
-$holidays->days_away // 32
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getGroundhogDayHoliday(2022);
-
-// {
-//    "name": "Groundhog Day",
-//    "date": "2022-02-02 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 763
-// }
-</code></pre>
-
-<h3 id="getHalloweenHoliday" class="mt-5 text-break"><a class="text-dark" href="#getHalloweenHoliday"># getHalloweenHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Halloween for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Halloween in a given year.</p>
-<p><code class="language-php text-break">getHalloweenHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getHalloweenHoliday();
-
-// {
-//    "name": "Halloween",
-//    "date": "2020-10-31 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 304
-// }
-
-$holidays->name // Halloween
-$holidays->date->format('m-d-Y') // 10-31-2020
-$holidays->days_away // 304
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getHalloweenHoliday(2022);
-
-// {
-//    "name": "Halloween",
-//    "date": "2022-10-31 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1034
-// }
-</code></pre>
-
-<h3 id="getHanukkahHoliday" class="mt-5 text-break"><a class="text-dark" href="#getHanukkahHoliday"># getHanukkahHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Hanukkah for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Hanukkah in a given year.</p>
-<p><code class="language-php text-break">getHanukkahHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getHanukkahHoliday();
-
-// {
-//    "name": "Hanukkah",
-//    "date": "2020-12-11 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 345
-// }
-
-$holidays->name // Hanukkah
-$holidays->date->format('m-d-Y') // 12-11-2020
-$holidays->days_away // 345
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getHanukkahHoliday(2022);
-
-// {
-//    "name": "Hanukkah",
-//    "date": "2022-12-19 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1083
-// }
-</code></pre>
-
-<h3 id="getIndependenceDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getIndependenceDayHoliday"># getIndependenceDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Independence Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Independence Day in a given year.</p>
-<p><code class="language-php text-break">getIndependenceDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getIndependenceDayHoliday();
-
-// {
-//    "name": "Independence Day",
-//    "date": "2020-07-04 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 185
-// }
-
-$holidays->name // Independence Day
-$holidays->date->format('m-d-Y') // 07-04-2020
-$holidays->days_away // 185
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getIndependenceDayHoliday(2022);
-
-// {
-//    "name": "Independence Day",
-//    "date": "2022-07-04 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 915
-// }
-</code></pre>
-
-<h3 id="getIndigenousPeoplesDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getIndigenousPeoplesDayHoliday"># getIndigenousPeoplesDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Indigenous Peoples' Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Indigenous Peoples' Day in a given year.</p>
-<p><code class="language-php text-break">getIndigenousPeoplesDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getIndigenousPeoplesDayHoliday();
-
-// {
-//    "name": "Indigenous Peoples' Day",
-//    "date": "2020-10-12 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 285
-// }
-
-$holidays->name // Indigenous Peoples' Day
-$holidays->date->format('m-d-Y') // 10-12-2020
-$holidays->days_away // 285
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getIndigenousPeoplesDayHoliday(2022);
-
-// {
-//    "name": "Indigenous Peoples' Day",
-//    "date": "2022-10-10 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 1013
-// }
-</code></pre>
-
-<h3 id="getJuneteenthHoliday" class="mt-5 text-break"><a class="text-dark" href="#getJuneteenthHoliday"># getJuneteenthHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Juneteenth for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Juneteenth in a given year.</p>
-<p><code class="language-php text-break">getJuneteenthHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getJuneteenthHoliday();
-
-// {
-//    "name": "Juneteenth",
-//    "date": "2020-06-19 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 170
-// }
-
-$holidays->name // Juneteenth
-$holidays->date->format('m-d-Y') // 06-19-2020
-$holidays->days_away // 170
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getJuneteenthHoliday(2022);
-
-// {
-//    "name": "Juneteenth",
-//    "date": "2022-06-19 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 900
-// }
-</code></pre>
-
-<h3 id="getKwanzaaHoliday" class="mt-5 text-break"><a class="text-dark" href="#getKwanzaaHoliday"># getKwanzaaHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Kwanzaa for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Kwanzaa in a given year.</p>
-<p><code class="language-php text-break">getKwanzaaHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getKwanzaaHoliday();
-
-// {
-//    "name": "Kwanzaa",
-//    "date": "2020-12-26 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 360
-// }
-
-$holidays->name // Kwanzaa
-$holidays->date->format('m-d-Y') // 12-26-2020
-$holidays->days_away // 360
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getKwanzaaHoliday(2022);
-
-// {
-//    "name": "Kwanzaa",
-//    "date": "2022-12-26 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1090
-// }
-</code></pre>
-
-<h3 id="getLaborDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getLaborDayHoliday"># getLaborDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Labor Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Labor Day in a given year.</p>
-<p><code class="language-php text-break">getLaborDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getLaborDayHoliday();
-
-// {
-//    "name": "Labor Day",
-//    "date": "2020-09-07 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 250
-// }
-
-$holidays->name // Labor Day
-$holidays->date->format('m-d-Y') // 09-07-2020
-$holidays->days_away // 250
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getLaborDayHoliday(2022);
-
-// {
-//    "name": "Labor Day",
-//    "date": "2022-09-05 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 978
-// }
-</code></pre>
-
-<h3 id="getMemorialDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getMemorialDayHoliday"># getMemorialDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Memorial Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Memorial Day in a given year.</p>
-<p><code class="language-php text-break">getMemorialDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getMemorialDayHoliday();
-
-// {
-//    "name": "Memorial Day",
-//    "date": "2020-05-25 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 145
-// }
-
-$holidays->name // Memorial Day
-$holidays->date->format('m-d-Y') // 05-25-2020
-$holidays->days_away // 145
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getMemorialDayHoliday(2022);
-
-// {
-//    "name": "Memorial Day",
-//    "date": "2022-05-30 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 880
-// }
-</code></pre>
-
-<h3 id="getMLKDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getMLKDayHoliday"># getMLKDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Martin Luther King Jr. Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Martin Luther King Jr. Day in a given year.</p>
-<p><code class="language-php text-break">getMLKDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getMLKDayHoliday();
-
-// {
-//    "name": "Martin Luther King Jr. Day",
-//    "date": "2020-01-20 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 19
-// }
-
-$holidays->name // Martin Luther King Jr. Day
-$holidays->date->format('m-d-Y') // 01-20-2020
-$holidays->days_away // 19
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getMLKDayHoliday(2022);
-
-// {
-//    "name": "Martin Luther King Jr. Day",
-//    "date": "2022-01-17 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 747
-// }
-</code></pre>
-
-<h3 id="getMothersDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getMothersDayHoliday"># getMothersDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Mother's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Mother's Day in a given year.</p>
-<p><code class="language-php text-break">getMothersDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getMothersDayHoliday();
-
-// {
-//    "name": "Mother's Day",
-//    "date": "2020-05-10 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 130
-// }
-
-$holidays->name // Mother's Day
-$holidays->date->format('m-d-Y') // 05-10-2020
-$holidays->days_away // 130
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getMothersDayHoliday(2022);
-
-// {
-//    "name": "Mother's Day",
-//    "date": "2022-05-08 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 858
-// }
-</code></pre>
-
-<h3 id="getNewYearsDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getNewYearsDayHoliday"># getNewYearsDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get New Year's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get New Year's Day in a given year.</p>
-<p><code class="language-php text-break">getNewYearsDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getNewYearsDayHoliday();
-
-// {
-//    "name": "New Year's Day",
-//    "date": "2020-01-01 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 0
-// }
-
-$holidays->name // New Year's Day
-$holidays->date->format('m-d-Y') // 01-01-2020
-$holidays->days_away // : 0
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getNewYearsDayHoliday(2022);
-
-// {
-//    "name": "New Year's Day",
-//    "date": "2022-01-01 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 731
-// }
-</code></pre>
-
-<h3 id="getNewYearsEveHoliday" class="mt-5 text-break"><a class="text-dark" href="#getNewYearsEveHoliday"># getNewYearsEveHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get New Year's Eve for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get New Year's Eve in a given year.</p>
-<p><code class="language-php text-break">getNewYearsEveHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getNewYearsEveHoliday();
-
-// {
-//    "name": "New Year's Eve",
-//    "date": "2020-12-31 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 365
-// }
-
-$holidays->name // New Year's Eve
-$holidays->date->format('m-d-Y') // 12-31-2020
-$holidays->days_away // 365
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getNewYearsEveHoliday(2022);
-
-// {
-//    "name": "New Year's Eve",
-//    "date": "2022-12-31 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1095
-// }
-</code></pre>
-
-<h3 id="getOrthodoxEasterHoliday" class="mt-5 text-break"><a class="text-dark" href="#getOrthodoxEasterHoliday"># getOrthodoxEasterHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Orthodox Easter for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Orthodox Easter in a given year.</p>
-<p><code class="language-php text-break">getOrthodoxEasterHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getOrthodoxEasterHoliday();
-
-// {
-//    "name": "Orthodox Easter",
-//    "date": "2020-04-19 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 109
-// }
-
-$holidays->name // Orthodox Easter
-$holidays->date->format('m-d-Y') // 04-19-2020
-$holidays->days_away // 109
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getOrthodoxEasterHoliday(2022);
-
-// {
-//    "name": "Orthodox Easter",
-//    "date": "2022-04-24 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 844
-// }
-</code></pre>
-
-<h3 id="getPalmSundayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPalmSundayHoliday"># getPalmSundayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Palm Sunday for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Palm Sunday in a given year.</p>
-<p><code class="language-php text-break">getPalmSundayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPalmSundayHoliday();
-
-// {
-//    "name": "Palm Sunday",
-//    "date": "2020-04-05 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 95
-// }
-
-$holidays->name // Palm Sunday
-$holidays->date->format('m-d-Y') // 04-05-2020
-$holidays->days_away // 95
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPalmSundayHoliday(2022);
-
-// {
-//    "name": "Palm Sunday",
-//    "date": "2022-04-10 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 830
-// }
-</code></pre>
-
-<h3 id="getPassoverHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPassoverHoliday"># getPassoverHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Passover for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Passover in a given year.</p>
-<p><code class="language-php text-break">getPassoverHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPassoverHoliday();
-
-// {
-//    "name": "Passover",
-//    "date": "2020-04-09 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 99
-// }
-
-$holidays->name // Passover
-$holidays->date->format('m-d-Y') // 04-09-2020
-$holidays->days_away // 99
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPassoverHoliday(2022);
-
-// {
-//    "name": "Passover",
-//    "date": "2022-04-16 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 836
-// }
-</code></pre>
-
-<h3 id="getPatriotDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPatriotDayHoliday"># getPatriotDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Patriot Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Patriot Day in a given year.</p>
-<p><code class="language-php text-break">getPatriotDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPatriotDayHoliday();
-
-// {
-//    "name": "Patriot Day",
-//    "date": "2020-09-11 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 254
-// }
-
-$holidays->name // Patriot Day
-$holidays->date->format('m-d-Y') // 09-11-2020
-$holidays->days_away // 254
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPatriotDayHoliday(2022);
-
-// {
-//    "name":"Patriot Day",
-//    "date": "2022-09-11 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 984
-// }
-</code></pre>
-
-<h3 id="getPearlHarborRemembranceDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPearlHarborRemembranceDayHoliday"># getPearlHarborRemembranceDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Pearl Harbor Remembrance Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Pearl Harbor Remembrance Day in a given year.</p>
-<p><code class="language-php text-break">getPearlHarborRemembranceDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPearlHarborRemembranceDayHoliday()
-
-// {
-//    "name": "Pearl Harbor Remembrance Day",
-//    "date": "2020-12-07 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 341
-// }
-
-$holidays->name // Pearl Harbor Remembrance Day
-$holidays->date->format('m-d-Y') // 12-07-2020
-$holidays->days_away // 341
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPearlHarborRemembranceDayHoliday(2022);
-
-// {
-//    "name": "Pearl Harbor Remembrance Day",
-//    "date": "2022-12-07 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1071
-// }
-</code></pre>
-
-<h3 id="getPresidentsDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getPresidentsDayHoliday"># getPresidentsDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Presidents' Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Presidents' Day in a given year.</p>
-<p><code class="language-php text-break">getPresidentsDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPresidentsDayHoliday();
-
-// {
-//    "name": "Presidents' Day",
-//    "date": "2020-02-17 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 47
-// }
-
-$holidays->name // Presidents' Day
-$holidays->date->format('m-d-Y') // 02-17-2020
-$holidays->days_away // 47
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getPresidentsDayHoliday(2022);
-
-// {
-//    "name": "Presidents' Day",
-//    "date": "2022-02-21 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 782
-// }
-</code></pre>
-
-<h3 id="getRoshHashanahHoliday" class="mt-5 text-break"><a class="text-dark" href="#getRoshHashanahHoliday"># getRoshHashanahHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Rosh Hashanah for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Rosh Hashanah in a given year.</p>
-<p><code class="language-php text-break">getRoshHashanahHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getRoshHashanahHoliday();
-
-// {
-//    "name": "Rosh Hashanah",
-//    "date": "2020-09-19 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 262
-// }
-
-$holidays->name // Rosh Hashanah
-$holidays->date->format('m-d-Y') // 09-19-2020
-$holidays->days_away // 262
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getRoshHashanahHoliday(2022);
-
-// {
-//    "name": "Rosh Hashanah",
-//    "date": "2022-09-26 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 999
-// }
-</code></pre>
-
-<h3 id="getStPatricksDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getStPatricksDayHoliday"># getStPatricksDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get St. Patrick's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get St. Patrick's Day in a given year.</p>
-<p><code class="language-php text-break">getStPatricksDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getStPatricksDayHoliday();
-
-// {
-//    "name": "St. Patrick's Day",
-//    "date": "2020-03-17 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 76
-// }
-
-$holidays->name // St. Patrick's Day
-$holidays->date->format('m-d-Y') // 03-17-2020
-$holidays->days_away // 76
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getStPatricksDayHoliday(2022);
-
-// {
-//    "name": "St. Patrick's Day",
-//    "date": "2022-03-17 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 806
-// }
-</code></pre>
-
-<h3 id="getTaxDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getTaxDayHoliday"># getTaxDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Tax Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Tax Day in a given year.</p>
-<p><code class="language-php text-break">getTaxDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getTaxDayHoliday();
-
-// {
-//    "name": "Tax Day",
-//    "date": "2020-04-15 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 105
-// }
-
-$holidays->name // Tax Day
-$holidays->date->format('m-d-Y') // 04-15-2020
-$holidays->days_away // 105
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getTaxDayHoliday(2022);
-
-// {
-//    "name": "Tax Day",
-//    "date": "2022-04-18 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 838
-// }
-</code></pre>
-
-<h3 id="getThanksgivingHoliday" class="mt-5 text-break"><a class="text-dark" href="#getThanksgivingHoliday"># getThanksgivingHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Thanksgiving for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Thanksgiving in a given year.</p>
-<p><code class="language-php text-break">getThanksgivingHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getThanksgivingHoliday();
-
-// {
-//    "name": "Thanksgiving",
-//    "date": "2020-11-26 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 330
-// }
-
-$holidays->name // Thanksgiving
-$holidays->date->format('m-d-Y') // 11-26-2020
-$holidays->days_away // 330
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getThanksgivingHoliday(2022);
-
-// {
-//    "name": "Thanksgiving",
-//    "date": "2022-11-24 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 1058
-// }
-</code></pre>
-
-<h3 id="getValentinesDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getValentinesDayHoliday"># getValentinesDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Valentine's Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Valentine's Day in a given year.</p>
-<p><code class="language-php text-break">getValentinesDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getValentinesDayHoliday();
-
-// {
-//    "name": "Valentine's Day",
-//    "date": "2020-02-14 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 44
-// }
-
-$holidays->name // Valentine's Day
-$holidays->date->format('m-d-Y') // 02-14-2020
-$holidays->days_away // 44
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getValentinesDayHoliday(2022);
-
-// {
-//    "name": "Valentine's Day",
-//    "date": "2022-02-14 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 775
-// }
-</code></pre>
-
-<h3 id="getVeteransDayHoliday" class="mt-5 text-break"><a class="text-dark" href="#getVeteransDayHoliday"># getVeteransDayHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Veterans Day for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Veterans Day in a given year.</p>
-<p><code class="language-php text-break">getVeteransDayHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getVeteransDayHoliday();
-
-// {
-//    "name": "Veterans Day",
-//    "date": "2020-11-11 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 315
-// }
-
-$holidays->name // Veterans Day
-$holidays->date->format('m-d-Y') // 11-11-2020
-$holidays->days_away // 315
-$holidays->bank_holiday // true
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getVeteransDayHoliday(2022);
-
-// {
-//    "name": "Veterans Day",
-//    "date": "2022-11-11 00:00:00",
-//    "bank_holiday": true,
-//    "days_away": 1045
-// }
-</code></pre>
-
-<h3 id="getYomKippurHoliday" class="mt-5 text-break"><a class="text-dark" href="#getYomKippurHoliday"># getYomKippurHoliday()</a> <span class="h6"><a class="text-muted" href="#top">[TOP]</a></span></h3>
-<p>Get Yom Kippur for the current year of the Carbon object. Optionally pass in a <code>$year</code> to get Yom Kippur in a given year.</p>
-<p><code class="language-php text-break">getYomKippurHoliday(int $year=null) : object</code></p>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getYomKippurHoliday();
-
-// {
-//    "name": "Yom Kippur",
-//    "date": "2020-09-28 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 271
-// }
-
-$holidays->name // Yom Kippur
-$holidays->date->format('m-d-Y') // 09-28-2020
-$holidays->days_away // 271
-$holidays->bank_holiday // false
-</code></pre>
-<pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
-$holidays->getYomKippurHoliday(2022);
-
-// {
-//    "name": "Yom Kippur",
-//    "date": "2022-10-05 00:00:00",
-//    "bank_holiday": false
-//    "days_away": 1008
-// }
-</code></pre>
-        </div>
-    </div>
-</div>
-
-<script src="assets/js/prism.js"></script>
+// ]</code></pre>
+                                                                            <h3 id="getNextHolidayName"><a href="#getNextHolidayName">getNextHolidayName()</a></h3>
+                    <p>Get name of the next holiday. Returns string</p>
+                                        <pre><code class="language-php">getNextHolidayName() : string</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 6, 12);
+$carbon-&gt;getNextHolidayName(); // Flag Day</code></pre>
+                                                                            <h3 id="getNextHolidayDays"><a href="#getNextHolidayDays">getNextHolidayDays()</a></h3>
+                    <p>Get number of days away the next holiday is. Returns int</p>
+                                        <pre><code class="language-php">getNextHolidayDays() : int</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 6, 12);
+$carbon-&gt;getNextHolidayDays(); // 2</code></pre>
+                                                                            <h3 id="getPrevHolidayName"><a href="#getPrevHolidayName">getPrevHolidayName()</a></h3>
+                    <p>Get name of the previous holiday. Returns string</p>
+                                        <pre><code class="language-php">getPrevHolidayName() : string</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 11, 7);
+$carbon-&gt;getPrevHolidayName(); // Daylight Saving (End)</code></pre>
+                                                                            <h3 id="getPrevHolidayDays"><a href="#getPrevHolidayDays">getPrevHolidayDays()</a></h3>
+                    <p>Get number of days away the previous holiday is. Returns int</p>
+                                        <pre><code class="language-php">getPrevHolidayDays() : int</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2020, 11, 7);
+$carbon-&gt;getPrevHolidayDays(); // 6</code></pre>
+                                                                                    <h2>Business Days</h2>
+                                    <h3 id="setBusinessDays"><a href="#setBusinessDays">setBusinessDays()</a></h3>
+                    <p>Set which days are business days. Defaults to Monday - Friday. If overridden, isBankHoliday() will not work</p>
+                                        <pre><code class="language-php">setBusinessDays(array : $days)</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 3);
+$carbon-&gt;setBusinessDays([1,2,3]);
+
+// Sets business days to Monday, Tuesday, Wednesday</code></pre>
+                                                                            <h3 id="isBusinessDay"><a href="#isBusinessDay">isBusinessDay()</a></h3>
+                    <p>Check if day is business day</p>
+                                        <pre><code class="language-php">isBusinessDay() : boolean</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 4); // Monday
+$carbon-&gt;isBusinessDay(); // true</code></pre>
+                                                                            <h3 id="nextBusinessDay"><a href="#nextBusinessDay">nextBusinessDay()</a></h3>
+                    <p>Get next business day</p>
+                                        <pre><code class="language-php">nextBusinessDay() : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 4); // Monday
+$carbon-&gt;nextBusinessDay();
+// Returns Carbon object for 2021-01-05</code></pre>
+                                                                            <h3 id="prevBusinessDay"><a href="#prevBusinessDay">prevBusinessDay()</a></h3>
+                    <p>Get previous business day</p>
+                                        <pre><code class="language-php">prevBusinessDay() : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 6); // Wednesday
+$carbon-&gt;prevBusinessDay();
+// Returns Carbon object for 2021-01-05</code></pre>
+                                                                            <h3 id="currentOrNextBusinessDay"><a href="#currentOrNextBusinessDay">currentOrNextBusinessDay()</a></h3>
+                    <p>Returns today (if business day) or the next business day</p>
+                                        <pre><code class="language-php">currentOrNextBusinessDay() : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 4); // Monday
+$carbon-&gt;currentOrNextBusinessDay();
+// Returns Carbon object for 2021-01-04</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 10); // Sunday
+$carbon-&gt;currentOrNextBusinessDay();
+// Returns Carbon object for 2021-01-11</code></pre>
+                                                                            <h3 id="currentOrPreviousBusinessDay"><a href="#currentOrPreviousBusinessDay">currentOrPreviousBusinessDay()</a></h3>
+                    <p>Returns today (if business day) or the previous business day</p>
+                                        <pre><code class="language-php">currentOrPreviousBusinessDay() : object</code></pre>
+                                                                                    <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 4); // Monday
+$carbon-&gt;currentOrPreviousBusinessDay();
+// Returns Carbon object for 2021-01-04</code></pre>
+                                            <pre><code class="language-php">$carbon = Carbon::create(2021, 1, 10); // Sunday
+$carbon-&gt;currentOrPreviousBusinessDay();
+// Returns Carbon object for 2021-01-08</code></pre>
+                                                                                    <h2>Holidays</h2>
+                                    <h3 id="getAprilFoolsDayHoliday"><a href="#getAprilFoolsDayHoliday">getAprilFoolsDayHoliday()</a></h3>
+                    <p>Get April Fool's Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get April Fool's Day in a given year.</p>
+                                        <pre><code class="language-php">getAprilFoolsDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getAprilFoolsDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;April Fool&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-04-01 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 91
+// }
+
+$holidays-&gt;name // April Fool&#039;s Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-01-2020
+$holidays-&gt;days_away // 91
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getAprilFoolsDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;April Fool&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2022-04-01 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 821
+// }</code></pre>
+                                                                            <h3 id="getArmedForcesDayHoliday"><a href="#getArmedForcesDayHoliday">getArmedForcesDayHoliday()</a></h3>
+                    <p>Get Armed Forces Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Armed Forces Day in a given year.</p>
+                                        <pre><code class="language-php">getArmedForcesDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getArmedForcesDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Armed Forces Day&quot;,
+//    &quot;date&quot;: &quot;2020-05-16 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 136
+// }
+
+$holidays-&gt;name // Armed Forces Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 05-16-2020
+$holidays-&gt;days_away // 136
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getArmedForcesDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Armed Forces Day&quot;,
+//    &quot;date&quot;: &quot;2022-05-21 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 871
+// }</code></pre>
+                                                                            <h3 id="getAshWednesdayHoliday"><a href="#getAshWednesdayHoliday">getAshWednesdayHoliday()</a></h3>
+                    <p>Get Ash Wednesday for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Ash Wednesday in a given year.</p>
+                                        <pre><code class="language-php">getAshWednesdayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getAshWednesdayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Ash Wednesday&quot;,
+//    &quot;date&quot;: &quot;2020-02-26 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 56
+// }
+
+$holidays-&gt;name // Ash Wednesday
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 02-26-2020
+$holidays-&gt;days_away // 56
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getAshWednesdayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Ash Wednesday&quot;,
+//    &quot;date&quot;: &quot;2022-03-02 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 791
+// }</code></pre>
+                                                                            <h3 id="getBlackFridayHoliday"><a href="#getBlackFridayHoliday">getBlackFridayHoliday()</a></h3>
+                    <p>Get Black Friday for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Black Friday in a given year.</p>
+                                        <pre><code class="language-php">getBlackFridayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getBlackFridayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Black Friday&quot;,
+//    &quot;date&quot;: &quot;2020-11-27 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 331
+// }
+
+$holidays-&gt;name // Black Friday
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 11-27-2020
+$holidays-&gt;days_away // 331
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getBlackFridayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Black Friday&quot;,
+//    &quot;date&quot;: &quot;2022-11-25 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1059
+// }</code></pre>
+                                                                            <h3 id="getChristmasDayHoliday"><a href="#getChristmasDayHoliday">getChristmasDayHoliday()</a></h3>
+                    <p>Get Christmas Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Christmas Day in a given year.</p>
+                                        <pre><code class="language-php">getChristmasDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getChristmasDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Christmas Day&quot;,
+//    &quot;date&quot;: &quot;2020-12-25 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 359
+// }
+
+$holidays-&gt;name // Christmas Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 12-25-2020
+$holidays-&gt;days_away // 359
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getChristmasDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Christmas Day&quot;,
+//    &quot;date&quot;: &quot;2022-12-25 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 1089
+// }</code></pre>
+                                                                            <h3 id="getChristmasEveHoliday"><a href="#getChristmasEveHoliday">getChristmasEveHoliday()</a></h3>
+                    <p>Get Christmas Eve for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Christmas Eve in a given year.</p>
+                                        <pre><code class="language-php">getChristmasEveHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getChristmasEveHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Christmas Eve&quot;,
+//    &quot;date&quot;: &quot;2020-12-24 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 358
+// }
+
+$holidays-&gt;name // Christmas Eve
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 12-24-2020
+$holidays-&gt;days_away // 358
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getChristmasEveHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Christmas Eve&quot;,
+//    &quot;date&quot;: &quot;2022-12-24 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1088
+// }</code></pre>
+                                                                            <h3 id="getCincoDeMayoHoliday"><a href="#getCincoDeMayoHoliday">getCincoDeMayoHoliday()</a></h3>
+                    <p>Get Cinco de Mayo for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Cinco de Mayo in a given year.</p>
+                                        <pre><code class="language-php">getCincoDeMayoHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getCincoDeMayoHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Cinco de Mayo&quot;,
+//    &quot;date&quot;: &quot;2020-05-05 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 125
+// }
+
+$holidays-&gt;name // Cinco de Mayo
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 05-05-2020
+$holidays-&gt;days_away // 125
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getCincoDeMayoHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Cinco de Mayo&quot;,
+//    &quot;date&quot;: &quot;2022-05-05 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 855
+// }</code></pre>
+                                                                            <h3 id="getColumbusDayHoliday"><a href="#getColumbusDayHoliday">getColumbusDayHoliday()</a></h3>
+                    <p>Get Columbus Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Columbus Day in a given year.</p>
+                                        <pre><code class="language-php">getColumbusDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getColumbusDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Columbus Day&quot;,
+//    &quot;date&quot;: &quot;2020-10-12 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 285
+// }
+
+$holidays-&gt;name // Columbus Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 10-12-2020
+$holidays-&gt;days_away // 285
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getColumbusDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Columbus Day&quot;,
+//    &quot;date&quot;: &quot;2022-10-10 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 1013
+// }</code></pre>
+                                                                            <h3 id="getDaylightSavingEndHoliday"><a href="#getDaylightSavingEndHoliday">getDaylightSavingEndHoliday()</a></h3>
+                    <p>Get Daylight Saving (End) for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Daylight Saving (End) in a given year.</p>
+                                        <pre><code class="language-php">getDaylightSavingEndHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getDaylightSavingEndHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Daylight Saving (End)&quot;,
+//    &quot;date&quot;: &quot;2020-11-01 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 305
+// }
+
+$holidays-&gt;name // Daylight Saving (End)
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 11-01-2020
+$holidays-&gt;days_away // 305
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getDaylightSavingEndHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Daylight Saving (End)&quot;,
+//    &quot;date&quot;: &quot;2022-11-06 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1040
+// }</code></pre>
+                                                                            <h3 id="getDaylightSavingStartHoliday"><a href="#getDaylightSavingStartHoliday">getDaylightSavingStartHoliday()</a></h3>
+                    <p>Get Daylight Saving (Start) for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Daylight Saving (Start) in a given year.</p>
+                                        <pre><code class="language-php">getDaylightSavingStartHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getDaylightSavingStartHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Daylight Saving (Start)&quot;,
+//    &quot;date&quot;: &quot;2020-03-08 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 67
+// }
+
+$holidays-&gt;name // Daylight Saving (Start)
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 03-08-2020
+$holidays-&gt;days_away // 67
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getDaylightSavingStartHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Daylight Saving (Start)&quot;,
+//    &quot;date&quot;: &quot;2022-03-13 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 802
+// }</code></pre>
+                                                                            <h3 id="getEarthDayHoliday"><a href="#getEarthDayHoliday">getEarthDayHoliday()</a></h3>
+                    <p>Get Earth Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Earth Day in a given year.</p>
+                                        <pre><code class="language-php">getEarthDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getEarthDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Earth Day&quot;,
+//    &quot;date&quot;: &quot;2020-04-22 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 112
+// }
+
+$holidays-&gt;name // Earth Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-22-2020
+$holidays-&gt;days_away // 112
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getEarthDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Earth Day&quot;,
+//    &quot;date&quot;: &quot;2022-04-22 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 842
+// }</code></pre>
+                                                                            <h3 id="getEasterHoliday"><a href="#getEasterHoliday">getEasterHoliday()</a></h3>
+                    <p>Get Easter for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Easter in a given year.</p>
+                                        <pre><code class="language-php">getEasterHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getEasterHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Easter&quot;,
+//    &quot;date&quot;: &quot;2020-04-12 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 102
+// }
+
+$holidays-&gt;name // Easter
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-12-2020
+$holidays-&gt;days_away // 102
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getEasterHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Easter&quot;,
+//    &quot;date&quot;: &quot;2022-04-17 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 837
+// }</code></pre>
+                                                                            <h3 id="getFathersDayHoliday"><a href="#getFathersDayHoliday">getFathersDayHoliday()</a></h3>
+                    <p>Get Father's Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Father's Day in a given year.</p>
+                                        <pre><code class="language-php">getFathersDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getFathersDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Father&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-06-21 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 172
+// }
+
+$holidays-&gt;name // Father&#039;s Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 06-21-2020
+$holidays-&gt;days_away // 172
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getFathersDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Father&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2022-06-19 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 900
+// }</code></pre>
+                                                                            <h3 id="getFlagDayHoliday"><a href="#getFlagDayHoliday">getFlagDayHoliday()</a></h3>
+                    <p>Get Flag Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Flag Day in a given year.</p>
+                                        <pre><code class="language-php">getFlagDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getFlagDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Flag Day&quot;,
+//    &quot;date&quot;: &quot;2020-06-14 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 165
+// }
+
+$holidays-&gt;name // Flag Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 06-14-2020
+$holidays-&gt;days_away // 165
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getFlagDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Flag Day&quot;,
+//    &quot;date&quot;: &quot;2022-06-14 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 895
+// }</code></pre>
+                                                                            <h3 id="getGoodFridayHoliday"><a href="#getGoodFridayHoliday">getGoodFridayHoliday()</a></h3>
+                    <p>Get Good Friday for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Good Friday in a given year.</p>
+                                        <pre><code class="language-php">getGoodFridayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getGoodFridayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Good Friday&quot;,
+//    &quot;date&quot;: &quot;2020-04-10 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 100
+// }
+
+$holidays-&gt;name // Good Friday
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-10-2020
+$holidays-&gt;days_away // 100
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getGoodFridayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Good Friday&quot;,
+//    &quot;date&quot;: &quot;2022-04-15 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 835
+// }</code></pre>
+                                                                            <h3 id="getGroundhogDayHoliday"><a href="#getGroundhogDayHoliday">getGroundhogDayHoliday()</a></h3>
+                    <p>Get Groundhog Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Groundhog Day in a given year.</p>
+                                        <pre><code class="language-php">getGroundhogDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getGroundhogDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Groundhog Day&quot;,
+//    &quot;date&quot;: &quot;2020-02-02 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 32
+// }
+
+$holidays-&gt;name // Groundhog Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 02-02-2020
+$holidays-&gt;days_away // 32
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getGroundhogDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Groundhog Day&quot;,
+//    &quot;date&quot;: &quot;2022-02-02 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 763
+// }</code></pre>
+                                                                            <h3 id="getHalloweenHoliday"><a href="#getHalloweenHoliday">getHalloweenHoliday()</a></h3>
+                    <p>Get Halloween for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Halloween in a given year.</p>
+                                        <pre><code class="language-php">getHalloweenHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getHalloweenHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Halloween&quot;,
+//    &quot;date&quot;: &quot;2020-10-31 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 304
+// }
+
+$holidays-&gt;name // Halloween
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 10-31-2020
+$holidays-&gt;days_away // 304
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getHalloweenHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Halloween&quot;,
+//    &quot;date&quot;: &quot;2022-10-31 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1034
+// }</code></pre>
+                                                                            <h3 id="getHanukkahHoliday"><a href="#getHanukkahHoliday">getHanukkahHoliday()</a></h3>
+                    <p>Get Hanukkah for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Hanukkah in a given year.</p>
+                                        <pre><code class="language-php">getHanukkahHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getHanukkahHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Hanukkah&quot;,
+//    &quot;date&quot;: &quot;2020-12-11 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 345
+// }
+
+$holidays-&gt;name // Hanukkah
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 12-11-2020
+$holidays-&gt;days_away // 345
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getHanukkahHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Hanukkah&quot;,
+//    &quot;date&quot;: &quot;2022-12-19 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1083
+// }</code></pre>
+                                                                            <h3 id="getIndependenceDayHoliday"><a href="#getIndependenceDayHoliday">getIndependenceDayHoliday()</a></h3>
+                    <p>Get Independence Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Independence Day in a given year.</p>
+                                        <pre><code class="language-php">getIndependenceDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getIndependenceDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Independence Day&quot;,
+//    &quot;date&quot;: &quot;2020-07-04 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 185
+// }
+
+$holidays-&gt;name // Independence Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 07-04-2020
+$holidays-&gt;days_away // 185
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getIndependenceDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Independence Day&quot;,
+//    &quot;date&quot;: &quot;2022-07-04 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 915
+// }</code></pre>
+                                                                            <h3 id="getIndigenousPeoplesDayHoliday"><a href="#getIndigenousPeoplesDayHoliday">getIndigenousPeoplesDayHoliday()</a></h3>
+                    <p>Get Indigenous Peoples' Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Indigenous Peoples' Day in a given year.</p>
+                                        <pre><code class="language-php">getIndigenousPeoplesDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getIndigenousPeoplesDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Indigenous Peoples&#039; Day&quot;,
+//    &quot;date&quot;: &quot;2020-10-12 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 285
+// }
+
+$holidays-&gt;name // Indigenous Peoples&#039; Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 10-12-2020
+$holidays-&gt;days_away // 285
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getIndigenousPeoplesDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Indigenous Peoples&#039; Day&quot;,
+//    &quot;date&quot;: &quot;2022-10-10 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 1013
+// }</code></pre>
+                                                                            <h3 id="getJuneteenthHoliday"><a href="#getJuneteenthHoliday">getJuneteenthHoliday()</a></h3>
+                    <p>Get Juneteenth for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Juneteenth in a given year.</p>
+                                        <pre><code class="language-php">getJuneteenthHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getJuneteenthHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Juneteenth&quot;,
+//    &quot;date&quot;: &quot;2020-06-19 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 170
+// }
+
+$holidays-&gt;name // Juneteenth
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 06-19-2020
+$holidays-&gt;days_away // 170
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getJuneteenthHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Juneteenth&quot;,
+//    &quot;date&quot;: &quot;2022-06-19 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 900
+// }</code></pre>
+                                                                            <h3 id="getKwanzaaHoliday"><a href="#getKwanzaaHoliday">getKwanzaaHoliday()</a></h3>
+                    <p>Get Kwanzaa for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Kwanzaa in a given year.</p>
+                                        <pre><code class="language-php">getKwanzaaHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getKwanzaaHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Kwanzaa&quot;,
+//    &quot;date&quot;: &quot;2022-12-26 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1090
+// }</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getKwanzaaHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Kwanzaa&quot;,
+//    &quot;date&quot;: &quot;2020-12-26 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 360
+// }
+
+$holidays-&gt;name // Kwanzaa
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 12-26-2020
+$holidays-&gt;days_away // 360
+$holidays-&gt;bank_holiday // false</code></pre>
+                                                                            <h3 id="getLaborDayHoliday"><a href="#getLaborDayHoliday">getLaborDayHoliday()</a></h3>
+                    <p>Get Labor Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Labor Day in a given year.</p>
+                                        <pre><code class="language-php">getLaborDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getLaborDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Labor Day&quot;,
+//    &quot;date&quot;: &quot;2020-09-07 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 250
+// }
+
+$holidays-&gt;name // Labor Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 09-07-2020
+$holidays-&gt;days_away // 250
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getLaborDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Labor Day&quot;,
+//    &quot;date&quot;: &quot;2022-09-05 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 978
+// }</code></pre>
+                                                                            <h3 id="getMemorialDayHoliday"><a href="#getMemorialDayHoliday">getMemorialDayHoliday()</a></h3>
+                    <p>Get Memorial Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Memorial Day in a given year.</p>
+                                        <pre><code class="language-php">getMemorialDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getMemorialDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Memorial Day&quot;,
+//    &quot;date&quot;: &quot;2020-05-25 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 145
+// }
+
+$holidays-&gt;name // Memorial Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 05-25-2020
+$holidays-&gt;days_away // 145
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getMemorialDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Memorial Day&quot;,
+//    &quot;date&quot;: &quot;2022-05-30 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 880
+// }</code></pre>
+                                                                            <h3 id="getMLKDayHoliday"><a href="#getMLKDayHoliday">getMLKDayHoliday()</a></h3>
+                    <p>Get Martin Luther King Jr. Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code>to get Martin Luther King Jr. Day in a given year.</p>
+                                        <pre><code class="language-php">getMLKDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getMLKDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Martin Luther King Jr. Day&quot;,
+//    &quot;date&quot;: &quot;2020-01-20 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 19
+// }
+
+$holidays-&gt;name // Martin Luther King Jr. Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 01-20-2020
+$holidays-&gt;days_away // 19
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getMLKDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Martin Luther King Jr. Day&quot;,
+//    &quot;date&quot;: &quot;2022-01-17 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 747
+// }</code></pre>
+                                                                            <h3 id="getMothersDayHoliday"><a href="#getMothersDayHoliday">getMothersDayHoliday()</a></h3>
+                    <p>Get Mother's Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Mother's Day in a given year.</p>
+                                        <pre><code class="language-php">getMothersDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getMothersDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Mother&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-05-10 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 130
+// }
+
+$holidays-&gt;name // Mother&#039;s Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 05-10-2020
+$holidays-&gt;days_away // 130
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getMothersDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Mother&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2022-05-08 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 858
+// }</code></pre>
+                                                                            <h3 id="getNewYearsDayHoliday"><a href="#getNewYearsDayHoliday">getNewYearsDayHoliday()</a></h3>
+                    <p>Get New Year's Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get New Year's Day in a given year.</p>
+                                        <pre><code class="language-php">getNewYearsDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getNewYearsDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;New Year&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-01-01 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 0
+// }
+
+$holidays-&gt;name // New Year&#039;s Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 01-01-2020
+$holidays-&gt;days_away // : 0
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getNewYearsDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;New Year&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2022-01-01 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 731
+// }</code></pre>
+                                                                            <h3 id="getNewYearsEveHoliday"><a href="#getNewYearsEveHoliday">getNewYearsEveHoliday()</a></h3>
+                    <p>Get New Year's Eve for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get New Year's Eve in a given year.</p>
+                                        <pre><code class="language-php">getNewYearsEveHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getNewYearsEveHoliday();
+
+// {
+//    &quot;name&quot;: &quot;New Year&#039;s Eve&quot;,
+//    &quot;date&quot;: &quot;2020-12-31 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 365
+// }
+
+$holidays-&gt;name // New Year&#039;s Eve
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 12-31-2020
+$holidays-&gt;days_away // 365
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getNewYearsEveHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;New Year&#039;s Eve&quot;,
+//    &quot;date&quot;: &quot;2022-12-31 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1095
+// }</code></pre>
+                                                                            <h3 id="getOrthodoxEasterHoliday"><a href="#getOrthodoxEasterHoliday">getOrthodoxEasterHoliday()</a></h3>
+                    <p>Get Orthodox Easter for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Orthodox Easter in a given year.</p>
+                                        <pre><code class="language-php">getOrthodoxEasterHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getOrthodoxEasterHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Orthodox Easter&quot;,
+//    &quot;date&quot;: &quot;2020-04-19 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 109
+// }
+
+$holidays-&gt;name // Orthodox Easter
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-19-2020
+$holidays-&gt;days_away // 109
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getOrthodoxEasterHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Orthodox Easter&quot;,
+//    &quot;date&quot;: &quot;2022-04-24 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 844
+// }</code></pre>
+                                                                            <h3 id="getPalmSundayHoliday"><a href="#getPalmSundayHoliday">getPalmSundayHoliday()</a></h3>
+                    <p>Get Palm Sunday for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Palm Sunday in a given year.</p>
+                                        <pre><code class="language-php">getPalmSundayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPalmSundayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Palm Sunday&quot;,
+//    &quot;date&quot;: &quot;2020-04-05 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 95
+// }
+
+$holidays-&gt;name // Palm Sunday
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-05-2020
+$holidays-&gt;days_away // 95
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPalmSundayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Palm Sunday&quot;,
+//    &quot;date&quot;: &quot;2022-04-10 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 830
+// }</code></pre>
+                                                                            <h3 id="getPassoverHoliday"><a href="#getPassoverHoliday">getPassoverHoliday()</a></h3>
+                    <p>Get Passover for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code>to get Passover in a given year.</p>
+                                        <pre><code class="language-php">getPassoverHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPassoverHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Passover&quot;,
+//    &quot;date&quot;: &quot;2020-04-09 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 99
+// }
+
+$holidays-&gt;name // Passover
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-09-2020
+$holidays-&gt;days_away // 99
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPassoverHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Passover&quot;,
+//    &quot;date&quot;: &quot;2022-04-16 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 836
+// }</code></pre>
+                                                                            <h3 id="getPatriotDayHoliday"><a href="#getPatriotDayHoliday">getPatriotDayHoliday()</a></h3>
+                    <p>Get Patriot Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Patriot Day in a given year.</p>
+                                        <pre><code class="language-php">getPatriotDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPatriotDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Patriot Day&quot;,
+//    &quot;date&quot;: &quot;2020-09-11 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 254
+// }
+
+$holidays-&gt;name // Patriot Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 09-11-2020
+$holidays-&gt;days_away // 254
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPatriotDayHoliday(2022);
+
+// {
+//    &quot;name&quot;:&quot;Patriot Day&quot;,
+//    &quot;date&quot;: &quot;2022-09-11 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 984
+// }</code></pre>
+                                                                            <h3 id="getPearlHarborRemembranceDayHoliday"><a href="#getPearlHarborRemembranceDayHoliday">getPearlHarborRemembranceDayHoliday()</a></h3>
+                    <p>Get Pearl Harbor Remembrance Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Pearl Harbor Remembrance Day in a given year.</p>
+                                        <pre><code class="language-php">getPearlHarborRemembranceDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPearlHarborRemembranceDayHoliday()
+
+// {
+//    &quot;name&quot;: &quot;Pearl Harbor Remembrance Day&quot;,
+//    &quot;date&quot;: &quot;2020-12-07 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 341
+// }
+
+$holidays-&gt;name // Pearl Harbor Remembrance Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 12-07-2020
+$holidays-&gt;days_away // 341
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPearlHarborRemembranceDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Pearl Harbor Remembrance Day&quot;,
+//    &quot;date&quot;: &quot;2022-12-07 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1071
+// }</code></pre>
+                                                                            <h3 id="getPresidentsDayHoliday"><a href="#getPresidentsDayHoliday">getPresidentsDayHoliday()</a></h3>
+                    <p>Get Presidents' Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Presidents' Day in a given year.</p>
+                                        <pre><code class="language-php">getPresidentsDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPresidentsDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Presidents&#039; Day&quot;,
+//    &quot;date&quot;: &quot;2020-02-17 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 47
+// }
+
+$holidays-&gt;name // Presidents&#039; Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 02-17-2020
+$holidays-&gt;days_away // 47
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getPresidentsDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Presidents&#039; Day&quot;,
+//    &quot;date&quot;: &quot;2022-02-21 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 782
+// }</code></pre>
+                                                                            <h3 id="getRoshHashanahHoliday"><a href="#getRoshHashanahHoliday">getRoshHashanahHoliday()</a></h3>
+                    <p>Get Rosh Hashanah for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Rosh Hashanah in a given year.</p>
+                                        <pre><code class="language-php">getRoshHashanahHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getRoshHashanahHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Rosh Hashanah&quot;,
+//    &quot;date&quot;: &quot;2020-09-19 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 262
+// }
+
+$holidays-&gt;name // Rosh Hashanah
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 09-19-2020
+$holidays-&gt;days_away // 262
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getRoshHashanahHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Rosh Hashanah&quot;,
+//    &quot;date&quot;: &quot;2022-09-26 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 999
+// }</code></pre>
+                                                                            <h3 id="getStPatricksDayHoliday"><a href="#getStPatricksDayHoliday">getStPatricksDayHoliday()</a></h3>
+                    <p>Get St. Patrick's Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get St. Patrick's Day in a given year.</p>
+                                        <pre><code class="language-php">getStPatricksDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getStPatricksDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;St. Patrick&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-03-17 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 76
+// }
+
+$holidays-&gt;name // St. Patrick&#039;s Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 03-17-2020
+$holidays-&gt;days_away // 76
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getStPatricksDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;St. Patrick&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2022-03-17 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 806
+// }</code></pre>
+                                                                            <h3 id="getTaxDayHoliday"><a href="#getTaxDayHoliday">getTaxDayHoliday()</a></h3>
+                    <p>Get Tax Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Tax Day in a given year.</p>
+                                        <pre><code class="language-php">getTaxDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getTaxDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Tax Day&quot;,
+//    &quot;date&quot;: &quot;2020-04-15 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 105
+// }
+
+$holidays-&gt;name // Tax Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 04-15-2020
+$holidays-&gt;days_away // 105
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getTaxDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Tax Day&quot;,
+//    &quot;date&quot;: &quot;2022-04-18 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 838
+// }</code></pre>
+                                                                            <h3 id="getThanksgivingHoliday"><a href="#getThanksgivingHoliday">getThanksgivingHoliday()</a></h3>
+                    <p>Get Thanksgiving for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Thanksgiving in a given year.</p>
+                                        <pre><code class="language-php">getThanksgivingHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getThanksgivingHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Thanksgiving&quot;,
+//    &quot;date&quot;: &quot;2020-11-26 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 330
+// }
+
+$holidays-&gt;name // Thanksgiving
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 11-26-2020
+$holidays-&gt;days_away // 330
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getThanksgivingHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Thanksgiving&quot;,
+//    &quot;date&quot;: &quot;2022-11-24 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 1058
+// }</code></pre>
+                                                                            <h3 id="getValentinesDayHoliday"><a href="#getValentinesDayHoliday">getValentinesDayHoliday()</a></h3>
+                    <p>Get Valentine's Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Valentine's Day in a given year.</p>
+                                        <pre><code class="language-php">getValentinesDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getValentinesDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Valentine&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-02-14 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 44
+// }
+
+$holidays-&gt;name // Valentine&#039;s Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 02-14-2020
+$holidays-&gt;days_away // 44
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getValentinesDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Valentine&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2022-02-14 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 775
+// }</code></pre>
+                                                                            <h3 id="getVeteransDayHoliday"><a href="#getVeteransDayHoliday">getVeteransDayHoliday()</a></h3>
+                    <p>Get Veterans Day for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Veterans Day in a given year.</p>
+                                        <pre><code class="language-php">getVeteransDayHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getVeteransDayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Veterans Day&quot;,
+//    &quot;date&quot;: &quot;2020-11-11 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 315
+// }
+
+$holidays-&gt;name // Veterans Day
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 11-11-2020
+$holidays-&gt;days_away // 315
+$holidays-&gt;bank_holiday // true</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getVeteransDayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Veterans Day&quot;,
+//    &quot;date&quot;: &quot;2022-11-11 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 1045
+// }</code></pre>
+                                                                            <h3 id="getYomKippurHoliday"><a href="#getYomKippurHoliday">getYomKippurHoliday()</a></h3>
+                    <p>Get Yom Kippur for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Yom Kippur in a given year.</p>
+                                        <pre><code class="language-php">getYomKippurHoliday(int $year=null) : object</code></pre>
+                                                                                    <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getYomKippurHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Yom Kippur&quot;,
+//    &quot;date&quot;: &quot;2020-09-28 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 271
+// }
+
+$holidays-&gt;name // Yom Kippur
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 09-28-2020
+$holidays-&gt;days_away // 271
+$holidays-&gt;bank_holiday // false</code></pre>
+                                            <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getYomKippurHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Yom Kippur&quot;,
+//    &quot;date&quot;: &quot;2022-10-05 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1008
+// }</code></pre>
+                                                                            </div>
+    </main>
+    <script async src="assets/js/app.js?id=0fe9e765f3e6e7871499"></script>
 </body>
 </html>
