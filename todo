@@ -1,0 +1,21 @@
+setBusinessDays() // default m-f // done
+isBusinessDay() // done
+nextBusinessDay() // done
+prevBusinessDay() // done
+currentOrNextBusinessDay() // done
+currentOrPreviousBusinessDay() // done
+
+getNextHoliday() // done
+getPrevHoliday() // done
+
+getNextHolidayName() // done
+getPrevHolidayName() // done
+
+getNextHolidayDays() // done
+getPrevHolidayDays() // done
+
+
+setHolidays() // done
+
+
+excludeHolidays()

@@ -19,6 +19,11 @@ class PrevHolidayTest extends TestCase
             $carbon->getPrevHolidays()[0]->date
                 ->isSameDay(Carbon::createFromDate(2021, 1, 1))
         );
+
+        $this->assertTrue(
+            $carbon->getPrevHolidays(2)[1]->date
+                ->isSameDay(Carbon::createFromDate(2020, 12, 31))
+        );
     }
 
     public function testPrevHolidayName()

@@ -59,7 +59,7 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for 41 US holi
 
 ### Requirements
  * [Carbon](http://carbon.nesbot.com/)
- * PHP 5.6+
+ * PHP 7.0+
 
 ### Usage
 

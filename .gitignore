@@ -15,6 +15,7 @@ mix-manifest.json
 phpDocumentor.phar
 webpack.mix.js
 .phpdoc
+docs
 
 ## MAC STUFF
 .DS_Store
