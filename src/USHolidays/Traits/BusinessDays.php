@@ -19,23 +19,10 @@ trait BusinessDays
     }
 
     /**
-     * Set Business Holidays
-     *
-     * @param array $holidays An array holiday names to be bank holidays
-     */
-    public function setBankHolidays($holidays)
-    {
-        foreach ($holidays as $key => $holiday) {
-            $holidays[$key] = strtoupper($holiday);
-        }
-
-        return $this->bankHolidayArray = $holidays;
-    }
-
-    /**
      * Set Business Days
      *
-     * @param array $days An array of Carbon dayOfWeek int's
+     * @param int[] $days An array of Carbon dayOfWeek int's
+     * @return int[] The set business days
      */
     public function setBusinessDays($days)
     {
@@ -44,7 +31,8 @@ trait BusinessDays
 
     /**
      * Check if date is a business day
-     * Returns boolean
+     *
+     * @return bool
      */
     public function isBusinessDay()
     {
@@ -53,7 +41,8 @@ trait BusinessDays
 
     /**
      * Next business day
-     * Returns Carbon date object
+     *
+     * @return Object Carbon Date object
      */
     public function nextBusinessDay()
     {
@@ -76,7 +65,8 @@ trait BusinessDays
 
     /**
      * Previous business day
-     * Returns Carbon date object
+     *
+     * @return Object Carbon Date object
      */
     public function prevBusinessDay()
     {
@@ -99,7 +89,8 @@ trait BusinessDays
 
     /**
      * Today (if business day) or next business day.
-     * Returns Carbon date object
+     *
+     * @return Object Carbon Date object
      */
     public function currentOrNextBusinessDay()
     {
@@ -122,7 +113,8 @@ trait BusinessDays
 
     /**
      * Today (if business day) or previous business day
-     * Returns Carbon date object
+     *
+     * @return Object Carbon Date object
      */
     public function currentOrPreviousBusinessDay()
     {

@@ -224,6 +224,8 @@ class Carbon extends \Carbon\Carbon {
 
     /**
      * Check if a date is a holiday. returns boolean
+     *
+     * @return bool
      */
     public function isHoliday()
     {
@@ -245,7 +247,23 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
+     * Set Business Holidays
+     *
+     * @param array $holidays An array holiday names to be bank holidays
+     */
+    public function setBankHolidays($holidays)
+    {
+        foreach ($holidays as $key => $holiday) {
+            $holidays[$key] = strtoupper($holiday);
+        }
+
+        return $this->bankHolidayArray = $holidays;
+    }
+
+    /**
      * Check if a date is a bank holiday. returns boolean
+     *
+     * @return bool
      */
     public function isBankHoliday()
     {
@@ -282,6 +300,8 @@ class Carbon extends \Carbon\Carbon {
 
     /**
      * Get the holiday names, if any for the given date
+     *
+     * @return string|null
      */
     public function getHolidayName()
     {
@@ -343,6 +363,8 @@ class Carbon extends \Carbon\Carbon {
 
     /**
      * Return next holiday name
+     *
+     * @return string
      */
     public function getNextHolidayName()
     {
@@ -351,6 +373,8 @@ class Carbon extends \Carbon\Carbon {
 
     /**
      * Return next holiday days away
+     *
+     * @return int
      */
     public function getNextHolidayDays()
     {
@@ -359,6 +383,8 @@ class Carbon extends \Carbon\Carbon {
 
     /**
      * Return next holiday name
+     *
+     * @return string
      */
     public function getPrevHolidayName()
     {
@@ -367,6 +393,8 @@ class Carbon extends \Carbon\Carbon {
 
     /**
      * Return next holiday days away
+     *
+     * @return int
      */
     public function getPrevHolidayDays()
     {

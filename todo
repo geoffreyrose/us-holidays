@@ -1,9 +1,9 @@
-setBusinessDays() //default m-f
-isBusinessDay()
-nextBusinessDay()
-prevBusinessDay()
-currentOrNextBusinessDay()
-currentOrPreviousBusinessDay()
+setBusinessDays() // default m-f // done
+isBusinessDay() // done
+nextBusinessDay() // done
+prevBusinessDay() // done
+currentOrNextBusinessDay() // done
+currentOrPreviousBusinessDay() // done
 
 getNextHoliday() // done
 getPrevHoliday() // done
@@ -15,4 +15,7 @@ getNextHolidayDays() // done
 getPrevHolidayDays() // done
 
 
-setHolidays()
+setHolidays() // done
+
+
+excludeHolidays()
