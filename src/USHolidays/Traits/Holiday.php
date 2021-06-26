@@ -467,6 +467,6 @@ trait Holiday
             );
         }
 
-        return $holidays;
+        return array_values($holidays);
     }
 }

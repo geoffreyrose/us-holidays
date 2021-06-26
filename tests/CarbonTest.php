@@ -182,13 +182,13 @@ class CarbonTest extends TestCase
     {
         $carbon = new Carbon();
         $carbon = Carbon::create(2021, 7, 4);
-        $carbon->setHolidays(['April Fools']);
+        $carbon->setHolidays(['Christmas Day']);
 
         $this->assertFalse($carbon->isHoliday());
 
         $carbon = new Carbon();
-        $carbon = Carbon::create(2021, 4, 1);
-        $carbon->setHolidays(['April Fools']);
+        $carbon = Carbon::create(2021, 12, 25);
+        $carbon->setHolidays(['Christmas Day']);
 
         $this->assertTrue($carbon->isHoliday());
     }
