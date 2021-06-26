@@ -263,7 +263,7 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setJuneteenth($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => true
             ),
             array(
                 'name' => "Kwanzaa",
