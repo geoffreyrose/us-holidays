@@ -7,12 +7,6 @@ matrix:
   include:
     - php: 8.0
       env: CARBON_V=2
-    - php: 7.0
-      env: CARBON_V=1
-    - php: 7.1
-      env: CARBON_V=1
-    - php: 7.2
-      env: CARBON_V=1
     - php: 7.1
       env: CARBON_V=2
     - php: 7.2
