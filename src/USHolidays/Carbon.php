@@ -109,8 +109,9 @@ class Carbon extends \Carbon\Carbon {
             if($index >= 0) {
 
                 $currentYear = $this->copy()->year;
-                $this->year = $currentYear;
+                $this->year = $year;
                 $date = call_user_func($holidays[$index]['date']);
+                $this->year = $currentYear;
 
                 $days_until = $this->diffInDays($date);
 
@@ -138,9 +139,9 @@ class Carbon extends \Carbon\Carbon {
                     'federal_holiday_end_year' => $holidays[$index]['federal_holiday_end_year'],
                 ];
 
-//                if($holidays[$index]['start_year'] >= $currentYear) {
-                $holiday_details[] = $details;
-//                }
+                if($holidays[$index]['start_year'] <= $year) {
+                    $holiday_details[] = $details;
+                }
             }
 
         } elseif (is_array($name)) {
@@ -154,9 +155,10 @@ class Carbon extends \Carbon\Carbon {
 
                         if($index >= 0) {
 
-                            $currentYear = $this->year;
-                            $this->year = $currentYear;
+                            $currentYear = $this->copy()->year;
+                            $this->year = $year;
                             $date = call_user_func($holidays[$index]['date']);
+                            $this->year = $currentYear;
 
                             $days_until =  $this->diffInDays($date);
 
@@ -185,9 +187,9 @@ class Carbon extends \Carbon\Carbon {
                                 'federal_holiday_end_year' => $holidays[$index]['federal_holiday_end_year'],
                             ];
 
-//                            if($holidays[$index]['start_year'] >= $currentYear) {
-                            $holiday_details[] = $details;
-//                            }
+                            if($holidays[$index]['start_year'] <= $year) {
+                                $holiday_details[] = $details;
+                            }
                         }
                     }
                 }
@@ -270,8 +272,10 @@ class Carbon extends \Carbon\Carbon {
         $isHoliday = false;
 
         foreach ($holidays as $holiday) {
+            $theHolidayStartYear = $holiday->start_year ?: $this->year;
+            $theHolidayendYear = $holiday->end_year ?: $this->year;
 
-            if( $this->isBirthday($holiday->date) ) {
+            if( $this->isBirthday($holiday->date) && $theHolidayStartYear <= $this->year && $theHolidayendYear >= $this->year ) {
                 $isHoliday = true;
                 break;
             }
@@ -309,7 +313,10 @@ class Carbon extends \Carbon\Carbon {
         $isBankHoliday = false;
 
         foreach ($holidays as $holiday) {
-            if($holiday->bank_holiday ) { // && $holiday->bank_holiday_start_year >= $this->year
+            $bankHolidayStartYear = $holiday->bank_holiday_start_year ?: $this->year;
+            $bankHolidayendYear = $holiday->bank_holiday_end_year ?: $this->year;
+
+            if( $holiday->bank_holiday && $bankHolidayStartYear <= $this->year && $bankHolidayendYear >= $this->year ) {
                 if($this->isBirthday($holiday->date) && $this->isBusinessDay() ) {
                     $isBankHoliday = true;
                     break;
@@ -342,7 +349,10 @@ class Carbon extends \Carbon\Carbon {
         $isFederalHoliday = false;
 
         foreach ( $holidays as $holiday) {
-            if( $holiday->federal_holiday) { //  && $holiday->bank_holiday_start_year >= $this->year
+            $federalHolidayStartYear = $holiday->federal_holiday_start_year ?: $this->year;
+            $federalHolidayendYear = $holiday->federal_holiday_end_year ?: $this->year;
+
+            if( $holiday->federal_holiday && $federalHolidayStartYear <= $this->year && $federalHolidayendYear >= $this->year ) {
                 if( $this->isBirthday($holiday->date) && $this->isBusinessDay() ) {
                     $isFederalHoliday = true;
                     break;

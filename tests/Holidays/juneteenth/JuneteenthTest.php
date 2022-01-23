@@ -40,8 +40,13 @@ class JuneteenthTest extends TestCase
     public function testIsBankHoliday()
     {
         $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getJuneteenthHoliday();
+        $holiday = Carbon::create(2023, 1, 1)->getJuneteenthHoliday();
 
         $this->assertTrue($holiday->date->isBankHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2022, 1, 1)->getJuneteenthHoliday()->date->addDay();
+
+        $this->assertTrue($holiday->isBankHoliday());
     }
 }
