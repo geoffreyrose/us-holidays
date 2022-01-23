@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Holidays\Juneteenth;
+
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Holidays\Passover;
+
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
 

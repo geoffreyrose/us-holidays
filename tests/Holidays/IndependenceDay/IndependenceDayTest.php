@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Holidays\Thanksgiving;
+namespace Tests\Holidays\IndependenceDay;
 
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
 
-class ThanksgivingTest extends TestCase
+class IndependenceDayTest extends TestCase
 {
     public function testHoliday()
     {
@@ -13,28 +13,28 @@ class ThanksgivingTest extends TestCase
         $carbon = Carbon::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getThanksgivingHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 11, 25))
+            $carbon->getIndependenceDayHoliday()->date
+                ->isSameDay(Carbon::createFromDate(2020, 7, 3))
         );
 
         $this->assertTrue(
-            $carbon->getThanksgivingHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 11, 26))
+            $carbon->getIndependenceDayHoliday()->date
+                ->isSameDay(Carbon::createFromDate(2020, 7, 4))
         );
     }
 
     public function testHolidayName()
     {
         $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getThanksgivingHoliday();
+        $holiday = Carbon::create(2020, 1, 1)->getIndependenceDayHoliday();
 
-        $this->assertEquals("Thanksgiving", $holiday->name);
+        $this->assertEquals("Independence Day", $holiday->name);
     }
 
     public function testIsHoliday()
     {
         $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getThanksgivingHoliday();
+        $holiday = Carbon::create(2020, 1, 1)->getIndependenceDayHoliday();
 
         $this->assertTrue($holiday->date->isHoliday());
     }
@@ -42,8 +42,9 @@ class ThanksgivingTest extends TestCase
     public function testIsBankHoliday()
     {
         $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getThanksgivingHoliday();
+        $holiday = Carbon::create(2019, 1, 1)->getIndependenceDayHoliday();
 
         $this->assertTrue($holiday->date->isBankHoliday());
+
     }
 }

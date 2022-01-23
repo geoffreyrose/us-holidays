@@ -16,7 +16,7 @@ phpDocumentor.phar
 webpack.mix.js
 .phpdoc
 docs
-
+/.idea
 ## MAC STUFF
 .DS_Store
 .AppleDouble

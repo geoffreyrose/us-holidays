@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Holidays\Kwanzaa;
+
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
 
