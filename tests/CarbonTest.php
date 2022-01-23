@@ -53,7 +53,7 @@ class CarbonTest extends TestCase
         $holiday = Carbon::create(2020, 1, 1)->getIndependenceDayHoliday()->date;
 
         $this->assertFalse($holiday->isBankHoliday());
-        $this->assertTrue($holiday->subDay()->isBankHoliday());
+        $this->assertFalse($holiday->subDay()->isBankHoliday());
 
         // 07/04 - Sunday
         $carbon = new Carbon();
@@ -65,6 +65,27 @@ class CarbonTest extends TestCase
         $carbon = Carbon::create(2016, 12, 25);
         $this->assertFalse($carbon->isBankHoliday());
         $this->assertTrue($carbon->addDay()->isBankHoliday());
+    }
+
+    public function testIsFederalHoliday()
+    {
+        // 07/04 - Saturday
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getIndependenceDayHoliday()->date;
+
+        $this->assertFalse($holiday->isFederalHoliday());
+        $this->assertTrue($holiday->subDay()->isFederalHoliday());
+
+        // 07/04 - Sunday
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2021, 1, 1)->getIndependenceDayHoliday()->date;
+
+        $this->assertFalse($holiday->isFederalHoliday());
+        $this->assertTrue($holiday->addDay()->isFederalHoliday());
+
+        $carbon = Carbon::create(2016, 12, 25);
+        $this->assertFalse($carbon->isFederalHoliday());
+        $this->assertTrue($carbon->addDay()->isFederalHoliday());
     }
 
     public function testHolidayInDays()
@@ -175,7 +196,8 @@ class CarbonTest extends TestCase
             'bank_holiday' => true
         ]);
         $this->assertFalse($carbon->isBankHoliday());
-        $this->assertTrue($carbon->subDay()->isBankHoliday());
+        $this->assertFalse($carbon->subDay()->isBankHoliday());
+//        $this->assertFalse($carbon->subDay()->isFederalHoliday());
     }
 
     public function testSetHoliday()

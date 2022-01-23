@@ -20,7 +20,7 @@ class Carbon extends \Carbon\Carbon {
     /**
      * An array of all the names of the holidays
      */
-    private $holidayArray = ["April Fool's Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
+    private $holidayArray = ["April Fools' Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
 
     /**
      * An array of bank holidays
@@ -50,14 +50,16 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
-     * Add an user defined holiday
+     * Add a user defined holiday
      *
      * @param array $data The year to get the holidays in
+     * @return true;
      */
-    public function addHoliday($data)
+    public function addHoliday($data): bool
     {
-        array_push($this->userAddedHolidays, $data);
-        array_push($this->holidayArray, $data['name']);
+        $this->userAddedHolidays[] = $data;
+        $this->holidayArray[] = $data['name'];
+
         return true;
     }
 
@@ -78,7 +80,7 @@ class Carbon extends \Carbon\Carbon {
      * @param string|array $name The name(s) of the holidays to get
      * @param int|null $year The year to get the holidays in
      */
-    public function getHolidaysByYear($name, $year=null)
+    public function getHolidaysByYear($name, $year=null): array
     {
         // this is primarily for isBankHoliday() can get a list of holidays without a loop
         $bankHolidayCheck = true;
@@ -86,9 +88,11 @@ class Carbon extends \Carbon\Carbon {
             $bankHolidayCheck = false;
             $name = 'all';
         }
+
         if($name == 'all' || $name == null) $name = $this->holidayArray;
 
-        $year = $year ? $year : $this->year;
+        $year = $year ?: $this->year;
+
         $holidays = $this->holidays($year);
         $holidaySearchNames = array_column($holidays, 'search_names');
         $holiday_details = array();
@@ -97,17 +101,16 @@ class Carbon extends \Carbon\Carbon {
 
             $index = false;
             foreach ($holidaySearchNames as $key => $holidaySearchName) {
-                if( array_search(strtoupper($name), $holidaySearchName ) !== false ) {
+                if (array_search(strtoupper($name), $holidaySearchName) !== false) {
                     $index = $key;
                 }
             }
 
-            if($index !== false) {
+            if($index >= 0) {
 
                 $currentYear = $this->copy()->year;
-                $this->year = $year;
-                $date = call_user_func($holidays[$index]['date']);
                 $this->year = $currentYear;
+                $date = call_user_func($holidays[$index]['date']);
 
                 $days_until = $this->diffInDays($date);
 
@@ -116,29 +119,44 @@ class Carbon extends \Carbon\Carbon {
                     $date->isBankHoliday();
                 }
 
+                $federalHoliday = $holidays[$index]['federal_holiday'];
+                if($federalHoliday && $bankHolidayCheck) {
+                    $date->isFederalHoliday();
+                }
+
                 $details = (object) [
                     'name' => $holidays[$index]['name'],
                     'date' => $date,
                     'bank_holiday' => $bankHoliday,
-                    'days_away' => $days_until
+                    'federal_holiday' => $federalHoliday,
+                    'days_away' => $days_until,
+                    'start_year' => $holidays[$index]['start_year'],
+                    'end_year' => $holidays[$index]['end_year'],
+                    'bank_holiday_start_year' => $holidays[$index]['bank_holiday_start_year'],
+                    'bank_holiday_end_year' => $holidays[$index]['bank_holiday_end_year'],
+                    'federal_holiday_start_year' => $holidays[$index]['federal_holiday_start_year'],
+                    'federal_holiday_end_year' => $holidays[$index]['federal_holiday_end_year'],
                 ];
 
-                array_push($holiday_details, $details);
+//                if($holidays[$index]['start_year'] >= $currentYear) {
+                $holiday_details[] = $details;
+//                }
             }
 
         } elseif (is_array($name)) {
 
+
             foreach ($name as $search_name) {
+
                 foreach ($holidaySearchNames as $key => $holidaySearchName) {
                     if( array_search(strtoupper($search_name), $holidaySearchName ) !== false ) {
                         $index = $key;
 
-                        if($index !== false) {
+                        if($index >= 0) {
 
                             $currentYear = $this->year;
-                            $this->year = $year;
-                            $date = call_user_func($holidays[$index]['date']);
                             $this->year = $currentYear;
+                            $date = call_user_func($holidays[$index]['date']);
 
                             $days_until =  $this->diffInDays($date);
 
@@ -148,14 +166,28 @@ class Carbon extends \Carbon\Carbon {
                                 $date->isBankHoliday();
                             }
 
+                            $federalHoliday = $holidays[$index]['federal_holiday'];
+                            if($federalHoliday && $bankHolidayCheck) {
+                                $date->isFederalHoliday();
+                            }
+
                             $details = (object) [
                                 'name' => $holidays[$index]['name'],
                                 'date' => $date,
                                 'bank_holiday' => $bankHoliday,
-                                'days_away' => $days_until
+                                'federal_holiday' => $federalHoliday,
+                                'days_away' => $days_until,
+                                'start_year' => $holidays[$index]['start_year'],
+                                'end_year' => $holidays[$index]['end_year'],
+                                'bank_holiday_start_year' => $holidays[$index]['bank_holiday_start_year'],
+                                'bank_holiday_end_year' => $holidays[$index]['bank_holiday_end_year'],
+                                'federal_holiday_start_year' => $holidays[$index]['federal_holiday_start_year'],
+                                'federal_holiday_end_year' => $holidays[$index]['federal_holiday_end_year'],
                             ];
 
-                            array_push($holiday_details, $details);
+//                            if($holidays[$index]['start_year'] >= $currentYear) {
+                            $holiday_details[] = $details;
+//                            }
                         }
                     }
                 }
@@ -180,6 +212,8 @@ class Carbon extends \Carbon\Carbon {
             $holidays = $this->holidayArray;
         }
 
+
+
         if($days > 0) {
             $searchStartDate = $this->copy();
             $searchEndDate = $this->copy()->addDays($days)->year;
@@ -191,16 +225,18 @@ class Carbon extends \Carbon\Carbon {
 
         }
 
+
         $holidaysInRange = array();
         for ($i=$searchStartDate->year; $i <= $searchEndDate; $i++) {
-            $holidayYear = $this->getHolidaysByYear($holidays, intval($i));
+            $holidayYear = $this->getHolidaysByYear($holidays, $i);
 
             foreach ($holidayYear as $holiday) {
                 if( $holiday->date->lessThanOrEqualTo($searchStartDate->copy()->addDays($days)) && $holiday->date->greaterThanOrEqualTo($searchStartDate) ) {
-                    array_push($holidaysInRange, $holiday);
+                    $holidaysInRange[] = $holiday;
                 }
             }
         }
+
 
         return $holidaysInRange;
     }
@@ -229,8 +265,6 @@ class Carbon extends \Carbon\Carbon {
      */
     public function isHoliday()
     {
-        // var_dump($this->getNextHolidays());
-
         $holidays = $this->getHolidaysByYear('all');
 
         $isHoliday = false;
@@ -265,7 +299,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @return bool
      */
-    public function isBankHoliday()
+    public function isBankHoliday(): bool
     {
         if(!$this->isStandardBusinessDays()) {
             throw new Exception("Cannot use isBankHoliday() with non-standard businessDays");
@@ -274,19 +308,14 @@ class Carbon extends \Carbon\Carbon {
         $holidays = $this->getHolidaysByYear('no-bank-check');
         $isBankHoliday = false;
 
-        foreach ( $holidays as $holiday) {
-            if( $holiday->bank_holiday ) {
-                if( $this->isBirthday($holiday->date) && $this->isBusinessDay() ) {
+        foreach ($holidays as $holiday) {
+            if($holiday->bank_holiday ) { // && $holiday->bank_holiday_start_year >= $this->year
+                if($this->isBirthday($holiday->date) && $this->isBusinessDay() ) {
                     $isBankHoliday = true;
                     break;
                 } else {
-                    if( $this->dayOfWeek === Carbon::MONDAY ) {
+                    if($this->dayOfWeek === Carbon::MONDAY ) {
                         if( $this->copy()->subDay()->isBirthday($holiday->date) ) {
-                            $isBankHoliday = true;
-                            break;
-                        }
-                    } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
-                        if( $this->copy()->addDay()->isBirthday($holiday->date) ) {
                             $isBankHoliday = true;
                             break;
                         }
@@ -299,11 +328,49 @@ class Carbon extends \Carbon\Carbon {
     }
 
     /**
+     * Check if a date is a federal holiday. returns boolean
+     *
+     * @return bool
+     */
+    public function isFederalHoliday(): bool
+    {
+        if(!$this->isStandardBusinessDays()) {
+            throw new Exception("Cannot use isFederalHoliday() with non-standard businessDays");
+        }
+
+        $holidays = $this->getHolidaysByYear('no-bank-check');
+        $isFederalHoliday = false;
+
+        foreach ( $holidays as $holiday) {
+            if( $holiday->federal_holiday) { //  && $holiday->bank_holiday_start_year >= $this->year
+                if( $this->isBirthday($holiday->date) && $this->isBusinessDay() ) {
+                    $isFederalHoliday = true;
+                    break;
+                } else {
+                    if( $this->dayOfWeek === Carbon::MONDAY ) {
+                        if( $this->copy()->subDay()->isBirthday($holiday->date) ) {
+                            $isFederalHoliday = true;
+                            break;
+                        }
+                    } else if( $this->dayOfWeek === Carbon::FRIDAY ) {
+                        if( $this->copy()->addDay()->isBirthday($holiday->date) ) {
+                            $isFederalHoliday = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $isFederalHoliday;
+    }
+
+    /**
      * Get the holiday names, if any for the given date
      *
      * @return string|null
      */
-    public function getHolidayName()
+    public function getHolidayName(): string
     {
         $holidays = $this->getHolidaysByYear('all');
         $holidayName = null;
@@ -336,12 +403,11 @@ class Carbon extends \Carbon\Carbon {
      *
      * @param int|null $number the number of holidays to get. default is 1
      */
-    public function getNextHolidays($number=1)
+    public function getNextHolidays($number=1): array
     {
         $number_of_years = ceil($number / count($this->holidayArray));
 
         $holidays = $this->getHolidaysInYears($number_of_years);
-        $count = count($holidays);
 
         return array_slice($holidays, 0, $number);
     }
@@ -351,7 +417,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @param int|null $number the number of holidays to get. default is 1
      */
-    public function getPrevHolidays($number=1)
+    public function getPrevHolidays($number=1): array
     {
         $number_of_years = ceil($number / count($this->holidayArray)) * -1;
 
@@ -366,7 +432,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @return string
      */
-    public function getNextHolidayName()
+    public function getNextHolidayName(): string
     {
         return $this->getNextHolidays()[0]->name;
     }
@@ -376,7 +442,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @return int
      */
-    public function getNextHolidayDays()
+    public function getNextHolidayDays(): int
     {
         return $this->getNextHolidays()[0]->days_away;
     }
@@ -386,7 +452,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @return string
      */
-    public function getPrevHolidayName()
+    public function getPrevHolidayName(): string
     {
         return $this->getPrevHolidays()[0]->name;
     }
@@ -396,7 +462,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @return int
      */
-    public function getPrevHolidayDays()
+    public function getPrevHolidayDays(): int
     {
         return $this->getPrevHolidays()[0]->days_away;
     }

@@ -26,7 +26,7 @@ class AprilFoolsDayTest extends TestCase
         $carbon = new Carbon();
         $holiday = Carbon::create(2020, 1, 1)->getAprilFoolsDayHoliday();
 
-        $this->assertEquals("April Fool's Day", $holiday->name);
+        $this->assertEquals("April Fools' Day", $holiday->name);
     }
 
     public function testIsHoliday()
