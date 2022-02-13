@@ -42,8 +42,16 @@ class AprilFoolsDayTest extends TestCase
     public function testIsBankHoliday()
     {
         $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getAprilFoolsDayHoliday();
+        $holiday = Carbon::create(2021, 1, 1)->getAprilFoolsDayHoliday();
 
         $this->assertFalse($holiday->date->isBankHoliday());
+    }
+
+    public function testIsFederalHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getAprilFoolsDayHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
     }
 }

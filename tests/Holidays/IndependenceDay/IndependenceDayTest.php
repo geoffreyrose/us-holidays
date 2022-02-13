@@ -46,5 +46,36 @@ class IndependenceDayTest extends TestCase
 
         $this->assertTrue($holiday->date->isBankHoliday());
 
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2026, 1, 1)->getIndependenceDayHoliday();
+
+        $this->assertFalse($holiday->date->isBankHoliday());
+        $this->assertFalse($holiday->date->subDay()->isBankHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2027, 1, 1)->getIndependenceDayHoliday();
+
+        $this->assertFalse($holiday->date->isBankHoliday());
+        $this->assertTrue($holiday->date->addDay()->isBankHoliday());
+    }
+
+    public function testIsFederalHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2019, 1, 1)->getIndependenceDayHoliday();
+
+        $this->assertTrue($holiday->date->isFederalHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2026, 1, 1)->getIndependenceDayHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
+        $this->assertTrue($holiday->date->subDay()->isFederalHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2027, 1, 1)->getIndependenceDayHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
+        $this->assertTrue($holiday->date->addDay()->isFederalHoliday());
     }
 }

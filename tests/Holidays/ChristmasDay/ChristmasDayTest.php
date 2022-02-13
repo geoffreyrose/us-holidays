@@ -45,5 +45,37 @@ class ChristmasDayTest extends TestCase
         $holiday = Carbon::create(2020, 1, 1)->getChristmasDayHoliday();
 
         $this->assertTrue($holiday->date->isBankHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2021, 1, 1)->getChristmasDayHoliday();
+
+        $this->assertFalse($holiday->date->isBankHoliday());
+        $this->assertFalse($holiday->date->subDay()->isBankHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2022, 1, 1)->getChristmasDayHoliday();
+
+        $this->assertFalse($holiday->date->isBankHoliday());
+        $this->assertTrue($holiday->date->addDay()->isBankHoliday());
+    }
+
+    public function testIsFederalHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getChristmasDayHoliday();
+
+        $this->assertTrue($holiday->date->isFederalHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2021, 1, 1)->getChristmasDayHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
+        $this->assertTrue($holiday->date->subDay()->isFederalHoliday());
+
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2022, 1, 1)->getChristmasDayHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
+        $this->assertTrue($holiday->date->addDay()->isFederalHoliday());
     }
 }

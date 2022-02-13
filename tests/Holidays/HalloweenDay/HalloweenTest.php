@@ -46,4 +46,12 @@ class HalloweenTest extends TestCase
 
         $this->assertFalse($holiday->date->isBankHoliday());
     }
+
+    public function testIsFederalHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getHalloweenHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
+    }
 }

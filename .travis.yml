@@ -5,8 +5,6 @@ env:
 
 matrix:
   include:
-    - php: 8.0
-      env: CARBON_V=2
     - php: 7.1
       env: CARBON_V=2
     - php: 7.2
@@ -14,6 +12,10 @@ matrix:
     - php: 7.3
       env: CARBON_V=2
     - php: 7.4
+      env: CARBON_V=2
+    - php: 8.0
+      env: CARBON_V=2
+    - php: 8.1
       env:
         - CARBON_V=2
         - COVERAGE=true
