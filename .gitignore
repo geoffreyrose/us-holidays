@@ -17,6 +17,7 @@ webpack.mix.js
 .phpdoc
 docs
 /.idea
+build/
 ## MAC STUFF
 .DS_Store
 .AppleDouble
