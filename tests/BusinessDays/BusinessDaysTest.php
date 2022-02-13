@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\BusinessDays;
+
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
 
@@ -147,7 +149,7 @@ class BusinessDaysTest extends TestCase
         $holiday = Carbon::create(2021, 1, 1)->getIndependenceDayHoliday()->date;
         $holiday->setBusinessDays([4]);
 
-        $this->expectException(Exception::class);
+        $this->expectException(\Exception::class);
         $holiday->isBankHoliday();
     }
 
@@ -157,7 +159,27 @@ class BusinessDaysTest extends TestCase
         $holiday = Carbon::create(2022, 7, 4);
         $holiday->setBusinessDays([1]);
 
-        $this->expectException(Exception::class);
+        $this->expectException(\Exception::class);
         $holiday->addDay()->isBankHoliday();
+    }
+
+    public function testIsFederalHolidayCustom() {
+        // 07/04 - Sunday
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2021, 1, 1)->getIndependenceDayHoliday()->date;
+        $holiday->setBusinessDays([4]);
+
+        $this->expectException(\Exception::class);
+        $holiday->isFederalHoliday();
+    }
+
+    public function testIsFederalHolidayCustom2() {
+        // 07/04 - Sunday
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2022, 7, 4);
+        $holiday->setBusinessDays([1]);
+
+        $this->expectException(\Exception::class);
+        $holiday->addDay()->isFederalHoliday();
     }
 }

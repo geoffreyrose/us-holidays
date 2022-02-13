@@ -98,12 +98,19 @@ trait Holiday
         $this->setTime(0,0,0);
         $holidays = array(
             array(
-                'name' => "April Fool's Day",
-                'search_names' => ["APRIL FOOL'S DAY", "APRIL FOOLS DAY", "APRIL FOOLS"],
+                'name' => "April Fools' Day",
+                'search_names' => ["APRIL FOOL'S DAY", "APRIL FOOLS' DAY", "APRIL FOOLS DAY", "APRIL FOOLS"],
                 'date' => function() use ($year) {
                     return $this->setAprilFoolsDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1582,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Armed Forces Day",
@@ -111,7 +118,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setArmedForcesDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1949,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Ash Wednesday",
@@ -119,7 +133,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setAshWednesday($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1200,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Black Friday",
@@ -127,7 +148,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setBlackFriday($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1951,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Christmas Day",
@@ -135,7 +163,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setChristmasDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 336,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1870,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1870,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Christmas Eve",
@@ -143,7 +178,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setChristmasEve($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 336,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Cinco de Mayo",
@@ -151,7 +193,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setCincoDeMayo($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1862,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Columbus Day",
@@ -159,7 +208,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setColumbusDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1792,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1968,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1968,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Daylight Saving (End)",
@@ -167,7 +223,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setDaylightSavingEnd($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1918,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Daylight Saving (Start)",
@@ -175,7 +238,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setDaylightSavingStart($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1918,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Earth Day",
@@ -183,7 +253,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setEarthDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1970,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Easter",
@@ -191,7 +268,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setEaster($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 300,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Father's Day",
@@ -199,7 +283,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setFathersDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1910,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Flag Day",
@@ -207,7 +298,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setFlagDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1916,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Good Friday",
@@ -215,7 +313,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setGoodFriday($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 33,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Groundhog Day",
@@ -223,7 +328,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setGroundhogDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1887,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Halloween",
@@ -231,7 +343,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setHalloween($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1745,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Hanukkah",
@@ -239,7 +358,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setHanukkah($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => -168,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Independence Day",
@@ -247,7 +373,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setIndependenceDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1776,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1941,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1941,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Indigenous Peoples' Day",
@@ -255,7 +388,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setIndigenousPeoplesDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1792,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1968,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1968,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Juneteenth",
@@ -263,7 +403,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setJuneteenth($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1865,
+                'end_year' => null,
+                'bank_holiday_start_year' => 2021,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 2021,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Kwanzaa",
@@ -271,7 +418,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setKwanzaa($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1966,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Labor Day",
@@ -279,7 +433,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setLaborDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1882,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1894,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1894,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Memorial Day",
@@ -287,7 +448,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setMemorialDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1868,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1971,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1971,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Martin Luther King Jr. Day",
@@ -295,7 +463,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setMLKDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1986,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1986,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1986,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Mother's Day",
@@ -303,7 +478,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setMothersDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1914,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "New Year's Day",
@@ -311,7 +493,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setNewYearsDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => -2000,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1885,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1885,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "New Year's Eve",
@@ -319,7 +508,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setNewYearsEve($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => -2000,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Orthodox Easter",
@@ -327,7 +523,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setOrthodoxEaster($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 300,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Palm Sunday",
@@ -335,7 +538,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setPalmSunday($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 500,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Passover",
@@ -343,7 +553,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setPassover($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => -1200,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Patriot Day",
@@ -351,7 +568,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setPatriotsDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 2002,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Pearl Harbor Remembrance Day",
@@ -359,7 +583,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setPearlHarborRemembrance($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1994,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Presidents' Day",
@@ -367,7 +598,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setPresidentsDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1971,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1971,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1971,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Rosh Hashanah",
@@ -375,7 +613,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setRoshHashanah($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => -600,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "St. Patrick's Day",
@@ -383,7 +628,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setStPatricksDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1631,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Tax Day",
@@ -391,7 +643,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setTaxDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 1913,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Thanksgiving",
@@ -399,7 +658,14 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setThanksgiving($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1621,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1789,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1789,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Valentine's Day",
@@ -407,15 +673,29 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setValentinesDay($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 496,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Veterans Day",
-                'search_names' => ["VETERANS DAY"],
+                'search_names' => ["VETERANS DAY", "ARMISTICE DAY"],
                 'date' => function() use ($year) {
                     return $this->setVeteransDay($year);
                 },
-                'bank_holiday' => true
+                'bank_holiday' => true,
+                'federal_holiday' => true,
+                'start_year' => 1919,
+                'end_year' => null,
+                'bank_holiday_start_year' => 1971,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => 1971,
+                'federal_holiday_end_year' => null,
             ),
             array(
                 'name' => "Yom Kippur",
@@ -423,11 +703,19 @@ trait Holiday
                 'date' => function() use ($year) {
                     return $this->setYomKippur($year);
                 },
-                'bank_holiday' => false
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => -1440,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
+                'federal_holiday_end_year' => null,
             ),
         );
 
         foreach ($holidays as $key => $holiday) {
+
             if(!in_array($holiday['name'], $this->holidayArray) && !array_intersect($holiday['search_names'], $this->holidayArray)) {
                 unset($holidays[$key]);
             }
@@ -455,16 +743,23 @@ trait Holiday
                 };
             }
 
-            $bankHoliday = $userHoliday['bank_holiday'];
+            $bankHoliday = $userHoliday['bank_holiday'] ?? false;
+            $federalHoliday = $userHoliday['federal_holiday'] ?? false;
 
-            array_push($holidays,
+            $holidays[] =
                 array(
                     'name' => $userHoliday['name'],
                     'search_names' => [\strtoupper($userHoliday['name']), \strtoupper(\str_replace("'", '', $userHoliday['name']))],
                     'date' => $date,
-                    'bank_holiday' => $bankHoliday
-                )
-            );
+                    'bank_holiday' => $bankHoliday,
+                    'federal_holiday' => $federalHoliday,
+                    'start_year' => null,
+                    'end_year' => null,
+                    'bank_holiday_start_year' => null,
+                    'bank_holiday_end_year' => null,
+                    'federal_holiday_start_year' => null,
+                    'federal_holiday_end_year' => null,
+                );
         }
 
         return array_values($holidays);

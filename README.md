@@ -344,6 +344,10 @@ Use locally installed carbon version
 
 ```
 $ ./vendor/bin/phpunit
+
+// or with coverage 
+
+$ XDEBUG_MODE=coverage ./vendor/bin/phpunit
 ```
 
 ----

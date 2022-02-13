@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Holidays\Kwanzaa;
+
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
 
@@ -43,5 +45,13 @@ class KwanzaaTest extends TestCase
         $holiday = Carbon::create(2020, 1, 1)->getKwanzaaHoliday();
 
         $this->assertFalse($holiday->date->isBankHoliday());
+    }
+
+    public function testIsFederalHoliday()
+    {
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getKwanzaaHoliday();
+
+        $this->assertFalse($holiday->date->isFederalHoliday());
     }
 }

@@ -23,6 +23,6 @@ trait AprilFoolsDay
       */
     public function getAprilFoolsDayHoliday($year = null)
     {
-        return $this->getHolidaysByYear("April Fool's Day", $year)[0];
+        return $this->getHolidaysByYear("April Fools' Day", $year)[0];
     }
 }
