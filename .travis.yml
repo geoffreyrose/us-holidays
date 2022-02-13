@@ -1,7 +1,8 @@
 language: php
 env:
   global:
-    - coverage=false
+    - COVERAGE=false
+    - XDEBUG_MODE=coverage
 
 matrix:
   include:
@@ -26,10 +27,10 @@ before_script:
 # Commands you want to run that will verify your build.
 script:
     - ./tests/carbon-${CARBON_V}.sh
-    - if [[ $COVERAGE = 'true' ]]; then ./vendor/bin/phpunit --coverage-clover=coverage.xml; fi
+    - if [[ $COVERAGE = 'true' ]]; then ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml; fi
 
 after_success:
-    - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
+    - if [[ $COVERAGE = 'true' ]]; then travis_retry php vendor/bin/php-coveralls; fi
 
 # Cache composer packages so "composer install" is faster
 cache:
