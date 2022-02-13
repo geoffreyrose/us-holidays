@@ -58,8 +58,8 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for 41 US holi
 
 
 ### Requirements
- * [Carbon](http://carbon.nesbot.com/)
- * PHP 7.0+
+* [Carbon](http://carbon.nesbot.com/)
+* PHP 7.0+
 
 ### Usage
 
@@ -229,24 +229,9 @@ $carbon->getYomKippurHoliday();
 
 ```
 
-### Is Bank Holiday or Is Holiday
+### isHoliday()
 
 See [documentation](https://geoffreyrose.github.io/us-holidays/#isHoliday) for more details
-
-Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. So Holidays that are always on weekends are not consider bank holidays. Returns `boolean`
-```php
-$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
-$carbon->isBankHoliday(); // bool (false)
-
-$carbon = Carbon::create(2018, 12, 25); // Tuesday
-$carbon->isBankHoliday(); // bool (true)
-
-$carbon = Carbon::create(2016, 12, 25); // Sunday
-$carbon->isBankHoliday(); // bool (false)
-
-$carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->isBankHoliday(); // bool (true)
-```
 
 Check if date is holiday. Returns `boolean`
 ```php
@@ -255,6 +240,67 @@ $carbon = Carbon::create(2018, 12, 25);
 $carbon->isHoliday(); // bool (true)
 ```
 
+### isBankHoliday()
+
+See [documentation](https://geoffreyrose.github.io/us-holidays/#isBankHoliday) for more details
+
+Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. Holidays that are always on weekends are not consider bank holidays. Also holidays that are Bank Holidays but fall on Saturday are NOT observed on the previous Friday. Returns `boolean`
+```php
+$carbon = Carbon::create(2020, 1, 1); // New Years Day - Wednesday
+$carbon->isBankHoliday(); // boolean (true)
+
+$carbon = Carbon::create(2020, 1, 2);
+$carbon->isBankHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
+$carbon->isBankHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2018, 12, 25); // Christmas - Tuesday
+$carbon->isBankHoliday(); // boolean (true)
+
+$carbon = Carbon::create(2016, 12, 25); // Christmas - Sunday
+$carbon->isBankHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2016, 12, 26); // Monday
+$carbon->isBankHoliday(); // boolean (true)
+
+$carbon = Carbon::create(2021, 12, 25); // Christmas - Saturday
+$carbon->isBankHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2021, 12, 24); // Friday
+$carbon->isBankHoliday(); // boolean (false)
+```
+
+### isFederalHoliday()
+
+See [documentation](https://geoffreyrose.github.io/us-holidays/#isFederalHoliday) for more details
+
+Check if date is a Federal Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Federal holidays are Monday - Friday Only. Holidays that are always on weekends are not consider bank holidays. Returns `boolean`
+```php
+$carbon = Carbon::create(2020, 1, 1); // New Years Day - Wednesday
+$carbon->isFederalHoliday(); // boolean (true)
+
+$carbon = Carbon::create(2020, 1, 2);
+$carbon->isFederalHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
+$carbon->isFederalHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2018, 12, 25); // Christmas - Tuesday
+$carbon->isFederalHoliday(); // boolean (true)
+
+$carbon = Carbon::create(2016, 12, 25); // Christmas - Sunday
+$carbon->isFederalHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2016, 12, 26); // Monday
+$carbon->isFederalHoliday(); // boolean (true)
+
+$carbon = Carbon::create(2021, 12, 25); // Christmas - Saturday
+$carbon->isFederalHoliday(); // boolean (false)
+
+$carbon = Carbon::create(2021, 12, 24); // Friday
+$carbon->isFederalHoliday(); // boolean (true)
+```
 
 ### Get Holiday Name
 
