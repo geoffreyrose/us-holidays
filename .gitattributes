@@ -6,3 +6,4 @@
 /dates.text         export-ignore
 /todo               export-ignore
 /phpunit.xml        export-ignore
+/.github            export-ignore
