@@ -380,7 +380,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @return string|null
      */
-    public function getHolidayName(): string
+    public function getHolidayName(): ?string
     {
         $holidays = $this->getHolidaysByYear('all');
         $holidayName = null;
