@@ -27,6 +27,8 @@ jobs:
             CARBON_V: 2
             COVERAGE: true
     steps:
+      - name: Actions
+        uses: actions/checkout@v2
       - name: Composer
         uses: php-actions/composer@v6
       - name: Run Tests
