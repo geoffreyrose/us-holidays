@@ -27,8 +27,8 @@ jobs:
             CARBON_V: 2
             COVERAGE: true
     steps:
-      - name: Composer Install
-        run: composer self-update; composer install --prefer-source --no-interaction --dev
+      - name: Composer
+        uses: php-actions/composer@v6
       - name: Run Tests
         run: ./tests/carbon-${env.CARBON_V}.sh
       - name: Code Coverage
