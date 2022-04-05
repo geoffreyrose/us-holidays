@@ -25,7 +25,7 @@ jobs:
             CARBON_V: '2'
           - php-version: '8.1'
             CARBON_V: '2'
-            COVERAGE: 'true'
+            COVERAGE: true
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
@@ -35,6 +35,6 @@ jobs:
           COVERAGE: ${{ matrix.COVERAGE }}
         run: ./vendor/bin/phpunit
       - name: Code Coverage
-        if: $COVERAGE == 'true' 
+        if: ${{ COVERAGE == true }}
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
       
