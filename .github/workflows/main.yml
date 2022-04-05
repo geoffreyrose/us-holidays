@@ -32,8 +32,9 @@ jobs:
       - name: Run Tests
         env:
           CARBON_V: ${{ matrix.CARBON_V }}
-        run: ./tests/carbon-${CARBON_V}.sh
+          COVERAGE: ${{ matrix.COVERAGE }}
+        run: ./vendor/bin/phpunit
       - name: Code Coverage
-        if: env.COVERAGE == 'true' 
+        if: COVERAGE == 'true' 
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
       
