@@ -42,6 +42,6 @@ jobs:
           coverage: xdebug
           tools: php-cs-fixer, phpunit:${{ matrix.phpunit-version }}
       - name: Composer Install
-        run: composer install --prefer-source --no-interaction --dev 
+        run: composer install --no-interaction --dev 
       - name: Run Tests
         run: ./vendor/bin/phpunit
