@@ -33,6 +33,6 @@ jobs:
       - name: Code Coverage
         env:
           COVERAGE: ${{ matrix.coverage }}
-        if: ${{ env.COVERAGE == true }}
+        if: ${{ env.COVERAGE }}
         run: XDEBUG_MODE=coverage ./vendor/bin/phpunit
       
