@@ -116,14 +116,14 @@ class Carbon extends \Carbon\Carbon {
                 $days_until = $this->diffInDays($date);
 
                 $bankHoliday = $holidays[$index]['bank_holiday'];
-                if($bankHoliday && $bankHolidayCheck) {
-                    $date->isBankHoliday();
-                }
+                // if($bankHoliday && $bankHolidayCheck) {
+                //    $date->isBankHoliday();
+                // }
 
                 $federalHoliday = $holidays[$index]['federal_holiday'];
-                if($federalHoliday && $bankHolidayCheck) {
-                    $date->isFederalHoliday();
-                }
+                // if($federalHoliday && $bankHolidayCheck) {
+                //    $date->isFederalHoliday();
+                // }
 
                 $details = (object) [
                     'name' => $holidays[$index]['name'],
@@ -164,14 +164,14 @@ class Carbon extends \Carbon\Carbon {
 
                             $bankHoliday = $holidays[$index]['bank_holiday'];
 
-                            if($bankHoliday && $bankHolidayCheck) {
-                                $date->isBankHoliday();
-                            }
+                            // if($bankHoliday && $bankHolidayCheck) {
+                            // $date->isBankHoliday();
+                            // }
 
                             $federalHoliday = $holidays[$index]['federal_holiday'];
-                            if($federalHoliday && $bankHolidayCheck) {
-                                $date->isFederalHoliday();
-                            }
+                            // if($federalHoliday && $bankHolidayCheck) {
+                            //    $date->isFederalHoliday();
+                            // }
 
                             $details = (object) [
                                 'name' => $holidays[$index]['name'],
