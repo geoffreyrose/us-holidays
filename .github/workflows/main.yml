@@ -14,35 +14,25 @@ jobs:
       matrix:
         include:
           - php-version: '7.1'
-            carbon_v: '2'
             coverage: false
           - php-version: '7.2'
-            carbon_v: '2'
             coverage: false
           - php-version: '7.3'
-            carbon_v: '2'
             coverage: false
           - php-version: '7.4'
-            carbon_v: '2'
             coverage: false
           - php-version: '8.0'
-            carbon_v: '2'
             coverage: false
           - php-version: '8.1'
-            carbon_v: '2'
             coverage: true
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
       - name: Run Tests
-        env:
-          CARBON_V: ${{ matrix.carbon_v }}
-          COVERAGE: ${{ matrix.coverage }}
         run: ./vendor/bin/phpunit
       - name: Code Coverage
         env:
-          CARBON_V: ${{ matrix.carbon_v }}
           COVERAGE: ${{ matrix.coverage }}
-        if: ${{ env.COVERAGE }}
-        run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
+        if: ${{ env.COVERAGE == true }}
+        run: XDEBUG_MODE=coverage ./vendor/bin/phpunit
       
