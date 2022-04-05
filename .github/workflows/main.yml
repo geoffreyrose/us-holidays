@@ -43,6 +43,6 @@ jobs:
           tools: php-cs-fixer, phpunit:${{ matrix.phpunit-version }}
       - uses: php-actions/composer@v6
         with:
-          php-version: ${{ matrix.php-version }}
+          php_version: ${{ matrix.php-version }}
       - name: Run Tests
         run: ./vendor/bin/phpunit
