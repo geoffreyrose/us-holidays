@@ -14,17 +14,17 @@ jobs:
       matrix:
         include:
           - php-version: '7.1'
-            coverage: false
+            coverage: 'false'
           - php-version: '7.2'
-            coverage: false
+            coverage: 'false'
           - php-version: '7.3'
-            coverage: false
+            coverage: 'false'
           - php-version: '7.4'
-            coverage: false
+            coverage: 'false'
           - php-version: '8.0'
-            coverage: false
+            coverage: 'false'
           - php-version: '8.1'
-            coverage: true
+            coverage: 'true'
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
@@ -33,6 +33,6 @@ jobs:
       - name: Code Coverage
         env:
           COVERAGE: ${{ matrix.coverage }}
-        if: ${{ env.COVERAGE }}
+        if: ${{ env.COVERAGE == 'true' }}
         run: XDEBUG_MODE=coverage ./vendor/bin/phpunit
       
