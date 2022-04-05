@@ -35,6 +35,6 @@ jobs:
           COVERAGE: ${{ matrix.COVERAGE }}
         run: ./vendor/bin/phpunit
       - name: Code Coverage
-        if: ${{ COVERAGE == true }}
+        if: ${{ $COVERAGE == true }}
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
       
