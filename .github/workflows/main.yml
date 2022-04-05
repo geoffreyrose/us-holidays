@@ -1,0 +1,47 @@
+name: PHP CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        include:
+          - php-version: '7.1'
+            coverage: 'false'
+            phpunit-version: '7'
+          - php-version: '7.2'
+            coverage: 'false'
+            phpunit-version: '8'
+          - php-version: '7.3'
+            coverage: 'false'
+            phpunit-version: '9'
+          - php-version: '7.4'
+            coverage: 'false'
+            phpunit-version: '9'
+          - php-version: '8.0'
+            coverage: 'false'
+            phpunit-version: '9'
+          - php-version: '8.1'
+            coverage: 'true'
+            phpunit-version: '9'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          ini-values: post_max_size=256M, max_execution_time=180
+          extensions: mbstring, intl, calendar
+          coverage: xdebug
+          tools: php-cs-fixer, phpunit:${{ matrix.phpunit-version }}
+      - name: Composer Install
+        run: composer install --no-interaction --dev 
+      - name: Run Tests
+        run: ./vendor/bin/phpunit
