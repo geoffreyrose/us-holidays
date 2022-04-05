@@ -1,0 +1,34 @@
+name: PHP CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        include:
+          - php-version: 7.1
+            CARBON_V: 2
+          - php-version: 7.2
+            CARBON_V: 2
+          - php-version: 7.3
+            CARBON_V: 2
+          - php-version: 7.4
+            CARBON_V: 2
+          - php-version: 8.0
+            CARBON_V: 2
+          - php-version: 8.1
+            CARBON_V: 2
+            COVERAGE: true
+    steps:
+      - name: Composer Install
+        run: composer self-update; composer install --prefer-source --no-interaction --dev
+      - name: Run Tests
+        run: ./tests/carbon-${env.CARBON_V}.sh
+        if: if [[ env.COVERAGE = 'true' ]]; then ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml; fi
+      
