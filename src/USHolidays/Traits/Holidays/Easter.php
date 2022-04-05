@@ -14,7 +14,7 @@ trait Easter
     private function setEaster($year)
     {
         $date = Carbon::create($year, 3, 21, 0, 0, 0);
-        $days = easter_days($year);
+        $days = \easter_days($year);
 
         return $date->addDays($days);
     }
