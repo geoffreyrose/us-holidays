@@ -38,6 +38,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           ini-values: post_max_size=256M, max_execution_time=180
+          extensions: mbstring, intl, calendar
           coverage: xdebug
           tools: php-cs-fixer, phpunit:${{ matrix.phpunit-version }}
       - uses: php-actions/composer@v6
