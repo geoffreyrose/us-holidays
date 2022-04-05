@@ -43,6 +43,6 @@ jobs:
         env:
           CARBON_V: ${{ matrix.carbon_v }}
           COVERAGE: ${{ matrix.coverage }}
-        if: ${{ $COVERAGE }}
+        if: ${{ env.COVERAGE }}
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
       
