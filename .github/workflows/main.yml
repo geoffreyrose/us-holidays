@@ -14,27 +14,35 @@ jobs:
       matrix:
         include:
           - php-version: '7.1'
-            CARBON_V: '2'
+            carbon_v: '2'
+            coverage: false
           - php-version: '7.2'
-            CARBON_V: '2'
+            carbon_v: '2'
+            coverage: false
           - php-version: '7.3'
-            CARBON_V: '2'
+            carbon_v: '2'
+            coverage: false
           - php-version: '7.4'
-            CARBON_V: '2'
+            carbon_v: '2'
+            coverage: false
           - php-version: '8.0'
-            CARBON_V: '2'
+            carbon_v: '2'
+            coverage: false
           - php-version: '8.1'
-            CARBON_V: '2'
-            COVERAGE: true
+            carbon_v: '2'
+            coverage: true
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
       - name: Run Tests
         env:
-          CARBON_V: ${{ matrix.CARBON_V }}
-          COVERAGE: ${{ matrix.COVERAGE }}
+          CARBON_V: ${{ matrix.carbon_v }}
+          COVERAGE: ${{ matrix.coverage }}
         run: ./vendor/bin/phpunit
       - name: Code Coverage
-        if: ${{ $COVERAGE == true }}
+        env:
+          CARBON_V: ${{ matrix.carbon_v }}
+          COVERAGE: ${{ matrix.coverage }}
+        if: $COVERAGE
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
       
