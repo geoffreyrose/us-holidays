@@ -13,25 +13,25 @@ jobs:
     strategy:
       matrix:
         include:
-          - php-version: 7.1
-            CARBON_V: 2
-          - php-version: 7.2
-            CARBON_V: 2
-          - php-version: 7.3
-            CARBON_V: 2
-          - php-version: 7.4
-            CARBON_V: 2
-          - php-version: 8.0
-            CARBON_V: 2
-          - php-version: 8.1
-            CARBON_V: 2
-            COVERAGE: true
+          - php-version: '7.1'
+            CARBON_V: '2'
+          - php-version: '7.2'
+            CARBON_V: '2'
+          - php-version: '7.3'
+            CARBON_V: '2'
+          - php-version: '7.4'
+            CARBON_V: '2'
+          - php-version: '8.0'
+            CARBON_V: '2'
+          - php-version: '8.1'
+            CARBON_V: '2'
+            COVERAGE: 'true'
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
       - name: Run Tests
         run: ./tests/carbon-${env.CARBON_V}.sh
       - name: Code Coverage
-        if: env.COVERAGE == true 
+        if: env.COVERAGE == 'true' 
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
       
