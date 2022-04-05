@@ -43,6 +43,9 @@ jobs:
           tools: php-cs-fixer, phpunit:${{ matrix.phpunit-version }}
       - uses: php-actions/composer@v6
       - name: Run Tests
-        uses: php-actions/phpunit@v3
-        with:
-          configuration: ./phpunit.xml
+        run: ./vendor/bin/phpunit
+      - name: Code Coverage
+        env:
+          COVERAGE: ${{ matrix.coverage }}
+        if: ${{ env.COVERAGE == 'true' }}
+        run: XDEBUG_MODE=coverage ./vendor/bin/phpunit
