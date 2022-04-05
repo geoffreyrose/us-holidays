@@ -30,7 +30,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v6
       - name: Run Tests
-        run: ./tests/carbon-${env.CARBON_V}.sh
+        env:
+          CARBON_V: ${{ matrix.CARBON_V }}
+        run: ./tests/carbon-${CARBON_V}.sh
       - name: Code Coverage
         if: env.COVERAGE == 'true' 
         run: ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml 
