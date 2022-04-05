@@ -15,32 +15,32 @@ jobs:
         include:
           - php-version: '7.1'
             coverage: 'false'
-            phpunit-versions: '7'
+            phpunit-version: '7'
           - php-version: '7.2'
             coverage: 'false'
-            phpunit-versions: '8'
+            phpunit-version: '8'
           - php-version: '7.3'
             coverage: 'false'
-            phpunit-versions: '9'
+            phpunit-version: '9'
           - php-version: '7.4'
             coverage: 'false'
-            phpunit-versions: '9'
+            phpunit-version: '9'
           - php-version: '8.0'
             coverage: 'false'
-            phpunit-versions: '9'
+            phpunit-version: '9'
           - php-version: '8.1'
             coverage: 'true'
-            phpunit-versions: '9'
+            phpunit-version: '9'
     steps:
       - uses: actions/checkout@v2
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl
           ini-values: post_max_size=256M, max_execution_time=180
           coverage: xdebug
-          tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}
+          tools: php-cs-fixer, phpunit:${{ matrix.phpunit-version }}
       - uses: php-actions/composer@v6
       - name: Run Tests
         uses: php-actions/phpunit@v3
