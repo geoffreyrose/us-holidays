@@ -2,10 +2,9 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays)
 [![Total Downloads](https://img.shields.io/packagist/dt/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays/stats)
-[![Build Status](https://img.shields.io/travis/geoffreyrose/us-holidays/master.svg?style=flat-square)](https://app.travis-ci.com/github/geoffreyrose/us-holidays)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/geoffreyrose/us-holidays/PHP%20CI?style=flat-square)](https://github.com/geoffreyrose/us-holidays/actions?query=branch%3Amaster)
 [![Coverage](https://img.shields.io/coveralls/github/geoffreyrose/us-holidays?style=flat-square)](https://coveralls.io/github/geoffreyrose/us-holidays?branch=master)
 [![License](https://img.shields.io/github/license/geoffreyrose/us-holidays?style=flat-square)](https://github.com/geoffreyrose/us-holidays/blob/master/LICENSE)
-
 </div>
 
 # Carbon Support for US Holidays
