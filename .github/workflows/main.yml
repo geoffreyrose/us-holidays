@@ -45,3 +45,7 @@ jobs:
         run: composer install --no-interaction --dev 
       - name: Run Tests
         run: ./vendor/bin/phpunit
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
