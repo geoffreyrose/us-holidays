@@ -45,3 +45,8 @@ jobs:
         run: composer install --no-interaction --dev 
       - name: Run Tests
         run: ./vendor/bin/phpunit
+      - name: Codecov
+        if: ${{ matrix.coverage == 'true' }}
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./build/logs/clover.xml
