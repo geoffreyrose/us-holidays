@@ -47,4 +47,6 @@ jobs:
         run: ./vendor/bin/phpunit
       - name: Codecov
         if: ${{ matrix.coverage == 'true' }}
-        run: curl -Os https://uploader.codecov.io/latest/linux/codecov chmod +x codecov ./codecov
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./build/logs/clover.xml
