@@ -419,5 +419,5 @@ $ ./tests/carbon-1-2.sh
 
 
 ### See It Used in the Wild
-[GBPN](https://gbpn.com/resources/branding-and-design/us-holiday-calendar) - Ongoing US Holiday Calendar
+[GBPN](https://gbpn.com/resources/branding-and-design/us-holiday-calendar) - Ongoing US Holiday Calendar  
 [Canny Armadillo](https://cannyarmadillo.com/resources/us-holiday-calendar) - Next 12 Months
