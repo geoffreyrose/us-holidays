@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays)
 [![Total Downloads](https://img.shields.io/packagist/dt/geoffreyrose/us-holidays?style=flat-square)](https://packagist.org/packages/geoffreyrose/us-holidays/stats)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/geoffreyrose/us-holidays/PHP%20CI?style=flat-square)](https://github.com/geoffreyrose/us-holidays/actions?query=branch%3Amaster)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/geoffreyrose/us-holidays/main.yml?branch=master&style=flat-square)](https://github.com/geoffreyrose/us-holidays/actions?query=branch%3Amaster)
 [![Codecov branch](https://img.shields.io/codecov/c/gh/geoffreyrose/us-holidays/master?style=flat-square)](https://app.codecov.io/gh/geoffreyrose/us-holidays/branch/master)
 [![License](https://img.shields.io/github/license/geoffreyrose/us-holidays?style=flat-square)](https://github.com/geoffreyrose/us-holidays/blob/master/LICENSE)
 </div>
