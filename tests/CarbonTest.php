@@ -43,6 +43,18 @@ class CarbonTest extends TestCase
 
     }
 
+    public function testGetHoliday()
+    {
+        // 07/04 - Saturday
+        $carbon = new Carbon();
+        $holiday = Carbon::create(2020, 1, 1)->getIndependenceDayHoliday()->date;
+
+        $this->assertEquals("Independence Day", $holiday->getHoliday()[0]->name);
+        $this->assertEquals(Carbon::create(2020, 1, 1)->getIndependenceDayHoliday()->date, $holiday->getHoliday()[0]->date);
+
+
+    }
+
     public function testIsHoliday()
     {
         $carbon = new Carbon();
