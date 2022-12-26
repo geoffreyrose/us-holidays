@@ -82,6 +82,8 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysByYear($name, $year=null): array
     {
+        $this->setTimezone('UTC');
+        $this->setTime(0,0);
         // this is primarily for isBankHoliday() can get a list of holidays without a loop
         $bankHolidayCheck = true;
         if($name == 'no-bank-check') {
@@ -209,12 +211,12 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysInDays($days, $holidays=null)
     {
-        $this->setTime(0,0,0);
+        $this->setTimezone('UTC');
+        $this->setTime(0,0);
+
         if($holidays === null || $holidays === 'all') {
             $holidays = $this->holidayArray;
         }
-
-
 
         if($days > 0) {
             $searchStartDate = $this->copy();
@@ -251,6 +253,9 @@ class Carbon extends \Carbon\Carbon {
      */
     public function getHolidaysInYears($years, $holidays=null)
     {
+        $this->setTimezone('UTC');
+        $this->setTime(0,0);
+
         if($years > 0) {
             $days = $this->diffInDays($this->copy()->addYears($years));
         } else {
@@ -282,6 +287,25 @@ class Carbon extends \Carbon\Carbon {
         }
 
         return $isHoliday;
+    }
+
+    /**
+     * Get the holiday(s) complete object
+     *
+     * @return array|null
+     */
+    public function getHoliday(): ?array
+    {
+        $holidays = $this->getHolidaysByYear('all');
+        $theHolidays = [];
+
+        foreach ($holidays as $holiday) {
+            if ($this->isBirthday($holiday->date)) {
+                $theHolidays[] = $holiday;
+            }
+        }
+
+        return $theHolidays;
     }
 
     /**
