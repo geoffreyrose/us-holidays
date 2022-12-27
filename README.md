@@ -8,7 +8,7 @@
 </div>
 
 # Carbon Support for US Holidays
-This extends [Carbon](http://carbon.nesbot.com/) and adds support for 41 US holidays.
+This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holidays.
 
 ## Full Documentation
 **v2.x**  
@@ -26,6 +26,7 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for 41 US holi
 * Christmas Eve
 * Cinco de Mayo
 * Columbus Day
+* Cyber Monday
 * Daylight Saving (End)
 * Daylight Saving (Start)
 * Earth Day
@@ -41,8 +42,8 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for 41 US holi
 * Juneteenth
 * Kwanzaa
 * Labor Day
-* Memorial Day
 * Martin Luther King Jr. Day
+* Memorial Day
 * Mother's Day
 * New Year's Day
 * New Year's Eve
@@ -193,10 +194,11 @@ $carbon->getAprilFoolsDayHoliday();
 $carbon->getArmedForcesDayHoliday();             
 $carbon->getAshWednesdayHoliday();               
 $carbon->getBlackFridayHoliday();                
-$carbon->getChristmasDayHoliday();               
+$carbon->getChristmasDayHoliday();    
 $carbon->getChristmasEveHoliday();               
 $carbon->getCincoDeMayoHoliday();                
 $carbon->getColumbusDayHoliday();                
+$carbon->getCyberMondayHoliday();           
 $carbon->getDaylightSavingEndHoliday();          
 $carbon->getDaylightSavingStartHoliday();        
 $carbon->getEarthDayHoliday();                   
@@ -212,8 +214,8 @@ $carbon->getIndigenousPeoplesDayHoliday();
 $carbon->getJuneteenthHoliday();                 
 $carbon->getKwanzaaHoliday();                    
 $carbon->getLaborDayHoliday();                   
-$carbon->getMemorialDayHoliday();                
 $carbon->getMLKDayHoliday();                     
+$carbon->getMemorialDayHoliday();                
 $carbon->getMothersDayHoliday();                 
 $carbon->getNewYearsDayHoliday();                
 $carbon->getNewYearsEveHoliday();                
@@ -229,8 +231,7 @@ $carbon->getTaxDayHoliday();
 $carbon->getThanksgivingHoliday();               
 $carbon->getValentinesDayHoliday();              
 $carbon->getVeteransDayHoliday();                
-$carbon->getYomKippurHoliday();                  
-
+$carbon->getYomKippurHoliday();
 ```
 
 ### isHoliday()

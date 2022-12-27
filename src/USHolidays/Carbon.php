@@ -20,7 +20,7 @@ class Carbon extends \Carbon\Carbon {
     /**
      * An array of all the names of the holidays
      */
-    private $holidayArray = ["April Fools' Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
+    private $holidayArray = ["April Fools' Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Cyber Monday", "Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
 
     /**
      * An array of bank holidays
@@ -108,7 +108,7 @@ class Carbon extends \Carbon\Carbon {
                 }
             }
 
-            if($index >= 0) {
+            if($index >= 0 && $index !== false) {
 
                 $currentYear = $this->copy()->year;
                 $this->year = $year;
@@ -155,7 +155,7 @@ class Carbon extends \Carbon\Carbon {
                     if( array_search(strtoupper($search_name), $holidaySearchName ) !== false ) {
                         $index = $key;
 
-                        if($index >= 0) {
+                        if($index >= 0 && $index !== false) {
 
                             $currentYear = $this->copy()->year;
                             $this->year = $year;

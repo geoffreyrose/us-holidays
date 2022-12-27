@@ -11,6 +11,7 @@ use USHolidays\Traits\Holidays\ChristmasDay;
 use USHolidays\Traits\Holidays\ChristmasEve;
 use USHolidays\Traits\Holidays\CincoDeMayo;
 use USHolidays\Traits\Holidays\ColumbusDay;
+use USHolidays\Traits\Holidays\CyberMonday;
 use USHolidays\Traits\Holidays\DaylightSavingEnd;
 use USHolidays\Traits\Holidays\DaylightSavingStart;
 use USHolidays\Traits\Holidays\EarthDay;
@@ -55,6 +56,7 @@ trait Holiday
     use ChristmasEve;
     use CincoDeMayo;
     use ColumbusDay;
+    use CyberMonday;
     use DaylightSavingEnd;
     use DaylightSavingStart;
     use EarthDay;
@@ -70,8 +72,8 @@ trait Holiday
     use Juneteenth;
     use Kwanzaa;
     use LaborDay;
-    use MemorialDay;
     use MLKDay;
+    use MemorialDay;
     use MothersDay;
     use NewYearsDay;
     use NewYearsEve;
@@ -215,6 +217,21 @@ trait Holiday
                 'bank_holiday_start_year' => 1968,
                 'bank_holiday_end_year' => null,
                 'federal_holiday_start_year' => 1968,
+                'federal_holiday_end_year' => null,
+            ),
+            array(
+                'name' => "Cyber Monday",
+                'search_names' => ["CYBER MONDAY"],
+                'date' => function() use ($year) {
+                    return $this->setCyberMonday($year);
+                },
+                'bank_holiday' => false,
+                'federal_holiday' => false,
+                'start_year' => 2005,
+                'end_year' => null,
+                'bank_holiday_start_year' => null,
+                'bank_holiday_end_year' => null,
+                'federal_holiday_start_year' => null,
                 'federal_holiday_end_year' => null,
             ),
             array(
