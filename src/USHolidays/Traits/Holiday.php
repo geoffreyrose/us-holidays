@@ -96,7 +96,7 @@ trait Holiday
      *
      * @param int|null $year The year to get the holidays in
      */
-    private function holidays( $year = null ) {
+    private function holidays(int $year = null ) {
         $this->setTime(0,0,0);
         $holidays = array(
             array(

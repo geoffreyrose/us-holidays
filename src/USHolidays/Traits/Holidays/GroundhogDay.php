@@ -11,7 +11,7 @@ trait GroundhogDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setGroundhogDay($year)
+    private function setGroundhogDay(int $year)
     {
         return Carbon::create($year, 2, 2, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait GroundhogDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getGroundhogDayHoliday($year = null)
+    public function getGroundhogDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Groundhog Day", $year)[0];
     }

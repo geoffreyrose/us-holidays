@@ -2,8 +2,6 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
-
 trait GoodFriday
 {
     /**
@@ -11,7 +9,7 @@ trait GoodFriday
      *
      * @param int $year The year to get the holiday in
      */
-    private function setGoodFriday($year)
+    private function setGoodFriDay(int $year)
     {
         return $this->setEaster($year)->subDays(2);
     }
@@ -21,7 +19,7 @@ trait GoodFriday
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getGoodFridayHoliday($year = null)
+    public function getGoodFridayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Good Friday", $year)[0];
     }

@@ -11,7 +11,7 @@ trait LaborDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setLaborDay($year)
+    private function setLaborDay(int $year)
     {
         $date = Carbon::create($year, 9, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::MONDAY ) {
@@ -26,7 +26,7 @@ trait LaborDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getLaborDayHoliday($year = null)
+    public function getLaborDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Labor Day", $year)[0];
     }

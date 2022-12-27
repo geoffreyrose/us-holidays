@@ -2,8 +2,6 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
-
 trait CyberMonday
 {
     /**
@@ -11,7 +9,7 @@ trait CyberMonday
      *
      * @param int $year The year to get the holiday in
      */
-    private function setCyberMonday($year)
+    private function setCyberMonDay(int $year)
     {
         return $this->setThanksgiving($year)->addDays(4);
     }
@@ -21,7 +19,7 @@ trait CyberMonday
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getCyberMondayHoliday($year = null)
+    public function getCyberMondayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Cyber Monday", $year)[0];
     }

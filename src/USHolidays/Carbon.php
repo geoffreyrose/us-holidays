@@ -437,7 +437,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @param int|null $number the number of holidays to get. default is 1
      */
-    public function getNextHolidays($number=1): array
+    public function getNextHolidays(int $number=1): array
     {
         $number_of_years = ceil($number / count($this->holidayArray));
 
@@ -451,7 +451,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @param int|null $number the number of holidays to get. default is 1
      */
-    public function getPrevHolidays($number=1): array
+    public function getPrevHolidays(int $number=1): array
     {
         $number_of_years = ceil($number / count($this->holidayArray)) * -1;
 

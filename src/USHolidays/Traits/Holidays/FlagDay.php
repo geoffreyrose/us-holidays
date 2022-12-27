@@ -11,7 +11,7 @@ trait FlagDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setFlagDay($year)
+    private function setFlagDay(int $year)
     {
         return Carbon::create($year, 6, 14, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait FlagDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getFlagDayHoliday($year = null)
+    public function getFlagDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Flag Day", $year)[0];
     }

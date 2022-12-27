@@ -2,8 +2,6 @@
 
 namespace USHolidays\Traits;
 
-use USHolidays\Carbon;
-
 trait BusinessDays
 {
     /**

@@ -11,9 +11,9 @@ trait RoshHashanah
      *
      * @param int $year The year to get the holiday in
      */
-    private function setRoshHashanah($year)
+    private function setRoshHashanah(int $year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 1, 3761 + intval($year))))->setTime(0, 0, 0);
+        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 1, 3761 + $year)))->setTime(0, 0, 0);
     }
 
     /**
@@ -21,7 +21,7 @@ trait RoshHashanah
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getRoshHashanahHoliday($year = null)
+    public function getRoshHashanahHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Rosh Hashanah", $year)[0];
     }

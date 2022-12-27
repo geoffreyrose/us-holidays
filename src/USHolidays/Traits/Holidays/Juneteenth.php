@@ -11,7 +11,7 @@ trait Juneteenth
      *
      * @param int $year The year to get the holiday in
      */
-    private function setJuneteenth($year)
+    private function setJuneteenth(int $year)
     {
         return Carbon::create($year, 6, 19, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait Juneteenth
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getJuneteenthHoliday($year = null)
+    public function getJuneteenthHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Juneteenth", $year)[0];
     }

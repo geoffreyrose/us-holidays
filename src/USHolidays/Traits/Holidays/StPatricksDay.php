@@ -11,7 +11,7 @@ trait StPatricksDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setStPatricksDay($year)
+    private function setStPatricksDay(int $year)
     {
         return Carbon::create($year, 3, 17, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait StPatricksDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getStPatricksDayHoliday($year = null)
+    public function getStPatricksDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("St. Patrick's Day", $year)[0];
     }

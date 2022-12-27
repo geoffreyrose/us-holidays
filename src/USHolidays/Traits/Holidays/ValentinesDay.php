@@ -11,7 +11,7 @@ trait ValentinesDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setValentinesDay($year)
+    private function setValentinesDay(int $year)
     {
         return Carbon::create($year, 2, 14, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait ValentinesDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getValentinesDayHoliday($year = null)
+    public function getValentinesDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Valentine's Day", $year)[0];
     }
