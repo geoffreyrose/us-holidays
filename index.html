@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>US Holidays Wrapper for the PHP Carbon DateTime Library</title>
-    <meta name="description" content="Adds support for 41 U.S. Holidays. Also supports adding your own holidays.">
+    <meta name="description" content="Adds support for 42 U.S. Holidays. Also supports adding your own holidays.">
 
-    <link rel="stylesheet" href="assets/css/app.css?id=3b7900a1c5bcabd16fd8">
+    <link rel="stylesheet" href="/assets/css/app.css?id=3b7900a1c5bcabd16fd8">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900|Open+Sans:400,600&display=swap" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -41,6 +41,7 @@
         <li><a href="#setBankHolidays">setBankHolidays()</a></li>
         <li><a href="#isBankHoliday">isBankHoliday()</a></li>
         <li><a href="#isFederalHoliday">isFederalHoliday()</a></li>
+        <li><a href="#getHoliday">getHoliday()</a></li>
         <li><a href="#getHolidayName">getHolidayName()</a></li>
         <li><a href="#getNextHolidays">getNextHolidays()</a></li>
         <li><a href="#getPrevHolidays">getPrevHolidays()</a></li>
@@ -68,6 +69,7 @@
         <li><a href="#getChristmasEveHoliday">getChristmasEveHoliday()</a></li>
         <li><a href="#getCincoDeMayoHoliday">getCincoDeMayoHoliday()</a></li>
         <li><a href="#getColumbusDayHoliday">getColumbusDayHoliday()</a></li>
+        <li><a href="#getCyberMondayHoliday">getCyberMondayHoliday()</a></li>
         <li><a href="#getDaylightSavingEndHoliday">getDaylightSavingEndHoliday()</a></li>
         <li><a href="#getDaylightSavingStartHoliday">getDaylightSavingStartHoliday()</a></li>
         <li><a href="#getEarthDayHoliday">getEarthDayHoliday()</a></li>
@@ -106,7 +108,7 @@
 <main class="has-side-navigation">
     <div class="page-content">
         <h1 id="introduction">Documentation For U.S. Holidays PHP Carbon Wrapper</h1>
-        <p>U.S. Holidays Wrapper for the Carbon DateTime Library. Adds support for 41 holidays</p>
+        <p>U.S. Holidays Wrapper for the Carbon DateTime Library. Adds support for 42 holidays</p>
         <p>See on <a href="https://github.com/geoffreyrose/us-holidays">Github</a></p>
 
         <h3 id="support-holidays">Supported Holidays</h3>
@@ -119,6 +121,7 @@
             <li>Christmas Eve</li>
             <li>Cinco de Mayo</li>
             <li>Columbus Day</li>
+            <li>Cyber Monday</li>
             <li>Daylight Saving (End)</li>
             <li>Daylight Saving (Start)</li>
             <li>Earth Day</li>
@@ -134,8 +137,8 @@
             <li>Juneteenth</li>
             <li>Kwanzaa</li>
             <li>Labor Day</li>
-            <li>Memorial Day</li>
             <li>Martin Luther King Jr. Day</li>
+            <li>Memorial Day</li>
             <li>Mother's Day</li>
             <li>New Year's Day</li>
             <li>New Year's Eve</li>
@@ -487,6 +490,22 @@ $carbon-&gt;isFederalHoliday(); // boolean (false)
 
 $carbon = Carbon::create(2021, 12, 24); // Friday
 $carbon-&gt;isFederalHoliday(); // boolean (true)</code></pre>
+        <h3 id="getHoliday"><a href="#getHoliday">getHoliday()</a></h3>
+        <p>Checks if the date is a holiday and will return an array of holiday(s)</p>
+        <pre><code class="language-php">getHoliday(): array</code></pre>
+        <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 1);
+$carbon-&gt;getHoliday();
+
+// [{
+//    &quot;name&quot;: &quot;New Year&#039;s Day&quot;,
+//    &quot;date&quot;: &quot;2020-01-01 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: true,
+//    &quot;days_away&quot;: 0
+// }]</code></pre>
+        <pre><code class="language-php">$carbon = Carbon::create(2020, 1, 2);
+$carbon-&gt;getHoliday();
+
+// []</code></pre>
         <h3 id="getHolidayName"><a href="#getHolidayName">getHolidayName()</a></h3>
         <p>Get name if date is holiday. Returns string or false</p>
         <pre><code class="language-php">getHolidayName() : string|false</code></pre>
@@ -804,6 +823,33 @@ $holidays-&gt;getColumbusDayHoliday(2022);
 //    &quot;date&quot;: &quot;2022-10-10 00:00:00&quot;,
 //    &quot;bank_holiday&quot;: true,
 //    &quot;days_away&quot;: 1013
+// }</code></pre>
+        <h3 id="getCyberMondayHoliday"><a href="#getCyberMondayHoliday">getCyberMondayHoliday()</a></h3>
+        <p>Get Cyber Monday for the current year of the Carbon object. Optionally pass in a $year to get Cyber Monday in a given year.</p>
+        <pre><code class="language-php">getCyberMondayHoliday(int $year=null) : object</code></pre>
+        <pre><code class="language-php">getCyberMondayHoliday(int $year=null) : object</code></pre>
+        <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getCyberMondayHoliday();
+
+// {
+//    &quot;name&quot;: &quot;Cyber Monday&quot;,
+//    &quot;date&quot;: &quot;2020-11-30 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 334
+// }
+
+$holidays-&gt;name // Cyber Monday
+$holidays-&gt;date-&gt;format(&#039;m-d-Y&#039;) // 2020-11-30
+$holidays-&gt;days_away // 334
+$holidays-&gt;bank_holiday // false</code></pre>
+        <pre><code class="language-php">$holidays = Carbon::create(2020, 1, 1);
+$holidays-&gt;getCyberMondayHoliday(2022);
+
+// {
+//    &quot;name&quot;: &quot;Cyber Monday&quot;,
+//    &quot;date&quot;: &quot;2022-11-28 00:00:00&quot;,
+//    &quot;bank_holiday&quot;: false
+//    &quot;days_away&quot;: 1062
 // }</code></pre>
         <h3 id="getDaylightSavingEndHoliday"><a href="#getDaylightSavingEndHoliday">getDaylightSavingEndHoliday()</a></h3>
         <p>Get Daylight Saving (End) for the current year of the Carbon object. Optionally pass in a <code class="language-php">$year</code> to get Daylight Saving (End) in a given year.</p>
@@ -1666,6 +1712,6 @@ $holidays-&gt;getYomKippurHoliday(2022);
     </div>
 </main>
 <span class="menu-toggle">Menu</span>
-<script async src="assets/js/app.js?id=0fe9e765f3e6e7871499"></script>
+<script async src="/assets/js/app.js?id=0fe9e765f3e6e7871499"></script>
 </body>
 </html>

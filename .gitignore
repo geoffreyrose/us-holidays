@@ -34,3 +34,14 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+.idea
+.phpdoc
+docs
+
+package-lock.json
+package.json
+mix-manifest.json
+phpDocumentor.phar
+webpack.mix.js
