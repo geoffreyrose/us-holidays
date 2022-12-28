@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Holidays\AprilFoolsDay;
+namespace Tests\Holidays\CyberMonday;
 
 use PHPUnit\Framework\TestCase;
 use USHolidays\Carbon;
