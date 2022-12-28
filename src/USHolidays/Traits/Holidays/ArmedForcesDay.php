@@ -11,7 +11,7 @@ trait ArmedForcesDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setArmedForcesDay($year)
+    private function setArmedForcesDay(int $year)
     {
         $date = Carbon::create($year, 5, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SATURDAY ) {
@@ -27,7 +27,7 @@ trait ArmedForcesDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getArmedForcesDayHoliday($year = null)
+    public function getArmedForcesDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Armed Forces Day", $year)[0];
     }

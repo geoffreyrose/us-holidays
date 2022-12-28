@@ -20,7 +20,7 @@ class Carbon extends \Carbon\Carbon {
     /**
      * An array of all the names of the holidays
      */
-    private $holidayArray = ["April Fools' Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
+    private $holidayArray = ["April Fools' Day","Armed Forces Day","Ash Wednesday","Black Friday","Christmas Day","Christmas Eve","Cinco de Mayo","Columbus Day","Cyber Monday", "Daylight Saving (End)","Daylight Saving (Start)","Earth Day","Easter","Father's Day","Flag Day","Good Friday","Groundhog Day","Halloween","Hanukkah","Independence Day","Indigenous Peoples' Day","Juneteenth","Kwanzaa","Labor Day","Memorial Day","Martin Luther King Jr. Day","Mother's Day","New Year's Day","New Year's Eve","Orthodox Easter","Palm Sunday","Passover","Patriot Day","Pearl Harbor Remembrance Day","Presidents' Day","Rosh Hashanah","St. Patrick's Day","Tax Day","Thanksgiving","Valentine's Day","Veterans Day","Yom Kippur"];
 
     /**
      * An array of bank holidays
@@ -80,10 +80,10 @@ class Carbon extends \Carbon\Carbon {
      * @param string|array $name The name(s) of the holidays to get
      * @param int|null $year The year to get the holidays in
      */
-    public function getHolidaysByYear($name, $year=null): array
+    public function getHolidaysByYear($name='all', int $year=null): array
     {
-        $this->setTimezone('UTC');
-        $this->setTime(0,0);
+        $this->shiftTimezone('UTC');
+        $this->setTime(0,0, 0);
         // this is primarily for isBankHoliday() can get a list of holidays without a loop
         $bankHolidayCheck = true;
         if($name == 'no-bank-check') {
@@ -108,7 +108,7 @@ class Carbon extends \Carbon\Carbon {
                 }
             }
 
-            if($index >= 0) {
+            if($index >= 0 && $index !== false) {
 
                 $currentYear = $this->copy()->year;
                 $this->year = $year;
@@ -155,7 +155,7 @@ class Carbon extends \Carbon\Carbon {
                     if( array_search(strtoupper($search_name), $holidaySearchName ) !== false ) {
                         $index = $key;
 
-                        if($index >= 0) {
+                        if($index >= 0 && $index !== false) {
 
                             $currentYear = $this->copy()->year;
                             $this->year = $year;
@@ -209,9 +209,9 @@ class Carbon extends \Carbon\Carbon {
      * @param int $days The number of days to look ahead to find holidays in
      * @param string|array|null $holidays The name(s) of the holidays to get
      */
-    public function getHolidaysInDays($days, $holidays=null)
+    public function getHolidaysInDays(int $days, $holidays=null)
     {
-        $this->setTimezone('UTC');
+        $this->shiftTimezone('UTC');
         $this->setTime(0,0);
 
         if($holidays === null || $holidays === 'all') {
@@ -251,9 +251,9 @@ class Carbon extends \Carbon\Carbon {
      * @param int $years The number of years to look ahead to find holidays in
      * @param string|array|null $holidays The name(s) of the holidays to get
      */
-    public function getHolidaysInYears($years, $holidays=null)
+    public function getHolidaysInYears(int $years=1, $holidays=null)
     {
-        $this->setTimezone('UTC');
+        $this->shiftTimezone('UTC');
         $this->setTime(0,0);
 
         if($years > 0) {
@@ -437,7 +437,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @param int|null $number the number of holidays to get. default is 1
      */
-    public function getNextHolidays($number=1): array
+    public function getNextHolidays(int $number=1): array
     {
         $number_of_years = ceil($number / count($this->holidayArray));
 
@@ -451,7 +451,7 @@ class Carbon extends \Carbon\Carbon {
      *
      * @param int|null $number the number of holidays to get. default is 1
      */
-    public function getPrevHolidays($number=1): array
+    public function getPrevHolidays(int $number=1): array
     {
         $number_of_years = ceil($number / count($this->holidayArray)) * -1;
 

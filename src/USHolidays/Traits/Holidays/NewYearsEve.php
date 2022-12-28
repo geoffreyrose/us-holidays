@@ -11,7 +11,7 @@ trait NewYearsEve
      *
      * @param int $year The year to get the holiday in
      */
-    private function setNewYearsEve($year)
+    private function setNewYearsEve(int $year)
     {
         return Carbon::create($year, 12, 31, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait NewYearsEve
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getNewYearsEveHoliday($year = null)
+    public function getNewYearsEveHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("New Year's Eve", $year)[0];
     }

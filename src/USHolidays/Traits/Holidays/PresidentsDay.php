@@ -11,7 +11,7 @@ trait PresidentsDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setPresidentsDay($year)
+    private function setPresidentsDay(int $year)
     {
         $date = Carbon::create($year, 2, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::MONDAY ) {
@@ -27,7 +27,7 @@ trait PresidentsDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPresidentsDayHoliday($year = null)
+    public function getPresidentsDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Presidents' Day", $year)[0];
     }

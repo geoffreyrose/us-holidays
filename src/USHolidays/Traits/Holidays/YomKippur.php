@@ -11,9 +11,9 @@ trait YomKippur
      *
      * @param int $year The year to get the holiday in
      */
-    private function setYomKippur($year)
+    private function setYomKippur(int $year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 10, 3761 + intval($year))))->setTime(0, 0, 0);
+        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 10, 3761 + $year)))->setTime(0, 0, 0);
     }
 
     /**
@@ -21,7 +21,7 @@ trait YomKippur
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getYomKippurHoliday($year = null)
+    public function getYomKippurHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Yom Kippur", $year)[0];
     }

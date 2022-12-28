@@ -11,7 +11,7 @@ trait Thanksgiving
      *
      * @param int $year The year to get the holiday in
      */
-    private function setThanksgiving($year)
+    private function setThanksgiving(int $year)
     {
         $date = Carbon::create($year, 11, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::THURSDAY ) {
@@ -27,7 +27,7 @@ trait Thanksgiving
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getThanksgivingHoliday($year = null)
+    public function getThanksgivingHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Thanksgiving", $year)[0];
     }

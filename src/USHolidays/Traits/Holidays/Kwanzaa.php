@@ -11,7 +11,7 @@ trait Kwanzaa
      *
      * @param int $year The year to get the holiday in
      */
-    private function setKwanzaa($year)
+    private function setKwanzaa(int $year)
     {
         return Carbon::create($year, 12, 26, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait Kwanzaa
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getKwanzaaHoliday($year = null)
+    public function getKwanzaaHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Kwanzaa", $year)[0];
     }

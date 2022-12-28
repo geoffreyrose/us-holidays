@@ -11,7 +11,7 @@ trait IndependenceDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setIndependenceDay($year)
+    private function setIndependenceDay(int $year)
     {
         return Carbon::create($year, 7, 4, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait IndependenceDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getIndependenceDayHoliday($year = null)
+    public function getIndependenceDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Independence Day", $year)[0];
     }

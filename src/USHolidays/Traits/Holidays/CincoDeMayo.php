@@ -11,7 +11,7 @@ trait CincoDeMayo
      *
      * @param int $year The year to get the holiday in
      */
-    private function setCincoDeMayo($year)
+    private function setCincoDeMayo(int $year)
     {
         return Carbon::create($year, 5, 5, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait CincoDeMayo
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getCincoDeMayoHoliday($year = null)
+    public function getCincoDeMayoHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Cinco de Mayo", $year)[0];
     }

@@ -11,7 +11,7 @@ trait DaylightSavingStart
      *
      * @param int $year The year to get the holiday in
      */
-    private function setDaylightSavingStart($year)
+    private function setDaylightSavingStart(int $year)
     {
         $date = Carbon::create($year, 3, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SUNDAY ) {
@@ -27,7 +27,7 @@ trait DaylightSavingStart
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getDaylightSavingStartHoliday($year = null)
+    public function getDaylightSavingStartHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Daylight Saving (Start)", $year)[0];
     }

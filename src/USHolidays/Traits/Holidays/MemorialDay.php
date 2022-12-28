@@ -11,7 +11,7 @@ trait MemorialDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setMemorialDay($year)
+    private function setMemorialDay(int $year)
     {
         $date = Carbon::create($year, 5, 1, 0, 0, 0);
         for ($i=0; $i < 7; $i++) {
@@ -31,7 +31,7 @@ trait MemorialDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getMemorialDayHoliday($year = null)
+    public function getMemorialDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Memorial Day", $year)[0];
     }

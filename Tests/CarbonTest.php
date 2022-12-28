@@ -138,13 +138,13 @@ class CarbonTest extends TestCase
         $holidays = $carbon->getHolidaysInYears(1, 'all');
 
         $this->assertFalse(count($holidays) == 40);
-        $this->assertTrue(count($holidays) == 41);
+        $this->assertTrue(count($holidays) == 42);
 
         $carbon = Carbon::create(2020, 1, 5, 1, 0, 0);
         $holidays = $carbon->getHolidaysInYears(1, 'all');
 
         $this->assertFalse(count($holidays) == 40);
-        $this->assertTrue(count($holidays) == 41);
+        $this->assertTrue(count($holidays) == 42);
     }
 
     public function testAddUserHoliday()

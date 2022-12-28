@@ -11,9 +11,9 @@ trait Passover
      *
      * @param int $year The year to get the holiday in
      */
-    private function setPassover($year)
+    private function setPassover(int $year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(8, 15, 3760 + intval($year))))->setTime(0, 0, 0);
+        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(8, 15, 3760 + $year)))->setTime(0, 0, 0);
     }
 
     /**
@@ -21,7 +21,7 @@ trait Passover
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPassoverHoliday($year = null)
+    public function getPassoverHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Passover", $year)[0];
     }

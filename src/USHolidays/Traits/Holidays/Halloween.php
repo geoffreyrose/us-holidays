@@ -11,7 +11,7 @@ trait Halloween
      *
      * @param int $year The year to get the holiday in
      */
-    private function setHalloween($year)
+    private function setHalloween(int $year)
     {
         return Carbon::create($year, 10, 31, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait Halloween
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getHalloweenHoliday($year = null)
+    public function getHalloweenHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Halloween", $year)[0];
     }

@@ -11,7 +11,7 @@ trait PearlHarborRemembrance
      *
      * @param int $year The year to get the holiday in
      */
-    private function setPearlHarborRemembrance($year)
+    private function setPearlHarborRemembrance(int $year)
     {
         return Carbon::create($year, 12, 7, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait PearlHarborRemembrance
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPearlHarborRemembranceDayHoliday($year = null)
+    public function getPearlHarborRemembranceDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Pearl Harbor Remembrance Day", $year)[0];
     }

@@ -11,7 +11,7 @@ trait MothersDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setMothersDay($year)
+    private function setMothersDay(int $year)
     {
         $date = Carbon::create($year, 5, 1, 0, 0, 0);
         if( $date->dayOfWeek !== Carbon::SUNDAY ) {
@@ -27,7 +27,7 @@ trait MothersDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getMothersDayHoliday($year = null)
+    public function getMothersDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("Mother's Day", $year)[0];
     }

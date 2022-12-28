@@ -11,7 +11,7 @@ trait AprilFoolsDay
      *
      * @param int $year The year to get the holiday in
      */
-    private function setAprilFoolsDay($year)
+    private function setAprilFoolsDay(int $year)
     {
         return Carbon::create($year, 4, 1, 0, 0, 0);
     }
@@ -21,7 +21,7 @@ trait AprilFoolsDay
       *
       * @param int|null $year The year to get the holiday in
       */
-    public function getAprilFoolsDayHoliday($year = null)
+    public function getAprilFoolsDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("April Fools' Day", $year)[0];
     }
