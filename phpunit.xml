@@ -20,7 +20,7 @@
     </coverage>
     <testsuites>
         <testsuite name="Carbon Holidays Test Suite">
-            <directory>tests</directory>
+            <directory>Tests</directory>
         </testsuite>
     </testsuites>
     <logging/>
