@@ -13,15 +13,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - php-version: '7.1'
-            coverage: 'false'
-            phpunit-version: '7'
-          - php-version: '7.2'
-            coverage: 'false'
-            phpunit-version: '8'
-          - php-version: '7.3'
-            coverage: 'false'
-            phpunit-version: '9'
           - php-version: '7.4'
             coverage: 'false'
             phpunit-version: '9'
