@@ -23,6 +23,6 @@ trait Hanukkah
      */
     public function getHanukkahHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Hanukkah", $year)[0];
+        return $this->getHolidaysByYear('Hanukkah', $year)[0];
     }
 }

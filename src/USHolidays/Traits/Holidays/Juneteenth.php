@@ -23,6 +23,6 @@ trait Juneteenth
      */
     public function getJuneteenthHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Juneteenth", $year)[0];
+        return $this->getHolidaysByYear('Juneteenth', $year)[0];
     }
 }

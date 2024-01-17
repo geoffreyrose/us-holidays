@@ -23,6 +23,6 @@ trait CincoDeMayo
      */
     public function getCincoDeMayoHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Cinco de Mayo", $year)[0];
+        return $this->getHolidaysByYear('Cinco de Mayo', $year)[0];
     }
 }

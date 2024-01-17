@@ -7,15 +7,17 @@
 [![License](https://img.shields.io/github/license/geoffreyrose/us-holidays?style=flat-square)](https://github.com/geoffreyrose/us-holidays/blob/master/LICENSE)
 </div>
 
-# Carbon Support for US Holidays
-This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holidays.
+# Branch in Development - Do Not Use
+
+# Carbon Support for US Holidays + Custom Holidays
+This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holidays + your custom holidays.
 
 ## Full Documentation
-**v2.x**  
-[https://geoffreyrose.github.io/us-holidays/](https://geoffreyrose.github.io/us-holidays/)
+**v3.x**  
+[https://geoffreyrose.github.io/us-holidays/3.x/](https://geoffreyrose.github.io/us-holidays/3.x/)
 
-**v1.x**  
-[https://github.com/geoffreyrose/us-holidays/blob/8717adad63c489e3ef65619e4272bb9b21718078/README.md](https://github.com/geoffreyrose/us-holidays/blob/8717adad63c489e3ef65619e4272bb9b21718078/README.md)
+**v2.x**  
+[https://geoffreyrose.github.io/us-holidays/2.x/](https://geoffreyrose.github.io/us-holidays/2.x/)
 
 ### Supported Holidays
 * April Fool's Day
@@ -64,30 +66,15 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holi
 
 ### Requirements
 * [Carbon](http://carbon.nesbot.com/)
-* PHP 7.0+
+* PHP 8.0+
 
 ### Usage
-
-#### With Composer
-```
-$ composer require geoffreyrose/us-holidays
-```
 
 ```php
 <?php
 require 'vendor/autoload.php';
 
-use USHolidays\Carbon;
-```
-
-#### Without Composer
-
-```php
-<?php
-require 'path/to/nesbot/Carbon.php';
-require 'path/to/geoffreyrose/Carbon.php';
-
-use USHolidays\Carbon;
+use USHolidays\UsHoliday;
 ```
 
 
@@ -96,8 +83,8 @@ use USHolidays\Carbon;
 See [documentation](https://geoffreyrose.github.io/us-holidays/#getHolidaysByYear) for more details
 
 ```php
-$carbon = Carbon::create(2020, 1, 1);
-$holidays = $carbon->getHolidaysByYear('all');
+$usHoliday = UsHoliday::create(2020, 1, 1);
+$holidays = $usHoliday->getHolidaysByYear('all');
 
 // [
 //     {
@@ -121,11 +108,11 @@ $holidays = $carbon->getHolidaysByYear('all');
 See [documentation](https://geoffreyrose.github.io/us-holidays/#getHolidaysInDays) for more details
 
 ```php
-$carbon = Carbon::create(2020, 5, 28);
+$usHoliday = UsHoliday::create(2020, 5, 28);
 
-$holidays = $carbon->getHolidaysInDays(300, 'all');
+$holidays = $usHoliday->getHolidaysInDays(300, 'all');
 // or
-$holidays = $carbon->getHolidaysInDays(300);
+$holidays = $usHoliday->getHolidaysInDays(300);
 
 // [
 //     {
@@ -149,11 +136,11 @@ $holidays = $carbon->getHolidaysInDays(300);
 See [documentation](https://geoffreyrose.github.io/us-holidays/#getHolidaysInYears) for more details
 
 ```php
-$carbon = Carbon::create(2020, 8, 18);
+$usHoliday = UsHoliday::create(2020, 8, 18);
 
-$holidays = $carbon->getHolidaysInYears(1, 'all');
+$holidays = $usHoliday->getHolidaysInYears(1, 'all');
 // or
-$holidays = $carbon->getHolidaysInYears(1);
+$holidays = $usHoliday->getHolidaysInYears(1);
 
 // [
 //     {
@@ -179,8 +166,8 @@ See [documentation](https://geoffreyrose.github.io/us-holidays/#getAprilFoolsDay
 
 
 ```php
-$carbon = Carbon::create(2020, 1, 1);
-$carbon->getAprilFoolsDayHoliday();
+$usHoliday = UsHoliday::create(2020, 1, 1);
+$usHoliday->getAprilFoolsDayHoliday();
 
 // {
 //    "name": "April Fool's Day",
@@ -190,48 +177,48 @@ $carbon->getAprilFoolsDayHoliday();
 // }
 ```
 ```php
-$carbon->getAprilFoolsDayHoliday();              
-$carbon->getArmedForcesDayHoliday();             
-$carbon->getAshWednesdayHoliday();               
-$carbon->getBlackFridayHoliday();                
-$carbon->getChristmasDayHoliday();    
-$carbon->getChristmasEveHoliday();               
-$carbon->getCincoDeMayoHoliday();                
-$carbon->getColumbusDayHoliday();                
-$carbon->getCyberMondayHoliday();           
-$carbon->getDaylightSavingEndHoliday();          
-$carbon->getDaylightSavingStartHoliday();        
-$carbon->getEarthDayHoliday();                   
-$carbon->getEasterHoliday();                     
-$carbon->getFathersDayHoliday();                 
-$carbon->getFlagDayHoliday();                    
-$carbon->getGoodFridayHoliday();                 
-$carbon->getGroundhogDayHoliday();               
-$carbon->getHalloweenHoliday();                  
-$carbon->getHanukkahHoliday();                   
-$carbon->getIndependenceDayHoliday();            
-$carbon->getIndigenousPeoplesDayHoliday();       
-$carbon->getJuneteenthHoliday();                 
-$carbon->getKwanzaaHoliday();                    
-$carbon->getLaborDayHoliday();                   
-$carbon->getMLKDayHoliday();                     
-$carbon->getMemorialDayHoliday();                
-$carbon->getMothersDayHoliday();                 
-$carbon->getNewYearsDayHoliday();                
-$carbon->getNewYearsEveHoliday();                
-$carbon->getOrthodoxEasterHoliday();             
-$carbon->getPalmSundayHoliday();                 
-$carbon->getPassoverHoliday();                   
-$carbon->getPatriotDayHoliday();                 
-$carbon->getPearlHarborRemembranceDayHoliday();  
-$carbon->getPresidentsDayHoliday();              
-$carbon->getRoshHashanahHoliday();               
-$carbon->getStPatricksDayHoliday();              
-$carbon->getTaxDayHoliday();                     
-$carbon->getThanksgivingHoliday();               
-$carbon->getValentinesDayHoliday();              
-$carbon->getVeteransDayHoliday();                
-$carbon->getYomKippurHoliday();
+$usHoliday->getAprilFoolsDayHoliday();              
+$usHoliday->getArmedForcesDayHoliday();             
+$usHoliday->getAshWednesdayHoliday();               
+$usHoliday->getBlackFridayHoliday();                
+$usHoliday->getChristmasDayHoliday();    
+$usHoliday->getChristmasEveHoliday();               
+$usHoliday->getCincoDeMayoHoliday();                
+$usHoliday->getColumbusDayHoliday();                
+$usHoliday->getCyberMondayHoliday();           
+$usHoliday->getDaylightSavingEndHoliday();          
+$usHoliday->getDaylightSavingStartHoliday();        
+$usHoliday->getEarthDayHoliday();                   
+$usHoliday->getEasterHoliday();                     
+$usHoliday->getFathersDayHoliday();                 
+$usHoliday->getFlagDayHoliday();                    
+$usHoliday->getGoodFridayHoliday();                 
+$usHoliday->getGroundhogDayHoliday();               
+$usHoliday->getHalloweenHoliday();                  
+$usHoliday->getHanukkahHoliday();                   
+$usHoliday->getIndependenceDayHoliday();            
+$usHoliday->getIndigenousPeoplesDayHoliday();       
+$usHoliday->getJuneteenthHoliday();                 
+$usHoliday->getKwanzaaHoliday();                    
+$usHoliday->getLaborDayHoliday();                   
+$usHoliday->getMLKDayHoliday();                     
+$usHoliday->getMemorialDayHoliday();                
+$usHoliday->getMothersDayHoliday();                 
+$usHoliday->getNewYearsDayHoliday();                
+$usHoliday->getNewYearsEveHoliday();                
+$usHoliday->getOrthodoxEasterHoliday();             
+$usHoliday->getPalmSundayHoliday();                 
+$usHoliday->getPassoverHoliday();                   
+$usHoliday->getPatriotDayHoliday();                 
+$usHoliday->getPearlHarborRemembranceDayHoliday();  
+$usHoliday->getPresidentsDayHoliday();              
+$usHoliday->getRoshHashanahHoliday();               
+$usHoliday->getStPatricksDayHoliday();              
+$usHoliday->getTaxDayHoliday();                     
+$usHoliday->getThanksgivingHoliday();               
+$usHoliday->getValentinesDayHoliday();              
+$usHoliday->getVeteransDayHoliday();                
+$usHoliday->getYomKippurHoliday();
 ```
 
 ### isHoliday()
@@ -240,9 +227,9 @@ See [documentation](https://geoffreyrose.github.io/us-holidays/#isHoliday) for m
 
 Check if date is holiday. Returns `boolean`
 ```php
-$carbon = new Carbon();
-$carbon = Carbon::create(2018, 12, 25);
-$carbon->isHoliday(); // bool (true)
+$usHoliday = new UsHoliday();
+$usHoliday = UsHoliday::create(2018, 12, 25);
+$usHoliday->isHoliday(); // bool (true)
 ```
 
 ### isBankHoliday()
@@ -251,29 +238,29 @@ See [documentation](https://geoffreyrose.github.io/us-holidays/#isBankHoliday) f
 
 Check if date is a Bank Holiday and the day it is observed on. I.E. if the holiday falls if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Bank holidays are Monday - Friday Only. Holidays that are always on weekends are not consider bank holidays. Also holidays that are Bank Holidays but fall on Saturday are NOT observed on the previous Friday. Returns `boolean`
 ```php
-$carbon = Carbon::create(2020, 1, 1); // New Years Day - Wednesday
-$carbon->isBankHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2020, 1, 1); // New Years Day - Wednesday
+$usHoliday->isBankHoliday(); // boolean (true)
 
-$carbon = Carbon::create(2020, 1, 2);
-$carbon->isBankHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2020, 1, 2);
+$usHoliday->isBankHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
-$carbon->isBankHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2018, 03, 17); // St Patrick's Day
+$usHoliday->isBankHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2018, 12, 25); // Christmas - Tuesday
-$carbon->isBankHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2018, 12, 25); // Christmas - Tuesday
+$usHoliday->isBankHoliday(); // boolean (true)
 
-$carbon = Carbon::create(2016, 12, 25); // Christmas - Sunday
-$carbon->isBankHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2016, 12, 25); // Christmas - Sunday
+$usHoliday->isBankHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->isBankHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2016, 12, 26); // Monday
+$usHoliday->isBankHoliday(); // boolean (true)
 
-$carbon = Carbon::create(2021, 12, 25); // Christmas - Saturday
-$carbon->isBankHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2021, 12, 25); // Christmas - Saturday
+$usHoliday->isBankHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2021, 12, 24); // Friday
-$carbon->isBankHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2021, 12, 24); // Friday
+$usHoliday->isBankHoliday(); // boolean (false)
 ```
 
 ### isFederalHoliday()
@@ -282,29 +269,29 @@ See [documentation](https://geoffreyrose.github.io/us-holidays/#isFederalHoliday
 
 Check if date is a Federal Holiday and the day it is observed on. I.E. if the holiday falls on Saturday, the holiday is observed the previous day (Friday). Or if a holiday falls on Sunday, the holiday is observed the next day (Monday). Note: Federal holidays are Monday - Friday Only. Holidays that are always on weekends are not consider bank holidays. Returns `boolean`
 ```php
-$carbon = Carbon::create(2020, 1, 1); // New Years Day - Wednesday
-$carbon->isFederalHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2020, 1, 1); // New Years Day - Wednesday
+$usHoliday->isFederalHoliday(); // boolean (true)
 
-$carbon = Carbon::create(2020, 1, 2);
-$carbon->isFederalHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2020, 1, 2);
+$usHoliday->isFederalHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2018, 03, 17); // St Patrick's Day
-$carbon->isFederalHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2018, 03, 17); // St Patrick's Day
+$usHoliday->isFederalHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2018, 12, 25); // Christmas - Tuesday
-$carbon->isFederalHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2018, 12, 25); // Christmas - Tuesday
+$usHoliday->isFederalHoliday(); // boolean (true)
 
-$carbon = Carbon::create(2016, 12, 25); // Christmas - Sunday
-$carbon->isFederalHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2016, 12, 25); // Christmas - Sunday
+$usHoliday->isFederalHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->isFederalHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2016, 12, 26); // Monday
+$usHoliday->isFederalHoliday(); // boolean (true)
 
-$carbon = Carbon::create(2021, 12, 25); // Christmas - Saturday
-$carbon->isFederalHoliday(); // boolean (false)
+$usHoliday = UsHoliday::create(2021, 12, 25); // Christmas - Saturday
+$usHoliday->isFederalHoliday(); // boolean (false)
 
-$carbon = Carbon::create(2021, 12, 24); // Friday
-$carbon->isFederalHoliday(); // boolean (true)
+$usHoliday = UsHoliday::create(2021, 12, 24); // Friday
+$usHoliday->isFederalHoliday(); // boolean (true)
 ```
 
 ### Get Holiday Name
@@ -313,8 +300,8 @@ See [documentation](https://geoffreyrose.github.io/us-holidays/#getHolidayName) 
 
 Get name if date is holiday. Returns `string` or `false`
 ```php
-$carbon = Carbon::create(2018, 12, 31);
-$carbon->getHolidayName(); // New Year's Eve
+$usHoliday = UsHoliday::create(2018, 12, 31);
+$usHoliday->getHolidayName(); // New Year's Eve
 ```
 
 
@@ -323,42 +310,42 @@ $carbon->getHolidayName(); // New Year's Eve
 See [documentation](https://geoffreyrose.github.io/us-holidays/#addHoliday) for more details
 
 ```php
-$carbon = new Carbon();
-$carbon->addHoliday([
+$usHoliday = new UsHoliday();
+$usHoliday->addHoliday([
     'name' => "Spongebob's Birthday",
-    'date' => Carbon::create(1986, 7, 14),
+    'date' => UsHoliday::create(1986, 7, 14),
     'bank_holiday' => false
 ]);
 
-$carbon->addHoliday([
+$usHoliday->addHoliday([
     'name' => "Q1 Tax Payments",
-    'date' => function() use($carbon) {
-        $q1 = Carbon::create($carbon->year, 4, 15, 0, 0, 0);
+    'date' => function() use($usHoliday) {
+        $q1 = UsHoliday::create($usHoliday->year, 4, 15, 0, 0, 0);
         if($q1->isBankHoliday()) {
             $q1->addDay();
 
             if($q1->isWeekend()) {
-                $q1->next(Carbon::MONDAY);
+                $q1->next(UsHoliday::MONDAY);
             }
         }
 
         if($q1->isWeekend()) {
-            $q1->next(Carbon::MONDAY);
+            $q1->next(UsHoliday::MONDAY);
         }
 
-        if($q1 < $carbon) {
-            $q1 = Carbon::create($carbon->year + 1, 4, 15, 0, 0, 0);
+        if($q1 < $usHoliday) {
+            $q1 = UsHoliday::create($usHoliday->year + 1, 4, 15, 0, 0, 0);
 
             if($q1->isBankHoliday()) {
                 $q1->addDay();
 
                 if($q1->isWeekend()) {
-                    $q1->next(Carbon::MONDAY);
+                    $q1->next(UsHoliday::MONDAY);
                 }
             }
 
             if($q1->isWeekend()) {
-                $q1->next(Carbon::MONDAY);
+                $q1->next(UsHoliday::MONDAY);
             }
         }
 
@@ -374,11 +361,11 @@ $carbon->addHoliday([
 
 ### Additional Examples
 ```php
-$carbon = Carbon::create(2016, 12, 25); // Sunday
-$carbon->getHolidayName(); // Christmas Day
+$usHoliday = UsHoliday::create(2016, 12, 25); // Sunday
+$usHoliday->getHolidayName(); // Christmas Day
 
-$carbon = Carbon::create(2016, 12, 26); // Monday
-$carbon->getHolidayName(); // Christmas Day (Observed), Kwanzaa
+$usHoliday = UsHoliday::create(2016, 12, 26); // Monday
+$usHoliday->getHolidayName(); // Christmas Day (Observed), Kwanzaa
 ```
 
 ### Contributing

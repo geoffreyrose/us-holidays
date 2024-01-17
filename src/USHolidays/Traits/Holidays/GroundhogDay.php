@@ -23,6 +23,6 @@ trait GroundhogDay
      */
     public function getGroundhogDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Groundhog Day", $year)[0];
+        return $this->getHolidaysByYear('Groundhog Day', $year)[0];
     }
 }

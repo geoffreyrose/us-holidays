@@ -23,6 +23,6 @@ trait Kwanzaa
      */
     public function getKwanzaaHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Kwanzaa", $year)[0];
+        return $this->getHolidaysByYear('Kwanzaa', $year)[0];
     }
 }

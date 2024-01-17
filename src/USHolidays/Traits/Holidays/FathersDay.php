@@ -14,7 +14,7 @@ trait FathersDay
     private function setFathersDay(int $year)
     {
         $date = Carbon::create($year, 6, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::SUNDAY ) {
+        if ($date->dayOfWeek !== Carbon::SUNDAY) {
             $date->next(Carbon::SUNDAY);
         }
         $date->next(Carbon::SUNDAY)->next(Carbon::SUNDAY);

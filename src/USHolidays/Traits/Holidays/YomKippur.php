@@ -23,6 +23,6 @@ trait YomKippur
      */
     public function getYomKippurHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Yom Kippur", $year)[0];
+        return $this->getHolidaysByYear('Yom Kippur', $year)[0];
     }
 }

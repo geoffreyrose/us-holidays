@@ -26,6 +26,6 @@ trait Easter
      */
     public function getEasterHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Easter", $year)[0];
+        return $this->getHolidaysByYear('Easter', $year)[0];
     }
 }

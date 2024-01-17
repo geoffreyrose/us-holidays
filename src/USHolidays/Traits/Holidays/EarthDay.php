@@ -23,6 +23,6 @@ trait EarthDay
      */
     public function getEarthDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Earth Day", $year)[0];
+        return $this->getHolidaysByYear('Earth Day', $year)[0];
     }
 }

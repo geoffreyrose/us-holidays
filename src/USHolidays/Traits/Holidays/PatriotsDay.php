@@ -23,6 +23,6 @@ trait PatriotsDay
      */
     public function getPatriotDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Patriot Day", $year)[0];
+        return $this->getHolidaysByYear('Patriot Day', $year)[0];
     }
 }

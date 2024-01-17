@@ -23,6 +23,6 @@ trait PearlHarborRemembrance
      */
     public function getPearlHarborRemembranceDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Pearl Harbor Remembrance Day", $year)[0];
+        return $this->getHolidaysByYear('Pearl Harbor Remembrance Day', $year)[0];
     }
 }

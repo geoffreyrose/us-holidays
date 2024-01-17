@@ -14,7 +14,7 @@ trait ColumbusDay
     private function setColumbusDay(int $year)
     {
         $date = Carbon::create($year, 10, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::MONDAY ) {
+        if ($date->dayOfWeek !== Carbon::MONDAY) {
             $date->next(Carbon::MONDAY);
         }
         $date->next(Carbon::MONDAY);
@@ -29,6 +29,6 @@ trait ColumbusDay
      */
     public function getColumbusDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Columbus Day", $year)[0];
+        return $this->getHolidaysByYear('Columbus Day', $year)[0];
     }
 }

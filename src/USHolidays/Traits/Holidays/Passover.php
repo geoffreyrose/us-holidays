@@ -23,6 +23,6 @@ trait Passover
      */
     public function getPassoverHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Passover", $year)[0];
+        return $this->getHolidaysByYear('Passover', $year)[0];
     }
 }

@@ -23,6 +23,6 @@ trait ChristmasDay
      */
     public function getChristmasDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Christmas Day", $year)[0];
+        return $this->getHolidaysByYear('Christmas Day', $year)[0];
     }
 }

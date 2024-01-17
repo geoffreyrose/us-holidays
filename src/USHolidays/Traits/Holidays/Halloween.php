@@ -23,6 +23,6 @@ trait Halloween
      */
     public function getHalloweenHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Halloween", $year)[0];
+        return $this->getHolidaysByYear('Halloween', $year)[0];
     }
 }

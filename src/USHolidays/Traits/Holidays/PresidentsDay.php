@@ -14,7 +14,7 @@ trait PresidentsDay
     private function setPresidentsDay(int $year)
     {
         $date = Carbon::create($year, 2, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::MONDAY ) {
+        if ($date->dayOfWeek !== Carbon::MONDAY) {
             $date->next(Carbon::MONDAY);
         }
         $date->next(Carbon::MONDAY)->next(Carbon::MONDAY);

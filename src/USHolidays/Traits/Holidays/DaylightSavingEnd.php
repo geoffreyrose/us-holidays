@@ -14,7 +14,7 @@ trait DaylightSavingEnd
     private function setDaylightSavingEnd(int $year)
     {
         $date = Carbon::create($year, 11, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::SUNDAY ) {
+        if ($date->dayOfWeek !== Carbon::SUNDAY) {
             $date->next(Carbon::SUNDAY);
         }
 
@@ -28,6 +28,6 @@ trait DaylightSavingEnd
      */
     public function getDaylightSavingEndHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Daylight Saving (End)", $year)[0];
+        return $this->getHolidaysByYear('Daylight Saving (End)', $year)[0];
     }
 }

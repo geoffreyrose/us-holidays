@@ -23,6 +23,6 @@ trait FlagDay
      */
     public function getFlagDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Flag Day", $year)[0];
+        return $this->getHolidaysByYear('Flag Day', $year)[0];
     }
 }
