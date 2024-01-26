@@ -24,5 +24,11 @@
     },
     "config": {
         "discard-changes": true
-    }
+    },
+    "funding": [
+        {
+            "url": "https://github.com/sponsors/geoffreyrose",
+            "type": "github"
+        }
+    ]
 }

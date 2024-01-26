@@ -20,7 +20,7 @@ $holidays->addState('Washington')
 
 
 
-refactor Holidays.php and move all logic to each holiday trait
+refactor Holidays.php and move all logic/info to each holiday class
 and add things like setIsBankHoliday, setIsFederalHoliday, setIsReligiousHoliday, setIsCulturalHoliday, setIsUserHoliday
 setStartYear, setEndYear, setBankHolidayStartYear, setBankHolidayEndYear, setFederalHolidayStartYear, setFederalHolidayEndYear, setReligiousHolidayStartYear, setReligiousHolidayEndYear, setCulturalHolidayStartYear, setCulturalHolidayEndYear, setUserHolidayStartYear, setUserHolidayEndYear
 setHolidayType
@@ -29,3 +29,5 @@ addSearchName
 setDate
 
 rename bank_holiday to is_bank_holiday, federal_holiday to is_federal_holiday
+
+dont extend carbon but return carbon objects

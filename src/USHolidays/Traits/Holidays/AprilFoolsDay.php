@@ -2,27 +2,55 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonImmutable;
+use USHolidays\HolidayInterface;
 
-trait AprilFoolsDay
+class AprilFoolsDay implements HolidayInterface
 {
+    public static string $name = "April Fools' Day";
+
+    public static array $searchNames = ["APRIL FOOL'S DAY", "APRIL FOOLS' DAY", 'APRIL FOOLS DAY', 'APRIL FOOLS'];
+
+    public static bool $bankHoliday = false;
+
+    public static bool $federalHoliday = false;
+
+    public static int|null $startYear = 1582;
+
+    public static int|null $endYear = null;
+
+    public static int|null $bankHolidayStartYear = null;
+
+    public static int|null $bankHolidayEndYear = null;
+
+    public static int|null $federalHolidayStartYear = null;
+
+    public static int|null $federalHolidayEndYear = null;
+
     /**
-     * Setting April Fools Day
+     * Setting April Fools' Day
      *
      * @param int $year The year to get the holiday in
      */
-    private function setAprilFoolsDay(int $year)
+    public static function setHoliday(int $year)
     {
-        return Carbon::create($year, 4, 1, 0, 0, 0);
+        return CarbonImmutable::create($year, 4, 1, 0, 0, 0);
     }
 
-    /**
-     * Return object of April Fools Day for given year
-     *
-     * @param int|null $year The year to get the holiday in
-     */
-    public function getAprilFoolsDayHoliday(int $year = null)
+    public function getHoliday(int $year)
     {
-        return $this->getHolidaysByYear("April Fools' Day", $year)[0];
+        return (object) [
+            'name' => self::$name,
+            'search_names' => self::$searchNames,
+            'date' => $this->setHoliday($year),
+            'bank_holiday' => self::$bankHoliday,
+            'federal_holiday' => self::$federalHoliday,
+            'start_year' => self::$startYear,
+            'end_year' => self::$endYear,
+            'bank_holiday_start_year' => self::$bankHolidayStartYear,
+            'bank_holiday_end_year' => self::$bankHolidayEndYear,
+            'federal_holiday_start_year' => self::$federalHolidayStartYear,
+            'federal_holiday_end_year' => self::$federalHolidayEndYear,
+        ];
     }
 }
