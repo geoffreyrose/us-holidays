@@ -115,7 +115,7 @@ class Carbon extends \Carbon\Carbon {
                 $date = call_user_func($holidays[$index]['date']);
                 $this->year = $currentYear;
 
-                $days_until = $this->diffInDays($date);
+                $days_until = abs($this->diffInDays($date));
 
                 $bankHoliday = $holidays[$index]['bank_holiday'];
                 // if($bankHoliday && $bankHolidayCheck) {
@@ -162,7 +162,7 @@ class Carbon extends \Carbon\Carbon {
                             $date = call_user_func($holidays[$index]['date']);
                             $this->year = $currentYear;
 
-                            $days_until =  $this->diffInDays($date);
+                            $days_until = abs($this->diffInDays($date));
 
                             $bankHoliday = $holidays[$index]['bank_holiday'];
 

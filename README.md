@@ -403,21 +403,15 @@ $ XDEBUG_MODE=coverage ./vendor/bin/phpunit
 
 ----
 
-Test against Carbon v1
-```
-$ ./tests/carbon-1.sh
-```
-
 Test against Carbon v2
 ```
 $ ./tests/carbon-2.sh
 ```
 
-Test Both Carbon v1 and v2
+Test against Carbon v3
 ```
-$ ./tests/carbon-1-2.sh
+$ ./tests/carbon-3.sh
 ```
-
 
 ### See It Used in the Wild
 [GBPN](https://gbpn.com/resources/branding-and-design/us-holiday-calendar) - Ongoing US Holiday Calendar  
