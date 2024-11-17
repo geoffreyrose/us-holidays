@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/github/license/geoffreyrose/us-holidays?style=flat-square)](https://github.com/geoffreyrose/us-holidays/blob/master/LICENSE)
 </div>
 
-# Carbon Support for US Holidays
+# PHP: Adds Carbon Support for US Holidays + Laravel Facade
 This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holidays.
 
 ## Full Documentation
@@ -68,28 +68,31 @@ This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holi
 
 ### Usage
 
-#### With Composer
+#### Installation
 ```
-$ composer require geoffreyrose/us-holidays
+composer require geoffreyrose/us-holidays
 ```
 
+### With Plain PHP
 ```php
-<?php
-require 'vendor/autoload.php';
-
 use USHolidays\Carbon;
+
+...
+
+$carbon = Carbon::create(2020, 1, 1);
+$holidays = $carbon->getHolidaysByYear();
 ```
 
-#### Without Composer
-
+### With Laravel Facade
+Laravel uses Package Auto-Discovery, which doesn't require you to manually add the ServiceProvider and Facade.
 ```php
-<?php
-require 'path/to/nesbot/Carbon.php';
-require 'path/to/geoffreyrose/Carbon.php';
-
-use USHolidays\Carbon;
+$holidays = USHolidays::getHolidaysByYear();
 ```
 
+
+## Examples
+
+**Note all examples below use Plain PHP (use USHolidays\Carbon) but can be swapped with Laravel Facade (USHolidays)**
 
 ### Get Holiday By Year
 
@@ -394,23 +397,23 @@ composer install
 Use locally installed carbon version
 
 ```
-$ ./vendor/bin/phpunit
+./vendor/bin/phpunit
 
 // or with coverage 
 
-$ XDEBUG_MODE=coverage ./vendor/bin/phpunit
+XDEBUG_MODE=coverage ./vendor/bin/phpunit
 ```
 
 ----
 
 Test against Carbon v2
 ```
-$ ./tests/carbon-2.sh
+./tests/carbon-2.sh
 ```
 
 Test against Carbon v3
 ```
-$ ./tests/carbon-3.sh
+./tests/carbon-3.sh
 ```
 
 ### See It Used in the Wild
