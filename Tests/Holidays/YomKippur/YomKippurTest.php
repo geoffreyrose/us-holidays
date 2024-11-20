@@ -3,54 +3,54 @@
 namespace Tests\Holidays\YomKippur;
 
 use PHPUnit\Framework\TestCase;
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 class YomKippurTest extends TestCase
 {
     public function testHoliday()
     {
-        $carbon = new Carbon();
-        $carbon = Carbon::create(2020, 1, 1);
+
+        $holidays = USHolidays::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getYomKippurHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 9, 27))
+            $holidays->getYomKippurHoliday()->date
+                ->isSameDay(USHolidays::createFromDate(2020, 9, 27))
         );
 
         $this->assertTrue(
-            $carbon->getYomKippurHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 9, 28))
+            $holidays->getYomKippurHoliday()->date
+                ->isSameDay(USHolidays::createFromDate(2020, 9, 28))
         );
     }
 
     public function testHolidayName()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
 
-        $this->assertEquals("Yom Kippur", $holiday->name);
+        $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
+
+        $this->assertEquals('Yom Kippur', $holiday->name);
     }
 
     public function testIsHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
 
         $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
 
         $this->assertFalse($holiday->date->isBankHoliday());
     }
 
     public function testIsFederalHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getYomKippurHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
 
         $this->assertFalse($holiday->date->isFederalHoliday());
     }

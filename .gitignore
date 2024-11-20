@@ -18,6 +18,9 @@ webpack.mix.js
 docs
 /.idea
 build/
+.php-cs-fixer.cache
+.phpunit.cache
+
 ## MAC STUFF
 .DS_Store
 .AppleDouble

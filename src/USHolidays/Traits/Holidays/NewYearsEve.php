@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait NewYearsEve
 {
@@ -13,7 +13,7 @@ trait NewYearsEve
      */
     private function setNewYearsEve(int $year)
     {
-        return Carbon::create($year, 12, 31, 0, 0, 0);
+        return USHolidays::create($year, 12, 31, 0, 0, 0);
     }
 
     /**

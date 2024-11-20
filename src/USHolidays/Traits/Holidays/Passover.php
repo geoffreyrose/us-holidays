@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait Passover
 {
@@ -13,7 +13,7 @@ trait Passover
      */
     private function setPassover(int $year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(8, 15, 3760 + $year)))->setTime(0, 0, 0);
+        return USHolidays::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(8, 15, 3760 + $year)))->setTime(0, 0, 0);
     }
 
     /**
@@ -23,6 +23,6 @@ trait Passover
      */
     public function getPassoverHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Passover", $year)[0];
+        return $this->getHolidaysByYear('Passover', $year)[0];
     }
 }

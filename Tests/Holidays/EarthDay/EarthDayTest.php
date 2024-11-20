@@ -3,54 +3,54 @@
 namespace Tests\Holidays\EarthDay;
 
 use PHPUnit\Framework\TestCase;
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 class EarthDayTest extends TestCase
 {
     public function testHoliday()
     {
-        $carbon = new Carbon();
-        $carbon = Carbon::create(2020, 1, 1);
+
+        $holidays = USHolidays::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getEarthDayHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 4, 21))
+            $holidays->getEarthDayHoliday()->date
+                ->isSameDay(USHolidays::createFromDate(2020, 4, 21))
         );
 
         $this->assertTrue(
-            $carbon->getEarthDayHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 4, 22))
+            $holidays->getEarthDayHoliday()->date
+                ->isSameDay(USHolidays::createFromDate(2020, 4, 22))
         );
     }
 
     public function testHolidayName()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
 
-        $this->assertEquals("Earth Day", $holiday->name);
+        $holiday = USHolidays::create(2020, 1, 1)->getEarthDayHoliday();
+
+        $this->assertEquals('Earth Day', $holiday->name);
     }
 
     public function testIsHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getEarthDayHoliday();
 
         $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getEarthDayHoliday();
 
         $this->assertFalse($holiday->date->isBankHoliday());
     }
 
     public function testIsFederalHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getEarthDayHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getEarthDayHoliday();
 
         $this->assertFalse($holiday->date->isFederalHoliday());
     }

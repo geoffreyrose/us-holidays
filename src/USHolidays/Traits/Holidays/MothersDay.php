@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait MothersDay
 {
@@ -13,11 +14,11 @@ trait MothersDay
      */
     private function setMothersDay(int $year)
     {
-        $date = Carbon::create($year, 5, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::SUNDAY ) {
-            $date->next(Carbon::SUNDAY);
+        $date = USHolidays::create($year, 5, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::SUNDAY) {
+            $date->next(CarbonInterface::SUNDAY);
         }
-        $date->next(Carbon::SUNDAY);
+        $date->next(CarbonInterface::SUNDAY);
 
         return $date;
     }

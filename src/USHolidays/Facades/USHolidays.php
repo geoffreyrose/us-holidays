@@ -6,6 +6,6 @@ class USHolidays extends \Illuminate\Support\Facades\Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \USHolidays\Carbon::class;
+        return \USHolidays\USHolidays::class;
     }
 }

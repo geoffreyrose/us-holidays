@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait OrthodoxEaster
 {
@@ -21,9 +21,9 @@ trait OrthodoxEaster
         $month = floor(($d + $e + 114) / 31);
         $day = (($d + $e + 114) % 31) + 1;
 
-        $dt =  mktime(0, 0, 0, $month, $day + 13, $year);
+        $dt = mktime(0, 0, 0, $month, $day + 13, $year);
 
-        return Carbon::createFromTimestamp($dt)->setTime(0, 0, 0);
+        return USHolidays::createFromTimestamp($dt)->setTime(0, 0, 0);
     }
 
     /**
@@ -33,6 +33,6 @@ trait OrthodoxEaster
      */
     public function getOrthodoxEasterHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Orthodox Easter", $year)[0];
+        return $this->getHolidaysByYear('Orthodox Easter', $year)[0];
     }
 }

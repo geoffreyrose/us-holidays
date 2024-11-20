@@ -21,6 +21,6 @@ trait CyberMonday
      */
     public function getCyberMondayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Cyber Monday", $year)[0];
+        return $this->getHolidaysByYear('Cyber Monday', $year)[0];
     }
 }

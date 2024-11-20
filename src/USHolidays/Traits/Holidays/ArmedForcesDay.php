@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait ArmedForcesDay
 {
@@ -13,11 +14,11 @@ trait ArmedForcesDay
      */
     private function setArmedForcesDay(int $year)
     {
-        $date = Carbon::create($year, 5, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::SATURDAY ) {
-            $date->next(Carbon::SATURDAY);
+        $date = USHolidays::create($year, 5, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::SATURDAY) {
+            $date->next(CarbonInterface::SATURDAY);
         }
-        $date->next(Carbon::SATURDAY)->next(Carbon::SATURDAY);
+        $date->next(CarbonInterface::SATURDAY)->next(CarbonInterface::SATURDAY);
 
         return $date;
     }
@@ -29,6 +30,6 @@ trait ArmedForcesDay
      */
     public function getArmedForcesDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Armed Forces Day", $year)[0];
+        return $this->getHolidaysByYear('Armed Forces Day', $year)[0];
     }
 }

@@ -21,6 +21,6 @@ trait PalmSunday
      */
     public function getPalmSundayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Palm Sunday", $year)[0];
+        return $this->getHolidaysByYear('Palm Sunday', $year)[0];
     }
 }

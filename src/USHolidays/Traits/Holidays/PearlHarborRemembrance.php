@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait PearlHarborRemembrance
 {
@@ -13,7 +13,7 @@ trait PearlHarborRemembrance
      */
     private function setPearlHarborRemembrance(int $year)
     {
-        return Carbon::create($year, 12, 7, 0, 0, 0);
+        return USHolidays::create($year, 12, 7, 0, 0, 0);
     }
 
     /**
@@ -23,6 +23,6 @@ trait PearlHarborRemembrance
      */
     public function getPearlHarborRemembranceDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Pearl Harbor Remembrance Day", $year)[0];
+        return $this->getHolidaysByYear('Pearl Harbor Remembrance Day', $year)[0];
     }
 }

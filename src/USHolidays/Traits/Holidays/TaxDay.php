@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait TaxDay
 {
@@ -13,11 +14,11 @@ trait TaxDay
      */
     private function setTaxDay(int $year)
     {
-        $date = Carbon::create($year, 04, 15, 0, 0, 0);
-        if( $date->dayOfWeek === Carbon::SATURDAY || $date->dayOfWeek === Carbon::SUNDAY ) {
-            $date->next(Carbon::TUESDAY);
-        } else if( $date->dayOfWeek === Carbon::FRIDAY) {
-            $date->next(Carbon::MONDAY);
+        $date = USHolidays::create($year, 04, 15, 0, 0, 0);
+        if ($date->dayOfWeek === CarbonInterface::SATURDAY || $date->dayOfWeek === CarbonInterface::SUNDAY) {
+            $date->next(CarbonInterface::TUESDAY);
+        } elseif ($date->dayOfWeek === CarbonInterface::FRIDAY) {
+            $date->next(CarbonInterface::MONDAY);
         }
 
         return $date;
@@ -30,6 +31,6 @@ trait TaxDay
      */
     public function getTaxDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Tax Day", $year)[0];
+        return $this->getHolidaysByYear('Tax Day', $year)[0];
     }
 }

@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait DaylightSavingEnd
 {
@@ -13,9 +14,9 @@ trait DaylightSavingEnd
      */
     private function setDaylightSavingEnd(int $year)
     {
-        $date = Carbon::create($year, 11, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::SUNDAY ) {
-            $date->next(Carbon::SUNDAY);
+        $date = USHolidays::create($year, 11, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::SUNDAY) {
+            $date->next(CarbonInterface::SUNDAY);
         }
 
         return $date;
@@ -28,6 +29,6 @@ trait DaylightSavingEnd
      */
     public function getDaylightSavingEndHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Daylight Saving (End)", $year)[0];
+        return $this->getHolidaysByYear('Daylight Saving (End)', $year)[0];
     }
 }
