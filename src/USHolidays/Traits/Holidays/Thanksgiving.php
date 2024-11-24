@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait Thanksgiving
 {
@@ -13,11 +14,11 @@ trait Thanksgiving
      */
     private function setThanksgiving(int $year)
     {
-        $date = Carbon::create($year, 11, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::THURSDAY ) {
-            $date->next(Carbon::THURSDAY);
+        $date = USHolidays::create($year, 11, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::THURSDAY) {
+            $date->next(CarbonInterface::THURSDAY);
         }
-        $date->next(Carbon::THURSDAY)->next(Carbon::THURSDAY)->next(Carbon::THURSDAY);
+        $date->next(CarbonInterface::THURSDAY)->next(CarbonInterface::THURSDAY)->next(CarbonInterface::THURSDAY);
 
         return $date;
     }
@@ -29,6 +30,6 @@ trait Thanksgiving
      */
     public function getThanksgivingHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Thanksgiving", $year)[0];
+        return $this->getHolidaysByYear('Thanksgiving', $year)[0];
     }
 }

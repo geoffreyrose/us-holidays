@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait MLKDay
 {
@@ -13,11 +14,11 @@ trait MLKDay
      */
     private function setMLKDay(int $year)
     {
-        $date = Carbon::create($year, 1, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::MONDAY ) {
-            $date->next(Carbon::MONDAY);
+        $date = USHolidays::create($year, 1, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::MONDAY) {
+            $date->next(CarbonInterface::MONDAY);
         }
-        $date->next(Carbon::MONDAY)->next(Carbon::MONDAY);
+        $date->next(CarbonInterface::MONDAY)->next(CarbonInterface::MONDAY);
 
         return $date;
     }
@@ -29,6 +30,6 @@ trait MLKDay
      */
     public function getMLKDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Martin Luther King Jr. Day", $year)[0];
+        return $this->getHolidaysByYear('Martin Luther King Jr. Day', $year)[0];
     }
 }

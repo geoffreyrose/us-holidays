@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait StPatricksDay
 {
@@ -13,7 +13,7 @@ trait StPatricksDay
      */
     private function setStPatricksDay(int $year)
     {
-        return Carbon::create($year, 3, 17, 0, 0, 0);
+        return USHolidays::create($year, 3, 17, 0, 0, 0);
     }
 
     /**

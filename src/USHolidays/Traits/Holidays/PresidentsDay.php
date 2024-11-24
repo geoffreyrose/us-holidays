@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait PresidentsDay
 {
@@ -13,11 +14,11 @@ trait PresidentsDay
      */
     private function setPresidentsDay(int $year)
     {
-        $date = Carbon::create($year, 2, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::MONDAY ) {
-            $date->next(Carbon::MONDAY);
+        $date = USHolidays::create($year, 2, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::MONDAY) {
+            $date->next(CarbonInterface::MONDAY);
         }
-        $date->next(Carbon::MONDAY)->next(Carbon::MONDAY);
+        $date->next(CarbonInterface::MONDAY)->next(CarbonInterface::MONDAY);
 
         return $date;
     }

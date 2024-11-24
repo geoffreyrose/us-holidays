@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait YomKippur
 {
@@ -13,7 +13,7 @@ trait YomKippur
      */
     private function setYomKippur(int $year)
     {
-        return Carbon::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 10, 3761 + $year)))->setTime(0, 0, 0);
+        return USHolidays::createFromFormat('m/d/Y', jdtogregorian(jewishtojd(1, 10, 3761 + $year)))->setTime(0, 0, 0);
     }
 
     /**
@@ -23,6 +23,6 @@ trait YomKippur
      */
     public function getYomKippurHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Yom Kippur", $year)[0];
+        return $this->getHolidaysByYear('Yom Kippur', $year)[0];
     }
 }

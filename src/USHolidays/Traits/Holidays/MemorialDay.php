@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait MemorialDay
 {
@@ -13,11 +14,11 @@ trait MemorialDay
      */
     private function setMemorialDay(int $year)
     {
-        $date = Carbon::create($year, 5, 1, 0, 0, 0);
-        for ($i=0; $i < 7; $i++) {
-            if( $date->month === 5 ) {
-                $date->next(Carbon::MONDAY);
-            }  else {
+        $date = USHolidays::create($year, 5, 1, 0, 0, 0);
+        for ($i = 0; $i < 7; $i++) {
+            if ($date->month === 5) {
+                $date->next(CarbonInterface::MONDAY);
+            } else {
                 $date->subDays(7);
                 break;
             }
@@ -33,6 +34,6 @@ trait MemorialDay
      */
     public function getMemorialDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Memorial Day", $year)[0];
+        return $this->getHolidaysByYear('Memorial Day', $year)[0];
     }
 }

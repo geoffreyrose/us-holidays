@@ -3,54 +3,54 @@
 namespace Tests\Holidays\PatriotDay;
 
 use PHPUnit\Framework\TestCase;
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 class PatriotDayTest extends TestCase
 {
     public function testHoliday()
     {
-        $carbon = new Carbon();
-        $carbon = Carbon::create(2020, 1, 1);
+
+        $holidays = USHolidays::create(2020, 1, 1);
 
         $this->assertFalse(
-            $carbon->getPatriotDayHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 9, 12))
+            $holidays->getPatriotDayHoliday()->date
+                ->isSameDay(USHolidays::createFromDate(2020, 9, 12))
         );
 
         $this->assertTrue(
-            $carbon->getPatriotDayHoliday()->date
-                ->isSameDay(Carbon::createFromDate(2020, 9, 11))
+            $holidays->getPatriotDayHoliday()->date
+                ->isSameDay(USHolidays::createFromDate(2020, 9, 11))
         );
     }
 
     public function testHolidayName()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getPatriotDayHoliday();
 
-        $this->assertEquals("Patriot Day", $holiday->name);
+        $holiday = USHolidays::create(2020, 1, 1)->getPatriotDayHoliday();
+
+        $this->assertEquals('Patriot Day', $holiday->name);
     }
 
     public function testIsHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getPatriotDayHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getPatriotDayHoliday();
 
         $this->assertTrue($holiday->date->isHoliday());
     }
 
     public function testIsBankHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getPatriotDayHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getPatriotDayHoliday();
 
         $this->assertFalse($holiday->date->isBankHoliday());
     }
 
     public function testIsFederalHoliday()
     {
-        $carbon = new Carbon();
-        $holiday = Carbon::create(2020, 1, 1)->getPatriotDayHoliday();
+
+        $holiday = USHolidays::create(2020, 1, 1)->getPatriotDayHoliday();
 
         $this->assertFalse($holiday->date->isFederalHoliday());
     }

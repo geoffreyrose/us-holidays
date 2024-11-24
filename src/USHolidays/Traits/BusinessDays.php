@@ -9,7 +9,7 @@ trait BusinessDays
      */
     private function isStandardBusinessDays()
     {
-        if($this->businessDays != [1,2,3,4,5]) {
+        if ($this->businessDays != [1, 2, 3, 4, 5]) {
             return false;
         }
 
@@ -40,19 +40,19 @@ trait BusinessDays
     /**
      * Next business day
      *
-     * @return Object Carbon Date object
+     * @return object Carbon Date object
      */
     public function nextBusinessDay()
     {
         $day = $this->copy();
 
-        for ($i=0; $i < 14 ; $i++) {
-            if($this->isStandardBusinessDays()) {
-                if($day->addDay()->isBusinessDay() && !$day->isBankHoliday()) {
+        for ($i = 0; $i < 14; $i++) {
+            if ($this->isStandardBusinessDays()) {
+                if ($day->addDay()->isBusinessDay() && !$day->isBankHoliday()) {
                     break;
                 }
             } else {
-                if($day->addDay()->isBusinessDay()) {
+                if ($day->addDay()->isBusinessDay()) {
                     break;
                 }
             }
@@ -64,19 +64,19 @@ trait BusinessDays
     /**
      * Previous business day
      *
-     * @return Object Carbon Date object
+     * @return object Carbon Date object
      */
     public function prevBusinessDay()
     {
         $day = $this->copy();
 
-        for ($i=0; $i < 14 ; $i++) {
-            if($this->isStandardBusinessDays()) {
-                if($day->subDay()->isBusinessDay() && !$day->isBankHoliday()) {
+        for ($i = 0; $i < 14; $i++) {
+            if ($this->isStandardBusinessDays()) {
+                if ($day->subDay()->isBusinessDay() && !$day->isBankHoliday()) {
                     break;
                 }
             } else {
-                if($day->subDay()->isBusinessDay()) {
+                if ($day->subDay()->isBusinessDay()) {
                     break;
                 }
             }
@@ -88,19 +88,19 @@ trait BusinessDays
     /**
      * Today (if business day) or next business day.
      *
-     * @return Object Carbon Date object
+     * @return object Carbon Date object
      */
     public function currentOrNextBusinessDay()
     {
         $day = $this->copy()->subDay();
 
-        for ($i=0; $i < 14 ; $i++) {
-            if($this->isStandardBusinessDays()) {
-                if($day->addDay()->isBusinessDay() && !$day->isBankHoliday()) {
+        for ($i = 0; $i < 14; $i++) {
+            if ($this->isStandardBusinessDays()) {
+                if ($day->addDay()->isBusinessDay() && !$day->isBankHoliday()) {
                     break;
                 }
             } else {
-                if($day->addDay()->isBusinessDay()) {
+                if ($day->addDay()->isBusinessDay()) {
                     break;
                 }
             }
@@ -112,19 +112,19 @@ trait BusinessDays
     /**
      * Today (if business day) or previous business day
      *
-     * @return Object Carbon Date object
+     * @return object Carbon Date object
      */
     public function currentOrPreviousBusinessDay()
     {
         $day = $this->copy()->addDay();
 
-        for ($i=0; $i < 14 ; $i++) {
-            if($this->isStandardBusinessDays()) {
-                if($day->subDay()->isBusinessDay() && !$day->isBankHoliday()) {
+        for ($i = 0; $i < 14; $i++) {
+            if ($this->isStandardBusinessDays()) {
+                if ($day->subDay()->isBusinessDay() && !$day->isBankHoliday()) {
                     break;
                 }
             } else {
-                if($day->subDay()->isBusinessDay()) {
+                if ($day->subDay()->isBusinessDay()) {
                     break;
                 }
             }

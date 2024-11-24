@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait FathersDay
 {
@@ -13,11 +14,11 @@ trait FathersDay
      */
     private function setFathersDay(int $year)
     {
-        $date = Carbon::create($year, 6, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::SUNDAY ) {
-            $date->next(Carbon::SUNDAY);
+        $date = USHolidays::create($year, 6, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::SUNDAY) {
+            $date->next(CarbonInterface::SUNDAY);
         }
-        $date->next(Carbon::SUNDAY)->next(Carbon::SUNDAY);
+        $date->next(CarbonInterface::SUNDAY)->next(CarbonInterface::SUNDAY);
 
         return $date;
     }

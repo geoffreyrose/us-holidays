@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait FlagDay
 {
@@ -13,7 +13,7 @@ trait FlagDay
      */
     private function setFlagDay(int $year)
     {
-        return Carbon::create($year, 6, 14, 0, 0, 0);
+        return USHolidays::create($year, 6, 14, 0, 0, 0);
     }
 
     /**
@@ -23,6 +23,6 @@ trait FlagDay
      */
     public function getFlagDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Flag Day", $year)[0];
+        return $this->getHolidaysByYear('Flag Day', $year)[0];
     }
 }

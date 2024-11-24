@@ -2,7 +2,8 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use Carbon\CarbonInterface;
+use USHolidays\USHolidays;
 
 trait ColumbusDay
 {
@@ -13,11 +14,11 @@ trait ColumbusDay
      */
     private function setColumbusDay(int $year)
     {
-        $date = Carbon::create($year, 10, 1, 0, 0, 0);
-        if( $date->dayOfWeek !== Carbon::MONDAY ) {
-            $date->next(Carbon::MONDAY);
+        $date = USHolidays::create($year, 10, 1, 0, 0, 0);
+        if ($date->dayOfWeek !== CarbonInterface::MONDAY) {
+            $date->next(CarbonInterface::MONDAY);
         }
-        $date->next(Carbon::MONDAY);
+        $date->next(CarbonInterface::MONDAY);
 
         return $date;
     }
@@ -29,6 +30,6 @@ trait ColumbusDay
      */
     public function getColumbusDayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Columbus Day", $year)[0];
+        return $this->getHolidaysByYear('Columbus Day', $year)[0];
     }
 }

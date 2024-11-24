@@ -21,6 +21,6 @@ trait AshWednesday
      */
     public function getAshWednesdayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Ash Wednesday", $year)[0];
+        return $this->getHolidaysByYear('Ash Wednesday', $year)[0];
     }
 }

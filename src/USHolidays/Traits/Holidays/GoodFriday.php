@@ -21,6 +21,6 @@ trait GoodFriday
      */
     public function getGoodFridayHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Good Friday", $year)[0];
+        return $this->getHolidaysByYear('Good Friday', $year)[0];
     }
 }

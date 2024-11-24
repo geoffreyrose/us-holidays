@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait CincoDeMayo
 {
@@ -13,7 +13,7 @@ trait CincoDeMayo
      */
     private function setCincoDeMayo(int $year)
     {
-        return Carbon::create($year, 5, 5, 0, 0, 0);
+        return USHolidays::create($year, 5, 5, 0, 0, 0);
     }
 
     /**
@@ -23,6 +23,6 @@ trait CincoDeMayo
      */
     public function getCincoDeMayoHoliday(int $year = null)
     {
-        return $this->getHolidaysByYear("Cinco de Mayo", $year)[0];
+        return $this->getHolidaysByYear('Cinco de Mayo', $year)[0];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace USHolidays\Traits\Holidays;
 
-use USHolidays\Carbon;
+use USHolidays\USHolidays;
 
 trait AprilFoolsDay
 {
@@ -13,14 +13,14 @@ trait AprilFoolsDay
      */
     private function setAprilFoolsDay(int $year)
     {
-        return Carbon::create($year, 4, 1, 0, 0, 0);
+        return USHolidays::create($year, 4, 1, 0, 0, 0);
     }
 
     /**
-      * Return object of April Fools Day for given year
-      *
-      * @param int|null $year The year to get the holiday in
-      */
+     * Return object of April Fools Day for given year
+     *
+     * @param int|null $year The year to get the holiday in
+     */
     public function getAprilFoolsDayHoliday(int $year = null)
     {
         return $this->getHolidaysByYear("April Fools' Day", $year)[0];
