@@ -21,7 +21,7 @@ trait Hanukkah
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getHanukkahHoliday(int $year = null)
+    public function getHanukkahHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Hanukkah', $year)[0];
     }

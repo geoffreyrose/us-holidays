@@ -19,7 +19,7 @@ trait AshWednesday
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getAshWednesdayHoliday(int $year = null)
+    public function getAshWednesdayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Ash Wednesday', $year)[0];
     }

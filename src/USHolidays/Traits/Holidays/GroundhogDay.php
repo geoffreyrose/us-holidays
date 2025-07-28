@@ -21,7 +21,7 @@ trait GroundhogDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getGroundhogDayHoliday(int $year = null)
+    public function getGroundhogDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Groundhog Day', $year)[0];
     }

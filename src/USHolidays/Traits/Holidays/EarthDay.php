@@ -21,7 +21,7 @@ trait EarthDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getEarthDayHoliday(int $year = null)
+    public function getEarthDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Earth Day', $year)[0];
     }

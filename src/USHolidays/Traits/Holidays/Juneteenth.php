@@ -21,7 +21,7 @@ trait Juneteenth
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getJuneteenthHoliday(int $year = null)
+    public function getJuneteenthHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Juneteenth', $year)[0];
     }

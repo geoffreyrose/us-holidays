@@ -28,7 +28,7 @@ trait MLKDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getMLKDayHoliday(int $year = null)
+    public function getMLKDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Martin Luther King Jr. Day', $year)[0];
     }

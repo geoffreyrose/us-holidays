@@ -28,7 +28,7 @@ trait MothersDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getMothersDayHoliday(int $year = null)
+    public function getMothersDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear("Mother's Day", $year)[0];
     }

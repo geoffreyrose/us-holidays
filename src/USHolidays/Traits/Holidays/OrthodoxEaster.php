@@ -31,7 +31,7 @@ trait OrthodoxEaster
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getOrthodoxEasterHoliday(int $year = null)
+    public function getOrthodoxEasterHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Orthodox Easter', $year)[0];
     }

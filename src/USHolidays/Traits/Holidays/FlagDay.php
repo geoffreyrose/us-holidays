@@ -21,7 +21,7 @@ trait FlagDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getFlagDayHoliday(int $year = null)
+    public function getFlagDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Flag Day', $year)[0];
     }

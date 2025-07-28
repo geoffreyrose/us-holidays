@@ -19,7 +19,7 @@ trait CyberMonday
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getCyberMondayHoliday(int $year = null)
+    public function getCyberMondayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Cyber Monday', $year)[0];
     }

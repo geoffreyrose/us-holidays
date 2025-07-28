@@ -21,7 +21,7 @@ trait RoshHashanah
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getRoshHashanahHoliday(int $year = null)
+    public function getRoshHashanahHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Rosh Hashanah', $year)[0];
     }

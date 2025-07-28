@@ -28,7 +28,7 @@ trait DaylightSavingStart
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getDaylightSavingStartHoliday(int $year = null)
+    public function getDaylightSavingStartHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Daylight Saving (Start)', $year)[0];
     }

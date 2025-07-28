@@ -21,7 +21,7 @@ trait PearlHarborRemembrance
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPearlHarborRemembranceDayHoliday(int $year = null)
+    public function getPearlHarborRemembranceDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Pearl Harbor Remembrance Day', $year)[0];
     }

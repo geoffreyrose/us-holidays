@@ -28,7 +28,7 @@ trait FathersDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getFathersDayHoliday(int $year = null)
+    public function getFathersDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear("Father's Day", $year)[0];
     }

@@ -29,7 +29,7 @@ trait TaxDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getTaxDayHoliday(int $year = null)
+    public function getTaxDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Tax Day', $year)[0];
     }

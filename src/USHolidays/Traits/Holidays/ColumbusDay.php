@@ -28,7 +28,7 @@ trait ColumbusDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getColumbusDayHoliday(int $year = null)
+    public function getColumbusDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Columbus Day', $year)[0];
     }

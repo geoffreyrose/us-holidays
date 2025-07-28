@@ -21,7 +21,7 @@ trait YomKippur
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getYomKippurHoliday(int $year = null)
+    public function getYomKippurHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Yom Kippur', $year)[0];
     }

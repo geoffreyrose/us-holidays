@@ -27,7 +27,7 @@ trait DaylightSavingEnd
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getDaylightSavingEndHoliday(int $year = null)
+    public function getDaylightSavingEndHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Daylight Saving (End)', $year)[0];
     }
