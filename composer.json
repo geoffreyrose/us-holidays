@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "nesbot/carbon": "^2.24.0|^3.0",
-        "php": "^7.4 || ^8.0",
+        "php": "^8.2",
         "ext-calendar": "*"
     },
     "autoload": {

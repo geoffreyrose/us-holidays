@@ -12,6 +12,7 @@ use USHolidays\Traits\Holiday;
 /**
  * This extends Carbon and adds support for 41 US holidays.
  */
+#[\AllowDynamicProperties]
 class USHolidays extends \Carbon\Carbon
 {
     use Holiday;
