@@ -32,7 +32,7 @@ trait MemorialDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getMemorialDayHoliday(int $year = null)
+    public function getMemorialDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Memorial Day', $year)[0];
     }

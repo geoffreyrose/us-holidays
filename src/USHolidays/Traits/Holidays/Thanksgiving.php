@@ -28,7 +28,7 @@ trait Thanksgiving
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getThanksgivingHoliday(int $year = null)
+    public function getThanksgivingHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Thanksgiving', $year)[0];
     }

@@ -21,7 +21,7 @@ trait Passover
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPassoverHoliday(int $year = null)
+    public function getPassoverHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Passover', $year)[0];
     }

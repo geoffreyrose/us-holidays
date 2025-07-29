@@ -12,6 +12,7 @@ use USHolidays\Traits\Holiday;
 /**
  * This extends Carbon and adds support for 41 US holidays.
  */
+#[\AllowDynamicProperties]
 class USHolidays extends \Carbon\Carbon
 {
     use Holiday;
@@ -80,7 +81,7 @@ class USHolidays extends \Carbon\Carbon
      * @param string|array $name The name(s) of the holidays to get
      * @param int|null $year The year to get the holidays in
      */
-    public function getHolidaysByYear($name = 'all', int $year = null): array
+    public function getHolidaysByYear($name = 'all', ?int $year = null): array
     {
         $this->shiftTimezone('UTC');
         $this->setTime(0, 0, 0);

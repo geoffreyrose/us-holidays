@@ -27,7 +27,7 @@ trait LaborDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getLaborDayHoliday(int $year = null)
+    public function getLaborDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Labor Day', $year)[0];
     }

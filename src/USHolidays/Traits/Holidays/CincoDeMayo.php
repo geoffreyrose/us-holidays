@@ -21,7 +21,7 @@ trait CincoDeMayo
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getCincoDeMayoHoliday(int $year = null)
+    public function getCincoDeMayoHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Cinco de Mayo', $year)[0];
     }

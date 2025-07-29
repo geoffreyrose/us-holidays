@@ -19,7 +19,7 @@ trait GoodFriday
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getGoodFridayHoliday(int $year = null)
+    public function getGoodFridayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Good Friday', $year)[0];
     }

@@ -19,7 +19,7 @@ trait PalmSunday
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPalmSundayHoliday(int $year = null)
+    public function getPalmSundayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Palm Sunday', $year)[0];
     }

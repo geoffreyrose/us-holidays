@@ -21,7 +21,7 @@ trait NewYearsEve
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getNewYearsEveHoliday(int $year = null)
+    public function getNewYearsEveHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear("New Year's Eve", $year)[0];
     }

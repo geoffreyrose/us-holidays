@@ -21,7 +21,7 @@ trait Kwanzaa
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getKwanzaaHoliday(int $year = null)
+    public function getKwanzaaHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear('Kwanzaa', $year)[0];
     }

@@ -28,7 +28,7 @@ trait PresidentsDay
      *
      * @param int|null $year The year to get the holiday in
      */
-    public function getPresidentsDayHoliday(int $year = null)
+    public function getPresidentsDayHoliday(?int $year = null)
     {
         return $this->getHolidaysByYear("Presidents' Day", $year)[0];
     }
