@@ -10,12 +10,26 @@
 # PHP: Adds Carbon Support for US Holidays + Laravel Facade
 This extends [Carbon](http://carbon.nesbot.com/) and adds support for 42 US holidays.
 
+---
+### ** New Date Package Available ** 
+
+I’ve released a new, more flexible date package: [Useful Dates](https://github.com/geoffreyrose/useful-dates). It makes it easy to define your own "useful dates" — anything from birthdays and holidays to one-off reminders — with support for multiple repeat frequencies (yearly, monthly, none, custom) and supports any custom logic to calculate dates you might need.
+
+Useful Dates also supports extensions, so others can build and share date groups (for example, national holidays for different countries).
+
+I’ve also published a US Holidays extension: [Useful Dates - US Holidays](https://github.com/geoffreyrose/useful-dates-us-holidays). The extension supports the same 42 holidays, and I have made simple to get "observed" holiday dates too.
+
+I will continue to maintain this US Holidays package too.
+
+---
+
 ## Full Documentation
 **v2.x**  
 [https://geoffreyrose.github.io/us-holidays/](https://geoffreyrose.github.io/us-holidays/)
 
 **v1.x**  
 [https://github.com/geoffreyrose/us-holidays/blob/8717adad63c489e3ef65619e4272bb9b21718078/README.md](https://github.com/geoffreyrose/us-holidays/blob/8717adad63c489e3ef65619e4272bb9b21718078/README.md)
+
 
 ### Supported Holidays
 * April Fool's Day
