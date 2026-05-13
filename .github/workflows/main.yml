@@ -32,7 +32,7 @@ jobs:
             coverage: 'true'
             phpunit-version: '13'
           - php-version: '8.5'
-            coverage: 'true'
+            coverage: 'false'
             phpunit-version: '13'
     steps:
       - uses: actions/checkout@v6
