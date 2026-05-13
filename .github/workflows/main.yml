@@ -30,7 +30,10 @@ jobs:
             phpunit-version: '12'
           - php-version: '8.4'
             coverage: 'true'
-            phpunit-version: '12'
+            phpunit-version: '13'
+          - php-version: '8.5'
+            coverage: 'false'
+            phpunit-version: '13'
     steps:
       - uses: actions/checkout@v6
       - name: Setup PHP
