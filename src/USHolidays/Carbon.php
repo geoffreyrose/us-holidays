@@ -5,6 +5,4 @@ namespace USHolidays;
 /**
  * @deprecated
  */
-class Carbon extends \USHolidays\USHolidays
-{
-}
+class Carbon extends USHolidays {}

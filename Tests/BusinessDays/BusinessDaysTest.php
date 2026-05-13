@@ -7,7 +7,7 @@ use USHolidays\USHolidays;
 
 class BusinessDaysTest extends TestCase
 {
-    public function testIsBusinessDay()
+    public function test_is_business_day()
     {
 
         $holidays = USHolidays::create(2021, 1, 4);
@@ -17,7 +17,7 @@ class BusinessDaysTest extends TestCase
         $this->assertFalse($holidays->isBusinessDay());
     }
 
-    public function testIsBusinessDayCustom()
+    public function test_is_business_day_custom()
     {
 
         $holidays = USHolidays::create(2021, 1, 4);
@@ -28,7 +28,7 @@ class BusinessDaysTest extends TestCase
         $this->assertTrue($holidays->addDays(3)->isBusinessDay());
     }
 
-    public function testNextBusinessDay()
+    public function test_next_business_day()
     {
 
         $holidays = USHolidays::create(2021, 1, 4);
@@ -56,7 +56,7 @@ class BusinessDaysTest extends TestCase
         );
     }
 
-    public function testPrevBusinessDay()
+    public function test_prev_business_day()
     {
 
         $holidays = USHolidays::create(2021, 1, 4);
@@ -84,7 +84,7 @@ class BusinessDaysTest extends TestCase
         );
     }
 
-    public function testCurrentOrNextBusinessDay()
+    public function test_current_or_next_business_day()
     {
 
         $holidays = USHolidays::create(2021, 1, 4);
@@ -112,7 +112,7 @@ class BusinessDaysTest extends TestCase
         );
     }
 
-    public function testCurrentOrPrevBusinessDay()
+    public function test_current_or_prev_business_day()
     {
 
         $holidays = USHolidays::create(2021, 1, 6);
@@ -141,7 +141,7 @@ class BusinessDaysTest extends TestCase
         );
     }
 
-    public function testIsBankHolidayCustom()
+    public function test_is_bank_holiday_custom()
     {
         // 07/04 - Sunday
 
@@ -152,7 +152,7 @@ class BusinessDaysTest extends TestCase
         $holiday->isBankHoliday();
     }
 
-    public function testIsBankHolidayCustom2()
+    public function test_is_bank_holiday_custom2()
     {
         // 07/04 - Sunday
 
@@ -163,7 +163,7 @@ class BusinessDaysTest extends TestCase
         $holiday->addDay()->isBankHoliday();
     }
 
-    public function testIsFederalHolidayCustom()
+    public function test_is_federal_holiday_custom()
     {
         // 07/04 - Sunday
 
@@ -174,7 +174,7 @@ class BusinessDaysTest extends TestCase
         $holiday->isFederalHoliday();
     }
 
-    public function testIsFederalHolidayCustom2()
+    public function test_is_federal_holiday_custom2()
     {
         // 07/04 - Sunday
 

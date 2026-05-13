@@ -9,7 +9,7 @@ trait PearlHarborRemembrance
     /**
      * Setting Pearl Harbor Remembrance
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setPearlHarborRemembrance(int $year)
     {
@@ -19,7 +19,7 @@ trait PearlHarborRemembrance
     /**
      * Return object of Pearl Harbor Remembrance Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getPearlHarborRemembranceDayHoliday(?int $year = null)
     {

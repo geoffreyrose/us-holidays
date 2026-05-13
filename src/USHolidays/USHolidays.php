@@ -1,10 +1,12 @@
 <?php
+
 /**
  * US Holidays Wrapper for the Carbon DateTime Library
  */
 
 namespace USHolidays;
 
+use Carbon\Carbon;
 use Exception;
 use USHolidays\Traits\BusinessDays;
 use USHolidays\Traits\Holiday;
@@ -13,10 +15,10 @@ use USHolidays\Traits\Holiday;
  * This extends Carbon and adds support for 41 US holidays.
  */
 #[\AllowDynamicProperties]
-class USHolidays extends \Carbon\Carbon
+class USHolidays extends Carbon
 {
-    use Holiday;
     use BusinessDays;
+    use Holiday;
 
     /**
      * An array of all the names of the holidays
@@ -53,7 +55,7 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Add a user defined holiday
      *
-     * @param array $data The year to get the holidays in
+     * @param  array  $data  The year to get the holidays in
      * @return true;
      */
     public function addHoliday($data): bool
@@ -67,8 +69,8 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Compare to dates to sort
      *
-     * @param object $a A date object
-     * @param object $b A date object
+     * @param  object  $a  A date object
+     * @param  object  $b  A date object
      */
     private function compareDate($a, $b)
     {
@@ -78,8 +80,8 @@ class USHolidays extends \Carbon\Carbon
     /**
      *  Returns holidays in the specified years
      *
-     * @param string|array $name The name(s) of the holidays to get
-     * @param int|null $year The year to get the holidays in
+     * @param  string|array  $name  The name(s) of the holidays to get
+     * @param  int|null  $year  The year to get the holidays in
      */
     public function getHolidaysByYear($name = 'all', ?int $year = null): array
     {
@@ -208,8 +210,8 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Returns holidays in the next amount of days
      *
-     * @param int $days The number of days to look ahead to find holidays in
-     * @param string|array|null $holidays The name(s) of the holidays to get
+     * @param  int  $days  The number of days to look ahead to find holidays in
+     * @param  string|array|null  $holidays  The name(s) of the holidays to get
      */
     public function getHolidaysInDays(int $days, $holidays = null)
     {
@@ -248,8 +250,8 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Returns holidays in the next amount of years
      *
-     * @param int $years The number of years to look ahead to find holidays in
-     * @param string|array|null $holidays The name(s) of the holidays to get
+     * @param  int  $years  The number of years to look ahead to find holidays in
+     * @param  string|array|null  $holidays  The name(s) of the holidays to get
      */
     public function getHolidaysInYears(int $years = 1, $holidays = null)
     {
@@ -291,8 +293,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Get the holiday(s) complete object
-     *
-     * @return array|null
      */
     public function getHoliday(): ?array
     {
@@ -311,7 +311,7 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Set Business Holidays
      *
-     * @param array $holidays An array holiday names to be bank holidays
+     * @param  array  $holidays  An array holiday names to be bank holidays
      */
     public function setBankHolidays($holidays)
     {
@@ -324,8 +324,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Check if a date is a bank holiday. returns boolean
-     *
-     * @return bool
      */
     public function isBankHoliday(): bool
     {
@@ -360,8 +358,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Check if a date is a federal holiday. returns boolean
-     *
-     * @return bool
      */
     public function isFederalHoliday(): bool
     {
@@ -401,8 +397,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Get the holiday names, if any for the given date
-     *
-     * @return string|null
      */
     public function getHolidayName(): ?string
     {
@@ -435,7 +429,7 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Return next holiday(s)
      *
-     * @param int|null $number the number of holidays to get. default is 1
+     * @param  int|null  $number  the number of holidays to get. default is 1
      */
     public function getNextHolidays(int $number = 1): array
     {
@@ -449,7 +443,7 @@ class USHolidays extends \Carbon\Carbon
     /**
      * Return previous holiday(s)
      *
-     * @param int|null $number the number of holidays to get. default is 1
+     * @param  int|null  $number  the number of holidays to get. default is 1
      */
     public function getPrevHolidays(int $number = 1): array
     {
@@ -463,8 +457,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Return next holiday name
-     *
-     * @return string
      */
     public function getNextHolidayName(): string
     {
@@ -473,8 +465,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Return next holiday days away
-     *
-     * @return int
      */
     public function getNextHolidayDays(): int
     {
@@ -483,8 +473,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Return next holiday name
-     *
-     * @return string
      */
     public function getPrevHolidayName(): string
     {
@@ -493,8 +481,6 @@ class USHolidays extends \Carbon\Carbon
 
     /**
      * Return next holiday days away
-     *
-     * @return int
      */
     public function getPrevHolidayDays(): int
     {

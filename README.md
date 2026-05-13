@@ -398,13 +398,7 @@ $holidays->getHolidayName(); // Christmas Day (Observed), Kwanzaa
 
 ### Contributing
 
-1. Clone the repo and install dependencies.
-
-```
-composer install
-```
-
-2. Run Tests
+#### Testing
 
 Use locally installed carbon version
 
@@ -414,17 +408,23 @@ Use locally installed carbon version
 // or with coverage 
 
 XDEBUG_MODE=coverage ./vendor/bin/phpunit
+
+herd coverage ./vendor/bin/phpunit 
 ```
 
-----
+#### Linting
 
-Test against Carbon v2
+```bash
+./vendor/bin/pint
 ```
+
+
+```bash
 ./tests/carbon-2.sh
 ```
 
 Test against Carbon v3
-```
+```bash
 ./tests/carbon-3.sh
 ```
 

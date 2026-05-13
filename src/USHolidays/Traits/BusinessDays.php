@@ -19,7 +19,7 @@ trait BusinessDays
     /**
      * Set Business Days
      *
-     * @param int[] $days An array of Carbon dayOfWeek int's
+     * @param  int[]  $days  An array of Carbon dayOfWeek int's
      * @return int[] The set business days
      */
     public function setBusinessDays($days)

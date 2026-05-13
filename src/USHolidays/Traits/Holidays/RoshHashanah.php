@@ -9,7 +9,7 @@ trait RoshHashanah
     /**
      * Setting Rosh Hashanah
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setRoshHashanah(int $year)
     {
@@ -19,7 +19,7 @@ trait RoshHashanah
     /**
      * Return object of Rosh Hashanah for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getRoshHashanahHoliday(?int $year = null)
     {

@@ -7,7 +7,7 @@ trait CyberMonday
     /**
      * Setting Cyber Monday
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setCyberMonDay(int $year)
     {
@@ -17,7 +17,7 @@ trait CyberMonday
     /**
      * Return object of Cyber Monday for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getCyberMondayHoliday(?int $year = null)
     {

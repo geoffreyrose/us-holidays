@@ -7,7 +7,7 @@ use USHolidays\USHolidays;
 
 class TimezoneTest extends TestCase
 {
-    public function testIsHoliday()
+    public function test_is_holiday()
     {
         $holidays = USHolidays::create(2020, 07, 4, 0, 0, 0, 'America/New_York');
         $this->assertTrue($holidays->isHoliday());
@@ -18,7 +18,7 @@ class TimezoneTest extends TestCase
         $this->assertEquals('Independence Day', $holidays->getHolidayName());
     }
 
-    public function testGetHolidaysInYear()
+    public function test_get_holidays_in_year()
     {
         $holidays = USHolidays::create(2020, 07, 4, 0, 0, 0, 'America/New_York');
         $holidays = $holidays->getHolidaysInYears()[0];
@@ -33,7 +33,7 @@ class TimezoneTest extends TestCase
         $this->assertEquals('Independence Day', $holidays->date->getHolidayName());
     }
 
-    public function testGetHolidaysByYear()
+    public function test_get_holidays_by_year()
     {
         $holidays = USHolidays::create(2020, 01, 01, 0, 0, 0, 'America/New_York');
         $holidays = $holidays->getHolidaysByYear()[0];

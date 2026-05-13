@@ -7,7 +7,7 @@ use USHolidays\USHolidays;
 
 class CarbonTest extends TestCase
 {
-    public function testGetHolidayYear()
+    public function test_get_holiday_year()
     {
 
         $holidays = USHolidays::create(2018, 1, 1);
@@ -23,7 +23,7 @@ class CarbonTest extends TestCase
         );
     }
 
-    public function testHolidayName()
+    public function test_holiday_name()
     {
         // 07/04 - Saturday
 
@@ -43,7 +43,7 @@ class CarbonTest extends TestCase
 
     }
 
-    public function testGetHoliday()
+    public function test_get_holiday()
     {
         // 07/04 - Saturday
 
@@ -54,7 +54,7 @@ class CarbonTest extends TestCase
 
     }
 
-    public function testIsHoliday()
+    public function test_is_holiday()
     {
 
         $holiday = USHolidays::create(2020, 1, 1)->getIndependenceDayHoliday()->date;
@@ -62,7 +62,7 @@ class CarbonTest extends TestCase
         $this->assertTrue($holiday->isHoliday());
     }
 
-    public function testIsBankHoliday()
+    public function test_is_bank_holiday()
     {
         // 07/04 - Saturday
 
@@ -83,7 +83,7 @@ class CarbonTest extends TestCase
         $this->assertTrue($holidays->addDay()->isBankHoliday());
     }
 
-    public function testIsFederalHoliday()
+    public function test_is_federal_holiday()
     {
         // 07/04 - Saturday
 
@@ -104,7 +104,7 @@ class CarbonTest extends TestCase
         $this->assertTrue($holidays->addDay()->isFederalHoliday());
     }
 
-    public function testHolidayInDays()
+    public function test_holiday_in_days()
     {
         $holidays = USHolidays::create(2020, 1, 5);
         $holidays = $holidays->getHolidaysInDays(300, 'all');
@@ -131,7 +131,7 @@ class CarbonTest extends TestCase
         $this->assertTrue(count($holidays) == 1 && $holidays[0]->days_away == 3);
     }
 
-    public function testHolidayInYears()
+    public function test_holiday_in_years()
     {
         $holidays = USHolidays::create(2020, 1, 5);
         $holidays = $holidays->getHolidaysInYears(1, 'all');
@@ -146,7 +146,7 @@ class CarbonTest extends TestCase
         $this->assertTrue(count($holidays) == 42);
     }
 
-    public function testAddUserHoliday()
+    public function test_add_user_holiday()
     {
         $holidays = USHolidays::create(2020, 7, 14);
         $holidays->addHoliday([
@@ -215,7 +215,7 @@ class CarbonTest extends TestCase
         //        $this->assertFalse($holidays->subDay()->isFederalHoliday());
     }
 
-    public function testSetHoliday()
+    public function test_set_holiday()
     {
 
         $holidays = USHolidays::create(2021, 7, 4);
@@ -229,7 +229,7 @@ class CarbonTest extends TestCase
         $this->assertTrue($holidays->isHoliday());
     }
 
-    public function testSetBankHolidays()
+    public function test_set_bank_holidays()
     {
 
         $holidays = USHolidays::create(2022, 7, 4);

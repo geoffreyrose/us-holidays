@@ -7,7 +7,7 @@ use USHolidays\USHolidays;
 
 class YomKippurTest extends TestCase
 {
-    public function testHoliday()
+    public function test_holiday()
     {
 
         $holidays = USHolidays::create(2020, 1, 1);
@@ -23,7 +23,7 @@ class YomKippurTest extends TestCase
         );
     }
 
-    public function testHolidayName()
+    public function test_holiday_name()
     {
 
         $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
@@ -31,7 +31,7 @@ class YomKippurTest extends TestCase
         $this->assertEquals('Yom Kippur', $holiday->name);
     }
 
-    public function testIsHoliday()
+    public function test_is_holiday()
     {
 
         $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
@@ -39,7 +39,7 @@ class YomKippurTest extends TestCase
         $this->assertTrue($holiday->date->isHoliday());
     }
 
-    public function testIsBankHoliday()
+    public function test_is_bank_holiday()
     {
 
         $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
@@ -47,7 +47,7 @@ class YomKippurTest extends TestCase
         $this->assertFalse($holiday->date->isBankHoliday());
     }
 
-    public function testIsFederalHoliday()
+    public function test_is_federal_holiday()
     {
 
         $holiday = USHolidays::create(2020, 1, 1)->getYomKippurHoliday();
