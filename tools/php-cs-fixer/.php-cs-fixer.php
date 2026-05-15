@@ -3,7 +3,7 @@
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
-// based on https://gist.github.com/laravel-shift/cab527923ed2a109dda047b97d53c200
+// based on https://github.com/laravel/pint/blob/main/resources/presets/laravel.php
 
 $rules = [
     'array_indentation' => true,
