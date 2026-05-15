@@ -10,7 +10,7 @@ trait ColumbusDay
     /**
      * Setting Columbus Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setColumbusDay(int $year)
     {
@@ -26,7 +26,7 @@ trait ColumbusDay
     /**
      * Return object of Columbus Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getColumbusDayHoliday(?int $year = null)
     {

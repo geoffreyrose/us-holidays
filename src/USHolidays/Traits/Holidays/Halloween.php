@@ -9,7 +9,7 @@ trait Halloween
     /**
      * Setting Halloween
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setHalloween(int $year)
     {
@@ -19,7 +19,7 @@ trait Halloween
     /**
      * Return object of Halloween for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getHalloweenHoliday(?int $year = null)
     {

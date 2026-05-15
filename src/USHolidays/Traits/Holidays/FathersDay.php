@@ -10,7 +10,7 @@ trait FathersDay
     /**
      * Setting Fathers Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setFathersDay(int $year)
     {
@@ -26,7 +26,7 @@ trait FathersDay
     /**
      * Return object of Father Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getFathersDayHoliday(?int $year = null)
     {

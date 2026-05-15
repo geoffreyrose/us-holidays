@@ -10,7 +10,7 @@ trait DaylightSavingEnd
     /**
      * Setting Daylight Saving (End)
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setDaylightSavingEnd(int $year)
     {
@@ -25,7 +25,7 @@ trait DaylightSavingEnd
     /**
      * Return object of Daylight Saving (End) for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getDaylightSavingEndHoliday(?int $year = null)
     {

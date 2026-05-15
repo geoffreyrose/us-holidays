@@ -9,7 +9,7 @@ trait OrthodoxEaster
     /**
      * Setting Orthodox Easter
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setOrthodoxEaster(int $year)
     {
@@ -29,7 +29,7 @@ trait OrthodoxEaster
     /**
      * Return object of Orthodox Easter for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getOrthodoxEasterHoliday(?int $year = null)
     {

@@ -7,7 +7,7 @@ use USHolidays\USHolidays;
 
 class PrevHolidayTest extends TestCase
 {
-    public function testPrevHolidays()
+    public function test_prev_holidays()
     {
 
         $holidays = USHolidays::create(2021, 1, 3);
@@ -28,7 +28,7 @@ class PrevHolidayTest extends TestCase
         );
     }
 
-    public function testPrevHolidayName()
+    public function test_prev_holiday_name()
     {
 
         $holidays = USHolidays::create(2021, 1, 3);
@@ -37,7 +37,7 @@ class PrevHolidayTest extends TestCase
 
     }
 
-    public function testPrevHolidayDays()
+    public function test_prev_holiday_days()
     {
 
         $holidays = USHolidays::create(2021, 1, 3);

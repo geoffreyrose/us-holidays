@@ -2,7 +2,9 @@
 
 namespace USHolidays\Facades;
 
-class USHolidays extends \Illuminate\Support\Facades\Facade
+use Illuminate\Support\Facades\Facade;
+
+class USHolidays extends Facade
 {
     protected static function getFacadeAccessor()
     {

@@ -72,8 +72,8 @@ trait Holiday
     use Juneteenth;
     use Kwanzaa;
     use LaborDay;
-    use MLKDay;
     use MemorialDay;
+    use MLKDay;
     use MothersDay;
     use NewYearsDay;
     use NewYearsEve;
@@ -94,7 +94,7 @@ trait Holiday
     /**
      * Get holiday data
      *
-     * @param int|null $year The year to get the holidays in
+     * @param  int|null  $year  The year to get the holidays in
      */
     private function holidays(?int $year = null)
     {

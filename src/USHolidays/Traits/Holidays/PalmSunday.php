@@ -7,7 +7,7 @@ trait PalmSunday
     /**
      * Setting Palm Sunday
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setPalmSunDay(int $year)
     {
@@ -17,7 +17,7 @@ trait PalmSunday
     /**
      * Return object of Palm Sunday for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getPalmSundayHoliday(?int $year = null)
     {

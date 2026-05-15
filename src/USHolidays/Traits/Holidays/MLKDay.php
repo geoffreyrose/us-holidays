@@ -10,7 +10,7 @@ trait MLKDay
     /**
      * Setting MLK Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setMLKDay(int $year)
     {
@@ -26,7 +26,7 @@ trait MLKDay
     /**
      * Return object of MLK Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getMLKDayHoliday(?int $year = null)
     {

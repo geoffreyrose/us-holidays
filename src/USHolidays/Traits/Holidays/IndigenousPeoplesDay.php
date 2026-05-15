@@ -7,7 +7,7 @@ trait IndigenousPeoplesDay
     /**
      * Setting Indigenous Peoples Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setIndigenousPeoplesDay(int $year)
     {
@@ -17,7 +17,7 @@ trait IndigenousPeoplesDay
     /**
      * Return object of Indigenous Peoples Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getIndigenousPeoplesDayHoliday(?int $year = null)
     {

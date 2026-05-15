@@ -10,7 +10,7 @@ trait LaborDay
     /**
      * Setting Labor Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setLaborDay(int $year)
     {
@@ -25,7 +25,7 @@ trait LaborDay
     /**
      * Return object of Labor Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getLaborDayHoliday(?int $year = null)
     {

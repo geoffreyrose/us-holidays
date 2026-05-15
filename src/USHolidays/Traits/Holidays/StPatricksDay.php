@@ -9,7 +9,7 @@ trait StPatricksDay
     /**
      * Setting St Patricks Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setStPatricksDay(int $year)
     {
@@ -19,7 +19,7 @@ trait StPatricksDay
     /**
      * Return object of St Patricks Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getStPatricksDayHoliday(?int $year = null)
     {

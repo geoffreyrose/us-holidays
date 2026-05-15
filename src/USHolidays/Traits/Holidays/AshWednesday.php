@@ -7,7 +7,7 @@ trait AshWednesday
     /**
      * Setting Ash Wednesday
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setAshWednesDay(int $year)
     {
@@ -17,7 +17,7 @@ trait AshWednesday
     /**
      * Return object of Ash Wednesday for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getAshWednesdayHoliday(?int $year = null)
     {
