@@ -9,7 +9,7 @@ trait YomKippur
     /**
      * Setting Yom Kippur
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setYomKippur(int $year)
     {
@@ -19,7 +19,7 @@ trait YomKippur
     /**
      * Return object of Yom Kippur for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getYomKippurHoliday(?int $year = null)
     {

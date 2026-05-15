@@ -9,7 +9,7 @@ trait VeteransDay
     /**
      * Setting Veterans Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setVeteransDay(int $year)
     {
@@ -19,7 +19,7 @@ trait VeteransDay
     /**
      * Return object of Veterans Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getVeteransDayHoliday(?int $year = null)
     {

@@ -10,7 +10,7 @@ trait MothersDay
     /**
      * Setting Mothers Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setMothersDay(int $year)
     {
@@ -26,7 +26,7 @@ trait MothersDay
     /**
      * Return object of Mothers Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getMothersDayHoliday(?int $year = null)
     {

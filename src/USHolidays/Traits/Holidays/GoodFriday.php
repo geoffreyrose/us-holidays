@@ -7,7 +7,7 @@ trait GoodFriday
     /**
      * Setting Good Friday
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setGoodFriDay(int $year)
     {
@@ -17,7 +17,7 @@ trait GoodFriday
     /**
      * Return object of Good Friday for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getGoodFridayHoliday(?int $year = null)
     {

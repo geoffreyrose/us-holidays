@@ -10,7 +10,7 @@ trait PresidentsDay
     /**
      * Setting Presidents Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setPresidentsDay(int $year)
     {
@@ -26,7 +26,7 @@ trait PresidentsDay
     /**
      * Return object of Presidents Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getPresidentsDayHoliday(?int $year = null)
     {

@@ -9,7 +9,7 @@ trait Kwanzaa
     /**
      * Setting Kwanzaa
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setKwanzaa(int $year)
     {
@@ -19,7 +19,7 @@ trait Kwanzaa
     /**
      * Return object of Kwanzaa for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getKwanzaaHoliday(?int $year = null)
     {

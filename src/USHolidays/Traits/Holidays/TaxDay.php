@@ -10,7 +10,7 @@ trait TaxDay
     /**
      * Setting Tax Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setTaxDay(int $year)
     {
@@ -27,7 +27,7 @@ trait TaxDay
     /**
      * Return object of Tax Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getTaxDayHoliday(?int $year = null)
     {

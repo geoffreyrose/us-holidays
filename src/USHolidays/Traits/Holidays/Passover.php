@@ -9,7 +9,7 @@ trait Passover
     /**
      * Setting Passover
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setPassover(int $year)
     {
@@ -19,7 +19,7 @@ trait Passover
     /**
      * Return object of Passover for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getPassoverHoliday(?int $year = null)
     {

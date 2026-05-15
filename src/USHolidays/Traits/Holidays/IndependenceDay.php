@@ -9,7 +9,7 @@ trait IndependenceDay
     /**
      * Setting Independence Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setIndependenceDay(int $year)
     {
@@ -19,7 +19,7 @@ trait IndependenceDay
     /**
      * Return object of Independence Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getIndependenceDayHoliday(?int $year = null)
     {

@@ -10,7 +10,7 @@ trait Thanksgiving
     /**
      * Setting Thanksgiving
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setThanksgiving(int $year)
     {
@@ -26,7 +26,7 @@ trait Thanksgiving
     /**
      * Return object of Thanksgiving for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getThanksgivingHoliday(?int $year = null)
     {

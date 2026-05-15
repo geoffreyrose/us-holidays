@@ -7,7 +7,7 @@ use USHolidays\USHolidays;
 
 class NextHolidayTest extends TestCase
 {
-    public function testNextHolidays()
+    public function test_next_holidays()
     {
 
         $holidays = USHolidays::create(2021, 1, 3);
@@ -28,7 +28,7 @@ class NextHolidayTest extends TestCase
         );
     }
 
-    public function testNextHolidayName()
+    public function test_next_holiday_name()
     {
 
         $holidays = USHolidays::create(2021, 1, 3);
@@ -36,7 +36,7 @@ class NextHolidayTest extends TestCase
         $this->assertEquals('Martin Luther King Jr. Day', $holidays->getNextHolidayName());
     }
 
-    public function testNextHolidayDays()
+    public function test_next_holiday_days()
     {
 
         $holidays = USHolidays::create(2021, 1, 3);

@@ -9,7 +9,7 @@ trait ValentinesDay
     /**
      * Setting Valentines Day
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setValentinesDay(int $year)
     {
@@ -19,7 +19,7 @@ trait ValentinesDay
     /**
      * Return object of Valentines Day for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getValentinesDayHoliday(?int $year = null)
     {

@@ -9,7 +9,7 @@ trait CincoDeMayo
     /**
      * Setting Cinco de Mayo
      *
-     * @param int $year The year to get the holiday in
+     * @param  int  $year  The year to get the holiday in
      */
     private function setCincoDeMayo(int $year)
     {
@@ -19,7 +19,7 @@ trait CincoDeMayo
     /**
      * Return object of Cinco de Mayo for given year
      *
-     * @param int|null $year The year to get the holiday in
+     * @param  int|null  $year  The year to get the holiday in
      */
     public function getCincoDeMayoHoliday(?int $year = null)
     {

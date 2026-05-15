@@ -12,7 +12,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->app->singleton(USHolidays::class, function ($app) {
-            return new USHolidays();
+            return new USHolidays;
         });
 
         $this->app->alias(USHolidays::class, 'usholidays');
