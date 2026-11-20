@@ -23,6 +23,26 @@ class OrthodoxEasterTest extends TestCase
         );
     }
 
+    public function test_holiday_outside_1900_to_2099()
+    {
+        // The Julian calendar is 12 days behind in 1800-1899 and 14 days from March 2100
+        $expected = [
+            1850 => [5, 5],
+            1899 => [4, 30],
+            2099 => [4, 12],
+            2100 => [5, 2],
+            2101 => [4, 24],
+            2200 => [4, 6],
+        ];
+
+        foreach ($expected as $year => [$month, $day]) {
+            $date = USHolidays::create($year, 1, 1)->getOrthodoxEasterHoliday()->date;
+
+            $this->assertSame(sprintf('%d-%02d-%02d', $year, $month, $day), $date->format('Y-m-d'));
+            $this->assertTrue($date->isSunday());
+        }
+    }
+
     public function test_holiday_name()
     {
 
