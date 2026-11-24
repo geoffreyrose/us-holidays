@@ -13,6 +13,8 @@ use USHolidays\Traits\Holiday;
 
 /**
  * This extends Carbon and adds support for 41 US holidays.
+ *
+ * @phpstan-import-type HolidayDetail from \USHolidays\Types\HolidayTypes
  */
 #[\AllowDynamicProperties]
 class USHolidays extends Carbon
@@ -22,28 +24,38 @@ class USHolidays extends Carbon
 
     /**
      * An array of all the names of the holidays
+     *
+     * @var array<int, string>
      */
-    private $holidayArray = ["April Fools' Day", 'Armed Forces Day', 'Ash Wednesday', 'Black Friday', 'Christmas Day', 'Christmas Eve', 'Cinco de Mayo', 'Columbus Day', 'Cyber Monday', 'Daylight Saving (End)', 'Daylight Saving (Start)', 'Earth Day', 'Easter', "Father's Day", 'Flag Day', 'Good Friday', 'Groundhog Day', 'Halloween', 'Hanukkah', 'Independence Day', "Indigenous Peoples' Day", 'Juneteenth', 'Kwanzaa', 'Labor Day', 'Memorial Day', 'Martin Luther King Jr. Day', "Mother's Day", "New Year's Day", "New Year's Eve", 'Orthodox Easter', 'Palm Sunday', 'Passover', 'Patriot Day', 'Pearl Harbor Remembrance Day', "Presidents' Day", 'Rosh Hashanah', "St. Patrick's Day", 'Tax Day', 'Thanksgiving', "Valentine's Day", 'Veterans Day', 'Yom Kippur'];
+    private array $holidayArray = ["April Fools' Day", 'Armed Forces Day', 'Ash Wednesday', 'Black Friday', 'Christmas Day', 'Christmas Eve', 'Cinco de Mayo', 'Columbus Day', 'Cyber Monday', 'Daylight Saving (End)', 'Daylight Saving (Start)', 'Earth Day', 'Easter', "Father's Day", 'Flag Day', 'Good Friday', 'Groundhog Day', 'Halloween', 'Hanukkah', 'Independence Day', "Indigenous Peoples' Day", 'Juneteenth', 'Kwanzaa', 'Labor Day', 'Memorial Day', 'Martin Luther King Jr. Day', "Mother's Day", "New Year's Day", "New Year's Eve", 'Orthodox Easter', 'Palm Sunday', 'Passover', 'Patriot Day', 'Pearl Harbor Remembrance Day', "Presidents' Day", 'Rosh Hashanah', "St. Patrick's Day", 'Tax Day', 'Thanksgiving', "Valentine's Day", 'Veterans Day', 'Yom Kippur'];
 
     /**
      * An array of bank holidays
+     *
+     * @var array<int, string>
      */
-    private $bankHolidayArray = ['default'];
+    private array $bankHolidayArray = ['default'];
 
     /**
      * An array of business days
+     *
+     * @var array<int>
      */
-    private $businessDays = [1, 2, 3, 4, 5];
+    private array $businessDays = [1, 2, 3, 4, 5];
 
     /**
      * An array of all the user added holidays
+     *
+     * @var array<int, array{name: string, date: callable|\Carbon\Carbon, bank_holiday?: bool, federal_holiday?: bool}>
      */
-    private $userAddedHolidays = [];
+    private array $userAddedHolidays = [];
 
     /**
      * An array of all holidays to use
+     *
+     * @param  array<int, string>  $holidays
      */
-    public function setHolidays($holidays)
+    public function setHolidays(array $holidays): void
     {
         foreach ($holidays as $key => $holiday) {
             $holidays[$key] = strtoupper($holiday);
@@ -55,10 +67,9 @@ class USHolidays extends Carbon
     /**
      * Add a user defined holiday
      *
-     * @param  array  $data  The year to get the holidays in
-     * @return true;
+     * @param  array{name: string, date: callable|\Carbon\Carbon, bank_holiday?: bool, federal_holiday?: bool}  $data
      */
-    public function addHoliday($data): bool
+    public function addHoliday(array $data): bool
     {
         $this->userAddedHolidays[] = $data;
         $this->holidayArray[] = $data['name'];
@@ -69,10 +80,10 @@ class USHolidays extends Carbon
     /**
      * Compare to dates to sort
      *
-     * @param  object  $a  A date object
-     * @param  object  $b  A date object
+     * @param  HolidayDetail  $a  A date object
+     * @param  HolidayDetail  $b  A date object
      */
-    private function compareDate($a, $b)
+    private function compareDate(object $a, object $b): int
     {
         return $a->date <=> $b->date;
     }
@@ -80,8 +91,9 @@ class USHolidays extends Carbon
     /**
      *  Returns holidays in the specified years
      *
-     * @param  string|array  $name  The name(s) of the holidays to get
+     * @param  string|array<int, string>  $name  The name(s) of the holidays to get
      * @param  int|null  $year  The year to get the holidays in
+     * @return array<int, HolidayDetail>
      */
     public function getHolidaysByYear($name = 'all', ?int $year = null): array
     {
@@ -159,7 +171,7 @@ class USHolidays extends Carbon
                     if (array_search(strtoupper($search_name), $holidaySearchName) !== false) {
                         $index = $key;
 
-                        if ($index >= 0 && $index !== false) {
+                        if ($index >= 0) {
 
                             $currentYear = $this->copy()->year;
                             $this->year = $year;
@@ -211,9 +223,10 @@ class USHolidays extends Carbon
      * Returns holidays in the next amount of days
      *
      * @param  int  $days  The number of days to look ahead to find holidays in
-     * @param  string|array|null  $holidays  The name(s) of the holidays to get
+     * @param  string|array<int, string>|null  $holidays  The name(s) of the holidays to get
+     * @return array<int, HolidayDetail>
      */
-    public function getHolidaysInDays(int $days, $holidays = null)
+    public function getHolidaysInDays(int $days, $holidays = null): array
     {
         $this->shiftTimezone('UTC');
         $this->setTime(0, 0);
@@ -251,9 +264,10 @@ class USHolidays extends Carbon
      * Returns holidays in the next amount of years
      *
      * @param  int  $years  The number of years to look ahead to find holidays in
-     * @param  string|array|null  $holidays  The name(s) of the holidays to get
+     * @param  string|array<int, string>|null  $holidays  The name(s) of the holidays to get
+     * @return array<int, HolidayDetail>
      */
-    public function getHolidaysInYears(int $years = 1, $holidays = null)
+    public function getHolidaysInYears(int $years = 1, $holidays = null): array
     {
         $this->shiftTimezone('UTC');
         $this->setTime(0, 0);
@@ -272,7 +286,7 @@ class USHolidays extends Carbon
      *
      * @return bool
      */
-    public function isHoliday()
+    public function isHoliday(): bool
     {
         $holidays = $this->getHolidaysByYear('all');
 
@@ -293,6 +307,8 @@ class USHolidays extends Carbon
 
     /**
      * Get the holiday(s) complete object
+     *
+     * @return array<int, HolidayDetail>
      */
     public function getHoliday(): ?array
     {
@@ -311,9 +327,10 @@ class USHolidays extends Carbon
     /**
      * Set Business Holidays
      *
-     * @param  array  $holidays  An array holiday names to be bank holidays
+     * @param  array<int, string>  $holidays  An array holiday names to be bank holidays
+     * @return array<int, string>
      */
-    public function setBankHolidays($holidays)
+    public function setBankHolidays(array $holidays): array
     {
         foreach ($holidays as $key => $holiday) {
             $holidays[$key] = strtoupper($holiday);
@@ -429,11 +446,12 @@ class USHolidays extends Carbon
     /**
      * Return next holiday(s)
      *
-     * @param  int|null  $number  the number of holidays to get. default is 1
+     * @param  int  $number  the number of holidays to get. default is 1
+     * @return array<int, HolidayDetail>
      */
     public function getNextHolidays(int $number = 1): array
     {
-        $number_of_years = ceil($number / count($this->holidayArray));
+        $number_of_years = intval(ceil($number / count($this->holidayArray)));
 
         $holidays = $this->getHolidaysInYears($number_of_years);
 
@@ -443,11 +461,12 @@ class USHolidays extends Carbon
     /**
      * Return previous holiday(s)
      *
-     * @param  int|null  $number  the number of holidays to get. default is 1
+     * @param  int  $number  the number of holidays to get. default is 1
+     * @return array<int, HolidayDetail>
      */
     public function getPrevHolidays(int $number = 1): array
     {
-        $number_of_years = ceil($number / count($this->holidayArray)) * -1;
+        $number_of_years = intval(ceil($number / count($this->holidayArray)) * -1);
 
         $holidays = $this->getHolidaysInYears($number_of_years);
         $count = count($holidays);

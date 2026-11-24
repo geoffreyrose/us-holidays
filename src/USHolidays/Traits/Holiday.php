@@ -46,6 +46,9 @@ use USHolidays\Traits\Holidays\VeteransDay;
 use USHolidays\Traits\Holidays\YomKippur;
 use USHolidays\USHolidays;
 
+/**
+ * @phpstan-import-type HolidayData from \USHolidays\Types\HolidayTypes
+ */
 trait Holiday
 {
     use AprilFoolsDay;
@@ -94,9 +97,10 @@ trait Holiday
     /**
      * Get holiday data
      *
-     * @param  int|null  $year  The year to get the holidays in
+     * @param  int $year  The year to get the holidays in
+     * @return array<int, HolidayData>
      */
-    private function holidays(?int $year = null)
+    private function holidays(int $year): array
     {
         $this->setTime(0, 0, 0);
         $holidays = [
