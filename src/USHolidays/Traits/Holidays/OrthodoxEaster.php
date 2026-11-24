@@ -23,9 +23,12 @@ trait OrthodoxEaster
         $month = (int) floor(($d + $e + 114) / 31);
         $day = (($d + $e + 114) % 31) + 1;
 
-        // Convert to timestamp and add 13 days (Julian to Gregorian diff)
+        // Julian to Gregorian: the gap is 13 days only in 1900-2099
+        // (12 days in 1800-1899, 14 days in 2100-2199, ...)
+        $julianToGregorianDays = intdiv($year, 100) - intdiv($year, 400) - 2;
+
         /** @var int $dt */
-        $dt = mktime(0, 0, 0, $month, $day + 13, $year);
+        $dt = mktime(0, 0, 0, $month, $day + $julianToGregorianDays, $year);
 
         return USHolidays::createFromTimestamp($dt)->setTime(0, 0, 0);
     }
