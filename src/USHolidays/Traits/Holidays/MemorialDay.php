@@ -11,9 +11,12 @@ trait MemorialDay
      * Setting Memorial Day
      *
      * @param  int  $year  The year to get the holiday in
+     *
+     * @return USHolidays
      */
-    private function setMemorialDay(int $year)
+    private function setMemorialDay(int $year): USHolidays
     {
+        /** @var USHolidays $date */
         $date = USHolidays::create($year, 5, 1, 0, 0, 0);
         for ($i = 0; $i < 7; $i++) {
             if ($date->month === 5) {
@@ -31,8 +34,10 @@ trait MemorialDay
      * Return object of Memorial Day for given year
      *
      * @param  int|null  $year  The year to get the holiday in
+     *
+     * @return object
      */
-    public function getMemorialDayHoliday(?int $year = null)
+    public function getMemorialDayHoliday(?int $year = null): object
     {
         return $this->getHolidaysByYear('Memorial Day', $year)[0];
     }

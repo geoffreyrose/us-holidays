@@ -11,9 +11,12 @@ trait TaxDay
      * Setting Tax Day
      *
      * @param  int  $year  The year to get the holiday in
+     *
+     * @return USHolidays
      */
-    private function setTaxDay(int $year)
+    private function setTaxDay(int $year): USHolidays
     {
+        /** @var USHolidays $date */
         $date = USHolidays::create($year, 04, 15, 0, 0, 0);
         if ($date->dayOfWeek === CarbonInterface::SATURDAY || $date->dayOfWeek === CarbonInterface::SUNDAY) {
             $date->next(CarbonInterface::TUESDAY);
@@ -28,8 +31,10 @@ trait TaxDay
      * Return object of Tax Day for given year
      *
      * @param  int|null  $year  The year to get the holiday in
+     *
+     * @return object
      */
-    public function getTaxDayHoliday(?int $year = null)
+    public function getTaxDayHoliday(?int $year = null): object
     {
         return $this->getHolidaysByYear('Tax Day', $year)[0];
     }

@@ -428,6 +428,11 @@ Test against Carbon v3
 ./tests/carbon-3.sh
 ```
 
+### Static Analysis
+```bash
+./vendor/bin/phpstan analyse src --memory-limit 2G
+```
+
 ### See It Used in the Wild
 [GBPN](https://gbpn.com/resources/branding-and-design/us-holiday-calendar) - Ongoing US Holiday Calendar  
 [Canny Armadillo](https://cannyarmadillo.com/resources/us-holiday-calendar) - Next 12 Months

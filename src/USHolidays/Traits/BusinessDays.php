@@ -2,12 +2,14 @@
 
 namespace USHolidays\Traits;
 
+use USHolidays\USHolidays;
+
 trait BusinessDays
 {
     /**
      * Check if using standard business days
      */
-    private function isStandardBusinessDays()
+    private function isStandardBusinessDays(): bool
     {
         if ($this->businessDays != [1, 2, 3, 4, 5]) {
             return false;
@@ -19,10 +21,10 @@ trait BusinessDays
     /**
      * Set Business Days
      *
-     * @param  int[]  $days  An array of Carbon dayOfWeek int's
+     * @param int[] $days  An array of Carbon dayOfWeek int's
      * @return int[] The set business days
      */
-    public function setBusinessDays($days)
+    public function setBusinessDays(array $days): array
     {
         return $this->businessDays = $days;
     }
@@ -32,7 +34,7 @@ trait BusinessDays
      *
      * @return bool
      */
-    public function isBusinessDay()
+    public function isBusinessDay(): bool
     {
         return in_array($this->dayOfWeek, $this->businessDays);
     }
@@ -40,9 +42,9 @@ trait BusinessDays
     /**
      * Next business day
      *
-     * @return object Carbon Date object
+     * @return USHolidays Carbon Date object
      */
-    public function nextBusinessDay()
+    public function nextBusinessDay(): USHolidays
     {
         $day = $this->copy();
 
@@ -64,9 +66,9 @@ trait BusinessDays
     /**
      * Previous business day
      *
-     * @return object Carbon Date object
+     * @return USHolidays Carbon Date object
      */
-    public function prevBusinessDay()
+    public function prevBusinessDay(): USHolidays
     {
         $day = $this->copy();
 
@@ -88,9 +90,9 @@ trait BusinessDays
     /**
      * Today (if business day) or next business day.
      *
-     * @return object Carbon Date object
+     * @return USHolidays Carbon Date object
      */
-    public function currentOrNextBusinessDay()
+    public function currentOrNextBusinessDay(): USHolidays
     {
         $day = $this->copy()->subDay();
 
@@ -112,9 +114,9 @@ trait BusinessDays
     /**
      * Today (if business day) or previous business day
      *
-     * @return object Carbon Date object
+     * @return USHolidays Carbon Date object
      */
-    public function currentOrPreviousBusinessDay()
+    public function currentOrPreviousBusinessDay(): USHolidays
     {
         $day = $this->copy()->addDay();
 

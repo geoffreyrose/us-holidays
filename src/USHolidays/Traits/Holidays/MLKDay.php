@@ -11,9 +11,12 @@ trait MLKDay
      * Setting MLK Day
      *
      * @param  int  $year  The year to get the holiday in
+     *
+     * @return USHolidays
      */
-    private function setMLKDay(int $year)
+    private function setMLKDay(int $year): USHolidays
     {
+        /** @var USHolidays $date */
         $date = USHolidays::create($year, 1, 1, 0, 0, 0);
         if ($date->dayOfWeek !== CarbonInterface::MONDAY) {
             $date->next(CarbonInterface::MONDAY);
@@ -27,8 +30,10 @@ trait MLKDay
      * Return object of MLK Day for given year
      *
      * @param  int|null  $year  The year to get the holiday in
+     *
+     * @return object
      */
-    public function getMLKDayHoliday(?int $year = null)
+    public function getMLKDayHoliday(?int $year = null): object
     {
         return $this->getHolidaysByYear('Martin Luther King Jr. Day', $year)[0];
     }
